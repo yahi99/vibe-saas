@@ -2,7 +2,7 @@
   "name": "yopsaas-admin",
   "version": "1.0.0",
   "description": "yopsaas-admin basing on vue-element-admin 4.2.1",
-  "author": "linlinjava <linlinjava@163.com>",
+  "author": "zhangchunsheng <zhangchunsheng@yongche.com>",
   "license": "MIT",
   "scripts": {
     "dev": "vue-cli-service serve",
@@ -37,10 +37,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/linlinjava/yopsaas.git"
+    "url": "git+https://github.com/yongche2010/yopsaas.git"
   },
   "bugs": {
-    "url": "https://github.com/linlinjava/yopsaas/issues"
+    "url": "https://github.com/yongche2010/yopsaas/issues"
   },
   "dependencies": {
     "@tinymce/tinymce-vue": "3.0.1",

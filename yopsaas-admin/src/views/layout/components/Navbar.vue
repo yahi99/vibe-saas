@@ -32,12 +32,12 @@
             </el-dropdown-item>
           </router-link>
           <el-dropdown-item divided>
-            <a target="_blank" href="https://github.com/linlinjava/yopsaas">
+            <a target="_blank" href="https://github.com/yongche2010/yopsaas">
               GitHub
             </a>
           </el-dropdown-item>
           <el-dropdown-item>
-            <a target="_blank" href="https://gitee.com/linlinjava/yopsaas">
+            <a target="_blank" href="https://gitee.com/yongche2010/yopsaas">
               码云
             </a>
           </el-dropdown-item>

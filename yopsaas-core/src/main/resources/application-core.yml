@@ -1,8 +1,8 @@
 yopsaas:
   # 开发者应该设置成自己的wx相关信息
   wx:
-    app-id: wxa5b486c6b918ecfb
-    app-secret: e04004829d4c383b4db7769d88dfbca1
+    app-id: wx8e65be0ca39f86fe
+    app-secret: fd6f3fc761d7d666535f5805047c498f
     mch-id: 111111
     mch-key: xxxxxx
     notify-url: https://yop-saas.yongche.com/wx/order/pay-notify

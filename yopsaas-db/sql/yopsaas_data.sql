@@ -17,6 +17,7 @@
 --
 -- Dumping data for table `yopsaas_ad`
 --
+use yopsaas;
 
 LOCK TABLES `yopsaas_ad` WRITE;
 /*!40000 ALTER TABLE `yopsaas_ad` DISABLE KEYS */;

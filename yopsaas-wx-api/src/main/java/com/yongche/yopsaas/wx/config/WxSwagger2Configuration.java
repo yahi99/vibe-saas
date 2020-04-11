@@ -37,8 +37,8 @@ public class WxSwagger2Configuration {
         return new ApiInfoBuilder()
                 .title("yopsaas-wx API")
                 .description("yopsaas小商场API")
-                .termsOfServiceUrl("https://github.com/linlinjava/yopsaas")
-                .contact("https://github.com/linlinjava/yopsaas")
+                .termsOfServiceUrl("https://github.com/yongche2010/yopsaas")
+                .contact("https://github.com/yongche2010/yopsaas")
                 .version("1.0")
                 .build();
     }

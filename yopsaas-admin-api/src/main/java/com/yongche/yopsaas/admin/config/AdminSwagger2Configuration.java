@@ -37,8 +37,8 @@ public class AdminSwagger2Configuration {
         return new ApiInfoBuilder()
                 .title("yopsaas-admin API")
                 .description("yopsaas管理后台API")
-                .termsOfServiceUrl("https://github.com/linlinjava/yopsaas")
-                .contact("https://github.com/linlinjava/yopsaas")
+                .termsOfServiceUrl("https://github.com/yongche2010/yopsaas")
+                .contact("https://github.com/yongche2010/yopsaas")
                 .version("1.0")
                 .build();
     }

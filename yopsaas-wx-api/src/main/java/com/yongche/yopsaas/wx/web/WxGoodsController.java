@@ -1,7 +1,7 @@
 package com.yongche.yopsaas.wx.web;
 
 import com.github.pagehelper.PageInfo;
-import com.mysql.jdbc.StringUtils;
+import com.mysql.cj.util.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.system.SystemConfig;

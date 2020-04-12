@@ -3,6 +3,7 @@ package com.yongche.yopsaas.admin.job;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.system.SystemConfig;
+import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.db.util.OrderUtil;
 import org.springframework.beans.factory.annotation.Autowired;

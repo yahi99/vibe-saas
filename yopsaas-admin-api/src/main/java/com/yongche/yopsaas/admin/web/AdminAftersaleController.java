@@ -20,6 +20,7 @@ import com.yongche.yopsaas.db.domain.YopsaasAftersale;
 import com.yongche.yopsaas.db.domain.YopsaasGoodsProduct;
 import com.yongche.yopsaas.db.domain.YopsaasOrder;
 import com.yongche.yopsaas.db.domain.YopsaasOrderGoods;
+import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.db.util.AftersaleConstant;
 import org.springframework.beans.factory.annotation.Autowired;

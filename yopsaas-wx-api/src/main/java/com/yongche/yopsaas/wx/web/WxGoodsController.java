@@ -8,6 +8,7 @@ import com.yongche.yopsaas.core.system.SystemConfig;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
+import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;

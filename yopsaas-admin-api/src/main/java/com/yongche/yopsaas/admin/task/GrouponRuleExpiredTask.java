@@ -7,6 +7,7 @@ import com.yongche.yopsaas.core.util.BeanUtil;
 import com.yongche.yopsaas.db.domain.YopsaasGroupon;
 import com.yongche.yopsaas.db.domain.YopsaasGrouponRules;
 import com.yongche.yopsaas.db.domain.YopsaasOrder;
+import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.db.util.GrouponConstant;
 import com.yongche.yopsaas.db.util.OrderUtil;

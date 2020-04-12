@@ -22,6 +22,7 @@ import com.yongche.yopsaas.core.task.TaskService;
 import com.yongche.yopsaas.core.util.DateTimeUtil;
 import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
+import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.db.util.CouponUserConstant;
 import com.yongche.yopsaas.db.util.GrouponConstant;

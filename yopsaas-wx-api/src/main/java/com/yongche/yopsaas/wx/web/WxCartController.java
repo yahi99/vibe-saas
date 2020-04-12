@@ -7,6 +7,7 @@ import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.system.SystemConfig;
 import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
+import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -14,6 +14,7 @@ import com.yongche.yopsaas.db.domain.YopsaasComment;
 import com.yongche.yopsaas.db.domain.YopsaasOrder;
 import com.yongche.yopsaas.db.domain.YopsaasOrderGoods;
 import com.yongche.yopsaas.db.domain.UserVo;
+import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.db.util.OrderUtil;
 import org.springframework.beans.factory.annotation.Autowired;

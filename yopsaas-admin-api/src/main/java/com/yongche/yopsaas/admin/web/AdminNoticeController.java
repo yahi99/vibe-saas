@@ -10,6 +10,7 @@ import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
+import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.YopsaasAdminService;
 import com.yongche.yopsaas.db.service.YopsaasNoticeAdminService;
 import com.yongche.yopsaas.db.service.YopsaasNoticeService;

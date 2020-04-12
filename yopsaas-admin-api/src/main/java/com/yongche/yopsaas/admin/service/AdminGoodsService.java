@@ -6,6 +6,7 @@ import com.yongche.yopsaas.admin.dto.GoodsAllinone;
 import com.yongche.yopsaas.admin.vo.CatVo;
 import com.yongche.yopsaas.core.qcode.QCodeService;
 import com.yongche.yopsaas.core.util.ResponseUtil;
+import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

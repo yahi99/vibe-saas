@@ -10,6 +10,7 @@ import com.yongche.yopsaas.db.domain.YopsaasCart;
 import com.yongche.yopsaas.db.domain.YopsaasCoupon;
 import com.yongche.yopsaas.db.domain.YopsaasCouponUser;
 import com.yongche.yopsaas.db.domain.YopsaasGrouponRules;
+import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.db.util.CouponConstant;
 import com.yongche.yopsaas.wx.annotation.LoginUser;

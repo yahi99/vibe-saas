@@ -360,7 +360,7 @@ export default {
   computed: {
     headers() {
       return {
-        'X-Litemall-Admin-Token': getToken()
+        'X-Yopsaas-Admin-Token': getToken()
       }
     },
     attributesData() {

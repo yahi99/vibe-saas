@@ -7,7 +7,7 @@ import com.yongche.yopsaas.admin.annotation.RequiresPermissionsDesc;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallFootprint;
+import com.yongche.yopsaas.db.domain.YopsaasFootprint;
 import com.yongche.yopsaas.db.service.YopsaasFootprintService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -35,7 +35,7 @@ public class AdminFootprintController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallFootprint> footprintList = footprintService.querySelective(userId, goodsId, page, limit, sort,
+        List<YopsaasFootprint> footprintList = footprintService.querySelective(userId, goodsId, page, limit, sort,
                 order);
         return ResponseUtil.okList(footprintList);
     }

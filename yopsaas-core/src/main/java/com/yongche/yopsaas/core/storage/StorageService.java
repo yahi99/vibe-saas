@@ -1,7 +1,7 @@
 package com.yongche.yopsaas.core.storage;
 
 import com.yongche.yopsaas.core.util.CharUtil;
-import com.yongche.yopsaas.db.domain.LitemallStorage;
+import com.yongche.yopsaas.db.domain.YopsaasStorage;
 import com.yongche.yopsaas.db.service.YopsaasStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -43,12 +43,12 @@ public class StorageService {
      * @param contentType   文件类型
      * @param fileName      文件索引名
      */
-    public LitemallStorage store(InputStream inputStream, long contentLength, String contentType, String fileName) {
+    public YopsaasStorage store(InputStream inputStream, long contentLength, String contentType, String fileName) {
         String key = generateKey(fileName);
         storage.store(inputStream, contentLength, contentType, key);
 
         String url = generateUrl(key);
-        LitemallStorage storageInfo = new LitemallStorage();
+        YopsaasStorage storageInfo = new YopsaasStorage();
         storageInfo.setName(fileName);
         storageInfo.setSize((int) contentLength);
         storageInfo.setType(contentType);
@@ -64,7 +64,7 @@ public class StorageService {
         String suffix = originalFilename.substring(index);
 
         String key = null;
-        LitemallStorage storageInfo = null;
+        YopsaasStorage storageInfo = null;
 
         do {
             key = CharUtil.getRandomString(20) + suffix;

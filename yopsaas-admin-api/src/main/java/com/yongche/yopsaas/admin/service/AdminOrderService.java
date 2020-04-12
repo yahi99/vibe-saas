@@ -10,9 +10,9 @@ import com.yongche.yopsaas.core.notify.NotifyService;
 import com.yongche.yopsaas.core.notify.NotifyType;
 import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
-import com.yongche.yopsaas.db.domain.LitemallComment;
-import com.yongche.yopsaas.db.domain.LitemallOrder;
-import com.yongche.yopsaas.db.domain.LitemallOrderGoods;
+import com.yongche.yopsaas.db.domain.YopsaasComment;
+import com.yongche.yopsaas.db.domain.YopsaasOrder;
+import com.yongche.yopsaas.db.domain.YopsaasOrderGoods;
 import com.yongche.yopsaas.db.domain.UserVo;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.db.util.OrderUtil;
@@ -53,14 +53,14 @@ public class AdminOrderService {
 
     public Object list(Integer userId, String orderSn, LocalDateTime start, LocalDateTime end, List<Short> orderStatusArray,
                        Integer page, Integer limit, String sort, String order) {
-        List<LitemallOrder> orderList = orderService.querySelective(userId, orderSn, start, end, orderStatusArray, page, limit,
+        List<YopsaasOrder> orderList = orderService.querySelective(userId, orderSn, start, end, orderStatusArray, page, limit,
                 sort, order);
         return ResponseUtil.okList(orderList);
     }
 
     public Object detail(Integer id) {
-        LitemallOrder order = orderService.findById(id);
-        List<LitemallOrderGoods> orderGoods = orderGoodsService.queryByOid(id);
+        YopsaasOrder order = orderService.findById(id);
+        List<YopsaasOrderGoods> orderGoods = orderGoodsService.queryByOid(id);
         UserVo user = userService.findUserVoById(order.getUserId());
         Map<String, Object> data = new HashMap<>();
         data.put("order", order);
@@ -97,7 +97,7 @@ public class AdminOrderService {
             return ResponseUtil.badArgument();
         }
 
-        LitemallOrder order = orderService.findById(orderId);
+        YopsaasOrder order = orderService.findById(orderId);
         if (order == null) {
             return ResponseUtil.badArgument();
         }
@@ -150,8 +150,8 @@ public class AdminOrderService {
         }
 
         // 商品货品数量增加
-        List<LitemallOrderGoods> orderGoodsList = orderGoodsService.queryByOid(orderId);
-        for (LitemallOrderGoods orderGoods : orderGoodsList) {
+        List<YopsaasOrderGoods> orderGoodsList = orderGoodsService.queryByOid(orderId);
+        for (YopsaasOrderGoods orderGoods : orderGoodsList) {
             Integer productId = orderGoods.getProductId();
             Short number = orderGoods.getNumber();
             if (productService.addStock(productId, number) == 0) {
@@ -187,7 +187,7 @@ public class AdminOrderService {
             return ResponseUtil.badArgument();
         }
 
-        LitemallOrder order = orderService.findById(orderId);
+        YopsaasOrder order = orderService.findById(orderId);
         if (order == null) {
             return ResponseUtil.badArgument();
         }
@@ -226,7 +226,7 @@ public class AdminOrderService {
      */
     public Object delete(String body) {
         Integer orderId = JacksonUtil.parseInteger(body, "orderId");
-        LitemallOrder order = orderService.findById(orderId);
+        YopsaasOrder order = orderService.findById(orderId);
         if (order == null) {
             return ResponseUtil.badArgument();
         }
@@ -260,7 +260,7 @@ public class AdminOrderService {
             return ResponseUtil.badArgument();
         }
         // 目前只支持回复一次
-        LitemallComment comment = commentService.findById(commentId);
+        YopsaasComment comment = commentService.findById(commentId);
         if(comment == null){
             return ResponseUtil.badArgument();
         }

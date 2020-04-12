@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallIssue;
+import com.yongche.yopsaas.db.domain.YopsaasIssue;
 import com.yongche.yopsaas.db.service.YopsaasIssueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -31,7 +31,7 @@ public class WxIssueController {
                        @RequestParam(defaultValue = "10") Integer size,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallIssue> issueList = issueService.querySelective(question, page, size, sort, order);
+        List<YopsaasIssue> issueList = issueService.querySelective(question, page, size, sort, order);
         return ResponseUtil.okList(issueList);
     }
 

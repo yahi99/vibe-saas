@@ -3,7 +3,7 @@ package com.yongche.yopsaas.wx.web;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.ResponseUtil;
-import com.yongche.yopsaas.db.domain.LitemallCategory;
+import com.yongche.yopsaas.db.domain.YopsaasCategory;
 import com.yongche.yopsaas.db.service.YopsaasCategoryService;
 import com.yongche.yopsaas.wx.service.HomeCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,14 +32,14 @@ public class WxCatalogController {
     @GetMapping("/getfirstcategory")
     public Object getFirstCategory() {
         // 所有一级分类目录
-        List<LitemallCategory> l1CatList = categoryService.queryL1();
+        List<YopsaasCategory> l1CatList = categoryService.queryL1();
         return ResponseUtil.ok(l1CatList);
     }
 
     @GetMapping("/getsecondcategory")
     public Object getSecondCategory(@NotNull Integer id) {
         // 所有二级分类目录
-        List<LitemallCategory> currentSubCategory = categoryService.queryByPid(id);
+        List<YopsaasCategory> currentSubCategory = categoryService.queryByPid(id);
         return ResponseUtil.ok(currentSubCategory);
     }
 
@@ -55,10 +55,10 @@ public class WxCatalogController {
     public Object index(Integer id) {
 
         // 所有一级分类目录
-        List<LitemallCategory> l1CatList = categoryService.queryL1();
+        List<YopsaasCategory> l1CatList = categoryService.queryL1();
 
         // 当前一级分类目录
-        LitemallCategory currentCategory = null;
+        YopsaasCategory currentCategory = null;
         if (id != null) {
             currentCategory = categoryService.findById(id);
         } else {
@@ -68,7 +68,7 @@ public class WxCatalogController {
         }
 
         // 当前一级分类目录对应的二级分类目录
-        List<LitemallCategory> currentSubCategory = null;
+        List<YopsaasCategory> currentSubCategory = null;
         if (null != currentCategory) {
             currentSubCategory = categoryService.queryByPid(currentCategory.getId());
         }
@@ -94,21 +94,21 @@ public class WxCatalogController {
 
 
         // 所有一级分类目录
-        List<LitemallCategory> l1CatList = categoryService.queryL1();
+        List<YopsaasCategory> l1CatList = categoryService.queryL1();
 
         //所有子分类列表
-        Map<Integer, List<LitemallCategory>> allList = new HashMap<>();
-        List<LitemallCategory> sub;
-        for (LitemallCategory category : l1CatList) {
+        Map<Integer, List<YopsaasCategory>> allList = new HashMap<>();
+        List<YopsaasCategory> sub;
+        for (YopsaasCategory category : l1CatList) {
             sub = categoryService.queryByPid(category.getId());
             allList.put(category.getId(), sub);
         }
 
         // 当前一级分类目录
-        LitemallCategory currentCategory = l1CatList.get(0);
+        YopsaasCategory currentCategory = l1CatList.get(0);
 
         // 当前一级分类目录对应的二级分类目录
-        List<LitemallCategory> currentSubCategory = null;
+        List<YopsaasCategory> currentSubCategory = null;
         if (null != currentCategory) {
             currentSubCategory = categoryService.queryByPid(currentCategory.getId());
         }
@@ -133,11 +133,11 @@ public class WxCatalogController {
     @GetMapping("current")
     public Object current(@NotNull Integer id) {
         // 当前分类
-        LitemallCategory currentCategory = categoryService.findById(id);
+        YopsaasCategory currentCategory = categoryService.findById(id);
         if(currentCategory == null){
             return ResponseUtil.badArgumentValue();
         }
-        List<LitemallCategory> currentSubCategory = categoryService.queryByPid(currentCategory.getId());
+        List<YopsaasCategory> currentSubCategory = categoryService.queryByPid(currentCategory.getId());
 
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("currentCategory", currentCategory);

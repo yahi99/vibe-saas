@@ -7,7 +7,7 @@ import com.yongche.yopsaas.admin.annotation.RequiresPermissionsDesc;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallAddress;
+import com.yongche.yopsaas.db.domain.YopsaasAddress;
 import com.yongche.yopsaas.db.service.YopsaasAddressService;
 import com.yongche.yopsaas.db.service.YopsaasRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class AdminAddressController {
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
 
-        List<LitemallAddress> addressList = addressService.querySelective(userId, name, page, limit, sort, order);
+        List<YopsaasAddress> addressList = addressService.querySelective(userId, name, page, limit, sort, order);
         return ResponseUtil.okList(addressList);
     }
 }

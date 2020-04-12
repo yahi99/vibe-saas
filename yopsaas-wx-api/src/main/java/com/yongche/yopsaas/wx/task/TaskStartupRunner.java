@@ -2,7 +2,7 @@ package com.yongche.yopsaas.wx.task;
 
 import com.yongche.yopsaas.core.system.SystemConfig;
 import com.yongche.yopsaas.core.task.TaskService;
-import com.yongche.yopsaas.db.domain.LitemallOrder;
+import com.yongche.yopsaas.db.domain.YopsaasOrder;
 import com.yongche.yopsaas.db.service.YopsaasOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -23,8 +23,8 @@ public class TaskStartupRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        List<LitemallOrder> orderList = orderService.queryUnpaid(SystemConfig.getOrderUnpaid());
-        for(LitemallOrder order : orderList){
+        List<YopsaasOrder> orderList = orderService.queryUnpaid(SystemConfig.getOrderUnpaid());
+        for(YopsaasOrder order : orderList){
             LocalDateTime add = order.getAddTime();
             LocalDateTime now = LocalDateTime.now();
             LocalDateTime expire =  add.plusMinutes(SystemConfig.getOrderUnpaid());

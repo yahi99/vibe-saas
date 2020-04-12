@@ -4,7 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.RegexUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
-import com.yongche.yopsaas.db.domain.LitemallAddress;
+import com.yongche.yopsaas.db.domain.YopsaasAddress;
 import com.yongche.yopsaas.db.service.YopsaasAddressService;
 import com.yongche.yopsaas.db.service.YopsaasRegionService;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
@@ -44,7 +44,7 @@ public class WxAddressController extends GetRegionService {
 		if (userId == null) {
 			return ResponseUtil.unlogin();
 		}
-		List<LitemallAddress> addressList = addressService.queryByUid(userId);
+		List<YopsaasAddress> addressList = addressService.queryByUid(userId);
 		return ResponseUtil.okList(addressList);
 	}
 
@@ -61,14 +61,14 @@ public class WxAddressController extends GetRegionService {
 			return ResponseUtil.unlogin();
 		}
 
-		LitemallAddress address = addressService.query(userId, id);
+		YopsaasAddress address = addressService.query(userId, id);
 		if (address == null) {
 			return ResponseUtil.badArgumentValue();
 		}
 		return ResponseUtil.ok(address);
 	}
 
-	private Object validate(LitemallAddress address) {
+	private Object validate(YopsaasAddress address) {
 		String name = address.getName();
 		if (StringUtils.isEmpty(name)) {
 			return ResponseUtil.badArgument();
@@ -124,7 +124,7 @@ public class WxAddressController extends GetRegionService {
 	 * @return 添加或更新操作结果
 	 */
 	@PostMapping("save")
-	public Object save(@LoginUser Integer userId, @RequestBody LitemallAddress address) {
+	public Object save(@LoginUser Integer userId, @RequestBody YopsaasAddress address) {
 		if (userId == null) {
 			return ResponseUtil.unlogin();
 		}
@@ -143,7 +143,7 @@ public class WxAddressController extends GetRegionService {
 			address.setUserId(userId);
 			addressService.add(address);
 		} else {
-			LitemallAddress yopsaasAddress = addressService.query(userId, address.getId());
+			YopsaasAddress yopsaasAddress = addressService.query(userId, address.getId());
 			if (yopsaasAddress == null) {
 				return ResponseUtil.badArgumentValue();
 			}
@@ -167,7 +167,7 @@ public class WxAddressController extends GetRegionService {
 	 * @return 删除操作结果
 	 */
 	@PostMapping("delete")
-	public Object delete(@LoginUser Integer userId, @RequestBody LitemallAddress address) {
+	public Object delete(@LoginUser Integer userId, @RequestBody YopsaasAddress address) {
 		if (userId == null) {
 			return ResponseUtil.unlogin();
 		}
@@ -175,7 +175,7 @@ public class WxAddressController extends GetRegionService {
 		if (id == null) {
 			return ResponseUtil.badArgument();
 		}
-		LitemallAddress yopsaasAddress = addressService.query(userId, id);
+		YopsaasAddress yopsaasAddress = addressService.query(userId, id);
 		if (yopsaasAddress == null) {
 			return ResponseUtil.badArgumentValue();
 		}

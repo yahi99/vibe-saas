@@ -1,9 +1,9 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallRegionMapper;
-import com.yongche.yopsaas.db.domain.LitemallRegion;
-import com.yongche.yopsaas.db.domain.LitemallRegionExample;
+import com.yongche.yopsaas.db.dao.YopsaasRegionMapper;
+import com.yongche.yopsaas.db.domain.YopsaasRegion;
+import com.yongche.yopsaas.db.domain.YopsaasRegionExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -14,28 +14,28 @@ import java.util.List;
 public class YopsaasRegionService {
 
     @Resource
-    private LitemallRegionMapper regionMapper;
+    private YopsaasRegionMapper regionMapper;
 
-    public List<LitemallRegion> getAll(){
-        LitemallRegionExample example = new LitemallRegionExample();
+    public List<YopsaasRegion> getAll(){
+        YopsaasRegionExample example = new YopsaasRegionExample();
         byte b = 4;
         example.or().andTypeNotEqualTo(b);
         return regionMapper.selectByExample(example);
     }
 
-    public List<LitemallRegion> queryByPid(Integer parentId) {
-        LitemallRegionExample example = new LitemallRegionExample();
+    public List<YopsaasRegion> queryByPid(Integer parentId) {
+        YopsaasRegionExample example = new YopsaasRegionExample();
         example.or().andPidEqualTo(parentId);
         return regionMapper.selectByExample(example);
     }
 
-    public LitemallRegion findById(Integer id) {
+    public YopsaasRegion findById(Integer id) {
         return regionMapper.selectByPrimaryKey(id);
     }
 
-    public List<LitemallRegion> querySelective(String name, Integer code, Integer page, Integer size, String sort, String order) {
-        LitemallRegionExample example = new LitemallRegionExample();
-        LitemallRegionExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasRegion> querySelective(String name, Integer code, Integer page, Integer size, String sort, String order) {
+        YopsaasRegionExample example = new YopsaasRegionExample();
+        YopsaasRegionExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(name)) {
             criteria.andNameLike("%" + name + "%");

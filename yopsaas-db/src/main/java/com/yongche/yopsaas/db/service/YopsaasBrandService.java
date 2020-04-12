@@ -1,10 +1,10 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallBrandMapper;
-import com.yongche.yopsaas.db.domain.LitemallBrand;
-import com.yongche.yopsaas.db.domain.LitemallBrand.Column;
-import com.yongche.yopsaas.db.domain.LitemallBrandExample;
+import com.yongche.yopsaas.db.dao.YopsaasBrandMapper;
+import com.yongche.yopsaas.db.domain.YopsaasBrand;
+import com.yongche.yopsaas.db.domain.YopsaasBrand.Column;
+import com.yongche.yopsaas.db.domain.YopsaasBrandExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -15,11 +15,11 @@ import java.util.List;
 @Service
 public class YopsaasBrandService {
     @Resource
-    private LitemallBrandMapper brandMapper;
+    private YopsaasBrandMapper brandMapper;
     private Column[] columns = new Column[]{Column.id, Column.name, Column.desc, Column.picUrl, Column.floorPrice};
 
-    public List<LitemallBrand> query(Integer page, Integer limit, String sort, String order) {
-        LitemallBrandExample example = new LitemallBrandExample();
+    public List<YopsaasBrand> query(Integer page, Integer limit, String sort, String order) {
+        YopsaasBrandExample example = new YopsaasBrandExample();
         example.or().andDeletedEqualTo(false);
         if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(order)) {
             example.setOrderByClause(sort + " " + order);
@@ -28,17 +28,17 @@ public class YopsaasBrandService {
         return brandMapper.selectByExampleSelective(example, columns);
     }
 
-    public List<LitemallBrand> query(Integer page, Integer limit) {
+    public List<YopsaasBrand> query(Integer page, Integer limit) {
         return query(page, limit, null, null);
     }
 
-    public LitemallBrand findById(Integer id) {
+    public YopsaasBrand findById(Integer id) {
         return brandMapper.selectByPrimaryKey(id);
     }
 
-    public List<LitemallBrand> querySelective(String id, String name, Integer page, Integer size, String sort, String order) {
-        LitemallBrandExample example = new LitemallBrandExample();
-        LitemallBrandExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasBrand> querySelective(String id, String name, Integer page, Integer size, String sort, String order) {
+        YopsaasBrandExample example = new YopsaasBrandExample();
+        YopsaasBrandExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(id)) {
             criteria.andIdEqualTo(Integer.valueOf(id));
@@ -56,7 +56,7 @@ public class YopsaasBrandService {
         return brandMapper.selectByExample(example);
     }
 
-    public int updateById(LitemallBrand brand) {
+    public int updateById(YopsaasBrand brand) {
         brand.setUpdateTime(LocalDateTime.now());
         return brandMapper.updateByPrimaryKeySelective(brand);
     }
@@ -65,14 +65,14 @@ public class YopsaasBrandService {
         brandMapper.logicalDeleteByPrimaryKey(id);
     }
 
-    public void add(LitemallBrand brand) {
+    public void add(YopsaasBrand brand) {
         brand.setAddTime(LocalDateTime.now());
         brand.setUpdateTime(LocalDateTime.now());
         brandMapper.insertSelective(brand);
     }
 
-    public List<LitemallBrand> all() {
-        LitemallBrandExample example = new LitemallBrandExample();
+    public List<YopsaasBrand> all() {
+        YopsaasBrandExample example = new YopsaasBrandExample();
         example.or().andDeletedEqualTo(false);
         return brandMapper.selectByExample(example);
     }

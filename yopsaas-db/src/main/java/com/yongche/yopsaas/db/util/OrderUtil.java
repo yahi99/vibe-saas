@@ -1,6 +1,6 @@
 package com.yongche.yopsaas.db.util;
 
-import com.yongche.yopsaas.db.domain.LitemallOrder;
+import com.yongche.yopsaas.db.domain.YopsaasOrder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class OrderUtil {
     public static final Short STATUS_REFUND_CONFIRM = 203;
     public static final Short STATUS_AUTO_CONFIRM = 402;
 
-    public static String orderStatusText(LitemallOrder order) {
+    public static String orderStatusText(YopsaasOrder order) {
         int status = order.getOrderStatus().intValue();
 
         if (status == 101) {
@@ -79,7 +79,7 @@ public class OrderUtil {
     }
 
 
-    public static OrderHandleOption build(LitemallOrder order) {
+    public static OrderHandleOption build(YopsaasOrder order) {
         int status = order.getOrderStatus().intValue();
         OrderHandleOption handleOption = new OrderHandleOption();
 
@@ -145,45 +145,45 @@ public class OrderUtil {
     }
 
 
-    public static boolean isCreateStatus(LitemallOrder yopsaasOrder) {
+    public static boolean isCreateStatus(YopsaasOrder yopsaasOrder) {
         return OrderUtil.STATUS_CREATE == yopsaasOrder.getOrderStatus().shortValue();
     }
 
-    public static boolean hasPayed(LitemallOrder order) {
+    public static boolean hasPayed(YopsaasOrder order) {
         return OrderUtil.STATUS_CREATE != order.getOrderStatus().shortValue()
                 && OrderUtil.STATUS_CANCEL != order.getOrderStatus().shortValue()
                 && OrderUtil.STATUS_AUTO_CANCEL != order.getOrderStatus().shortValue();
     }
 
-    public static boolean isPayStatus(LitemallOrder yopsaasOrder) {
+    public static boolean isPayStatus(YopsaasOrder yopsaasOrder) {
         return OrderUtil.STATUS_PAY == yopsaasOrder.getOrderStatus().shortValue();
     }
 
-    public static boolean isShipStatus(LitemallOrder yopsaasOrder) {
+    public static boolean isShipStatus(YopsaasOrder yopsaasOrder) {
         return OrderUtil.STATUS_SHIP == yopsaasOrder.getOrderStatus().shortValue();
     }
 
-    public static boolean isConfirmStatus(LitemallOrder yopsaasOrder) {
+    public static boolean isConfirmStatus(YopsaasOrder yopsaasOrder) {
         return OrderUtil.STATUS_CONFIRM == yopsaasOrder.getOrderStatus().shortValue();
     }
 
-    public static boolean isCancelStatus(LitemallOrder yopsaasOrder) {
+    public static boolean isCancelStatus(YopsaasOrder yopsaasOrder) {
         return OrderUtil.STATUS_CANCEL == yopsaasOrder.getOrderStatus().shortValue();
     }
 
-    public static boolean isAutoCancelStatus(LitemallOrder yopsaasOrder) {
+    public static boolean isAutoCancelStatus(YopsaasOrder yopsaasOrder) {
         return OrderUtil.STATUS_AUTO_CANCEL == yopsaasOrder.getOrderStatus().shortValue();
     }
 
-    public static boolean isRefundStatus(LitemallOrder yopsaasOrder) {
+    public static boolean isRefundStatus(YopsaasOrder yopsaasOrder) {
         return OrderUtil.STATUS_REFUND == yopsaasOrder.getOrderStatus().shortValue();
     }
 
-    public static boolean isRefundConfirmStatus(LitemallOrder yopsaasOrder) {
+    public static boolean isRefundConfirmStatus(YopsaasOrder yopsaasOrder) {
         return OrderUtil.STATUS_REFUND_CONFIRM == yopsaasOrder.getOrderStatus().shortValue();
     }
 
-    public static boolean isAutoConfirmStatus(LitemallOrder yopsaasOrder) {
+    public static boolean isAutoConfirmStatus(YopsaasOrder yopsaasOrder) {
         return OrderUtil.STATUS_AUTO_CONFIRM == yopsaasOrder.getOrderStatus().shortValue();
     }
 }

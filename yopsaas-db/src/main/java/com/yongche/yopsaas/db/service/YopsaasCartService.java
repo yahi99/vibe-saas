@@ -1,9 +1,9 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallCartMapper;
-import com.yongche.yopsaas.db.domain.LitemallCart;
-import com.yongche.yopsaas.db.domain.LitemallCartExample;
+import com.yongche.yopsaas.db.dao.YopsaasCartMapper;
+import com.yongche.yopsaas.db.domain.YopsaasCart;
+import com.yongche.yopsaas.db.domain.YopsaasCartExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -15,74 +15,74 @@ import java.util.List;
 @Service
 public class YopsaasCartService {
     @Resource
-    private LitemallCartMapper cartMapper;
+    private YopsaasCartMapper cartMapper;
 
-    public LitemallCart queryExist(Integer goodsId, Integer productId, Integer userId) {
-        LitemallCartExample example = new LitemallCartExample();
+    public YopsaasCart queryExist(Integer goodsId, Integer productId, Integer userId) {
+        YopsaasCartExample example = new YopsaasCartExample();
         example.or().andGoodsIdEqualTo(goodsId).andProductIdEqualTo(productId).andUserIdEqualTo(userId).andDeletedEqualTo(false);
         return cartMapper.selectOneByExample(example);
     }
 
-    public void add(LitemallCart cart) {
+    public void add(YopsaasCart cart) {
         cart.setAddTime(LocalDateTime.now());
         cart.setUpdateTime(LocalDateTime.now());
         cartMapper.insertSelective(cart);
     }
 
-    public int updateById(LitemallCart cart) {
+    public int updateById(YopsaasCart cart) {
         cart.setUpdateTime(LocalDateTime.now());
         return cartMapper.updateByPrimaryKeySelective(cart);
     }
 
-    public List<LitemallCart> queryByUid(int userId) {
-        LitemallCartExample example = new LitemallCartExample();
+    public List<YopsaasCart> queryByUid(int userId) {
+        YopsaasCartExample example = new YopsaasCartExample();
         example.or().andUserIdEqualTo(userId).andDeletedEqualTo(false);
         return cartMapper.selectByExample(example);
     }
 
 
-    public List<LitemallCart> queryByUidAndChecked(Integer userId) {
-        LitemallCartExample example = new LitemallCartExample();
+    public List<YopsaasCart> queryByUidAndChecked(Integer userId) {
+        YopsaasCartExample example = new YopsaasCartExample();
         example.or().andUserIdEqualTo(userId).andCheckedEqualTo(true).andDeletedEqualTo(false);
         return cartMapper.selectByExample(example);
     }
 
     public int delete(List<Integer> productIdList, int userId) {
-        LitemallCartExample example = new LitemallCartExample();
+        YopsaasCartExample example = new YopsaasCartExample();
         example.or().andUserIdEqualTo(userId).andProductIdIn(productIdList);
         return cartMapper.logicalDeleteByExample(example);
     }
 
-    public LitemallCart findById(Integer id) {
+    public YopsaasCart findById(Integer id) {
         return cartMapper.selectByPrimaryKey(id);
     }
 
-    public LitemallCart findById(Integer userId, Integer id) {
-        LitemallCartExample example = new LitemallCartExample();
+    public YopsaasCart findById(Integer userId, Integer id) {
+        YopsaasCartExample example = new YopsaasCartExample();
         example.or().andUserIdEqualTo(userId).andIdEqualTo(id).andDeletedEqualTo(false);
         return cartMapper.selectOneByExample(example);
     }
 
     public int updateCheck(Integer userId, List<Integer> idsList, Boolean checked) {
-        LitemallCartExample example = new LitemallCartExample();
+        YopsaasCartExample example = new YopsaasCartExample();
         example.or().andUserIdEqualTo(userId).andProductIdIn(idsList).andDeletedEqualTo(false);
-        LitemallCart cart = new LitemallCart();
+        YopsaasCart cart = new YopsaasCart();
         cart.setChecked(checked);
         cart.setUpdateTime(LocalDateTime.now());
         return cartMapper.updateByExampleSelective(cart, example);
     }
 
     public void clearGoods(Integer userId) {
-        LitemallCartExample example = new LitemallCartExample();
+        YopsaasCartExample example = new YopsaasCartExample();
         example.or().andUserIdEqualTo(userId).andCheckedEqualTo(true);
-        LitemallCart cart = new LitemallCart();
+        YopsaasCart cart = new YopsaasCart();
         cart.setDeleted(true);
         cartMapper.updateByExampleSelective(cart, example);
     }
 
-    public List<LitemallCart> querySelective(Integer userId, Integer goodsId, Integer page, Integer limit, String sort, String order) {
-        LitemallCartExample example = new LitemallCartExample();
-        LitemallCartExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasCart> querySelective(Integer userId, Integer goodsId, Integer page, Integer limit, String sort, String order) {
+        YopsaasCartExample example = new YopsaasCartExample();
+        YopsaasCartExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(userId)) {
             criteria.andUserIdEqualTo(userId);
@@ -105,18 +105,18 @@ public class YopsaasCartService {
     }
 
     public boolean checkExist(Integer goodsId) {
-        LitemallCartExample example = new LitemallCartExample();
+        YopsaasCartExample example = new YopsaasCartExample();
         example.or().andGoodsIdEqualTo(goodsId).andCheckedEqualTo(true).andDeletedEqualTo(false);
         return cartMapper.countByExample(example) != 0;
     }
 
     public void updateProduct(Integer id, String goodsSn, String goodsName, BigDecimal price, String url) {
-        LitemallCart cart = new LitemallCart();
+        YopsaasCart cart = new YopsaasCart();
         cart.setPrice(price);
         cart.setPicUrl(url);
         cart.setGoodsSn(goodsSn);
         cart.setGoodsName(goodsName);
-        LitemallCartExample example = new LitemallCartExample();
+        YopsaasCartExample example = new YopsaasCartExample();
         example.or().andProductIdEqualTo(id);
         cartMapper.updateByExampleSelective(cart, example);
     }

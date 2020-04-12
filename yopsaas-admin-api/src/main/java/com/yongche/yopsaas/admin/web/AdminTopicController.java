@@ -8,8 +8,8 @@ import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallGoods;
-import com.yongche.yopsaas.db.domain.LitemallTopic;
+import com.yongche.yopsaas.db.domain.YopsaasGoods;
+import com.yongche.yopsaas.db.domain.YopsaasTopic;
 import com.yongche.yopsaas.db.service.YopsaasGoodsService;
 import com.yongche.yopsaas.db.service.YopsaasTopicService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,11 +43,11 @@ public class AdminTopicController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort(accepts = {"id", "add_time", "price"}) @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallTopic> topicList = topicService.querySelective(title, subtitle, page, limit, sort, order);
+        List<YopsaasTopic> topicList = topicService.querySelective(title, subtitle, page, limit, sort, order);
         return ResponseUtil.okList(topicList);
     }
 
-    private Object validate(LitemallTopic topic) {
+    private Object validate(YopsaasTopic topic) {
         String title = topic.getTitle();
         if (StringUtils.isEmpty(title)) {
             return ResponseUtil.badArgument();
@@ -66,7 +66,7 @@ public class AdminTopicController {
     @RequiresPermissions("admin:topic:create")
     @RequiresPermissionsDesc(menu = {"推广管理", "专题管理"}, button = "添加")
     @PostMapping("/create")
-    public Object create(@RequestBody LitemallTopic topic) {
+    public Object create(@RequestBody YopsaasTopic topic) {
         Object error = validate(topic);
         if (error != null) {
             return error;
@@ -79,9 +79,9 @@ public class AdminTopicController {
     @RequiresPermissionsDesc(menu = {"推广管理", "专题管理"}, button = "详情")
     @GetMapping("/read")
     public Object read(@NotNull Integer id) {
-        LitemallTopic topic = topicService.findById(id);
+        YopsaasTopic topic = topicService.findById(id);
         Integer[] goodsIds = topic.getGoods();
-        List<LitemallGoods> goodsList = null;
+        List<YopsaasGoods> goodsList = null;
         if (goodsIds == null || goodsIds.length == 0) {
             goodsList = new ArrayList<>();
         } else {
@@ -96,7 +96,7 @@ public class AdminTopicController {
     @RequiresPermissions("admin:topic:update")
     @RequiresPermissionsDesc(menu = {"推广管理", "专题管理"}, button = "编辑")
     @PostMapping("/update")
-    public Object update(@RequestBody LitemallTopic topic) {
+    public Object update(@RequestBody YopsaasTopic topic) {
         Object error = validate(topic);
         if (error != null) {
             return error;
@@ -110,7 +110,7 @@ public class AdminTopicController {
     @RequiresPermissions("admin:topic:delete")
     @RequiresPermissionsDesc(menu = {"推广管理", "专题管理"}, button = "删除")
     @PostMapping("/delete")
-    public Object delete(@RequestBody LitemallTopic topic) {
+    public Object delete(@RequestBody YopsaasTopic topic) {
         topicService.deleteById(topic.getId());
         return ResponseUtil.ok();
     }

@@ -12,9 +12,9 @@ import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallAdmin;
-import com.yongche.yopsaas.db.domain.LitemallPermission;
-import com.yongche.yopsaas.db.domain.LitemallRole;
+import com.yongche.yopsaas.db.domain.YopsaasAdmin;
+import com.yongche.yopsaas.db.domain.YopsaasPermission;
+import com.yongche.yopsaas.db.domain.YopsaasRole;
 import com.yongche.yopsaas.db.service.YopsaasAdminService;
 import com.yongche.yopsaas.db.service.YopsaasPermissionService;
 import com.yongche.yopsaas.db.service.YopsaasRoleService;
@@ -51,16 +51,16 @@ public class AdminRoleController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallRole> roleList = roleService.querySelective(name, page, limit, sort, order);
+        List<YopsaasRole> roleList = roleService.querySelective(name, page, limit, sort, order);
         return ResponseUtil.okList(roleList);
     }
 
     @GetMapping("/options")
     public Object options() {
-        List<LitemallRole> roleList = roleService.queryAll();
+        List<YopsaasRole> roleList = roleService.queryAll();
 
         List<Map<String, Object>> options = new ArrayList<>(roleList.size());
-        for (LitemallRole role : roleList) {
+        for (YopsaasRole role : roleList) {
             Map<String, Object> option = new HashMap<>(2);
             option.put("value", role.getId());
             option.put("label", role.getName());
@@ -74,12 +74,12 @@ public class AdminRoleController {
     @RequiresPermissionsDesc(menu = {"系统管理", "角色管理"}, button = "角色详情")
     @GetMapping("/read")
     public Object read(@NotNull Integer id) {
-        LitemallRole role = roleService.findById(id);
+        YopsaasRole role = roleService.findById(id);
         return ResponseUtil.ok(role);
     }
 
 
-    private Object validate(LitemallRole role) {
+    private Object validate(YopsaasRole role) {
         String name = role.getName();
         if (StringUtils.isEmpty(name)) {
             return ResponseUtil.badArgument();
@@ -91,7 +91,7 @@ public class AdminRoleController {
     @RequiresPermissions("admin:role:create")
     @RequiresPermissionsDesc(menu = {"系统管理", "角色管理"}, button = "角色添加")
     @PostMapping("/create")
-    public Object create(@RequestBody LitemallRole role) {
+    public Object create(@RequestBody YopsaasRole role) {
         Object error = validate(role);
         if (error != null) {
             return error;
@@ -109,7 +109,7 @@ public class AdminRoleController {
     @RequiresPermissions("admin:role:update")
     @RequiresPermissionsDesc(menu = {"系统管理", "角色管理"}, button = "角色编辑")
     @PostMapping("/update")
-    public Object update(@RequestBody LitemallRole role) {
+    public Object update(@RequestBody YopsaasRole role) {
         Object error = validate(role);
         if (error != null) {
             return error;
@@ -122,15 +122,15 @@ public class AdminRoleController {
     @RequiresPermissions("admin:role:delete")
     @RequiresPermissionsDesc(menu = {"系统管理", "角色管理"}, button = "角色删除")
     @PostMapping("/delete")
-    public Object delete(@RequestBody LitemallRole role) {
+    public Object delete(@RequestBody YopsaasRole role) {
         Integer id = role.getId();
         if (id == null) {
             return ResponseUtil.badArgument();
         }
 
         // 如果当前角色所对应管理员仍存在，则拒绝删除角色。
-        List<LitemallAdmin> adminList = adminService.all();
-        for (LitemallAdmin admin : adminList) {
+        List<YopsaasAdmin> adminList = adminService.all();
+        for (YopsaasAdmin admin : adminList) {
             Integer[] roleIds = admin.getRoleIds();
             for (Integer roleId : roleIds) {
                 if (id.equals(roleId)) {
@@ -216,7 +216,7 @@ public class AdminRoleController {
         // 先删除旧的权限，再更新新的权限
         permissionService.deleteByRoleId(roleId);
         for (String permission : permissions) {
-            LitemallPermission yopsaasPermission = new LitemallPermission();
+            YopsaasPermission yopsaasPermission = new YopsaasPermission();
             yopsaasPermission.setRoleId(roleId);
             yopsaasPermission.setPermission(permission);
             permissionService.add(yopsaasPermission);

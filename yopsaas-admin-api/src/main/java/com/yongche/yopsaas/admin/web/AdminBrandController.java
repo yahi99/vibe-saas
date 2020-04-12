@@ -7,7 +7,7 @@ import com.yongche.yopsaas.admin.annotation.RequiresPermissionsDesc;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallBrand;
+import com.yongche.yopsaas.db.domain.YopsaasBrand;
 import com.yongche.yopsaas.db.service.YopsaasBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -35,11 +35,11 @@ public class AdminBrandController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallBrand> brandList = brandService.querySelective(id, name, page, limit, sort, order);
+        List<YopsaasBrand> brandList = brandService.querySelective(id, name, page, limit, sort, order);
         return ResponseUtil.okList(brandList);
     }
 
-    private Object validate(LitemallBrand brand) {
+    private Object validate(YopsaasBrand brand) {
         String name = brand.getName();
         if (StringUtils.isEmpty(name)) {
             return ResponseUtil.badArgument();
@@ -60,7 +60,7 @@ public class AdminBrandController {
     @RequiresPermissions("admin:brand:create")
     @RequiresPermissionsDesc(menu = {"商场管理", "品牌管理"}, button = "添加")
     @PostMapping("/create")
-    public Object create(@RequestBody LitemallBrand brand) {
+    public Object create(@RequestBody YopsaasBrand brand) {
         Object error = validate(brand);
         if (error != null) {
             return error;
@@ -73,14 +73,14 @@ public class AdminBrandController {
     @RequiresPermissionsDesc(menu = {"商场管理", "品牌管理"}, button = "详情")
     @GetMapping("/read")
     public Object read(@NotNull Integer id) {
-        LitemallBrand brand = brandService.findById(id);
+        YopsaasBrand brand = brandService.findById(id);
         return ResponseUtil.ok(brand);
     }
 
     @RequiresPermissions("admin:brand:update")
     @RequiresPermissionsDesc(menu = {"商场管理", "品牌管理"}, button = "编辑")
     @PostMapping("/update")
-    public Object update(@RequestBody LitemallBrand brand) {
+    public Object update(@RequestBody YopsaasBrand brand) {
         Object error = validate(brand);
         if (error != null) {
             return error;
@@ -94,7 +94,7 @@ public class AdminBrandController {
     @RequiresPermissions("admin:brand:delete")
     @RequiresPermissionsDesc(menu = {"商场管理", "品牌管理"}, button = "删除")
     @PostMapping("/delete")
-    public Object delete(@RequestBody LitemallBrand brand) {
+    public Object delete(@RequestBody YopsaasBrand brand) {
         Integer id = brand.getId();
         if (id == null) {
             return ResponseUtil.badArgument();

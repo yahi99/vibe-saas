@@ -1,9 +1,9 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallIssueMapper;
-import com.yongche.yopsaas.db.domain.LitemallIssue;
-import com.yongche.yopsaas.db.domain.LitemallIssueExample;
+import com.yongche.yopsaas.db.dao.YopsaasIssueMapper;
+import com.yongche.yopsaas.db.domain.YopsaasIssue;
+import com.yongche.yopsaas.db.domain.YopsaasIssueExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -14,21 +14,21 @@ import java.util.List;
 @Service
 public class YopsaasIssueService {
     @Resource
-    private LitemallIssueMapper issueMapper;
+    private YopsaasIssueMapper issueMapper;
 
     public void deleteById(Integer id) {
         issueMapper.logicalDeleteByPrimaryKey(id);
     }
 
-    public void add(LitemallIssue issue) {
+    public void add(YopsaasIssue issue) {
         issue.setAddTime(LocalDateTime.now());
         issue.setUpdateTime(LocalDateTime.now());
         issueMapper.insertSelective(issue);
     }
 
-    public List<LitemallIssue> querySelective(String question, Integer page, Integer limit, String sort, String order) {
-        LitemallIssueExample example = new LitemallIssueExample();
-        LitemallIssueExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasIssue> querySelective(String question, Integer page, Integer limit, String sort, String order) {
+        YopsaasIssueExample example = new YopsaasIssueExample();
+        YopsaasIssueExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(question)) {
             criteria.andQuestionLike("%" + question + "%");
@@ -43,12 +43,12 @@ public class YopsaasIssueService {
         return issueMapper.selectByExample(example);
     }
 
-    public int updateById(LitemallIssue issue) {
+    public int updateById(YopsaasIssue issue) {
         issue.setUpdateTime(LocalDateTime.now());
         return issueMapper.updateByPrimaryKeySelective(issue);
     }
 
-    public LitemallIssue findById(Integer id) {
+    public YopsaasIssue findById(Integer id) {
         return issueMapper.selectByPrimaryKey(id);
     }
 }

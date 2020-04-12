@@ -20,7 +20,7 @@ import java.util.concurrent.Executor;
 /**
  * 测试短信发送服务
  * <p>
- * 注意LitemallNotifyService采用异步线程操作
+ * 注意YopsaasNotifyService采用异步线程操作
  * 因此测试的时候需要睡眠一会儿，保证任务执行
  * <p>
  * 开发者需要确保：

@@ -7,7 +7,7 @@ import com.yongche.yopsaas.admin.annotation.RequiresPermissionsDesc;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallComment;
+import com.yongche.yopsaas.db.domain.YopsaasComment;
 import com.yongche.yopsaas.db.service.YopsaasCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -32,14 +32,14 @@ public class AdminCommentController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallComment> commentList = commentService.querySelective(userId, valueId, page, limit, sort, order);
+        List<YopsaasComment> commentList = commentService.querySelective(userId, valueId, page, limit, sort, order);
         return ResponseUtil.okList(commentList);
     }
 
     @RequiresPermissions("admin:comment:delete")
     @RequiresPermissionsDesc(menu = {"商品管理", "评论管理"}, button = "删除")
     @PostMapping("/delete")
-    public Object delete(@RequestBody LitemallComment comment) {
+    public Object delete(@RequestBody YopsaasComment comment) {
         Integer id = comment.getId();
         if (id == null) {
             return ResponseUtil.badArgument();

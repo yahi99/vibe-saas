@@ -43,12 +43,12 @@ public class AdminGoodsService {
 
     public Object list(Integer goodsId, String goodsSn, String name,
                        Integer page, Integer limit, String sort, String order) {
-        List<LitemallGoods> goodsList = goodsService.querySelective(goodsId, goodsSn, name, page, limit, sort, order);
+        List<YopsaasGoods> goodsList = goodsService.querySelective(goodsId, goodsSn, name, page, limit, sort, order);
         return ResponseUtil.okList(goodsList);
     }
 
     private Object validate(GoodsAllinone goodsAllinone) {
-        LitemallGoods goods = goodsAllinone.getGoods();
+        YopsaasGoods goods = goodsAllinone.getGoods();
         String name = goods.getName();
         if (StringUtils.isEmpty(name)) {
             return ResponseUtil.badArgument();
@@ -72,8 +72,8 @@ public class AdminGoodsService {
             }
         }
 
-        LitemallGoodsAttribute[] attributes = goodsAllinone.getAttributes();
-        for (LitemallGoodsAttribute attribute : attributes) {
+        YopsaasGoodsAttribute[] attributes = goodsAllinone.getAttributes();
+        for (YopsaasGoodsAttribute attribute : attributes) {
             String attr = attribute.getAttribute();
             if (StringUtils.isEmpty(attr)) {
                 return ResponseUtil.badArgument();
@@ -84,8 +84,8 @@ public class AdminGoodsService {
             }
         }
 
-        LitemallGoodsSpecification[] specifications = goodsAllinone.getSpecifications();
-        for (LitemallGoodsSpecification specification : specifications) {
+        YopsaasGoodsSpecification[] specifications = goodsAllinone.getSpecifications();
+        for (YopsaasGoodsSpecification specification : specifications) {
             String spec = specification.getSpecification();
             if (StringUtils.isEmpty(spec)) {
                 return ResponseUtil.badArgument();
@@ -96,8 +96,8 @@ public class AdminGoodsService {
             }
         }
 
-        LitemallGoodsProduct[] products = goodsAllinone.getProducts();
-        for (LitemallGoodsProduct product : products) {
+        YopsaasGoodsProduct[] products = goodsAllinone.getProducts();
+        for (YopsaasGoodsProduct product : products) {
             Integer number = product.getNumber();
             if (number == null || number < 0) {
                 return ResponseUtil.badArgument();
@@ -146,10 +146,10 @@ public class AdminGoodsService {
             return error;
         }
 
-        LitemallGoods goods = goodsAllinone.getGoods();
-        LitemallGoodsAttribute[] attributes = goodsAllinone.getAttributes();
-        LitemallGoodsSpecification[] specifications = goodsAllinone.getSpecifications();
-        LitemallGoodsProduct[] products = goodsAllinone.getProducts();
+        YopsaasGoods goods = goodsAllinone.getGoods();
+        YopsaasGoodsAttribute[] attributes = goodsAllinone.getAttributes();
+        YopsaasGoodsSpecification[] specifications = goodsAllinone.getSpecifications();
+        YopsaasGoodsProduct[] products = goodsAllinone.getProducts();
 
         //将生成的分享图片地址写入数据库
         String url = qCodeService.createGoodShareImage(goods.getId().toString(), goods.getPicUrl(), goods.getName());
@@ -157,7 +157,7 @@ public class AdminGoodsService {
 
         // 商品表里面有一个字段retailPrice记录当前商品的最低价
         BigDecimal retailPrice = new BigDecimal(Integer.MAX_VALUE);
-        for (LitemallGoodsProduct product : products) {
+        for (YopsaasGoodsProduct product : products) {
             BigDecimal productPrice = product.getPrice();
             if(retailPrice.compareTo(productPrice) == 1){
                 retailPrice = productPrice;
@@ -173,7 +173,7 @@ public class AdminGoodsService {
         Integer gid = goods.getId();
 
         // 商品规格表yopsaas_goods_specification
-        for (LitemallGoodsSpecification specification : specifications) {
+        for (YopsaasGoodsSpecification specification : specifications) {
             // 目前只支持更新规格表的图片字段
             if(specification.getUpdateTime() == null){
                 specification.setSpecification(null);
@@ -183,14 +183,14 @@ public class AdminGoodsService {
         }
 
         // 商品货品表yopsaas_product
-        for (LitemallGoodsProduct product : products) {
+        for (YopsaasGoodsProduct product : products) {
             if(product.getUpdateTime() == null) {
                 productService.updateById(product);
             }
         }
 
         // 商品参数表yopsaas_goods_attribute
-        for (LitemallGoodsAttribute attribute : attributes) {
+        for (YopsaasGoodsAttribute attribute : attributes) {
             if (attribute.getId() == null || attribute.getId().equals(0)){
                 attribute.setGoodsId(goods.getId());
                 attributeService.add(attribute);
@@ -205,7 +205,7 @@ public class AdminGoodsService {
 
         // 这里需要注意的是购物车yopsaas_cart有些字段是拷贝商品的一些字段，因此需要及时更新
         // 目前这些字段是goods_sn, goods_name, price, pic_url
-        for (LitemallGoodsProduct product : products) {
+        for (YopsaasGoodsProduct product : products) {
             cartService.updateProduct(product.getId(), goods.getGoodsSn(), goods.getName(), product.getPrice(), product.getUrl());
         }
 
@@ -213,7 +213,7 @@ public class AdminGoodsService {
     }
 
     @Transactional
-    public Object delete(LitemallGoods goods) {
+    public Object delete(YopsaasGoods goods) {
         Integer id = goods.getId();
         if (id == null) {
             return ResponseUtil.badArgument();
@@ -234,10 +234,10 @@ public class AdminGoodsService {
             return error;
         }
 
-        LitemallGoods goods = goodsAllinone.getGoods();
-        LitemallGoodsAttribute[] attributes = goodsAllinone.getAttributes();
-        LitemallGoodsSpecification[] specifications = goodsAllinone.getSpecifications();
-        LitemallGoodsProduct[] products = goodsAllinone.getProducts();
+        YopsaasGoods goods = goodsAllinone.getGoods();
+        YopsaasGoodsAttribute[] attributes = goodsAllinone.getAttributes();
+        YopsaasGoodsSpecification[] specifications = goodsAllinone.getSpecifications();
+        YopsaasGoodsProduct[] products = goodsAllinone.getProducts();
 
         String name = goods.getName();
         if (goodsService.checkExistByName(name)) {
@@ -246,7 +246,7 @@ public class AdminGoodsService {
 
         // 商品表里面有一个字段retailPrice记录当前商品的最低价
         BigDecimal retailPrice = new BigDecimal(Integer.MAX_VALUE);
-        for (LitemallGoodsProduct product : products) {
+        for (YopsaasGoodsProduct product : products) {
             BigDecimal productPrice = product.getPrice();
             if(retailPrice.compareTo(productPrice) == 1){
                 retailPrice = productPrice;
@@ -267,19 +267,19 @@ public class AdminGoodsService {
         }
 
         // 商品规格表yopsaas_goods_specification
-        for (LitemallGoodsSpecification specification : specifications) {
+        for (YopsaasGoodsSpecification specification : specifications) {
             specification.setGoodsId(goods.getId());
             specificationService.add(specification);
         }
 
         // 商品参数表yopsaas_goods_attribute
-        for (LitemallGoodsAttribute attribute : attributes) {
+        for (YopsaasGoodsAttribute attribute : attributes) {
             attribute.setGoodsId(goods.getId());
             attributeService.add(attribute);
         }
 
         // 商品货品表yopsaas_product
-        for (LitemallGoodsProduct product : products) {
+        for (YopsaasGoodsProduct product : products) {
             product.setGoodsId(goods.getId());
             productService.add(product);
         }
@@ -289,17 +289,17 @@ public class AdminGoodsService {
     public Object list2() {
         // http://element-cn.eleme.io/#/zh-CN/component/cascader
         // 管理员设置“所属分类”
-        List<LitemallCategory> l1CatList = categoryService.queryL1();
+        List<YopsaasCategory> l1CatList = categoryService.queryL1();
         List<CatVo> categoryList = new ArrayList<>(l1CatList.size());
 
-        for (LitemallCategory l1 : l1CatList) {
+        for (YopsaasCategory l1 : l1CatList) {
             CatVo l1CatVo = new CatVo();
             l1CatVo.setValue(l1.getId());
             l1CatVo.setLabel(l1.getName());
 
-            List<LitemallCategory> l2CatList = categoryService.queryByPid(l1.getId());
+            List<YopsaasCategory> l2CatList = categoryService.queryByPid(l1.getId());
             List<CatVo> children = new ArrayList<>(l2CatList.size());
-            for (LitemallCategory l2 : l2CatList) {
+            for (YopsaasCategory l2 : l2CatList) {
                 CatVo l2CatVo = new CatVo();
                 l2CatVo.setValue(l2.getId());
                 l2CatVo.setLabel(l2.getName());
@@ -312,9 +312,9 @@ public class AdminGoodsService {
 
         // http://element-cn.eleme.io/#/zh-CN/component/select
         // 管理员设置“所属品牌商”
-        List<LitemallBrand> list = brandService.all();
+        List<YopsaasBrand> list = brandService.all();
         List<Map<String, Object>> brandList = new ArrayList<>(l1CatList.size());
-        for (LitemallBrand brand : list) {
+        for (YopsaasBrand brand : list) {
             Map<String, Object> b = new HashMap<>(2);
             b.put("value", brand.getId());
             b.put("label", brand.getName());
@@ -328,13 +328,13 @@ public class AdminGoodsService {
     }
 
     public Object detail(Integer id) {
-        LitemallGoods goods = goodsService.findById(id);
-        List<LitemallGoodsProduct> products = productService.queryByGid(id);
-        List<LitemallGoodsSpecification> specifications = specificationService.queryByGid(id);
-        List<LitemallGoodsAttribute> attributes = attributeService.queryByGid(id);
+        YopsaasGoods goods = goodsService.findById(id);
+        List<YopsaasGoodsProduct> products = productService.queryByGid(id);
+        List<YopsaasGoodsSpecification> specifications = specificationService.queryByGid(id);
+        List<YopsaasGoodsAttribute> attributes = attributeService.queryByGid(id);
 
         Integer categoryId = goods.getCategoryId();
-        LitemallCategory category = categoryService.findById(categoryId);
+        YopsaasCategory category = categoryService.findById(categoryId);
         Integer[] categoryIds = new Integer[]{};
         if (category != null) {
             Integer parentCategoryId = category.getPid();

@@ -1,10 +1,10 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallOrderMapper;
+import com.yongche.yopsaas.db.dao.YopsaasOrderMapper;
 import com.yongche.yopsaas.db.dao.OrderMapper;
-import com.yongche.yopsaas.db.domain.LitemallOrder;
-import com.yongche.yopsaas.db.domain.LitemallOrderExample;
+import com.yongche.yopsaas.db.domain.YopsaasOrder;
+import com.yongche.yopsaas.db.domain.YopsaasOrderExample;
 import com.yongche.yopsaas.db.util.OrderUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -21,28 +21,28 @@ import java.util.Random;
 @Service
 public class YopsaasOrderService {
     @Resource
-    private LitemallOrderMapper yopsaasOrderMapper;
+    private YopsaasOrderMapper yopsaasOrderMapper;
     @Resource
     private OrderMapper orderMapper;
 
-    public int add(LitemallOrder order) {
+    public int add(YopsaasOrder order) {
         order.setAddTime(LocalDateTime.now());
         order.setUpdateTime(LocalDateTime.now());
         return yopsaasOrderMapper.insertSelective(order);
     }
 
     public int count(Integer userId) {
-        LitemallOrderExample example = new LitemallOrderExample();
+        YopsaasOrderExample example = new YopsaasOrderExample();
         example.or().andUserIdEqualTo(userId).andDeletedEqualTo(false);
         return (int) yopsaasOrderMapper.countByExample(example);
     }
 
-    public LitemallOrder findById(Integer orderId) {
+    public YopsaasOrder findById(Integer orderId) {
         return yopsaasOrderMapper.selectByPrimaryKey(orderId);
     }
 
-    public LitemallOrder findById(Integer userId, Integer orderId) {
-        LitemallOrderExample example = new LitemallOrderExample();
+    public YopsaasOrder findById(Integer userId, Integer orderId) {
+        YopsaasOrderExample example = new YopsaasOrderExample();
         example.or().andIdEqualTo(orderId).andUserIdEqualTo(userId).andDeletedEqualTo(false);
         return yopsaasOrderMapper.selectOneByExample(example);
     }
@@ -59,7 +59,7 @@ public class YopsaasOrderService {
     }
 
     public int countByOrderSn(Integer userId, String orderSn) {
-        LitemallOrderExample example = new LitemallOrderExample();
+        YopsaasOrderExample example = new YopsaasOrderExample();
         example.or().andUserIdEqualTo(userId).andOrderSnEqualTo(orderSn).andDeletedEqualTo(false);
         return (int) yopsaasOrderMapper.countByExample(example);
     }
@@ -75,10 +75,10 @@ public class YopsaasOrderService {
         return orderSn;
     }
 
-    public List<LitemallOrder> queryByOrderStatus(Integer userId, List<Short> orderStatus, Integer page, Integer limit, String sort, String order) {
-        LitemallOrderExample example = new LitemallOrderExample();
-        example.setOrderByClause(LitemallOrder.Column.addTime.desc());
-        LitemallOrderExample.Criteria criteria = example.or();
+    public List<YopsaasOrder> queryByOrderStatus(Integer userId, List<Short> orderStatus, Integer page, Integer limit, String sort, String order) {
+        YopsaasOrderExample example = new YopsaasOrderExample();
+        example.setOrderByClause(YopsaasOrder.Column.addTime.desc());
+        YopsaasOrderExample.Criteria criteria = example.or();
         criteria.andUserIdEqualTo(userId);
         if (orderStatus != null) {
             criteria.andOrderStatusIn(orderStatus);
@@ -92,9 +92,9 @@ public class YopsaasOrderService {
         return yopsaasOrderMapper.selectByExample(example);
     }
 
-    public List<LitemallOrder> querySelective(Integer userId, String orderSn, LocalDateTime start, LocalDateTime end, List<Short> orderStatusArray, Integer page, Integer limit, String sort, String order) {
-        LitemallOrderExample example = new LitemallOrderExample();
-        LitemallOrderExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasOrder> querySelective(Integer userId, String orderSn, LocalDateTime start, LocalDateTime end, List<Short> orderStatusArray, Integer page, Integer limit, String sort, String order) {
+        YopsaasOrderExample example = new YopsaasOrderExample();
+        YopsaasOrderExample.Criteria criteria = example.createCriteria();
 
         if (userId != null) {
             criteria.andUserIdEqualTo(userId);
@@ -121,7 +121,7 @@ public class YopsaasOrderService {
         return yopsaasOrderMapper.selectByExample(example);
     }
 
-    public int updateWithOptimisticLocker(LitemallOrder order) {
+    public int updateWithOptimisticLocker(YopsaasOrder order) {
         LocalDateTime preUpdateTime = order.getUpdateTime();
         order.setUpdateTime(LocalDateTime.now());
         return orderMapper.updateWithOptimisticLocker(preUpdateTime, order);
@@ -132,41 +132,41 @@ public class YopsaasOrderService {
     }
 
     public int count() {
-        LitemallOrderExample example = new LitemallOrderExample();
+        YopsaasOrderExample example = new YopsaasOrderExample();
         example.or().andDeletedEqualTo(false);
         return (int) yopsaasOrderMapper.countByExample(example);
     }
 
-    public List<LitemallOrder> queryUnpaid(int minutes) {
-        LitemallOrderExample example = new LitemallOrderExample();
+    public List<YopsaasOrder> queryUnpaid(int minutes) {
+        YopsaasOrderExample example = new YopsaasOrderExample();
         example.or().andOrderStatusEqualTo(OrderUtil.STATUS_CREATE).andDeletedEqualTo(false);
         return yopsaasOrderMapper.selectByExample(example);
     }
 
-    public List<LitemallOrder> queryUnconfirm(int days) {
+    public List<YopsaasOrder> queryUnconfirm(int days) {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime expired = now.minusDays(days);
-        LitemallOrderExample example = new LitemallOrderExample();
+        YopsaasOrderExample example = new YopsaasOrderExample();
         example.or().andOrderStatusEqualTo(OrderUtil.STATUS_SHIP).andShipTimeLessThan(expired).andDeletedEqualTo(false);
         return yopsaasOrderMapper.selectByExample(example);
     }
 
-    public LitemallOrder findBySn(String orderSn) {
-        LitemallOrderExample example = new LitemallOrderExample();
+    public YopsaasOrder findBySn(String orderSn) {
+        YopsaasOrderExample example = new YopsaasOrderExample();
         example.or().andOrderSnEqualTo(orderSn).andDeletedEqualTo(false);
         return yopsaasOrderMapper.selectOneByExample(example);
     }
 
     public Map<Object, Object> orderInfo(Integer userId) {
-        LitemallOrderExample example = new LitemallOrderExample();
+        YopsaasOrderExample example = new YopsaasOrderExample();
         example.or().andUserIdEqualTo(userId).andDeletedEqualTo(false);
-        List<LitemallOrder> orders = yopsaasOrderMapper.selectByExampleSelective(example, LitemallOrder.Column.orderStatus, LitemallOrder.Column.comments);
+        List<YopsaasOrder> orders = yopsaasOrderMapper.selectByExampleSelective(example, YopsaasOrder.Column.orderStatus, YopsaasOrder.Column.comments);
 
         int unpaid = 0;
         int unship = 0;
         int unrecv = 0;
         int uncomment = 0;
-        for (LitemallOrder order : orders) {
+        for (YopsaasOrder order : orders) {
             if (OrderUtil.isCreateStatus(order)) {
                 unpaid++;
             } else if (OrderUtil.isPayStatus(order)) {
@@ -189,16 +189,16 @@ public class YopsaasOrderService {
 
     }
 
-    public List<LitemallOrder> queryComment(int days) {
+    public List<YopsaasOrder> queryComment(int days) {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime expired = now.minusDays(days);
-        LitemallOrderExample example = new LitemallOrderExample();
+        YopsaasOrderExample example = new YopsaasOrderExample();
         example.or().andCommentsGreaterThan((short) 0).andConfirmTimeLessThan(expired).andDeletedEqualTo(false);
         return yopsaasOrderMapper.selectByExample(example);
     }
 
     public void updateAftersaleStatus(Integer orderId, Short statusReject) {
-        LitemallOrder order = new LitemallOrder();
+        YopsaasOrder order = new YopsaasOrder();
         order.setId(orderId);
         order.setAftersaleStatus(statusReject);
         order.setUpdateTime(LocalDateTime.now());

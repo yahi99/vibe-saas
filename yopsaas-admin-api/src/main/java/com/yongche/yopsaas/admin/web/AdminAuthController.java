@@ -15,7 +15,7 @@ import com.yongche.yopsaas.admin.util.PermissionUtil;
 import com.yongche.yopsaas.core.util.IpUtil;
 import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
-import com.yongche.yopsaas.db.domain.LitemallAdmin;
+import com.yongche.yopsaas.db.domain.YopsaasAdmin;
 import com.yongche.yopsaas.db.service.YopsaasAdminService;
 import com.yongche.yopsaas.db.service.YopsaasPermissionService;
 import com.yongche.yopsaas.db.service.YopsaasRoleService;
@@ -74,7 +74,7 @@ public class AdminAuthController {
         }
 
         currentUser = SecurityUtils.getSubject();
-        LitemallAdmin admin = (LitemallAdmin) currentUser.getPrincipal();
+        YopsaasAdmin admin = (YopsaasAdmin) currentUser.getPrincipal();
         admin.setLastLoginIp(IpUtil.getIpAddr(request));
         admin.setLastLoginTime(LocalDateTime.now());
         adminService.updateById(admin);
@@ -110,7 +110,7 @@ public class AdminAuthController {
     @GetMapping("/info")
     public Object info() {
         Subject currentUser = SecurityUtils.getSubject();
-        LitemallAdmin admin = (LitemallAdmin) currentUser.getPrincipal();
+        YopsaasAdmin admin = (YopsaasAdmin) currentUser.getPrincipal();
 
         Map<String, Object> data = new HashMap<>();
         data.put("name", admin.getUsername());

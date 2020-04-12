@@ -16,9 +16,9 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 public class JwtHelper {
 	// 秘钥
-	static final String SECRET = "X-Litemall-Token";
+	static final String SECRET = "X-Yopsaas-Token";
 	// 签名是有谁生成
-	static final String ISSUSER = "LITEMALL";
+	static final String ISSUSER = "YOPSAAS";
 	// 签名的主题
 	static final String SUBJECT = "this is yopsaas token";
 	// 签名的观众

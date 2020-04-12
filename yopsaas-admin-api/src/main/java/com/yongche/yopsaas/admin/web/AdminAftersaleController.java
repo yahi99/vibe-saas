@@ -16,10 +16,10 @@ import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallAftersale;
-import com.yongche.yopsaas.db.domain.LitemallGoodsProduct;
-import com.yongche.yopsaas.db.domain.LitemallOrder;
-import com.yongche.yopsaas.db.domain.LitemallOrderGoods;
+import com.yongche.yopsaas.db.domain.YopsaasAftersale;
+import com.yongche.yopsaas.db.domain.YopsaasGoodsProduct;
+import com.yongche.yopsaas.db.domain.YopsaasOrder;
+import com.yongche.yopsaas.db.domain.YopsaasOrderGoods;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.db.util.AftersaleConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,16 +61,16 @@ public class AdminAftersaleController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallAftersale> aftersaleList = aftersaleService.querySelective(orderId, aftersaleSn, status, page, limit, sort, order);
+        List<YopsaasAftersale> aftersaleList = aftersaleService.querySelective(orderId, aftersaleSn, status, page, limit, sort, order);
         return ResponseUtil.okList(aftersaleList);
     }
 
     @RequiresPermissions("admin:aftersale:recept")
     @RequiresPermissionsDesc(menu = {"商城管理", "售后管理"}, button = "审核通过")
     @PostMapping("/recept")
-    public Object recept(@RequestBody LitemallAftersale aftersale) {
+    public Object recept(@RequestBody YopsaasAftersale aftersale) {
         Integer id = aftersale.getId();
-        LitemallAftersale aftersaleOne = aftersaleService.findById(id);
+        YopsaasAftersale aftersaleOne = aftersaleService.findById(id);
         if(aftersaleOne == null){
             return ResponseUtil.fail(AdminResponseCode.AFTERSALE_NOT_ALLOWED, "售后不存在");
         }
@@ -97,7 +97,7 @@ public class AdminAftersaleController {
         // 这里采用忽略失败，继续处理其他项。
         // 当然开发者可以采取其他处理方式，具体情况具体分析，例如利用事务回滚所有操作然后返回用户失败信息
         for(Integer id : ids) {
-            LitemallAftersale aftersale = aftersaleService.findById(id);
+            YopsaasAftersale aftersale = aftersaleService.findById(id);
             if(aftersale == null){
                 continue;
             }
@@ -118,9 +118,9 @@ public class AdminAftersaleController {
     @RequiresPermissions("admin:aftersale:reject")
     @RequiresPermissionsDesc(menu = {"商城管理", "售后管理"}, button = "审核拒绝")
     @PostMapping("/reject")
-    public Object reject(@RequestBody LitemallAftersale aftersale) {
+    public Object reject(@RequestBody YopsaasAftersale aftersale) {
         Integer id = aftersale.getId();
-        LitemallAftersale aftersaleOne = aftersaleService.findById(id);
+        YopsaasAftersale aftersaleOne = aftersaleService.findById(id);
         if(aftersaleOne == null){
             return ResponseUtil.badArgumentValue();
         }
@@ -143,7 +143,7 @@ public class AdminAftersaleController {
     public Object batchReject(@RequestBody String body) {
         List<Integer> ids = JacksonUtil.parseIntegerList(body, "ids");
         for(Integer id : ids) {
-            LitemallAftersale aftersale = aftersaleService.findById(id);
+            YopsaasAftersale aftersale = aftersaleService.findById(id);
             if(aftersale == null){
                 continue;
             }
@@ -164,9 +164,9 @@ public class AdminAftersaleController {
     @RequiresPermissions("admin:aftersale:refund")
     @RequiresPermissionsDesc(menu = {"商城管理", "售后管理"}, button = "退款")
     @PostMapping("/refund")
-    public Object refund(@RequestBody LitemallAftersale aftersale) {
+    public Object refund(@RequestBody YopsaasAftersale aftersale) {
         Integer id = aftersale.getId();
-        LitemallAftersale aftersaleOne = aftersaleService.findById(id);
+        YopsaasAftersale aftersaleOne = aftersaleService.findById(id);
         if(aftersaleOne == null){
             return ResponseUtil.badArgumentValue();
         }
@@ -174,7 +174,7 @@ public class AdminAftersaleController {
             return ResponseUtil.fail(AdminResponseCode.AFTERSALE_NOT_ALLOWED, "售后不能进行退款操作");
         }
         Integer orderId = aftersaleOne.getOrderId();
-        LitemallOrder order = orderService.findById(orderId);
+        YopsaasOrder order = orderService.findById(orderId);
 
         // 微信退款
         WxPayRefundRequest wxPayRefundRequest = new WxPayRefundRequest();
@@ -211,8 +211,8 @@ public class AdminAftersaleController {
         // 如果是“退货退款”类型的售后，这里退款说明用户的货已经退回，则需要商品货品数量增加
         // 开发者也可以删除一下代码，在其他地方增加商品货品入库操作
         if(aftersale.getType().equals(AftersaleConstant.TYPE_GOODS_REQUIRED)) {
-            List<LitemallOrderGoods> orderGoodsList = orderGoodsService.queryByOid(orderId);
-            for (LitemallOrderGoods orderGoods : orderGoodsList) {
+            List<YopsaasOrderGoods> orderGoodsList = orderGoodsService.queryByOid(orderId);
+            for (YopsaasOrderGoods orderGoods : orderGoodsList) {
                 Integer productId = orderGoods.getProductId();
                 Short number = orderGoods.getNumber();
                 goodsProductService.addStock(productId, number);

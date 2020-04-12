@@ -1,9 +1,9 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallStorageMapper;
-import com.yongche.yopsaas.db.domain.LitemallStorage;
-import com.yongche.yopsaas.db.domain.LitemallStorageExample;
+import com.yongche.yopsaas.db.dao.YopsaasStorageMapper;
+import com.yongche.yopsaas.db.domain.YopsaasStorage;
+import com.yongche.yopsaas.db.domain.YopsaasStorageExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -14,38 +14,38 @@ import java.util.List;
 @Service
 public class YopsaasStorageService {
     @Autowired
-    private LitemallStorageMapper storageMapper;
+    private YopsaasStorageMapper storageMapper;
 
     public void deleteByKey(String key) {
-        LitemallStorageExample example = new LitemallStorageExample();
+        YopsaasStorageExample example = new YopsaasStorageExample();
         example.or().andKeyEqualTo(key);
         storageMapper.logicalDeleteByExample(example);
     }
 
-    public void add(LitemallStorage storageInfo) {
+    public void add(YopsaasStorage storageInfo) {
         storageInfo.setAddTime(LocalDateTime.now());
         storageInfo.setUpdateTime(LocalDateTime.now());
         storageMapper.insertSelective(storageInfo);
     }
 
-    public LitemallStorage findByKey(String key) {
-        LitemallStorageExample example = new LitemallStorageExample();
+    public YopsaasStorage findByKey(String key) {
+        YopsaasStorageExample example = new YopsaasStorageExample();
         example.or().andKeyEqualTo(key).andDeletedEqualTo(false);
         return storageMapper.selectOneByExample(example);
     }
 
-    public int update(LitemallStorage storageInfo) {
+    public int update(YopsaasStorage storageInfo) {
         storageInfo.setUpdateTime(LocalDateTime.now());
         return storageMapper.updateByPrimaryKeySelective(storageInfo);
     }
 
-    public LitemallStorage findById(Integer id) {
+    public YopsaasStorage findById(Integer id) {
         return storageMapper.selectByPrimaryKey(id);
     }
 
-    public List<LitemallStorage> querySelective(String key, String name, Integer page, Integer limit, String sort, String order) {
-        LitemallStorageExample example = new LitemallStorageExample();
-        LitemallStorageExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasStorage> querySelective(String key, String name, Integer page, Integer limit, String sort, String order) {
+        YopsaasStorageExample example = new YopsaasStorageExample();
+        YopsaasStorageExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(key)) {
             criteria.andKeyEqualTo(key);

@@ -1,45 +1,45 @@
 package com.yongche.yopsaas.admin.dto;
 
-import com.yongche.yopsaas.db.domain.LitemallGoods;
-import com.yongche.yopsaas.db.domain.LitemallGoodsAttribute;
-import com.yongche.yopsaas.db.domain.LitemallGoodsProduct;
-import com.yongche.yopsaas.db.domain.LitemallGoodsSpecification;
+import com.yongche.yopsaas.db.domain.YopsaasGoods;
+import com.yongche.yopsaas.db.domain.YopsaasGoodsAttribute;
+import com.yongche.yopsaas.db.domain.YopsaasGoodsProduct;
+import com.yongche.yopsaas.db.domain.YopsaasGoodsSpecification;
 
 public class GoodsAllinone {
-    LitemallGoods goods;
-    LitemallGoodsSpecification[] specifications;
-    LitemallGoodsAttribute[] attributes;
-    LitemallGoodsProduct[] products;
+    YopsaasGoods goods;
+    YopsaasGoodsSpecification[] specifications;
+    YopsaasGoodsAttribute[] attributes;
+    YopsaasGoodsProduct[] products;
 
-    public LitemallGoods getGoods() {
+    public YopsaasGoods getGoods() {
         return goods;
     }
 
-    public void setGoods(LitemallGoods goods) {
+    public void setGoods(YopsaasGoods goods) {
         this.goods = goods;
     }
 
-    public LitemallGoodsProduct[] getProducts() {
+    public YopsaasGoodsProduct[] getProducts() {
         return products;
     }
 
-    public void setProducts(LitemallGoodsProduct[] products) {
+    public void setProducts(YopsaasGoodsProduct[] products) {
         this.products = products;
     }
 
-    public LitemallGoodsSpecification[] getSpecifications() {
+    public YopsaasGoodsSpecification[] getSpecifications() {
         return specifications;
     }
 
-    public void setSpecifications(LitemallGoodsSpecification[] specifications) {
+    public void setSpecifications(YopsaasGoodsSpecification[] specifications) {
         this.specifications = specifications;
     }
 
-    public LitemallGoodsAttribute[] getAttributes() {
+    public YopsaasGoodsAttribute[] getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(LitemallGoodsAttribute[] attributes) {
+    public void setAttributes(YopsaasGoodsAttribute[] attributes) {
         this.attributes = attributes;
     }
 

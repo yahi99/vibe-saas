@@ -1,11 +1,11 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallNoticeMapper;
-import com.yongche.yopsaas.db.domain.LitemallNotice;
-import com.yongche.yopsaas.db.domain.LitemallNoticeAdmin;
-import com.yongche.yopsaas.db.domain.LitemallNoticeAdminExample;
-import com.yongche.yopsaas.db.domain.LitemallNoticeExample;
+import com.yongche.yopsaas.db.dao.YopsaasNoticeMapper;
+import com.yongche.yopsaas.db.domain.YopsaasNotice;
+import com.yongche.yopsaas.db.domain.YopsaasNoticeAdmin;
+import com.yongche.yopsaas.db.domain.YopsaasNoticeAdminExample;
+import com.yongche.yopsaas.db.domain.YopsaasNoticeExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -16,12 +16,12 @@ import java.util.List;
 @Service
 public class YopsaasNoticeService {
     @Resource
-    private LitemallNoticeMapper noticeMapper;
+    private YopsaasNoticeMapper noticeMapper;
 
 
-    public List<LitemallNotice> querySelective(String title, String content, Integer page, Integer limit, String sort, String order) {
-        LitemallNoticeExample example = new LitemallNoticeExample();
-        LitemallNoticeExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasNotice> querySelective(String title, String content, Integer page, Integer limit, String sort, String order) {
+        YopsaasNoticeExample example = new YopsaasNoticeExample();
+        YopsaasNoticeExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(title)) {
             criteria.andTitleLike("%" + title + "%");
@@ -39,7 +39,7 @@ public class YopsaasNoticeService {
         return noticeMapper.selectByExample(example);
     }
 
-    public int updateById(LitemallNotice notice) {
+    public int updateById(YopsaasNotice notice) {
         notice.setUpdateTime(LocalDateTime.now());
         return noticeMapper.updateByPrimaryKeySelective(notice);
     }
@@ -48,20 +48,20 @@ public class YopsaasNoticeService {
         noticeMapper.logicalDeleteByPrimaryKey(id);
     }
 
-    public void add(LitemallNotice notice) {
+    public void add(YopsaasNotice notice) {
         notice.setAddTime(LocalDateTime.now());
         notice.setUpdateTime(LocalDateTime.now());
         noticeMapper.insertSelective(notice);
     }
 
-    public LitemallNotice findById(Integer id) {
+    public YopsaasNotice findById(Integer id) {
         return noticeMapper.selectByPrimaryKey(id);
     }
 
     public void deleteByIds(List<Integer> ids) {
-        LitemallNoticeExample example = new LitemallNoticeExample();
+        YopsaasNoticeExample example = new YopsaasNoticeExample();
         example.or().andIdIn(ids).andDeletedEqualTo(false);
-        LitemallNotice notice = new LitemallNotice();
+        YopsaasNotice notice = new YopsaasNotice();
         notice.setUpdateTime(LocalDateTime.now());
         notice.setDeleted(true);
         noticeMapper.updateByExampleSelective(notice, example);

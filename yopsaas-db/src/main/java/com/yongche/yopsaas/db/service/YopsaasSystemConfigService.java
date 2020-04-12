@@ -1,8 +1,8 @@
 package com.yongche.yopsaas.db.service;
 
-import com.yongche.yopsaas.db.dao.LitemallSystemMapper;
-import com.yongche.yopsaas.db.domain.LitemallSystem;
-import com.yongche.yopsaas.db.domain.LitemallSystemExample;
+import com.yongche.yopsaas.db.dao.YopsaasSystemMapper;
+import com.yongche.yopsaas.db.domain.YopsaasSystem;
+import com.yongche.yopsaas.db.domain.YopsaasSystemExample;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -14,15 +14,15 @@ import java.util.Map;
 @Service
 public class YopsaasSystemConfigService {
     @Resource
-    private LitemallSystemMapper systemMapper;
+    private YopsaasSystemMapper systemMapper;
 
     public Map<String, String> queryAll() {
-        LitemallSystemExample example = new LitemallSystemExample();
+        YopsaasSystemExample example = new YopsaasSystemExample();
         example.or().andDeletedEqualTo(false);
 
-        List<LitemallSystem> systemList = systemMapper.selectByExample(example);
+        List<YopsaasSystem> systemList = systemMapper.selectByExample(example);
         Map<String, String> systemConfigs = new HashMap<>();
-        for (LitemallSystem item : systemList) {
+        for (YopsaasSystem item : systemList) {
             systemConfigs.put(item.getKeyName(), item.getKeyValue());
         }
 
@@ -30,44 +30,44 @@ public class YopsaasSystemConfigService {
     }
 
     public Map<String, String> listMail() {
-        LitemallSystemExample example = new LitemallSystemExample();
+        YopsaasSystemExample example = new YopsaasSystemExample();
         example.or().andKeyNameLike("yopsaas_mall_%").andDeletedEqualTo(false);
-        List<LitemallSystem> systemList = systemMapper.selectByExample(example);
+        List<YopsaasSystem> systemList = systemMapper.selectByExample(example);
         Map<String, String> data = new HashMap<>();
-        for(LitemallSystem system : systemList){
+        for(YopsaasSystem system : systemList){
             data.put(system.getKeyName(), system.getKeyValue());
         }
         return data;
     }
 
     public Map<String, String> listWx() {
-        LitemallSystemExample example = new LitemallSystemExample();
+        YopsaasSystemExample example = new YopsaasSystemExample();
         example.or().andKeyNameLike("yopsaas_wx_%").andDeletedEqualTo(false);
-        List<LitemallSystem> systemList = systemMapper.selectByExample(example);
+        List<YopsaasSystem> systemList = systemMapper.selectByExample(example);
         Map<String, String> data = new HashMap<>();
-        for(LitemallSystem system : systemList){
+        for(YopsaasSystem system : systemList){
             data.put(system.getKeyName(), system.getKeyValue());
         }
         return data;
     }
 
     public Map<String, String> listOrder() {
-        LitemallSystemExample example = new LitemallSystemExample();
+        YopsaasSystemExample example = new YopsaasSystemExample();
         example.or().andKeyNameLike("yopsaas_order_%").andDeletedEqualTo(false);
-        List<LitemallSystem> systemList = systemMapper.selectByExample(example);
+        List<YopsaasSystem> systemList = systemMapper.selectByExample(example);
         Map<String, String> data = new HashMap<>();
-        for(LitemallSystem system : systemList){
+        for(YopsaasSystem system : systemList){
             data.put(system.getKeyName(), system.getKeyValue());
         }
         return data;
     }
 
     public Map<String, String> listExpress() {
-        LitemallSystemExample example = new LitemallSystemExample();
+        YopsaasSystemExample example = new YopsaasSystemExample();
         example.or().andKeyNameLike("yopsaas_express_%").andDeletedEqualTo(false);
-        List<LitemallSystem> systemList = systemMapper.selectByExample(example);
+        List<YopsaasSystem> systemList = systemMapper.selectByExample(example);
         Map<String, String> data = new HashMap<>();
-        for(LitemallSystem system : systemList){
+        for(YopsaasSystem system : systemList){
             data.put(system.getKeyName(), system.getKeyValue());
         }
         return data;
@@ -75,10 +75,10 @@ public class YopsaasSystemConfigService {
 
     public void updateConfig(Map<String, String> data) {
         for (Map.Entry<String, String> entry : data.entrySet()) {
-            LitemallSystemExample example = new LitemallSystemExample();
+            YopsaasSystemExample example = new YopsaasSystemExample();
             example.or().andKeyNameEqualTo(entry.getKey()).andDeletedEqualTo(false);
 
-            LitemallSystem system = new LitemallSystem();
+            YopsaasSystem system = new YopsaasSystem();
             system.setKeyName(entry.getKey());
             system.setKeyValue(entry.getValue());
             system.setUpdateTime(LocalDateTime.now());
@@ -88,7 +88,7 @@ public class YopsaasSystemConfigService {
     }
 
     public void addConfig(String key, String value) {
-        LitemallSystem system = new LitemallSystem();
+        YopsaasSystem system = new YopsaasSystem();
         system.setKeyName(key);
         system.setKeyValue(value);
         system.setAddTime(LocalDateTime.now());

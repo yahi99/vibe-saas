@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.storage.StorageService;
 import com.yongche.yopsaas.core.util.CharUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
-import com.yongche.yopsaas.db.domain.LitemallStorage;
+import com.yongche.yopsaas.db.domain.YopsaasStorage;
 import com.yongche.yopsaas.db.service.YopsaasStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -37,7 +37,7 @@ public class WxStorageController {
         String suffix = originalFilename.substring(index);
 
         String key = null;
-        LitemallStorage storageInfo = null;
+        YopsaasStorage storageInfo = null;
 
         do {
             key = CharUtil.getRandomString(20) + suffix;
@@ -51,7 +51,7 @@ public class WxStorageController {
     @PostMapping("/upload")
     public Object upload(@RequestParam("file") MultipartFile file) throws IOException {
         String originalFilename = file.getOriginalFilename();
-        LitemallStorage yopsaasStorage = storageService.store(file.getInputStream(), file.getSize(), file.getContentType(), originalFilename);
+        YopsaasStorage yopsaasStorage = storageService.store(file.getInputStream(), file.getSize(), file.getContentType(), originalFilename);
         return ResponseUtil.ok(yopsaasStorage);
     }
 
@@ -63,7 +63,7 @@ public class WxStorageController {
      */
     @GetMapping("/fetch/{key:.+}")
     public ResponseEntity<Resource> fetch(@PathVariable String key) {
-        LitemallStorage yopsaasStorage = yopsaasStorageService.findByKey(key);
+        YopsaasStorage yopsaasStorage = yopsaasStorageService.findByKey(key);
         if (key == null) {
             return ResponseEntity.notFound().build();
         }
@@ -88,7 +88,7 @@ public class WxStorageController {
      */
     @GetMapping("/download/{key:.+}")
     public ResponseEntity<Resource> download(@PathVariable String key) {
-        LitemallStorage yopsaasStorage = yopsaasStorageService.findByKey(key);
+        YopsaasStorage yopsaasStorage = yopsaasStorageService.findByKey(key);
         if (key == null) {
             return ResponseEntity.notFound().build();
         }

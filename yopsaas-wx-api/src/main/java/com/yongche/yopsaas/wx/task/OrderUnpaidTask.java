@@ -5,8 +5,8 @@ import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.system.SystemConfig;
 import com.yongche.yopsaas.core.task.Task;
 import com.yongche.yopsaas.core.util.BeanUtil;
-import com.yongche.yopsaas.db.domain.LitemallOrder;
-import com.yongche.yopsaas.db.domain.LitemallOrderGoods;
+import com.yongche.yopsaas.db.domain.YopsaasOrder;
+import com.yongche.yopsaas.db.domain.YopsaasOrderGoods;
 import com.yongche.yopsaas.db.service.YopsaasGoodsProductService;
 import com.yongche.yopsaas.db.service.YopsaasOrderGoodsService;
 import com.yongche.yopsaas.db.service.YopsaasOrderService;
@@ -37,7 +37,7 @@ public class OrderUnpaidTask extends Task {
         YopsaasOrderGoodsService orderGoodsService = BeanUtil.getBean(YopsaasOrderGoodsService.class);
         YopsaasGoodsProductService productService = BeanUtil.getBean(YopsaasGoodsProductService.class);
 
-        LitemallOrder order = orderService.findById(this.orderId);
+        YopsaasOrder order = orderService.findById(this.orderId);
         if(order == null){
             return;
         }
@@ -54,8 +54,8 @@ public class OrderUnpaidTask extends Task {
 
         // 商品货品数量增加
         Integer orderId = order.getId();
-        List<LitemallOrderGoods> orderGoodsList = orderGoodsService.queryByOid(orderId);
-        for (LitemallOrderGoods orderGoods : orderGoodsList) {
+        List<YopsaasOrderGoods> orderGoodsList = orderGoodsService.queryByOid(orderId);
+        for (YopsaasOrderGoods orderGoods : orderGoodsList) {
             Integer productId = orderGoods.getProductId();
             Short number = orderGoods.getNumber();
             if (productService.addStock(productId, number) == 0) {

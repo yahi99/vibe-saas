@@ -2,11 +2,11 @@ package com.yongche.yopsaas.db.service;
 
 import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallGoodsMapper;
-import com.yongche.yopsaas.db.dao.LitemallGrouponRulesMapper;
-import com.yongche.yopsaas.db.domain.LitemallGoods;
-import com.yongche.yopsaas.db.domain.LitemallGrouponRules;
-import com.yongche.yopsaas.db.domain.LitemallGrouponRulesExample;
+import com.yongche.yopsaas.db.dao.YopsaasGoodsMapper;
+import com.yongche.yopsaas.db.dao.YopsaasGrouponRulesMapper;
+import com.yongche.yopsaas.db.domain.YopsaasGoods;
+import com.yongche.yopsaas.db.domain.YopsaasGrouponRules;
+import com.yongche.yopsaas.db.domain.YopsaasGrouponRulesExample;
 import com.yongche.yopsaas.db.util.GrouponConstant;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +20,12 @@ import java.util.Map;
 @Service
 public class YopsaasGrouponRulesService {
     @Resource
-    private LitemallGrouponRulesMapper mapper;
+    private YopsaasGrouponRulesMapper mapper;
     @Resource
-    private LitemallGoodsMapper goodsMapper;
-    private LitemallGoods.Column[] goodsColumns = new LitemallGoods.Column[]{LitemallGoods.Column.id, LitemallGoods.Column.name, LitemallGoods.Column.brief, LitemallGoods.Column.picUrl, LitemallGoods.Column.counterPrice, LitemallGoods.Column.retailPrice};
+    private YopsaasGoodsMapper goodsMapper;
+    private YopsaasGoods.Column[] goodsColumns = new YopsaasGoods.Column[]{YopsaasGoods.Column.id, YopsaasGoods.Column.name, YopsaasGoods.Column.brief, YopsaasGoods.Column.picUrl, YopsaasGoods.Column.counterPrice, YopsaasGoods.Column.retailPrice};
 
-    public int createRules(LitemallGrouponRules rules) {
+    public int createRules(YopsaasGrouponRules rules) {
         rules.setAddTime(LocalDateTime.now());
         rules.setUpdateTime(LocalDateTime.now());
         return mapper.insertSelective(rules);
@@ -37,7 +37,7 @@ public class YopsaasGrouponRulesService {
      * @param id
      * @return
      */
-    public LitemallGrouponRules findById(Integer id) {
+    public YopsaasGrouponRules findById(Integer id) {
         return mapper.selectByPrimaryKey(id);
     }
 
@@ -47,20 +47,20 @@ public class YopsaasGrouponRulesService {
      * @param goodsId
      * @return
      */
-    public List<LitemallGrouponRules> queryByGoodsId(Integer goodsId) {
-        LitemallGrouponRulesExample example = new LitemallGrouponRulesExample();
+    public List<YopsaasGrouponRules> queryByGoodsId(Integer goodsId) {
+        YopsaasGrouponRulesExample example = new YopsaasGrouponRulesExample();
         example.or().andGoodsIdEqualTo(goodsId).andStatusEqualTo(GrouponConstant.RULE_STATUS_ON).andDeletedEqualTo(false);
         return mapper.selectByExample(example);
     }
 
     public int countByGoodsId(Integer goodsId) {
-        LitemallGrouponRulesExample example = new LitemallGrouponRulesExample();
+        YopsaasGrouponRulesExample example = new YopsaasGrouponRulesExample();
         example.or().andGoodsIdEqualTo(goodsId).andStatusEqualTo(GrouponConstant.RULE_STATUS_ON).andDeletedEqualTo(false);
         return (int)mapper.countByExample(example);
     }
 
-    public List<LitemallGrouponRules> queryByStatus(Short status) {
-        LitemallGrouponRulesExample example = new LitemallGrouponRulesExample();
+    public List<YopsaasGrouponRules> queryByStatus(Short status) {
+        YopsaasGrouponRulesExample example = new YopsaasGrouponRulesExample();
         example.or().andStatusEqualTo(status).andDeletedEqualTo(false);
         return mapper.selectByExample(example);
     }
@@ -72,12 +72,12 @@ public class YopsaasGrouponRulesService {
      * @param limit
      * @return
      */
-    public List<LitemallGrouponRules> queryList(Integer page, Integer limit) {
+    public List<YopsaasGrouponRules> queryList(Integer page, Integer limit) {
         return queryList(page, limit, "add_time", "desc");
     }
 
-    public List<LitemallGrouponRules> queryList(Integer page, Integer limit, String sort, String order) {
-        LitemallGrouponRulesExample example = new LitemallGrouponRulesExample();
+    public List<YopsaasGrouponRules> queryList(Integer page, Integer limit, String sort, String order) {
+        YopsaasGrouponRulesExample example = new YopsaasGrouponRulesExample();
         example.or().andStatusEqualTo(GrouponConstant.RULE_STATUS_ON).andDeletedEqualTo(false);
         example.setOrderByClause(sort + " " + order);
         PageHelper.startPage(page, limit);
@@ -89,7 +89,7 @@ public class YopsaasGrouponRulesService {
      *
      * @return
      */
-    public boolean isExpired(LitemallGrouponRules rules) {
+    public boolean isExpired(YopsaasGrouponRules rules) {
         return (rules == null || rules.getExpireTime().isBefore(LocalDateTime.now()));
     }
 
@@ -103,11 +103,11 @@ public class YopsaasGrouponRulesService {
      * @param order
      * @return
      */
-    public List<LitemallGrouponRules> querySelective(String goodsId, Integer page, Integer size, String sort, String order) {
-        LitemallGrouponRulesExample example = new LitemallGrouponRulesExample();
+    public List<YopsaasGrouponRules> querySelective(String goodsId, Integer page, Integer size, String sort, String order) {
+        YopsaasGrouponRulesExample example = new YopsaasGrouponRulesExample();
         example.setOrderByClause(sort + " " + order);
 
-        LitemallGrouponRulesExample.Criteria criteria = example.createCriteria();
+        YopsaasGrouponRulesExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(goodsId)) {
             criteria.andGoodsIdEqualTo(Integer.parseInt(goodsId));
@@ -122,7 +122,7 @@ public class YopsaasGrouponRulesService {
         mapper.logicalDeleteByPrimaryKey(id);
     }
 
-    public int updateById(LitemallGrouponRules grouponRules) {
+    public int updateById(YopsaasGrouponRules grouponRules) {
         grouponRules.setUpdateTime(LocalDateTime.now());
         return mapper.updateByPrimaryKeySelective(grouponRules);
     }

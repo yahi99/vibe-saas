@@ -1,7 +1,7 @@
 package com.yongche.yopsaas.admin.task;
 
 import com.yongche.yopsaas.core.task.TaskService;
-import com.yongche.yopsaas.db.domain.LitemallGrouponRules;
+import com.yongche.yopsaas.db.domain.YopsaasGrouponRules;
 import com.yongche.yopsaas.db.service.YopsaasGrouponRulesService;
 import com.yongche.yopsaas.db.util.GrouponConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +23,8 @@ public class AdminTaskStartupRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        List<LitemallGrouponRules> grouponRulesList = rulesService.queryByStatus(GrouponConstant.RULE_STATUS_ON);
-        for(LitemallGrouponRules grouponRules : grouponRulesList){
+        List<YopsaasGrouponRules> grouponRulesList = rulesService.queryByStatus(GrouponConstant.RULE_STATUS_ON);
+        for(YopsaasGrouponRules grouponRules : grouponRulesList){
             LocalDateTime now = LocalDateTime.now();
             LocalDateTime expire =  grouponRules.getExpireTime();
             if(expire.isBefore(now)) {

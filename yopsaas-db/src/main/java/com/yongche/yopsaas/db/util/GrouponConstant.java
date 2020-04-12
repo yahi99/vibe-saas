@@ -1,6 +1,6 @@
 package com.yongche.yopsaas.db.util;
 
-import com.yongche.yopsaas.db.domain.LitemallOrder;
+import com.yongche.yopsaas.db.domain.YopsaasOrder;
 
 public class GrouponConstant {
     public static final Short RULE_STATUS_ON = 0;

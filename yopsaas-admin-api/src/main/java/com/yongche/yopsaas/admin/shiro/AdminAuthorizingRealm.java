@@ -8,7 +8,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import com.yongche.yopsaas.core.util.bcrypt.BCryptPasswordEncoder;
-import com.yongche.yopsaas.db.domain.LitemallAdmin;
+import com.yongche.yopsaas.db.domain.YopsaasAdmin;
 import com.yongche.yopsaas.db.service.YopsaasAdminService;
 import com.yongche.yopsaas.db.service.YopsaasPermissionService;
 import com.yongche.yopsaas.db.service.YopsaasRoleService;
@@ -34,7 +34,7 @@ public class AdminAuthorizingRealm extends AuthorizingRealm {
             throw new AuthorizationException("PrincipalCollection method argument cannot be null.");
         }
 
-        LitemallAdmin admin = (LitemallAdmin) getAvailablePrincipal(principals);
+        YopsaasAdmin admin = (YopsaasAdmin) getAvailablePrincipal(principals);
         Integer[] roleIds = admin.getRoleIds();
         Set<String> roles = roleService.queryByIds(roleIds);
         Set<String> permissions = permissionService.queryByRoleIds(roleIds);
@@ -58,12 +58,12 @@ public class AdminAuthorizingRealm extends AuthorizingRealm {
             throw new AccountException("密码不能为空");
         }
 
-        List<LitemallAdmin> adminList = adminService.findAdmin(username);
+        List<YopsaasAdmin> adminList = adminService.findAdmin(username);
         Assert.state(adminList.size() < 2, "同一个用户名存在两个账户");
         if (adminList.size() == 0) {
             throw new UnknownAccountException("找不到用户（" + username + "）的帐号信息");
         }
-        LitemallAdmin admin = adminList.get(0);
+        YopsaasAdmin admin = adminList.get(0);
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         if (!encoder.matches(password, admin.getPassword())) {

@@ -2,8 +2,8 @@ package com.yongche.yopsaas.admin.job;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import com.yongche.yopsaas.db.domain.LitemallCoupon;
-import com.yongche.yopsaas.db.domain.LitemallCouponUser;
+import com.yongche.yopsaas.db.domain.YopsaasCoupon;
+import com.yongche.yopsaas.db.domain.YopsaasCouponUser;
 import com.yongche.yopsaas.db.service.YopsaasCouponService;
 import com.yongche.yopsaas.db.service.YopsaasCouponUserService;
 import com.yongche.yopsaas.db.util.CouponConstant;
@@ -35,14 +35,14 @@ public class CouponJob {
     public void checkCouponExpired() {
         logger.info("系统开启任务检查优惠券是否已经过期");
 
-        List<LitemallCoupon> couponList = couponService.queryExpired();
-        for (LitemallCoupon coupon : couponList) {
+        List<YopsaasCoupon> couponList = couponService.queryExpired();
+        for (YopsaasCoupon coupon : couponList) {
             coupon.setStatus(CouponConstant.STATUS_EXPIRED);
             couponService.updateById(coupon);
         }
 
-        List<LitemallCouponUser> couponUserList = couponUserService.queryExpired();
-        for (LitemallCouponUser couponUser : couponUserList) {
+        List<YopsaasCouponUser> couponUserList = couponUserService.queryExpired();
+        for (YopsaasCouponUser couponUser : couponUserList) {
             couponUser.setStatus(CouponUserConstant.STATUS_EXPIRED);
             couponUserService.update(couponUser);
         }

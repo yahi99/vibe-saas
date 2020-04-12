@@ -1,10 +1,10 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallLogMapper;
-import com.yongche.yopsaas.db.domain.LitemallAd;
-import com.yongche.yopsaas.db.domain.LitemallLog;
-import com.yongche.yopsaas.db.domain.LitemallLogExample;
+import com.yongche.yopsaas.db.dao.YopsaasLogMapper;
+import com.yongche.yopsaas.db.domain.YopsaasAd;
+import com.yongche.yopsaas.db.domain.YopsaasLog;
+import com.yongche.yopsaas.db.domain.YopsaasLogExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -15,21 +15,21 @@ import java.util.List;
 @Service
 public class YopsaasLogService {
     @Resource
-    private LitemallLogMapper logMapper;
+    private YopsaasLogMapper logMapper;
 
     public void deleteById(Integer id) {
         logMapper.logicalDeleteByPrimaryKey(id);
     }
 
-    public void add(LitemallLog log) {
+    public void add(YopsaasLog log) {
         log.setAddTime(LocalDateTime.now());
         log.setUpdateTime(LocalDateTime.now());
         logMapper.insertSelective(log);
     }
 
-    public List<LitemallLog> querySelective(String name, Integer page, Integer size, String sort, String order) {
-        LitemallLogExample example = new LitemallLogExample();
-        LitemallLogExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasLog> querySelective(String name, Integer page, Integer size, String sort, String order) {
+        YopsaasLogExample example = new YopsaasLogExample();
+        YopsaasLogExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(name)) {
             criteria.andAdminLike("%" + name + "%");

@@ -1,7 +1,7 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallAftersaleMapper;
+import com.yongche.yopsaas.db.dao.YopsaasAftersaleMapper;
 import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.util.AftersaleConstant;
 import org.springframework.stereotype.Service;
@@ -17,21 +17,21 @@ import java.util.Random;
 @Service
 public class YopsaasAftersaleService {
     @Resource
-    private LitemallAftersaleMapper aftersaleMapper;
+    private YopsaasAftersaleMapper aftersaleMapper;
 
-    public LitemallAftersale findById(Integer id) {
+    public YopsaasAftersale findById(Integer id) {
         return aftersaleMapper.selectByPrimaryKey(id);
     }
 
-    public LitemallAftersale findById(Integer userId, Integer id) {
-        LitemallAftersaleExample example = new LitemallAftersaleExample();
+    public YopsaasAftersale findById(Integer userId, Integer id) {
+        YopsaasAftersaleExample example = new YopsaasAftersaleExample();
         example.or().andIdEqualTo(id).andUserIdEqualTo(userId).andDeletedEqualTo(false);
         return aftersaleMapper.selectOneByExample(example);
     }
 
-    public List<LitemallAftersale> queryList(Integer userId, Short status, Integer page, Integer limit, String sort, String order) {
-        LitemallAftersaleExample example = new LitemallAftersaleExample();
-        LitemallAftersaleExample.Criteria criteria = example.or();
+    public List<YopsaasAftersale> queryList(Integer userId, Short status, Integer page, Integer limit, String sort, String order) {
+        YopsaasAftersaleExample example = new YopsaasAftersaleExample();
+        YopsaasAftersaleExample.Criteria criteria = example.or();
         criteria.andUserIdEqualTo(userId);
         if (status != null) {
             criteria.andStatusEqualTo(status);
@@ -41,16 +41,16 @@ public class YopsaasAftersaleService {
             example.setOrderByClause(sort + " " + order);
         }
         else{
-            example.setOrderByClause(LitemallAftersale.Column.addTime.desc());
+            example.setOrderByClause(YopsaasAftersale.Column.addTime.desc());
         }
 
         PageHelper.startPage(page, limit);
         return aftersaleMapper.selectByExample(example);
     }
 
-    public List<LitemallAftersale> querySelective(Integer orderId, String aftersaleSn, Short status, Integer page, Integer limit, String sort, String order) {
-        LitemallAftersaleExample example = new LitemallAftersaleExample();
-        LitemallAftersaleExample.Criteria criteria = example.or();
+    public List<YopsaasAftersale> querySelective(Integer orderId, String aftersaleSn, Short status, Integer page, Integer limit, String sort, String order) {
+        YopsaasAftersaleExample example = new YopsaasAftersaleExample();
+        YopsaasAftersaleExample.Criteria criteria = example.or();
         if (orderId != null) {
             criteria.andOrderIdEqualTo(orderId);
         }
@@ -65,7 +65,7 @@ public class YopsaasAftersaleService {
             example.setOrderByClause(sort + " " + order);
         }
         else{
-            example.setOrderByClause(LitemallAftersale.Column.addTime.desc());
+            example.setOrderByClause(YopsaasAftersale.Column.addTime.desc());
         }
 
         PageHelper.startPage(page, limit);
@@ -84,7 +84,7 @@ public class YopsaasAftersaleService {
     }
 
     public int countByAftersaleSn(Integer userId, String aftersaleSn) {
-        LitemallAftersaleExample example = new LitemallAftersaleExample();
+        YopsaasAftersaleExample example = new YopsaasAftersaleExample();
         example.or().andUserIdEqualTo(userId).andAftersaleSnEqualTo(aftersaleSn).andDeletedEqualTo(false);
         return (int) aftersaleMapper.countByExample(example);
     }
@@ -100,16 +100,16 @@ public class YopsaasAftersaleService {
         return aftersaleSn;
     }
 
-    public void add(LitemallAftersale aftersale) {
+    public void add(YopsaasAftersale aftersale) {
         aftersale.setAddTime(LocalDateTime.now());
         aftersale.setUpdateTime(LocalDateTime.now());
         aftersaleMapper.insertSelective(aftersale);
     }
 
     public void deleteByIds(List<Integer> ids) {
-        LitemallAftersaleExample example = new LitemallAftersaleExample();
+        YopsaasAftersaleExample example = new YopsaasAftersaleExample();
         example.or().andIdIn(ids).andDeletedEqualTo(false);
-        LitemallAftersale aftersale = new LitemallAftersale();
+        YopsaasAftersale aftersale = new YopsaasAftersale();
         aftersale.setUpdateTime(LocalDateTime.now());
         aftersale.setDeleted(true);
         aftersaleMapper.updateByExampleSelective(aftersale, example);
@@ -120,21 +120,21 @@ public class YopsaasAftersaleService {
     }
 
     public void deleteByOrderId(Integer userId, Integer orderId) {
-        LitemallAftersaleExample example = new LitemallAftersaleExample();
+        YopsaasAftersaleExample example = new YopsaasAftersaleExample();
         example.or().andOrderIdEqualTo(orderId).andUserIdEqualTo(userId).andDeletedEqualTo(false);
-        LitemallAftersale aftersale = new LitemallAftersale();
+        YopsaasAftersale aftersale = new YopsaasAftersale();
         aftersale.setUpdateTime(LocalDateTime.now());
         aftersale.setDeleted(true);
         aftersaleMapper.updateByExampleSelective(aftersale, example);
     }
 
-    public void updateById(LitemallAftersale aftersale) {
+    public void updateById(YopsaasAftersale aftersale) {
         aftersale.setUpdateTime(LocalDateTime.now());
         aftersaleMapper.updateByPrimaryKeySelective(aftersale);
     }
 
-    public LitemallAftersale findByOrderId(Integer userId, Integer orderId) {
-        LitemallAftersaleExample example = new LitemallAftersaleExample();
+    public YopsaasAftersale findByOrderId(Integer userId, Integer orderId) {
+        YopsaasAftersaleExample example = new YopsaasAftersaleExample();
         example.or().andOrderIdEqualTo(orderId).andUserIdEqualTo(userId).andDeletedEqualTo(false);
         return aftersaleMapper.selectOneByExample(example);
     }

@@ -7,7 +7,7 @@ import com.yongche.yopsaas.admin.annotation.RequiresPermissionsDesc;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallFeedback;
+import com.yongche.yopsaas.db.domain.YopsaasFeedback;
 import com.yongche.yopsaas.db.service.YopsaasFeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * @author Yogeek
+ * @author Peter
  * @date 2018/8/26 1:11
  */
 @RestController
@@ -39,7 +39,7 @@ public class AdminFeedbackController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallFeedback> feedbackList = feedbackService.querySelective(userId, username, page, limit, sort,
+        List<YopsaasFeedback> feedbackList = feedbackService.querySelective(userId, username, page, limit, sort,
                 order);
         return ResponseUtil.okList(feedbackList);
     }

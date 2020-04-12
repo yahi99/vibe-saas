@@ -1,7 +1,7 @@
 package com.yongche.yopsaas.db.service;
 
-import com.yongche.yopsaas.db.domain.LitemallCoupon;
-import com.yongche.yopsaas.db.domain.LitemallCouponUser;
+import com.yongche.yopsaas.db.domain.YopsaasCoupon;
+import com.yongche.yopsaas.db.domain.YopsaasCouponUser;
 import com.yongche.yopsaas.db.util.CouponConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,13 +25,13 @@ public class CouponVerifyService {
      * @param checkedGoodsPrice
      * @return
      */
-    public LitemallCoupon checkCoupon(Integer userId, Integer couponId, Integer userCouponId, BigDecimal checkedGoodsPrice) {
-        LitemallCoupon coupon = couponService.findById(couponId);
+    public YopsaasCoupon checkCoupon(Integer userId, Integer couponId, Integer userCouponId, BigDecimal checkedGoodsPrice) {
+        YopsaasCoupon coupon = couponService.findById(couponId);
         if (coupon == null) {
             return null;
         }
 
-        LitemallCouponUser couponUser = couponUserService.findById(userCouponId);
+        YopsaasCouponUser couponUser = couponUserService.findById(userCouponId);
         if (couponUser == null) {
             couponUser = couponUserService.queryOne(userId, couponId);
         } else if (!couponId.equals(couponUser.getCouponId())) {

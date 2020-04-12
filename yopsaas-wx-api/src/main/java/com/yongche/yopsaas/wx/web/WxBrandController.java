@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallBrand;
+import com.yongche.yopsaas.db.domain.YopsaasBrand;
 import com.yongche.yopsaas.db.service.YopsaasBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -41,7 +41,7 @@ public class WxBrandController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallBrand> brandList = brandService.query(page, limit, sort, order);
+        List<YopsaasBrand> brandList = brandService.query(page, limit, sort, order);
         return ResponseUtil.okList(brandList);
     }
 
@@ -53,7 +53,7 @@ public class WxBrandController {
      */
     @GetMapping("detail")
     public Object detail(@NotNull Integer id) {
-        LitemallBrand entity = brandService.findById(id);
+        YopsaasBrand entity = brandService.findById(id);
         if (entity == null) {
             return ResponseUtil.badArgumentValue();
         }

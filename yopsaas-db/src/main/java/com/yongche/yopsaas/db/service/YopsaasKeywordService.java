@@ -1,9 +1,9 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallKeywordMapper;
-import com.yongche.yopsaas.db.domain.LitemallKeyword;
-import com.yongche.yopsaas.db.domain.LitemallKeywordExample;
+import com.yongche.yopsaas.db.dao.YopsaasKeywordMapper;
+import com.yongche.yopsaas.db.domain.YopsaasKeyword;
+import com.yongche.yopsaas.db.domain.YopsaasKeywordExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -14,31 +14,31 @@ import java.util.List;
 @Service
 public class YopsaasKeywordService {
     @Resource
-    private LitemallKeywordMapper keywordsMapper;
+    private YopsaasKeywordMapper keywordsMapper;
 
-    public LitemallKeyword queryDefault() {
-        LitemallKeywordExample example = new LitemallKeywordExample();
+    public YopsaasKeyword queryDefault() {
+        YopsaasKeywordExample example = new YopsaasKeywordExample();
         example.or().andIsDefaultEqualTo(true).andDeletedEqualTo(false);
         return keywordsMapper.selectOneByExample(example);
     }
 
-    public List<LitemallKeyword> queryHots() {
-        LitemallKeywordExample example = new LitemallKeywordExample();
+    public List<YopsaasKeyword> queryHots() {
+        YopsaasKeywordExample example = new YopsaasKeywordExample();
         example.or().andIsHotEqualTo(true).andDeletedEqualTo(false);
         return keywordsMapper.selectByExample(example);
     }
 
-    public List<LitemallKeyword> queryByKeyword(String keyword, Integer page, Integer limit) {
-        LitemallKeywordExample example = new LitemallKeywordExample();
+    public List<YopsaasKeyword> queryByKeyword(String keyword, Integer page, Integer limit) {
+        YopsaasKeywordExample example = new YopsaasKeywordExample();
         example.setDistinct(true);
         example.or().andKeywordLike("%" + keyword + "%").andDeletedEqualTo(false);
         PageHelper.startPage(page, limit);
-        return keywordsMapper.selectByExampleSelective(example, LitemallKeyword.Column.keyword);
+        return keywordsMapper.selectByExampleSelective(example, YopsaasKeyword.Column.keyword);
     }
 
-    public List<LitemallKeyword> querySelective(String keyword, String url, Integer page, Integer limit, String sort, String order) {
-        LitemallKeywordExample example = new LitemallKeywordExample();
-        LitemallKeywordExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasKeyword> querySelective(String keyword, String url, Integer page, Integer limit, String sort, String order) {
+        YopsaasKeywordExample example = new YopsaasKeywordExample();
+        YopsaasKeywordExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(keyword)) {
             criteria.andKeywordLike("%" + keyword + "%");
@@ -56,17 +56,17 @@ public class YopsaasKeywordService {
         return keywordsMapper.selectByExample(example);
     }
 
-    public void add(LitemallKeyword keywords) {
+    public void add(YopsaasKeyword keywords) {
         keywords.setAddTime(LocalDateTime.now());
         keywords.setUpdateTime(LocalDateTime.now());
         keywordsMapper.insertSelective(keywords);
     }
 
-    public LitemallKeyword findById(Integer id) {
+    public YopsaasKeyword findById(Integer id) {
         return keywordsMapper.selectByPrimaryKey(id);
     }
 
-    public int updateById(LitemallKeyword keywords) {
+    public int updateById(YopsaasKeyword keywords) {
         keywords.setUpdateTime(LocalDateTime.now());
         return keywordsMapper.updateByPrimaryKeySelective(keywords);
     }

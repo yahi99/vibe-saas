@@ -4,7 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.ResponseUtil;
-import com.yongche.yopsaas.db.domain.LitemallComment;
+import com.yongche.yopsaas.db.domain.YopsaasComment;
 import com.yongche.yopsaas.db.service.YopsaasCommentService;
 import com.yongche.yopsaas.db.service.YopsaasGoodsService;
 import com.yongche.yopsaas.db.service.YopsaasTopicService;
@@ -42,7 +42,7 @@ public class WxCommentController {
     @Autowired
     private YopsaasTopicService topicService;
 
-    private Object validate(LitemallComment comment) {
+    private Object validate(YopsaasComment comment) {
         String content = comment.getContent();
         if (StringUtils.isEmpty(content)) {
             return ResponseUtil.badArgument();
@@ -87,7 +87,7 @@ public class WxCommentController {
      * @return 发表评论操作结果
      */
     @PostMapping("post")
-    public Object post(@LoginUser Integer userId, @RequestBody LitemallComment comment) {
+    public Object post(@LoginUser Integer userId, @RequestBody YopsaasComment comment) {
         if (userId == null) {
             return ResponseUtil.unlogin();
         }
@@ -134,10 +134,10 @@ public class WxCommentController {
                        @NotNull Integer showType,
                        @RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "10") Integer limit) {
-        List<LitemallComment> commentList = commentService.query(type, valueId, showType, page, limit);
+        List<YopsaasComment> commentList = commentService.query(type, valueId, showType, page, limit);
 
         List<Map<String, Object>> commentVoList = new ArrayList<>(commentList.size());
-        for (LitemallComment comment : commentList) {
+        for (YopsaasComment comment : commentList) {
             Map<String, Object> commentVo = new HashMap<>();
             commentVo.put("addTime", comment.getAddTime());
             commentVo.put("content", comment.getContent());

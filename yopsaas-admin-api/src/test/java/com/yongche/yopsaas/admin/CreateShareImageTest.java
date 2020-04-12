@@ -3,7 +3,7 @@ package com.yongche.yopsaas.admin;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.yongche.yopsaas.core.qcode.QCodeService;
-import com.yongche.yopsaas.db.domain.LitemallGoods;
+import com.yongche.yopsaas.db.domain.YopsaasGoods;
 import com.yongche.yopsaas.db.service.YopsaasGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +21,7 @@ public class CreateShareImageTest {
 
     @Test
     public void test() {
-        LitemallGoods good = yopsaasGoodsService.findById(1181010);
+        YopsaasGoods good = yopsaasGoodsService.findById(1181010);
         qCodeService.createGoodShareImage(good.getId().toString(), good.getPicUrl(), good.getName());
     }
 }

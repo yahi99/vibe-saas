@@ -12,7 +12,7 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.util.bcrypt.BCryptPasswordEncoder;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallAdmin;
+import com.yongche.yopsaas.db.domain.YopsaasAdmin;
 import com.yongche.yopsaas.db.service.YopsaasAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -43,11 +43,11 @@ public class AdminAdminController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallAdmin> adminList = adminService.querySelective(username, page, limit, sort, order);
+        List<YopsaasAdmin> adminList = adminService.querySelective(username, page, limit, sort, order);
         return ResponseUtil.okList(adminList);
     }
 
-    private Object validate(LitemallAdmin admin) {
+    private Object validate(YopsaasAdmin admin) {
         String name = admin.getUsername();
         if (StringUtils.isEmpty(name)) {
             return ResponseUtil.badArgument();
@@ -65,14 +65,14 @@ public class AdminAdminController {
     @RequiresPermissions("admin:admin:create")
     @RequiresPermissionsDesc(menu = {"系统管理", "管理员管理"}, button = "添加")
     @PostMapping("/create")
-    public Object create(@RequestBody LitemallAdmin admin) {
+    public Object create(@RequestBody YopsaasAdmin admin) {
         Object error = validate(admin);
         if (error != null) {
             return error;
         }
 
         String username = admin.getUsername();
-        List<LitemallAdmin> adminList = adminService.findAdmin(username);
+        List<YopsaasAdmin> adminList = adminService.findAdmin(username);
         if (adminList.size() > 0) {
             return ResponseUtil.fail(ADMIN_NAME_EXIST, "管理员已经存在");
         }
@@ -90,14 +90,14 @@ public class AdminAdminController {
     @RequiresPermissionsDesc(menu = {"系统管理", "管理员管理"}, button = "详情")
     @GetMapping("/read")
     public Object read(@NotNull Integer id) {
-        LitemallAdmin admin = adminService.findById(id);
+        YopsaasAdmin admin = adminService.findById(id);
         return ResponseUtil.ok(admin);
     }
 
     @RequiresPermissions("admin:admin:update")
     @RequiresPermissionsDesc(menu = {"系统管理", "管理员管理"}, button = "编辑")
     @PostMapping("/update")
-    public Object update(@RequestBody LitemallAdmin admin) {
+    public Object update(@RequestBody YopsaasAdmin admin) {
         Object error = validate(admin);
         if (error != null) {
             return error;
@@ -122,7 +122,7 @@ public class AdminAdminController {
     @RequiresPermissions("admin:admin:delete")
     @RequiresPermissionsDesc(menu = {"系统管理", "管理员管理"}, button = "删除")
     @PostMapping("/delete")
-    public Object delete(@RequestBody LitemallAdmin admin) {
+    public Object delete(@RequestBody YopsaasAdmin admin) {
         Integer anotherAdminId = admin.getId();
         if (anotherAdminId == null) {
             return ResponseUtil.badArgument();
@@ -130,7 +130,7 @@ public class AdminAdminController {
 
         // 管理员不能删除自身账号
         Subject currentUser = SecurityUtils.getSubject();
-        LitemallAdmin currentAdmin = (LitemallAdmin) currentUser.getPrincipal();
+        YopsaasAdmin currentAdmin = (YopsaasAdmin) currentUser.getPrincipal();
         if (currentAdmin.getId().equals(anotherAdminId)) {
             return ResponseUtil.fail(ADMIN_DELETE_NOT_ALLOWED, "管理员不能删除自己账号");
         }

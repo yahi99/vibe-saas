@@ -3,8 +3,8 @@ package com.yongche.yopsaas.wx.web;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.ResponseUtil;
-import com.yongche.yopsaas.db.domain.LitemallKeyword;
-import com.yongche.yopsaas.db.domain.LitemallSearchHistory;
+import com.yongche.yopsaas.db.domain.YopsaasKeyword;
+import com.yongche.yopsaas.db.domain.YopsaasSearchHistory;
 import com.yongche.yopsaas.db.service.YopsaasKeywordService;
 import com.yongche.yopsaas.db.service.YopsaasSearchHistoryService;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
@@ -46,11 +46,11 @@ public class WxSearchController {
     @GetMapping("index")
     public Object index(@LoginUser Integer userId) {
         //取出输入框默认的关键词
-        LitemallKeyword defaultKeyword = keywordsService.queryDefault();
+        YopsaasKeyword defaultKeyword = keywordsService.queryDefault();
         //取出热闹关键词
-        List<LitemallKeyword> hotKeywordList = keywordsService.queryHots();
+        List<YopsaasKeyword> hotKeywordList = keywordsService.queryHots();
 
-        List<LitemallSearchHistory> historyList = null;
+        List<YopsaasSearchHistory> historyList = null;
         if (userId != null) {
             //取出用户历史关键字
             historyList = searchHistoryService.queryByUid(userId);
@@ -77,10 +77,10 @@ public class WxSearchController {
     public Object helper(@NotEmpty String keyword,
                          @RequestParam(defaultValue = "1") Integer page,
                          @RequestParam(defaultValue = "10") Integer limit) {
-        List<LitemallKeyword> keywordsList = keywordsService.queryByKeyword(keyword, page, limit);
+        List<YopsaasKeyword> keywordsList = keywordsService.queryByKeyword(keyword, page, limit);
         String[] keys = new String[keywordsList.size()];
         int index = 0;
-        for (LitemallKeyword key : keywordsList) {
+        for (YopsaasKeyword key : keywordsList) {
             keys[index++] = key.getKeyword();
         }
         return ResponseUtil.ok(keys);

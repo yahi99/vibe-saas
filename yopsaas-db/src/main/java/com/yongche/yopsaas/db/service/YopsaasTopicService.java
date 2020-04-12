@@ -1,11 +1,11 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallTopicMapper;
-import com.yongche.yopsaas.db.domain.LitemallGroupon;
-import com.yongche.yopsaas.db.domain.LitemallTopic;
-import com.yongche.yopsaas.db.domain.LitemallTopic.Column;
-import com.yongche.yopsaas.db.domain.LitemallTopicExample;
+import com.yongche.yopsaas.db.dao.YopsaasTopicMapper;
+import com.yongche.yopsaas.db.domain.YopsaasGroupon;
+import com.yongche.yopsaas.db.domain.YopsaasTopic;
+import com.yongche.yopsaas.db.domain.YopsaasTopic.Column;
+import com.yongche.yopsaas.db.domain.YopsaasTopicExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -16,15 +16,15 @@ import java.util.List;
 @Service
 public class YopsaasTopicService {
     @Resource
-    private LitemallTopicMapper topicMapper;
+    private YopsaasTopicMapper topicMapper;
     private Column[] columns = new Column[]{Column.id, Column.title, Column.subtitle, Column.price, Column.picUrl, Column.readCount};
 
-    public List<LitemallTopic> queryList(int offset, int limit) {
+    public List<YopsaasTopic> queryList(int offset, int limit) {
         return queryList(offset, limit, "add_time", "desc");
     }
 
-    public List<LitemallTopic> queryList(int offset, int limit, String sort, String order) {
-        LitemallTopicExample example = new LitemallTopicExample();
+    public List<YopsaasTopic> queryList(int offset, int limit, String sort, String order) {
+        YopsaasTopicExample example = new YopsaasTopicExample();
         example.or().andDeletedEqualTo(false);
         example.setOrderByClause(sort + " " + order);
         PageHelper.startPage(offset, limit);
@@ -32,30 +32,30 @@ public class YopsaasTopicService {
     }
 
     public int queryTotal() {
-        LitemallTopicExample example = new LitemallTopicExample();
+        YopsaasTopicExample example = new YopsaasTopicExample();
         example.or().andDeletedEqualTo(false);
         return (int) topicMapper.countByExample(example);
     }
 
-    public LitemallTopic findById(Integer id) {
-        LitemallTopicExample example = new LitemallTopicExample();
+    public YopsaasTopic findById(Integer id) {
+        YopsaasTopicExample example = new YopsaasTopicExample();
         example.or().andIdEqualTo(id).andDeletedEqualTo(false);
         return topicMapper.selectOneByExampleWithBLOBs(example);
     }
 
-    public List<LitemallTopic> queryRelatedList(Integer id, int offset, int limit) {
-        LitemallTopicExample example = new LitemallTopicExample();
+    public List<YopsaasTopic> queryRelatedList(Integer id, int offset, int limit) {
+        YopsaasTopicExample example = new YopsaasTopicExample();
         example.or().andIdEqualTo(id).andDeletedEqualTo(false);
-        List<LitemallTopic> topics = topicMapper.selectByExample(example);
+        List<YopsaasTopic> topics = topicMapper.selectByExample(example);
         if (topics.size() == 0) {
             return queryList(offset, limit, "add_time", "desc");
         }
-        LitemallTopic topic = topics.get(0);
+        YopsaasTopic topic = topics.get(0);
 
-        example = new LitemallTopicExample();
+        example = new YopsaasTopicExample();
         example.or().andIdNotEqualTo(topic.getId()).andDeletedEqualTo(false);
         PageHelper.startPage(offset, limit);
-        List<LitemallTopic> relateds = topicMapper.selectByExampleWithBLOBs(example);
+        List<YopsaasTopic> relateds = topicMapper.selectByExampleWithBLOBs(example);
         if (relateds.size() != 0) {
             return relateds;
         }
@@ -63,9 +63,9 @@ public class YopsaasTopicService {
         return queryList(offset, limit, "add_time", "desc");
     }
 
-    public List<LitemallTopic> querySelective(String title, String subtitle, Integer page, Integer limit, String sort, String order) {
-        LitemallTopicExample example = new LitemallTopicExample();
-        LitemallTopicExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasTopic> querySelective(String title, String subtitle, Integer page, Integer limit, String sort, String order) {
+        YopsaasTopicExample example = new YopsaasTopicExample();
+        YopsaasTopicExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(title)) {
             criteria.andTitleLike("%" + title + "%");
@@ -83,9 +83,9 @@ public class YopsaasTopicService {
         return topicMapper.selectByExampleWithBLOBs(example);
     }
 
-    public int updateById(LitemallTopic topic) {
+    public int updateById(YopsaasTopic topic) {
         topic.setUpdateTime(LocalDateTime.now());
-        LitemallTopicExample example = new LitemallTopicExample();
+        YopsaasTopicExample example = new YopsaasTopicExample();
         example.or().andIdEqualTo(topic.getId());
         return topicMapper.updateByExampleSelective(topic, example);
     }
@@ -94,7 +94,7 @@ public class YopsaasTopicService {
         topicMapper.logicalDeleteByPrimaryKey(id);
     }
 
-    public void add(LitemallTopic topic) {
+    public void add(YopsaasTopic topic) {
         topic.setAddTime(LocalDateTime.now());
         topic.setUpdateTime(LocalDateTime.now());
         topicMapper.insertSelective(topic);
@@ -102,9 +102,9 @@ public class YopsaasTopicService {
 
 
     public void deleteByIds(List<Integer> ids) {
-        LitemallTopicExample example = new LitemallTopicExample();
+        YopsaasTopicExample example = new YopsaasTopicExample();
         example.or().andIdIn(ids).andDeletedEqualTo(false);
-        LitemallTopic topic = new LitemallTopic();
+        YopsaasTopic topic = new YopsaasTopic();
         topic.setUpdateTime(LocalDateTime.now());
         topic.setDeleted(true);
         topicMapper.updateByExampleSelective(topic, example);

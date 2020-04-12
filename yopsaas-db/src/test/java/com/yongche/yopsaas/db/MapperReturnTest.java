@@ -3,8 +3,8 @@ package com.yongche.yopsaas.db;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.yongche.yopsaas.db.dao.LitemallSystemMapper;
-import com.yongche.yopsaas.db.domain.LitemallSystem;
+import com.yongche.yopsaas.db.dao.YopsaasSystemMapper;
+import com.yongche.yopsaas.db.domain.YopsaasSystem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -17,11 +17,11 @@ import org.springframework.test.context.web.WebAppConfiguration;
 public class MapperReturnTest {
 
     @Autowired
-    private LitemallSystemMapper systemMapper;
+    private YopsaasSystemMapper systemMapper;
 
     @Test
     public void test() {
-        LitemallSystem system = new LitemallSystem();
+        YopsaasSystem system = new YopsaasSystem();
         system.setKeyName("test-system-key");
         system.setKeyValue("test-system-value");
         int updates = systemMapper.insertSelective(system);

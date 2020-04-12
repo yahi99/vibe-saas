@@ -5,8 +5,8 @@ import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallGoods;
-import com.yongche.yopsaas.db.domain.LitemallTopic;
+import com.yongche.yopsaas.db.domain.YopsaasGoods;
+import com.yongche.yopsaas.db.domain.YopsaasTopic;
 import com.yongche.yopsaas.db.service.YopsaasGoodsService;
 import com.yongche.yopsaas.db.service.YopsaasTopicService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +48,7 @@ public class WxTopicController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallTopic> topicList = topicService.queryList(page, limit, sort, order);
+        List<YopsaasTopic> topicList = topicService.queryList(page, limit, sort, order);
         return ResponseUtil.okList(topicList);
     }
 
@@ -60,10 +60,10 @@ public class WxTopicController {
      */
     @GetMapping("detail")
     public Object detail(@NotNull Integer id) {
-        LitemallTopic topic = topicService.findById(id);
-        List<LitemallGoods> goods = new ArrayList<>();
+        YopsaasTopic topic = topicService.findById(id);
+        List<YopsaasGoods> goods = new ArrayList<>();
         for (Integer i : topic.getGoods()) {
-            LitemallGoods good = goodsService.findByIdVO(i);
+            YopsaasGoods good = goodsService.findByIdVO(i);
             if (null != good)
                 goods.add(good);
         }
@@ -82,7 +82,7 @@ public class WxTopicController {
      */
     @GetMapping("related")
     public Object related(@NotNull Integer id) {
-        List<LitemallTopic> topicRelatedList = topicService.queryRelatedList(id, 0, 4);
+        List<YopsaasTopic> topicRelatedList = topicService.queryRelatedList(id, 0, 4);
         return ResponseUtil.okList(topicRelatedList);
     }
 }

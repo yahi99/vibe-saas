@@ -1,9 +1,9 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallCommentMapper;
-import com.yongche.yopsaas.db.domain.LitemallComment;
-import com.yongche.yopsaas.db.domain.LitemallCommentExample;
+import com.yongche.yopsaas.db.dao.YopsaasCommentMapper;
+import com.yongche.yopsaas.db.domain.YopsaasComment;
+import com.yongche.yopsaas.db.domain.YopsaasCommentExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -14,19 +14,19 @@ import java.util.List;
 @Service
 public class YopsaasCommentService {
     @Resource
-    private LitemallCommentMapper commentMapper;
+    private YopsaasCommentMapper commentMapper;
 
-    public List<LitemallComment> queryGoodsByGid(Integer id, int offset, int limit) {
-        LitemallCommentExample example = new LitemallCommentExample();
-        example.setOrderByClause(LitemallComment.Column.addTime.desc());
+    public List<YopsaasComment> queryGoodsByGid(Integer id, int offset, int limit) {
+        YopsaasCommentExample example = new YopsaasCommentExample();
+        example.setOrderByClause(YopsaasComment.Column.addTime.desc());
         example.or().andValueIdEqualTo(id).andTypeEqualTo((byte) 0).andDeletedEqualTo(false);
         PageHelper.startPage(offset, limit);
         return commentMapper.selectByExample(example);
     }
 
-    public List<LitemallComment> query(Byte type, Integer valueId, Integer showType, Integer offset, Integer limit) {
-        LitemallCommentExample example = new LitemallCommentExample();
-        example.setOrderByClause(LitemallComment.Column.addTime.desc());
+    public List<YopsaasComment> query(Byte type, Integer valueId, Integer showType, Integer offset, Integer limit) {
+        YopsaasCommentExample example = new YopsaasCommentExample();
+        example.setOrderByClause(YopsaasComment.Column.addTime.desc());
         if (showType == 0) {
             example.or().andValueIdEqualTo(valueId).andTypeEqualTo(type).andDeletedEqualTo(false);
         } else if (showType == 1) {
@@ -39,7 +39,7 @@ public class YopsaasCommentService {
     }
 
     public int count(Byte type, Integer valueId, Integer showType) {
-        LitemallCommentExample example = new LitemallCommentExample();
+        YopsaasCommentExample example = new YopsaasCommentExample();
         if (showType == 0) {
             example.or().andValueIdEqualTo(valueId).andTypeEqualTo(type).andDeletedEqualTo(false);
         } else if (showType == 1) {
@@ -50,15 +50,15 @@ public class YopsaasCommentService {
         return (int) commentMapper.countByExample(example);
     }
 
-    public int save(LitemallComment comment) {
+    public int save(YopsaasComment comment) {
         comment.setAddTime(LocalDateTime.now());
         comment.setUpdateTime(LocalDateTime.now());
         return commentMapper.insertSelective(comment);
     }
 
-    public List<LitemallComment> querySelective(String userId, String valueId, Integer page, Integer size, String sort, String order) {
-        LitemallCommentExample example = new LitemallCommentExample();
-        LitemallCommentExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasComment> querySelective(String userId, String valueId, Integer page, Integer size, String sort, String order) {
+        YopsaasCommentExample example = new YopsaasCommentExample();
+        YopsaasCommentExample.Criteria criteria = example.createCriteria();
 
         // type=2 是订单商品回复，这里过滤
         criteria.andTypeNotEqualTo((byte) 2);
@@ -83,11 +83,11 @@ public class YopsaasCommentService {
         commentMapper.logicalDeleteByPrimaryKey(id);
     }
 
-    public LitemallComment findById(Integer id) {
+    public YopsaasComment findById(Integer id) {
         return commentMapper.selectByPrimaryKey(id);
     }
 
-    public int updateById(LitemallComment comment) {
+    public int updateById(YopsaasComment comment) {
         return commentMapper.updateByPrimaryKeySelective(comment);
     }
 }

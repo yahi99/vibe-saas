@@ -1,9 +1,9 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallCouponUserMapper;
-import com.yongche.yopsaas.db.domain.LitemallCouponUser;
-import com.yongche.yopsaas.db.domain.LitemallCouponUserExample;
+import com.yongche.yopsaas.db.dao.YopsaasCouponUserMapper;
+import com.yongche.yopsaas.db.domain.YopsaasCouponUser;
+import com.yongche.yopsaas.db.domain.YopsaasCouponUserExample;
 import com.yongche.yopsaas.db.util.CouponUserConstant;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -15,29 +15,29 @@ import java.util.List;
 @Service
 public class YopsaasCouponUserService {
     @Resource
-    private LitemallCouponUserMapper couponUserMapper;
+    private YopsaasCouponUserMapper couponUserMapper;
 
     public Integer countCoupon(Integer couponId) {
-        LitemallCouponUserExample example = new LitemallCouponUserExample();
+        YopsaasCouponUserExample example = new YopsaasCouponUserExample();
         example.or().andCouponIdEqualTo(couponId).andDeletedEqualTo(false);
         return (int)couponUserMapper.countByExample(example);
     }
 
     public Integer countUserAndCoupon(Integer userId, Integer couponId) {
-        LitemallCouponUserExample example = new LitemallCouponUserExample();
+        YopsaasCouponUserExample example = new YopsaasCouponUserExample();
         example.or().andUserIdEqualTo(userId).andCouponIdEqualTo(couponId).andDeletedEqualTo(false);
         return (int)couponUserMapper.countByExample(example);
     }
 
-    public void add(LitemallCouponUser couponUser) {
+    public void add(YopsaasCouponUser couponUser) {
         couponUser.setAddTime(LocalDateTime.now());
         couponUser.setUpdateTime(LocalDateTime.now());
         couponUserMapper.insertSelective(couponUser);
     }
 
-    public List<LitemallCouponUser> queryList(Integer userId, Integer couponId, Short status, Integer page, Integer size, String sort, String order) {
-        LitemallCouponUserExample example = new LitemallCouponUserExample();
-        LitemallCouponUserExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasCouponUser> queryList(Integer userId, Integer couponId, Short status, Integer page, Integer size, String sort, String order) {
+        YopsaasCouponUserExample example = new YopsaasCouponUserExample();
+        YopsaasCouponUserExample.Criteria criteria = example.createCriteria();
         if (userId != null) {
             criteria.andUserIdEqualTo(userId);
         }
@@ -60,34 +60,34 @@ public class YopsaasCouponUserService {
         return couponUserMapper.selectByExample(example);
     }
 
-    public List<LitemallCouponUser> queryAll(Integer userId, Integer couponId) {
+    public List<YopsaasCouponUser> queryAll(Integer userId, Integer couponId) {
         return queryList(userId, couponId, CouponUserConstant.STATUS_USABLE, null, null, "add_time", "desc");
     }
 
-    public List<LitemallCouponUser> queryAll(Integer userId) {
+    public List<YopsaasCouponUser> queryAll(Integer userId) {
         return queryList(userId, null, CouponUserConstant.STATUS_USABLE, null, null, "add_time", "desc");
     }
 
-    public LitemallCouponUser queryOne(Integer userId, Integer couponId) {
-        List<LitemallCouponUser> couponUserList = queryList(userId, couponId, CouponUserConstant.STATUS_USABLE, 1, 1, "add_time", "desc");
+    public YopsaasCouponUser queryOne(Integer userId, Integer couponId) {
+        List<YopsaasCouponUser> couponUserList = queryList(userId, couponId, CouponUserConstant.STATUS_USABLE, 1, 1, "add_time", "desc");
         if(couponUserList.size() == 0){
             return null;
         }
         return couponUserList.get(0);
     }
 
-    public LitemallCouponUser findById(Integer id) {
+    public YopsaasCouponUser findById(Integer id) {
         return couponUserMapper.selectByPrimaryKey(id);
     }
 
 
-    public int update(LitemallCouponUser couponUser) {
+    public int update(YopsaasCouponUser couponUser) {
         couponUser.setUpdateTime(LocalDateTime.now());
         return couponUserMapper.updateByPrimaryKeySelective(couponUser);
     }
 
-    public List<LitemallCouponUser> queryExpired() {
-        LitemallCouponUserExample example = new LitemallCouponUserExample();
+    public List<YopsaasCouponUser> queryExpired() {
+        YopsaasCouponUserExample example = new YopsaasCouponUserExample();
         example.or().andStatusEqualTo(CouponUserConstant.STATUS_USABLE).andEndTimeLessThan(LocalDateTime.now()).andDeletedEqualTo(false);
         return couponUserMapper.selectByExample(example);
     }

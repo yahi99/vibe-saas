@@ -7,8 +7,8 @@ import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallCollect;
-import com.yongche.yopsaas.db.domain.LitemallGoods;
+import com.yongche.yopsaas.db.domain.YopsaasCollect;
+import com.yongche.yopsaas.db.domain.YopsaasGoods;
 import com.yongche.yopsaas.db.service.YopsaasCollectService;
 import com.yongche.yopsaas.db.service.YopsaasGoodsService;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
@@ -56,16 +56,16 @@ public class WxCollectController {
             return ResponseUtil.unlogin();
         }
 
-        List<LitemallCollect> collectList = collectService.queryByType(userId, type, page, limit, sort, order);
+        List<YopsaasCollect> collectList = collectService.queryByType(userId, type, page, limit, sort, order);
 
         List<Object> collects = new ArrayList<>(collectList.size());
-        for (LitemallCollect collect : collectList) {
+        for (YopsaasCollect collect : collectList) {
             Map<String, Object> c = new HashMap<String, Object>();
             c.put("id", collect.getId());
             c.put("type", collect.getType());
             c.put("valueId", collect.getValueId());
 
-            LitemallGoods goods = goodsService.findById(collect.getValueId());
+            YopsaasGoods goods = goodsService.findById(collect.getValueId());
             c.put("name", goods.getName());
             c.put("brief", goods.getBrief());
             c.put("picUrl", goods.getPicUrl());
@@ -98,12 +98,12 @@ public class WxCollectController {
             return ResponseUtil.badArgument();
         }
 
-        LitemallCollect collect = collectService.queryByTypeAndValue(userId, type, valueId);
+        YopsaasCollect collect = collectService.queryByTypeAndValue(userId, type, valueId);
 
         if (collect != null) {
             collectService.deleteById(collect.getId());
         } else {
-            collect = new LitemallCollect();
+            collect = new YopsaasCollect();
             collect.setUserId(userId);
             collect.setValueId(valueId);
             collect.setType(type);

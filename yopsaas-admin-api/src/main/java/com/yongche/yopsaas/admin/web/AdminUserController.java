@@ -7,7 +7,7 @@ import com.yongche.yopsaas.admin.annotation.RequiresPermissionsDesc;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallUser;
+import com.yongche.yopsaas.db.domain.YopsaasUser;
 import com.yongche.yopsaas.db.service.YopsaasUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -35,7 +35,7 @@ public class AdminUserController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallUser> userList = userService.querySelective(username, mobile, page, limit, sort, order);
+        List<YopsaasUser> userList = userService.querySelective(username, mobile, page, limit, sort, order);
         return ResponseUtil.okList(userList);
     }
 }

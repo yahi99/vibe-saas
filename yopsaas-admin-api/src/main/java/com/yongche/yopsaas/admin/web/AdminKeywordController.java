@@ -7,7 +7,7 @@ import com.yongche.yopsaas.admin.annotation.RequiresPermissionsDesc;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallKeyword;
+import com.yongche.yopsaas.db.domain.YopsaasKeyword;
 import com.yongche.yopsaas.db.service.YopsaasKeywordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -34,11 +34,11 @@ public class AdminKeywordController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallKeyword> keywordList = keywordService.querySelective(keyword, url, page, limit, sort, order);
+        List<YopsaasKeyword> keywordList = keywordService.querySelective(keyword, url, page, limit, sort, order);
         return ResponseUtil.okList(keywordList);
     }
 
-    private Object validate(LitemallKeyword keywords) {
+    private Object validate(YopsaasKeyword keywords) {
         String keyword = keywords.getKeyword();
         if (StringUtils.isEmpty(keyword)) {
             return ResponseUtil.badArgument();
@@ -49,7 +49,7 @@ public class AdminKeywordController {
     @RequiresPermissions("admin:keyword:create")
     @RequiresPermissionsDesc(menu = {"商场管理", "关键词"}, button = "添加")
     @PostMapping("/create")
-    public Object create(@RequestBody LitemallKeyword keyword) {
+    public Object create(@RequestBody YopsaasKeyword keyword) {
         Object error = validate(keyword);
         if (error != null) {
             return error;
@@ -62,14 +62,14 @@ public class AdminKeywordController {
     @RequiresPermissionsDesc(menu = {"商场管理", "关键词"}, button = "详情")
     @GetMapping("/read")
     public Object read(@NotNull Integer id) {
-        LitemallKeyword keyword = keywordService.findById(id);
+        YopsaasKeyword keyword = keywordService.findById(id);
         return ResponseUtil.ok(keyword);
     }
 
     @RequiresPermissions("admin:keyword:update")
     @RequiresPermissionsDesc(menu = {"商场管理", "关键词"}, button = "编辑")
     @PostMapping("/update")
-    public Object update(@RequestBody LitemallKeyword keyword) {
+    public Object update(@RequestBody YopsaasKeyword keyword) {
         Object error = validate(keyword);
         if (error != null) {
             return error;
@@ -83,7 +83,7 @@ public class AdminKeywordController {
     @RequiresPermissions("admin:keyword:delete")
     @RequiresPermissionsDesc(menu = {"商场管理", "关键词"}, button = "删除")
     @PostMapping("/delete")
-    public Object delete(@RequestBody LitemallKeyword keyword) {
+    public Object delete(@RequestBody YopsaasKeyword keyword) {
         Integer id = keyword.getId();
         if (id == null) {
             return ResponseUtil.badArgument();

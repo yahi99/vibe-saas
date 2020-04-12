@@ -4,9 +4,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.task.Task;
 import com.yongche.yopsaas.core.util.BeanUtil;
-import com.yongche.yopsaas.db.domain.LitemallGroupon;
-import com.yongche.yopsaas.db.domain.LitemallGrouponRules;
-import com.yongche.yopsaas.db.domain.LitemallOrder;
+import com.yongche.yopsaas.db.domain.YopsaasGroupon;
+import com.yongche.yopsaas.db.domain.YopsaasGrouponRules;
+import com.yongche.yopsaas.db.domain.YopsaasOrder;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.db.util.GrouponConstant;
 import com.yongche.yopsaas.db.util.OrderUtil;
@@ -30,7 +30,7 @@ public class GrouponRuleExpiredTask extends Task {
         YopsaasGrouponService grouponService = BeanUtil.getBean(YopsaasGrouponService.class);
         YopsaasGrouponRulesService grouponRulesService = BeanUtil.getBean(YopsaasGrouponRulesService.class);
 
-        LitemallGrouponRules grouponRules = grouponRulesService.findById(grouponRuleId);
+        YopsaasGrouponRules grouponRules = grouponRulesService.findById(grouponRuleId);
         if(grouponRules == null){
             return;
         }
@@ -42,11 +42,11 @@ public class GrouponRuleExpiredTask extends Task {
         grouponRules.setStatus(GrouponConstant.RULE_STATUS_DOWN_EXPIRE);
         grouponRulesService.updateById(grouponRules);
 
-        List<LitemallGroupon> grouponList = grouponService.queryByRuleId(grouponRuleId);
+        List<YopsaasGroupon> grouponList = grouponService.queryByRuleId(grouponRuleId);
         // 用户团购处理
-        for(LitemallGroupon groupon : grouponList){
+        for(YopsaasGroupon groupon : grouponList){
             Short status = groupon.getStatus();
-            LitemallOrder order = orderService.findById(groupon.getOrderId());
+            YopsaasOrder order = orderService.findById(groupon.getOrderId());
             if(status.equals(GrouponConstant.STATUS_NONE)){
                 groupon.setStatus(GrouponConstant.STATUS_FAIL);
                 grouponService.updateById(groupon);

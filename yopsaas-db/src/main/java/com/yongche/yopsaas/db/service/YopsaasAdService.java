@@ -1,9 +1,9 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallAdMapper;
-import com.yongche.yopsaas.db.domain.LitemallAd;
-import com.yongche.yopsaas.db.domain.LitemallAdExample;
+import com.yongche.yopsaas.db.dao.YopsaasAdMapper;
+import com.yongche.yopsaas.db.domain.YopsaasAd;
+import com.yongche.yopsaas.db.domain.YopsaasAdExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -14,17 +14,17 @@ import java.util.List;
 @Service
 public class YopsaasAdService {
     @Resource
-    private LitemallAdMapper adMapper;
+    private YopsaasAdMapper adMapper;
 
-    public List<LitemallAd> queryIndex() {
-        LitemallAdExample example = new LitemallAdExample();
+    public List<YopsaasAd> queryIndex() {
+        YopsaasAdExample example = new YopsaasAdExample();
         example.or().andPositionEqualTo((byte) 1).andDeletedEqualTo(false).andEnabledEqualTo(true);
         return adMapper.selectByExample(example);
     }
 
-    public List<LitemallAd> querySelective(String name, String content, Integer page, Integer limit, String sort, String order) {
-        LitemallAdExample example = new LitemallAdExample();
-        LitemallAdExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasAd> querySelective(String name, String content, Integer page, Integer limit, String sort, String order) {
+        YopsaasAdExample example = new YopsaasAdExample();
+        YopsaasAdExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(name)) {
             criteria.andNameLike("%" + name + "%");
@@ -42,7 +42,7 @@ public class YopsaasAdService {
         return adMapper.selectByExample(example);
     }
 
-    public int updateById(LitemallAd ad) {
+    public int updateById(YopsaasAd ad) {
         ad.setUpdateTime(LocalDateTime.now());
         return adMapper.updateByPrimaryKeySelective(ad);
     }
@@ -51,13 +51,13 @@ public class YopsaasAdService {
         adMapper.logicalDeleteByPrimaryKey(id);
     }
 
-    public void add(LitemallAd ad) {
+    public void add(YopsaasAd ad) {
         ad.setAddTime(LocalDateTime.now());
         ad.setUpdateTime(LocalDateTime.now());
         adMapper.insertSelective(ad);
     }
 
-    public LitemallAd findById(Integer id) {
+    public YopsaasAd findById(Integer id) {
         return adMapper.selectByPrimaryKey(id);
     }
 }

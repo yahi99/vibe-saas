@@ -1,7 +1,7 @@
 package com.yongche.yopsaas.db.service;
 
-import com.yongche.yopsaas.db.domain.LitemallCoupon;
-import com.yongche.yopsaas.db.domain.LitemallCouponUser;
+import com.yongche.yopsaas.db.domain.YopsaasCoupon;
+import com.yongche.yopsaas.db.domain.YopsaasCouponUser;
 import com.yongche.yopsaas.db.util.CouponConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +24,8 @@ public class CouponAssignService {
      * @return
      */
     public void assignForRegister(Integer userId) {
-        List<LitemallCoupon> couponList = couponService.queryRegister();
-        for(LitemallCoupon coupon : couponList){
+        List<YopsaasCoupon> couponList = couponService.queryRegister();
+        for(YopsaasCoupon coupon : couponList){
             Integer couponId = coupon.getId();
 
             Integer count = couponUserService.countUserAndCoupon(userId, couponId);
@@ -35,7 +35,7 @@ public class CouponAssignService {
 
             Short limit = coupon.getLimit();
             while(limit > 0){
-                LitemallCouponUser couponUser = new LitemallCouponUser();
+                YopsaasCouponUser couponUser = new YopsaasCouponUser();
                 couponUser.setCouponId(couponId);
                 couponUser.setUserId(userId);
                 Short timeType = coupon.getTimeType();

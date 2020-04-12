@@ -8,7 +8,7 @@ import com.yongche.yopsaas.admin.dto.GoodsAllinone;
 import com.yongche.yopsaas.admin.service.AdminGoodsService;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallGoods;
+import com.yongche.yopsaas.db.domain.YopsaasGoods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -74,7 +74,7 @@ public class AdminGoodsController {
     @RequiresPermissions("admin:goods:delete")
     @RequiresPermissionsDesc(menu = {"商品管理", "商品管理"}, button = "删除")
     @PostMapping("/delete")
-    public Object delete(@RequestBody LitemallGoods goods) {
+    public Object delete(@RequestBody YopsaasGoods goods) {
         return adminGoodsService.delete(goods);
     }
 

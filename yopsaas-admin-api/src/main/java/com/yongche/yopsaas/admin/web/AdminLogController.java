@@ -7,7 +7,7 @@ import com.yongche.yopsaas.admin.annotation.RequiresPermissionsDesc;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallLog;
+import com.yongche.yopsaas.db.domain.YopsaasLog;
 import com.yongche.yopsaas.db.service.YopsaasLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -35,7 +35,7 @@ public class AdminLogController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallLog> logList = logService.querySelective(name, page, limit, sort, order);
+        List<YopsaasLog> logList = logService.querySelective(name, page, limit, sort, order);
         return ResponseUtil.okList(logList);
     }
 }

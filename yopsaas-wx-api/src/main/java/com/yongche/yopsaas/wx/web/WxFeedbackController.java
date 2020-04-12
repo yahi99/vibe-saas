@@ -5,8 +5,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.RegexUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
-import com.yongche.yopsaas.db.domain.LitemallFeedback;
-import com.yongche.yopsaas.db.domain.LitemallUser;
+import com.yongche.yopsaas.db.domain.YopsaasFeedback;
+import com.yongche.yopsaas.db.domain.YopsaasUser;
 import com.yongche.yopsaas.db.service.YopsaasFeedbackService;
 import com.yongche.yopsaas.db.service.YopsaasUserService;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 意见反馈服务
  *
- * @author Yogeek
+ * @author Peter
  * @date 2018/8/25 14:10
  */
 @RestController
@@ -34,7 +34,7 @@ public class WxFeedbackController {
     @Autowired
     private YopsaasUserService userService;
 
-    private Object validate(LitemallFeedback feedback) {
+    private Object validate(YopsaasFeedback feedback) {
         String content = feedback.getContent();
         if (StringUtils.isEmpty(content)) {
             return ResponseUtil.badArgument();
@@ -69,7 +69,7 @@ public class WxFeedbackController {
      * @return 操作结果
      */
     @PostMapping("submit")
-    public Object submit(@LoginUser Integer userId, @RequestBody LitemallFeedback feedback) {
+    public Object submit(@LoginUser Integer userId, @RequestBody YopsaasFeedback feedback) {
         if (userId == null) {
             return ResponseUtil.unlogin();
         }
@@ -78,7 +78,7 @@ public class WxFeedbackController {
             return error;
         }
 
-        LitemallUser user = userService.findById(userId);
+        YopsaasUser user = userService.findById(userId);
         String username = user.getUsername();
         feedback.setId(null);
         feedback.setUserId(userId);

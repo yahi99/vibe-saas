@@ -1,10 +1,10 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallAdminMapper;
-import com.yongche.yopsaas.db.domain.LitemallAdmin;
-import com.yongche.yopsaas.db.domain.LitemallAdmin.Column;
-import com.yongche.yopsaas.db.domain.LitemallAdminExample;
+import com.yongche.yopsaas.db.dao.YopsaasAdminMapper;
+import com.yongche.yopsaas.db.domain.YopsaasAdmin;
+import com.yongche.yopsaas.db.domain.YopsaasAdmin.Column;
+import com.yongche.yopsaas.db.domain.YopsaasAdminExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -16,21 +16,21 @@ import java.util.List;
 public class YopsaasAdminService {
     private final Column[] result = new Column[]{Column.id, Column.username, Column.avatar, Column.roleIds};
     @Resource
-    private LitemallAdminMapper adminMapper;
+    private YopsaasAdminMapper adminMapper;
 
-    public List<LitemallAdmin> findAdmin(String username) {
-        LitemallAdminExample example = new LitemallAdminExample();
+    public List<YopsaasAdmin> findAdmin(String username) {
+        YopsaasAdminExample example = new YopsaasAdminExample();
         example.or().andUsernameEqualTo(username).andDeletedEqualTo(false);
         return adminMapper.selectByExample(example);
     }
 
-    public LitemallAdmin findAdmin(Integer id) {
+    public YopsaasAdmin findAdmin(Integer id) {
         return adminMapper.selectByPrimaryKey(id);
     }
 
-    public List<LitemallAdmin> querySelective(String username, Integer page, Integer limit, String sort, String order) {
-        LitemallAdminExample example = new LitemallAdminExample();
-        LitemallAdminExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasAdmin> querySelective(String username, Integer page, Integer limit, String sort, String order) {
+        YopsaasAdminExample example = new YopsaasAdminExample();
+        YopsaasAdminExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(username)) {
             criteria.andUsernameLike("%" + username + "%");
@@ -45,7 +45,7 @@ public class YopsaasAdminService {
         return adminMapper.selectByExampleSelective(example, result);
     }
 
-    public int updateById(LitemallAdmin admin) {
+    public int updateById(YopsaasAdmin admin) {
         admin.setUpdateTime(LocalDateTime.now());
         return adminMapper.updateByPrimaryKeySelective(admin);
     }
@@ -54,18 +54,18 @@ public class YopsaasAdminService {
         adminMapper.logicalDeleteByPrimaryKey(id);
     }
 
-    public void add(LitemallAdmin admin) {
+    public void add(YopsaasAdmin admin) {
         admin.setAddTime(LocalDateTime.now());
         admin.setUpdateTime(LocalDateTime.now());
         adminMapper.insertSelective(admin);
     }
 
-    public LitemallAdmin findById(Integer id) {
+    public YopsaasAdmin findById(Integer id) {
         return adminMapper.selectByPrimaryKeySelective(id, result);
     }
 
-    public List<LitemallAdmin> all() {
-        LitemallAdminExample example = new LitemallAdminExample();
+    public List<YopsaasAdmin> all() {
+        YopsaasAdminExample example = new YopsaasAdminExample();
         example.or().andDeletedEqualTo(false);
         return adminMapper.selectByExample(example);
     }

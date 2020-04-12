@@ -2,9 +2,9 @@ package com.yongche.yopsaas.db.service;
 
 import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallRoleMapper;
-import com.yongche.yopsaas.db.domain.LitemallRole;
-import com.yongche.yopsaas.db.domain.LitemallRoleExample;
+import com.yongche.yopsaas.db.dao.YopsaasRoleMapper;
+import com.yongche.yopsaas.db.domain.YopsaasRole;
+import com.yongche.yopsaas.db.domain.YopsaasRoleExample;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
@@ -16,7 +16,7 @@ import java.util.Set;
 @Service
 public class YopsaasRoleService {
     @Resource
-    private LitemallRoleMapper roleMapper;
+    private YopsaasRoleMapper roleMapper;
 
 
     public Set<String> queryByIds(Integer[] roleIds) {
@@ -25,11 +25,11 @@ public class YopsaasRoleService {
             return roles;
         }
 
-        LitemallRoleExample example = new LitemallRoleExample();
+        YopsaasRoleExample example = new YopsaasRoleExample();
         example.or().andIdIn(Arrays.asList(roleIds)).andEnabledEqualTo(true).andDeletedEqualTo(false);
-        List<LitemallRole> roleList = roleMapper.selectByExample(example);
+        List<YopsaasRole> roleList = roleMapper.selectByExample(example);
 
-        for(LitemallRole role : roleList){
+        for(YopsaasRole role : roleList){
             roles.add(role.getName());
         }
 
@@ -37,9 +37,9 @@ public class YopsaasRoleService {
 
     }
 
-    public List<LitemallRole> querySelective(String name, Integer page, Integer limit, String sort, String order) {
-        LitemallRoleExample example = new LitemallRoleExample();
-        LitemallRoleExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasRole> querySelective(String name, Integer page, Integer limit, String sort, String order) {
+        YopsaasRoleExample example = new YopsaasRoleExample();
+        YopsaasRoleExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(name)) {
             criteria.andNameLike("%" + name + "%");
@@ -54,11 +54,11 @@ public class YopsaasRoleService {
         return roleMapper.selectByExample(example);
     }
 
-    public LitemallRole findById(Integer id) {
+    public YopsaasRole findById(Integer id) {
         return roleMapper.selectByPrimaryKey(id);
     }
 
-    public void add(LitemallRole role) {
+    public void add(YopsaasRole role) {
         role.setAddTime(LocalDateTime.now());
         role.setUpdateTime(LocalDateTime.now());
         roleMapper.insertSelective(role);
@@ -68,19 +68,19 @@ public class YopsaasRoleService {
         roleMapper.logicalDeleteByPrimaryKey(id);
     }
 
-    public void updateById(LitemallRole role) {
+    public void updateById(YopsaasRole role) {
         role.setUpdateTime(LocalDateTime.now());
         roleMapper.updateByPrimaryKeySelective(role);
     }
 
     public boolean checkExist(String name) {
-        LitemallRoleExample example = new LitemallRoleExample();
+        YopsaasRoleExample example = new YopsaasRoleExample();
         example.or().andNameEqualTo(name).andDeletedEqualTo(false);
         return roleMapper.countByExample(example) != 0;
     }
 
-    public List<LitemallRole> queryAll() {
-        LitemallRoleExample example = new LitemallRoleExample();
+    public List<YopsaasRole> queryAll() {
+        YopsaasRoleExample example = new YopsaasRoleExample();
         example.or().andDeletedEqualTo(false);
         return roleMapper.selectByExample(example);
     }

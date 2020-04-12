@@ -64,11 +64,11 @@ public class WxAftersaleController {
             return ResponseUtil.unlogin();
         }
 
-        List<LitemallAftersale> aftersaleList = aftersaleService.queryList(userId, status, page, limit, sort, order);
+        List<YopsaasAftersale> aftersaleList = aftersaleService.queryList(userId, status, page, limit, sort, order);
 
         List<Map<String, Object>> aftersaleVoList = new ArrayList<>(aftersaleList.size());
-        for (LitemallAftersale aftersale : aftersaleList) {
-            List<LitemallOrderGoods> orderGoodsList = orderGoodsService.queryByOid(aftersale.getOrderId());
+        for (YopsaasAftersale aftersale : aftersaleList) {
+            List<YopsaasOrderGoods> orderGoodsList = orderGoodsService.queryByOid(aftersale.getOrderId());
 
             Map<String, Object> aftersaleVo = new HashMap<>();
             aftersaleVo.put("aftersale", aftersale);
@@ -92,12 +92,12 @@ public class WxAftersaleController {
             return ResponseUtil.unlogin();
         }
 
-        LitemallOrder order = orderService.findById(userId, orderId);
+        YopsaasOrder order = orderService.findById(userId, orderId);
         if (order == null){
             return ResponseUtil.badArgumentValue();
         }
-        List<LitemallOrderGoods> orderGoodsList = orderGoodsService.queryByOid(orderId);
-        LitemallAftersale aftersale = aftersaleService.findByOrderId(userId, orderId);
+        List<YopsaasOrderGoods> orderGoodsList = orderGoodsService.queryByOid(orderId);
+        YopsaasAftersale aftersale = aftersaleService.findByOrderId(userId, orderId);
 
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("aftersale", aftersale);
@@ -114,7 +114,7 @@ public class WxAftersaleController {
      * @return 操作结果
      */
     @PostMapping("submit")
-    public Object submit(@LoginUser Integer userId, @RequestBody LitemallAftersale aftersale) {
+    public Object submit(@LoginUser Integer userId, @RequestBody YopsaasAftersale aftersale) {
         if (userId == null) {
             return ResponseUtil.unlogin();
         }
@@ -127,7 +127,7 @@ public class WxAftersaleController {
         if(orderId == null){
             return ResponseUtil.badArgument();
         }
-        LitemallOrder order = orderService.findById(userId, orderId);
+        YopsaasOrder order = orderService.findById(userId, orderId);
         if(order == null){
             return ResponseUtil.badArgumentValue();
         }
@@ -168,7 +168,7 @@ public class WxAftersaleController {
      * @return 操作结果
      */
     @PostMapping("cancel")
-    public Object cancel(@LoginUser Integer userId, @RequestBody LitemallAftersale aftersale) {
+    public Object cancel(@LoginUser Integer userId, @RequestBody YopsaasAftersale aftersale) {
         if (userId == null) {
             return ResponseUtil.unlogin();
         }
@@ -176,13 +176,13 @@ public class WxAftersaleController {
         if(id == null){
             return ResponseUtil.badArgument();
         }
-        LitemallAftersale aftersaleOne = aftersaleService.findById(userId, id);
+        YopsaasAftersale aftersaleOne = aftersaleService.findById(userId, id);
         if(aftersaleOne == null){
             return ResponseUtil.badArgument();
         }
 
         Integer orderId = aftersaleOne.getOrderId();
-        LitemallOrder order = orderService.findById(userId, orderId);
+        YopsaasOrder order = orderService.findById(userId, orderId);
         if(!order.getUserId().equals(userId)){
             return ResponseUtil.badArgumentValue();
         }
@@ -205,7 +205,7 @@ public class WxAftersaleController {
         return ResponseUtil.ok();
     }
 
-    private Object validate(LitemallAftersale aftersale) {
+    private Object validate(YopsaasAftersale aftersale) {
         Short type = aftersale.getType();
         if (type == null) {
             return ResponseUtil.badArgument();

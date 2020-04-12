@@ -2,9 +2,9 @@ package com.yongche.yopsaas.db.service;
 
 import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallGrouponMapper;
-import com.yongche.yopsaas.db.domain.LitemallGroupon;
-import com.yongche.yopsaas.db.domain.LitemallGrouponExample;
+import com.yongche.yopsaas.db.dao.YopsaasGrouponMapper;
+import com.yongche.yopsaas.db.domain.YopsaasGroupon;
+import com.yongche.yopsaas.db.domain.YopsaasGrouponExample;
 import com.yongche.yopsaas.db.util.GrouponConstant;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class YopsaasGrouponService {
     @Resource
-    private LitemallGrouponMapper mapper;
+    private YopsaasGrouponMapper mapper;
 
     /**
      * 获取用户发起的团购记录
@@ -23,8 +23,8 @@ public class YopsaasGrouponService {
      * @param userId
      * @return
      */
-    public List<LitemallGroupon> queryMyGroupon(Integer userId) {
-        LitemallGrouponExample example = new LitemallGrouponExample();
+    public List<YopsaasGroupon> queryMyGroupon(Integer userId) {
+        YopsaasGrouponExample example = new YopsaasGrouponExample();
         example.or().andUserIdEqualTo(userId).andCreatorUserIdEqualTo(userId).andGrouponIdEqualTo(0).andStatusNotEqualTo(GrouponConstant.STATUS_NONE).andDeletedEqualTo(false);
         example.orderBy("add_time desc");
         return mapper.selectByExample(example);
@@ -36,8 +36,8 @@ public class YopsaasGrouponService {
      * @param userId
      * @return
      */
-    public List<LitemallGroupon> queryMyJoinGroupon(Integer userId) {
-        LitemallGrouponExample example = new LitemallGrouponExample();
+    public List<YopsaasGroupon> queryMyJoinGroupon(Integer userId) {
+        YopsaasGrouponExample example = new YopsaasGrouponExample();
         example.or().andUserIdEqualTo(userId).andGrouponIdNotEqualTo(0).andStatusNotEqualTo(GrouponConstant.STATUS_NONE).andDeletedEqualTo(false);
         example.orderBy("add_time desc");
         return mapper.selectByExample(example);
@@ -49,8 +49,8 @@ public class YopsaasGrouponService {
      * @param orderId
      * @return
      */
-    public LitemallGroupon queryByOrderId(Integer orderId) {
-        LitemallGrouponExample example = new LitemallGrouponExample();
+    public YopsaasGroupon queryByOrderId(Integer orderId) {
+        YopsaasGrouponExample example = new YopsaasGrouponExample();
         example.or().andOrderIdEqualTo(orderId).andDeletedEqualTo(false);
         return mapper.selectOneByExample(example);
     }
@@ -61,8 +61,8 @@ public class YopsaasGrouponService {
      * @param id
      * @return
      */
-    public List<LitemallGroupon> queryJoinRecord(Integer id) {
-        LitemallGrouponExample example = new LitemallGrouponExample();
+    public List<YopsaasGroupon> queryJoinRecord(Integer id) {
+        YopsaasGrouponExample example = new YopsaasGrouponExample();
         example.or().andGrouponIdEqualTo(id).andStatusNotEqualTo(GrouponConstant.STATUS_NONE).andDeletedEqualTo(false);
         example.orderBy("add_time desc");
         return mapper.selectByExample(example);
@@ -74,8 +74,8 @@ public class YopsaasGrouponService {
      * @param id
      * @return
      */
-    public LitemallGroupon queryById(Integer id) {
-        LitemallGrouponExample example = new LitemallGrouponExample();
+    public YopsaasGroupon queryById(Integer id) {
+        YopsaasGrouponExample example = new YopsaasGrouponExample();
         example.or().andIdEqualTo(id).andDeletedEqualTo(false);
         return mapper.selectOneByExample(example);
     }
@@ -87,8 +87,8 @@ public class YopsaasGrouponService {
      * @param id
      * @return
      */
-    public LitemallGroupon queryById(Integer userId, Integer id) {
-        LitemallGrouponExample example = new LitemallGrouponExample();
+    public YopsaasGroupon queryById(Integer userId, Integer id) {
+        YopsaasGrouponExample example = new YopsaasGrouponExample();
         example.or().andIdEqualTo(id).andUserIdEqualTo(id).andDeletedEqualTo(false);
         return mapper.selectOneByExample(example);
     }
@@ -100,18 +100,18 @@ public class YopsaasGrouponService {
      * @return
      */
     public int countGroupon(Integer grouponId) {
-        LitemallGrouponExample example = new LitemallGrouponExample();
+        YopsaasGrouponExample example = new YopsaasGrouponExample();
         example.or().andGrouponIdEqualTo(grouponId).andStatusNotEqualTo(GrouponConstant.STATUS_NONE).andDeletedEqualTo(false);
         return (int) mapper.countByExample(example);
     }
 
     public boolean hasJoin(Integer userId, Integer grouponId) {
-        LitemallGrouponExample example = new LitemallGrouponExample();
+        YopsaasGrouponExample example = new YopsaasGrouponExample();
         example.or().andUserIdEqualTo(userId).andGrouponIdEqualTo(grouponId).andStatusNotEqualTo(GrouponConstant.STATUS_NONE).andDeletedEqualTo(false);
         return  mapper.countByExample(example) != 0;
     }
 
-    public int updateById(LitemallGroupon groupon) {
+    public int updateById(YopsaasGroupon groupon) {
         groupon.setUpdateTime(LocalDateTime.now());
         return mapper.updateByPrimaryKeySelective(groupon);
     }
@@ -122,7 +122,7 @@ public class YopsaasGrouponService {
      * @param groupon
      * @return
      */
-    public int createGroupon(LitemallGroupon groupon) {
+    public int createGroupon(YopsaasGroupon groupon) {
         groupon.setAddTime(LocalDateTime.now());
         groupon.setUpdateTime(LocalDateTime.now());
         return mapper.insertSelective(groupon);
@@ -139,9 +139,9 @@ public class YopsaasGrouponService {
      * @param order
      * @return
      */
-    public List<LitemallGroupon> querySelective(String rulesId, Integer page, Integer size, String sort, String order) {
-        LitemallGrouponExample example = new LitemallGrouponExample();
-        LitemallGrouponExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasGroupon> querySelective(String rulesId, Integer page, Integer size, String sort, String order) {
+        YopsaasGrouponExample example = new YopsaasGrouponExample();
+        YopsaasGrouponExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(rulesId)) {
             criteria.andRulesIdEqualTo(Integer.parseInt(rulesId));
@@ -154,8 +154,8 @@ public class YopsaasGrouponService {
         return mapper.selectByExample(example);
     }
 
-    public List<LitemallGroupon> queryByRuleId(int grouponRuleId) {
-        LitemallGrouponExample example = new LitemallGrouponExample();
+    public List<YopsaasGroupon> queryByRuleId(int grouponRuleId) {
+        YopsaasGrouponExample example = new YopsaasGrouponExample();
         example.or().andRulesIdEqualTo(grouponRuleId).andDeletedEqualTo(false);
         return mapper.selectByExample(example);
     }

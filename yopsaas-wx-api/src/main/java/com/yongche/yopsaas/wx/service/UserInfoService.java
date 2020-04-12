@@ -1,6 +1,6 @@
 package com.yongche.yopsaas.wx.service;
 
-import com.yongche.yopsaas.db.domain.LitemallUser;
+import com.yongche.yopsaas.db.domain.YopsaasUser;
 import com.yongche.yopsaas.db.service.YopsaasUserService;
 import com.yongche.yopsaas.wx.dto.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ public class UserInfoService {
 
 
     public UserInfo getInfo(Integer userId) {
-        LitemallUser user = userService.findById(userId);
+        YopsaasUser user = userService.findById(userId);
         Assert.state(user != null, "用户不存在");
         UserInfo userInfo = new UserInfo();
         userInfo.setNickName(user.getNickname());

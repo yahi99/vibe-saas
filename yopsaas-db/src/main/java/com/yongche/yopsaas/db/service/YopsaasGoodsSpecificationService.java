@@ -1,8 +1,8 @@
 package com.yongche.yopsaas.db.service;
 
-import com.yongche.yopsaas.db.dao.LitemallGoodsSpecificationMapper;
-import com.yongche.yopsaas.db.domain.LitemallGoodsSpecification;
-import com.yongche.yopsaas.db.domain.LitemallGoodsSpecificationExample;
+import com.yongche.yopsaas.db.dao.YopsaasGoodsSpecificationMapper;
+import com.yongche.yopsaas.db.domain.YopsaasGoodsSpecification;
+import com.yongche.yopsaas.db.domain.YopsaasGoodsSpecificationExample;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,25 +15,25 @@ import java.util.Map;
 @Service
 public class YopsaasGoodsSpecificationService {
     @Resource
-    private LitemallGoodsSpecificationMapper goodsSpecificationMapper;
+    private YopsaasGoodsSpecificationMapper goodsSpecificationMapper;
 
-    public List<LitemallGoodsSpecification> queryByGid(Integer id) {
-        LitemallGoodsSpecificationExample example = new LitemallGoodsSpecificationExample();
+    public List<YopsaasGoodsSpecification> queryByGid(Integer id) {
+        YopsaasGoodsSpecificationExample example = new YopsaasGoodsSpecificationExample();
         example.or().andGoodsIdEqualTo(id).andDeletedEqualTo(false);
         return goodsSpecificationMapper.selectByExample(example);
     }
 
-    public LitemallGoodsSpecification findById(Integer id) {
+    public YopsaasGoodsSpecification findById(Integer id) {
         return goodsSpecificationMapper.selectByPrimaryKey(id);
     }
 
     public void deleteByGid(Integer gid) {
-        LitemallGoodsSpecificationExample example = new LitemallGoodsSpecificationExample();
+        YopsaasGoodsSpecificationExample example = new YopsaasGoodsSpecificationExample();
         example.or().andGoodsIdEqualTo(gid);
         goodsSpecificationMapper.logicalDeleteByExample(example);
     }
 
-    public void add(LitemallGoodsSpecification goodsSpecification) {
+    public void add(YopsaasGoodsSpecification goodsSpecification) {
         goodsSpecification.setAddTime(LocalDateTime.now());
         goodsSpecification.setUpdateTime(LocalDateTime.now());
         goodsSpecificationMapper.insertSelective(goodsSpecification);
@@ -55,24 +55,24 @@ public class YopsaasGoodsSpecificationService {
      * @return
      */
     public Object getSpecificationVoList(Integer id) {
-        List<LitemallGoodsSpecification> goodsSpecificationList = queryByGid(id);
+        List<YopsaasGoodsSpecification> goodsSpecificationList = queryByGid(id);
 
         Map<String, VO> map = new HashMap<>();
         List<VO> specificationVoList = new ArrayList<>();
 
-        for (LitemallGoodsSpecification goodsSpecification : goodsSpecificationList) {
+        for (YopsaasGoodsSpecification goodsSpecification : goodsSpecificationList) {
             String specification = goodsSpecification.getSpecification();
             VO goodsSpecificationVo = map.get(specification);
             if (goodsSpecificationVo == null) {
                 goodsSpecificationVo = new VO();
                 goodsSpecificationVo.setName(specification);
-                List<LitemallGoodsSpecification> valueList = new ArrayList<>();
+                List<YopsaasGoodsSpecification> valueList = new ArrayList<>();
                 valueList.add(goodsSpecification);
                 goodsSpecificationVo.setValueList(valueList);
                 map.put(specification, goodsSpecificationVo);
                 specificationVoList.add(goodsSpecificationVo);
             } else {
-                List<LitemallGoodsSpecification> valueList = goodsSpecificationVo.getValueList();
+                List<YopsaasGoodsSpecification> valueList = goodsSpecificationVo.getValueList();
                 valueList.add(goodsSpecification);
             }
         }
@@ -80,14 +80,14 @@ public class YopsaasGoodsSpecificationService {
         return specificationVoList;
     }
 
-    public void updateById(LitemallGoodsSpecification specification) {
+    public void updateById(YopsaasGoodsSpecification specification) {
         specification.setUpdateTime(LocalDateTime.now());
         goodsSpecificationMapper.updateByPrimaryKeySelective(specification);
     }
 
     private class VO {
         private String name;
-        private List<LitemallGoodsSpecification> valueList;
+        private List<YopsaasGoodsSpecification> valueList;
 
         public String getName() {
             return name;
@@ -97,11 +97,11 @@ public class YopsaasGoodsSpecificationService {
             this.name = name;
         }
 
-        public List<LitemallGoodsSpecification> getValueList() {
+        public List<YopsaasGoodsSpecification> getValueList() {
             return valueList;
         }
 
-        public void setValueList(List<LitemallGoodsSpecification> valueList) {
+        public void setValueList(List<YopsaasGoodsSpecification> valueList) {
             this.valueList = valueList;
         }
     }

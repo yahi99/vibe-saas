@@ -10,10 +10,10 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.util.bcrypt.BCryptPasswordEncoder;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallAdmin;
-import com.yongche.yopsaas.db.domain.LitemallIssue;
-import com.yongche.yopsaas.db.domain.LitemallNotice;
-import com.yongche.yopsaas.db.domain.LitemallNoticeAdmin;
+import com.yongche.yopsaas.db.domain.YopsaasAdmin;
+import com.yongche.yopsaas.db.domain.YopsaasIssue;
+import com.yongche.yopsaas.db.domain.YopsaasNotice;
+import com.yongche.yopsaas.db.domain.YopsaasNoticeAdmin;
 import com.yongche.yopsaas.db.service.YopsaasAdminService;
 import com.yongche.yopsaas.db.service.YopsaasNoticeAdminService;
 import com.yongche.yopsaas.db.service.YopsaasNoticeService;
@@ -55,7 +55,7 @@ public class AdminProfileController {
         }
 
         Subject currentUser = SecurityUtils.getSubject();
-        LitemallAdmin admin = (LitemallAdmin) currentUser.getPrincipal();
+        YopsaasAdmin admin = (YopsaasAdmin) currentUser.getPrincipal();
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         if (!encoder.matches(oldPassword, admin.getPassword())) {
@@ -71,7 +71,7 @@ public class AdminProfileController {
 
     private Integer getAdminId(){
         Subject currentUser = SecurityUtils.getSubject();
-        LitemallAdmin admin = (LitemallAdmin) currentUser.getPrincipal();
+        YopsaasAdmin admin = (YopsaasAdmin) currentUser.getPrincipal();
         return admin.getId();
     }
 
@@ -89,7 +89,7 @@ public class AdminProfileController {
                             @RequestParam(defaultValue = "10") Integer limit,
                             @Sort @RequestParam(defaultValue = "add_time") String sort,
                             @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallNoticeAdmin> noticeList = noticeAdminService.querySelective(title, type, getAdminId(), page, limit, sort, order);
+        List<YopsaasNoticeAdmin> noticeList = noticeAdminService.querySelective(title, type, getAdminId(), page, limit, sort, order);
         return ResponseUtil.okList(noticeList);
     }
 
@@ -101,7 +101,7 @@ public class AdminProfileController {
             return ResponseUtil.badArgument();
         }
 
-        LitemallNoticeAdmin noticeAdmin = noticeAdminService.find(noticeId, getAdminId());
+        YopsaasNoticeAdmin noticeAdmin = noticeAdminService.find(noticeId, getAdminId());
         if(noticeAdmin == null){
            return ResponseUtil.badArgumentValue();
         }
@@ -111,7 +111,7 @@ public class AdminProfileController {
 
         // 返回通知的相关信息
         Map<String, Object> data = new HashMap<>();
-        LitemallNotice notice = noticeService.findById(noticeId);
+        YopsaasNotice notice = noticeService.findById(noticeId);
         data.put("title", notice.getTitle());
         data.put("content", notice.getContent());
         data.put("time", notice.getUpdateTime());
@@ -120,7 +120,7 @@ public class AdminProfileController {
             data.put("admin", "系统");
         }
         else{
-            LitemallAdmin admin = adminService.findById(notice.getAdminId());
+            YopsaasAdmin admin = adminService.findById(notice.getAdminId());
             data.put("admin", admin.getUsername());
             data.put("avatar", admin.getAvatar());
         }

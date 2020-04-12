@@ -6,7 +6,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import com.yongche.yopsaas.admin.annotation.RequiresPermissionsDesc;
 import com.yongche.yopsaas.admin.vo.CategoryVo;
 import com.yongche.yopsaas.core.util.ResponseUtil;
-import com.yongche.yopsaas.db.domain.LitemallCategory;
+import com.yongche.yopsaas.db.domain.YopsaasCategory;
 import com.yongche.yopsaas.db.service.YopsaasCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -34,8 +34,8 @@ public class AdminCategoryController {
     public Object list() {
         List<CategoryVo> categoryVoList = new ArrayList<>();
 
-        List<LitemallCategory> categoryList = categoryService.queryByPid(0);
-        for (LitemallCategory category : categoryList) {
+        List<YopsaasCategory> categoryList = categoryService.queryByPid(0);
+        for (YopsaasCategory category : categoryList) {
             CategoryVo categoryVO = new CategoryVo();
             categoryVO.setId(category.getId());
             categoryVO.setDesc(category.getDesc());
@@ -46,8 +46,8 @@ public class AdminCategoryController {
             categoryVO.setLevel(category.getLevel());
 
             List<CategoryVo> children = new ArrayList<>();
-            List<LitemallCategory> subCategoryList = categoryService.queryByPid(category.getId());
-            for (LitemallCategory subCategory : subCategoryList) {
+            List<YopsaasCategory> subCategoryList = categoryService.queryByPid(category.getId());
+            for (YopsaasCategory subCategory : subCategoryList) {
                 CategoryVo subCategoryVo = new CategoryVo();
                 subCategoryVo.setId(subCategory.getId());
                 subCategoryVo.setDesc(subCategory.getDesc());
@@ -67,7 +67,7 @@ public class AdminCategoryController {
         return ResponseUtil.okList(categoryVoList);
     }
 
-    private Object validate(LitemallCategory category) {
+    private Object validate(YopsaasCategory category) {
         String name = category.getName();
         if (StringUtils.isEmpty(name)) {
             return ResponseUtil.badArgument();
@@ -92,7 +92,7 @@ public class AdminCategoryController {
     @RequiresPermissions("admin:category:create")
     @RequiresPermissionsDesc(menu = {"商场管理", "类目管理"}, button = "添加")
     @PostMapping("/create")
-    public Object create(@RequestBody LitemallCategory category) {
+    public Object create(@RequestBody YopsaasCategory category) {
         Object error = validate(category);
         if (error != null) {
             return error;
@@ -105,14 +105,14 @@ public class AdminCategoryController {
     @RequiresPermissionsDesc(menu = {"商场管理", "类目管理"}, button = "详情")
     @GetMapping("/read")
     public Object read(@NotNull Integer id) {
-        LitemallCategory category = categoryService.findById(id);
+        YopsaasCategory category = categoryService.findById(id);
         return ResponseUtil.ok(category);
     }
 
     @RequiresPermissions("admin:category:update")
     @RequiresPermissionsDesc(menu = {"商场管理", "类目管理"}, button = "编辑")
     @PostMapping("/update")
-    public Object update(@RequestBody LitemallCategory category) {
+    public Object update(@RequestBody YopsaasCategory category) {
         Object error = validate(category);
         if (error != null) {
             return error;
@@ -127,7 +127,7 @@ public class AdminCategoryController {
     @RequiresPermissions("admin:category:delete")
     @RequiresPermissionsDesc(menu = {"商场管理", "类目管理"}, button = "删除")
     @PostMapping("/delete")
-    public Object delete(@RequestBody LitemallCategory category) {
+    public Object delete(@RequestBody YopsaasCategory category) {
         Integer id = category.getId();
         if (id == null) {
             return ResponseUtil.badArgument();
@@ -140,9 +140,9 @@ public class AdminCategoryController {
     @GetMapping("/l1")
     public Object catL1() {
         // 所有一级分类目录
-        List<LitemallCategory> l1CatList = categoryService.queryL1();
+        List<YopsaasCategory> l1CatList = categoryService.queryL1();
         List<Map<String, Object>> data = new ArrayList<>(l1CatList.size());
-        for (LitemallCategory category : l1CatList) {
+        for (YopsaasCategory category : l1CatList) {
             Map<String, Object> d = new HashMap<>(2);
             d.put("value", category.getId());
             d.put("label", category.getName());

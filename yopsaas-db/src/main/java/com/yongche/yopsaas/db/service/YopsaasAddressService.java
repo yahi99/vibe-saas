@@ -1,9 +1,9 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallAddressMapper;
-import com.yongche.yopsaas.db.domain.LitemallAddress;
-import com.yongche.yopsaas.db.domain.LitemallAddressExample;
+import com.yongche.yopsaas.db.dao.YopsaasAddressMapper;
+import com.yongche.yopsaas.db.domain.YopsaasAddress;
+import com.yongche.yopsaas.db.domain.YopsaasAddressExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -14,27 +14,27 @@ import java.util.List;
 @Service
 public class YopsaasAddressService {
     @Resource
-    private LitemallAddressMapper addressMapper;
+    private YopsaasAddressMapper addressMapper;
 
-    public List<LitemallAddress> queryByUid(Integer uid) {
-        LitemallAddressExample example = new LitemallAddressExample();
+    public List<YopsaasAddress> queryByUid(Integer uid) {
+        YopsaasAddressExample example = new YopsaasAddressExample();
         example.or().andUserIdEqualTo(uid).andDeletedEqualTo(false);
         return addressMapper.selectByExample(example);
     }
 
-    public LitemallAddress query(Integer userId, Integer id) {
-        LitemallAddressExample example = new LitemallAddressExample();
+    public YopsaasAddress query(Integer userId, Integer id) {
+        YopsaasAddressExample example = new YopsaasAddressExample();
         example.or().andIdEqualTo(id).andUserIdEqualTo(userId).andDeletedEqualTo(false);
         return addressMapper.selectOneByExample(example);
     }
 
-    public int add(LitemallAddress address) {
+    public int add(YopsaasAddress address) {
         address.setAddTime(LocalDateTime.now());
         address.setUpdateTime(LocalDateTime.now());
         return addressMapper.insertSelective(address);
     }
 
-    public int update(LitemallAddress address) {
+    public int update(YopsaasAddress address) {
         address.setUpdateTime(LocalDateTime.now());
         return addressMapper.updateByPrimaryKeySelective(address);
     }
@@ -43,24 +43,24 @@ public class YopsaasAddressService {
         addressMapper.logicalDeleteByPrimaryKey(id);
     }
 
-    public LitemallAddress findDefault(Integer userId) {
-        LitemallAddressExample example = new LitemallAddressExample();
+    public YopsaasAddress findDefault(Integer userId) {
+        YopsaasAddressExample example = new YopsaasAddressExample();
         example.or().andUserIdEqualTo(userId).andIsDefaultEqualTo(true).andDeletedEqualTo(false);
         return addressMapper.selectOneByExample(example);
     }
 
     public void resetDefault(Integer userId) {
-        LitemallAddress address = new LitemallAddress();
+        YopsaasAddress address = new YopsaasAddress();
         address.setIsDefault(false);
         address.setUpdateTime(LocalDateTime.now());
-        LitemallAddressExample example = new LitemallAddressExample();
+        YopsaasAddressExample example = new YopsaasAddressExample();
         example.or().andUserIdEqualTo(userId).andDeletedEqualTo(false);
         addressMapper.updateByExampleSelective(address, example);
     }
 
-    public List<LitemallAddress> querySelective(Integer userId, String name, Integer page, Integer limit, String sort, String order) {
-        LitemallAddressExample example = new LitemallAddressExample();
-        LitemallAddressExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasAddress> querySelective(Integer userId, String name, Integer page, Integer limit, String sort, String order) {
+        YopsaasAddressExample example = new YopsaasAddressExample();
+        YopsaasAddressExample.Criteria criteria = example.createCriteria();
 
         if (userId != null) {
             criteria.andUserIdEqualTo(userId);

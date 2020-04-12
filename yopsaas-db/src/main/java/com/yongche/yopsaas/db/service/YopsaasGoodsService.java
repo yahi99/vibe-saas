@@ -1,10 +1,10 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallGoodsMapper;
-import com.yongche.yopsaas.db.domain.LitemallGoods;
-import com.yongche.yopsaas.db.domain.LitemallGoods.Column;
-import com.yongche.yopsaas.db.domain.LitemallGoodsExample;
+import com.yongche.yopsaas.db.dao.YopsaasGoodsMapper;
+import com.yongche.yopsaas.db.domain.YopsaasGoods;
+import com.yongche.yopsaas.db.domain.YopsaasGoods.Column;
+import com.yongche.yopsaas.db.domain.YopsaasGoodsExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -18,7 +18,7 @@ import java.util.List;
 public class YopsaasGoodsService {
     Column[] columns = new Column[]{Column.id, Column.name, Column.brief, Column.picUrl, Column.isHot, Column.isNew, Column.counterPrice, Column.retailPrice};
     @Resource
-    private LitemallGoodsMapper goodsMapper;
+    private YopsaasGoodsMapper goodsMapper;
 
     /**
      * 获取热卖商品
@@ -27,8 +27,8 @@ public class YopsaasGoodsService {
      * @param limit
      * @return
      */
-    public List<LitemallGoods> queryByHot(int offset, int limit) {
-        LitemallGoodsExample example = new LitemallGoodsExample();
+    public List<YopsaasGoods> queryByHot(int offset, int limit) {
+        YopsaasGoodsExample example = new YopsaasGoodsExample();
         example.or().andIsHotEqualTo(true).andIsOnSaleEqualTo(true).andDeletedEqualTo(false);
         example.setOrderByClause("add_time desc");
         PageHelper.startPage(offset, limit);
@@ -43,8 +43,8 @@ public class YopsaasGoodsService {
      * @param limit
      * @return
      */
-    public List<LitemallGoods> queryByNew(int offset, int limit) {
-        LitemallGoodsExample example = new LitemallGoodsExample();
+    public List<YopsaasGoods> queryByNew(int offset, int limit) {
+        YopsaasGoodsExample example = new YopsaasGoodsExample();
         example.or().andIsNewEqualTo(true).andIsOnSaleEqualTo(true).andDeletedEqualTo(false);
         example.setOrderByClause("add_time desc");
         PageHelper.startPage(offset, limit);
@@ -60,8 +60,8 @@ public class YopsaasGoodsService {
      * @param limit
      * @return
      */
-    public List<LitemallGoods> queryByCategory(List<Integer> catList, int offset, int limit) {
-        LitemallGoodsExample example = new LitemallGoodsExample();
+    public List<YopsaasGoods> queryByCategory(List<Integer> catList, int offset, int limit) {
+        YopsaasGoodsExample example = new YopsaasGoodsExample();
         example.or().andCategoryIdIn(catList).andIsOnSaleEqualTo(true).andDeletedEqualTo(false);
         example.setOrderByClause("add_time  desc");
         PageHelper.startPage(offset, limit);
@@ -78,8 +78,8 @@ public class YopsaasGoodsService {
      * @param limit
      * @return
      */
-    public List<LitemallGoods> queryByCategory(Integer catId, int offset, int limit) {
-        LitemallGoodsExample example = new LitemallGoodsExample();
+    public List<YopsaasGoods> queryByCategory(Integer catId, int offset, int limit) {
+        YopsaasGoodsExample example = new YopsaasGoodsExample();
         example.or().andCategoryIdEqualTo(catId).andIsOnSaleEqualTo(true).andDeletedEqualTo(false);
         example.setOrderByClause("add_time desc");
         PageHelper.startPage(offset, limit);
@@ -88,10 +88,10 @@ public class YopsaasGoodsService {
     }
 
 
-    public List<LitemallGoods> querySelective(Integer catId, Integer brandId, String keywords, Boolean isHot, Boolean isNew, Integer offset, Integer limit, String sort, String order) {
-        LitemallGoodsExample example = new LitemallGoodsExample();
-        LitemallGoodsExample.Criteria criteria1 = example.or();
-        LitemallGoodsExample.Criteria criteria2 = example.or();
+    public List<YopsaasGoods> querySelective(Integer catId, Integer brandId, String keywords, Boolean isHot, Boolean isNew, Integer offset, Integer limit, String sort, String order) {
+        YopsaasGoodsExample example = new YopsaasGoodsExample();
+        YopsaasGoodsExample.Criteria criteria1 = example.or();
+        YopsaasGoodsExample.Criteria criteria2 = example.or();
 
         if (!StringUtils.isEmpty(catId) && catId != 0) {
             criteria1.andCategoryIdEqualTo(catId);
@@ -127,9 +127,9 @@ public class YopsaasGoodsService {
         return goodsMapper.selectByExampleSelective(example, columns);
     }
 
-    public List<LitemallGoods> querySelective(Integer goodsId, String goodsSn, String name, Integer page, Integer size, String sort, String order) {
-        LitemallGoodsExample example = new LitemallGoodsExample();
-        LitemallGoodsExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasGoods> querySelective(Integer goodsId, String goodsSn, String name, Integer page, Integer size, String sort, String order) {
+        YopsaasGoodsExample example = new YopsaasGoodsExample();
+        YopsaasGoodsExample.Criteria criteria = example.createCriteria();
 
         if (goodsId != null) {
             criteria.andIdEqualTo(goodsId);
@@ -156,8 +156,8 @@ public class YopsaasGoodsService {
      * @param id
      * @return
      */
-    public LitemallGoods findById(Integer id) {
-        LitemallGoodsExample example = new LitemallGoodsExample();
+    public YopsaasGoods findById(Integer id) {
+        YopsaasGoodsExample example = new YopsaasGoodsExample();
         example.or().andIdEqualTo(id).andDeletedEqualTo(false);
         return goodsMapper.selectOneByExampleWithBLOBs(example);
     }
@@ -168,8 +168,8 @@ public class YopsaasGoodsService {
      * @param id
      * @return
      */
-    public LitemallGoods findByIdVO(Integer id) {
-        LitemallGoodsExample example = new LitemallGoodsExample();
+    public YopsaasGoods findByIdVO(Integer id) {
+        YopsaasGoodsExample example = new YopsaasGoodsExample();
         example.or().andIdEqualTo(id).andIsOnSaleEqualTo(true).andDeletedEqualTo(false);
         return goodsMapper.selectOneByExampleSelective(example, columns);
     }
@@ -181,12 +181,12 @@ public class YopsaasGoodsService {
      * @return
      */
     public Integer queryOnSale() {
-        LitemallGoodsExample example = new LitemallGoodsExample();
+        YopsaasGoodsExample example = new YopsaasGoodsExample();
         example.or().andIsOnSaleEqualTo(true).andDeletedEqualTo(false);
         return (int) goodsMapper.countByExample(example);
     }
 
-    public int updateById(LitemallGoods goods) {
+    public int updateById(YopsaasGoods goods) {
         goods.setUpdateTime(LocalDateTime.now());
         return goodsMapper.updateByPrimaryKeySelective(goods);
     }
@@ -195,7 +195,7 @@ public class YopsaasGoodsService {
         goodsMapper.logicalDeleteByPrimaryKey(id);
     }
 
-    public void add(LitemallGoods goods) {
+    public void add(YopsaasGoods goods) {
         goods.setAddTime(LocalDateTime.now());
         goods.setUpdateTime(LocalDateTime.now());
         goodsMapper.insertSelective(goods);
@@ -207,15 +207,15 @@ public class YopsaasGoodsService {
      * @return
      */
     public int count() {
-        LitemallGoodsExample example = new LitemallGoodsExample();
+        YopsaasGoodsExample example = new YopsaasGoodsExample();
         example.or().andDeletedEqualTo(false);
         return (int) goodsMapper.countByExample(example);
     }
 
     public List<Integer> getCatIds(Integer brandId, String keywords, Boolean isHot, Boolean isNew) {
-        LitemallGoodsExample example = new LitemallGoodsExample();
-        LitemallGoodsExample.Criteria criteria1 = example.or();
-        LitemallGoodsExample.Criteria criteria2 = example.or();
+        YopsaasGoodsExample example = new YopsaasGoodsExample();
+        YopsaasGoodsExample.Criteria criteria1 = example.or();
+        YopsaasGoodsExample.Criteria criteria2 = example.or();
 
         if (!StringUtils.isEmpty(brandId)) {
             criteria1.andBrandIdEqualTo(brandId);
@@ -238,22 +238,22 @@ public class YopsaasGoodsService {
         criteria1.andDeletedEqualTo(false);
         criteria2.andDeletedEqualTo(false);
 
-        List<LitemallGoods> goodsList = goodsMapper.selectByExampleSelective(example, Column.categoryId);
+        List<YopsaasGoods> goodsList = goodsMapper.selectByExampleSelective(example, Column.categoryId);
         List<Integer> cats = new ArrayList<Integer>();
-        for (LitemallGoods goods : goodsList) {
+        for (YopsaasGoods goods : goodsList) {
             cats.add(goods.getCategoryId());
         }
         return cats;
     }
 
     public boolean checkExistByName(String name) {
-        LitemallGoodsExample example = new LitemallGoodsExample();
+        YopsaasGoodsExample example = new YopsaasGoodsExample();
         example.or().andNameEqualTo(name).andIsOnSaleEqualTo(true).andDeletedEqualTo(false);
         return goodsMapper.countByExample(example) != 0;
     }
 
-    public List<LitemallGoods> queryByIds(Integer[] ids) {
-        LitemallGoodsExample example = new LitemallGoodsExample();
+    public List<YopsaasGoods> queryByIds(Integer[] ids) {
+        YopsaasGoodsExample example = new YopsaasGoodsExample();
         example.or().andIdIn(Arrays.asList(ids)).andIsOnSaleEqualTo(true).andDeletedEqualTo(false);
         return goodsMapper.selectByExampleSelective(example, columns);
     }

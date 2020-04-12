@@ -4,8 +4,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
-import com.yongche.yopsaas.db.domain.LitemallFootprint;
-import com.yongche.yopsaas.db.domain.LitemallGoods;
+import com.yongche.yopsaas.db.domain.YopsaasFootprint;
+import com.yongche.yopsaas.db.domain.YopsaasGoods;
 import com.yongche.yopsaas.db.service.YopsaasFootprintService;
 import com.yongche.yopsaas.db.service.YopsaasGoodsService;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
@@ -52,7 +52,7 @@ public class WxFootprintController {
         if (footprintId == null) {
             return ResponseUtil.badArgument();
         }
-        LitemallFootprint footprint = footprintService.findById(userId, footprintId);
+        YopsaasFootprint footprint = footprintService.findById(userId, footprintId);
 
         if (footprint == null) {
             return ResponseUtil.badArgumentValue();
@@ -80,16 +80,16 @@ public class WxFootprintController {
             return ResponseUtil.unlogin();
         }
 
-        List<LitemallFootprint> footprintList = footprintService.queryByAddTime(userId, page, limit);
+        List<YopsaasFootprint> footprintList = footprintService.queryByAddTime(userId, page, limit);
 
         List<Object> footprintVoList = new ArrayList<>(footprintList.size());
-        for (LitemallFootprint footprint : footprintList) {
+        for (YopsaasFootprint footprint : footprintList) {
             Map<String, Object> c = new HashMap<String, Object>();
             c.put("id", footprint.getId());
             c.put("goodsId", footprint.getGoodsId());
             c.put("addTime", footprint.getAddTime());
 
-            LitemallGoods goods = goodsService.findById(footprint.getGoodsId());
+            YopsaasGoods goods = goodsService.findById(footprint.getGoodsId());
             c.put("name", goods.getName());
             c.put("brief", goods.getBrief());
             c.put("picUrl", goods.getPicUrl());

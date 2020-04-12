@@ -6,10 +6,10 @@ import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallCart;
-import com.yongche.yopsaas.db.domain.LitemallCoupon;
-import com.yongche.yopsaas.db.domain.LitemallCouponUser;
-import com.yongche.yopsaas.db.domain.LitemallGrouponRules;
+import com.yongche.yopsaas.db.domain.YopsaasCart;
+import com.yongche.yopsaas.db.domain.YopsaasCoupon;
+import com.yongche.yopsaas.db.domain.YopsaasCouponUser;
+import com.yongche.yopsaas.db.domain.YopsaasGrouponRules;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.db.util.CouponConstant;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
@@ -59,7 +59,7 @@ public class WxCouponController {
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
 
-        List<LitemallCoupon> couponList = couponService.queryList(page, limit, sort, order);
+        List<YopsaasCoupon> couponList = couponService.queryList(page, limit, sort, order);
         return ResponseUtil.okList(couponList);
     }
 
@@ -85,16 +85,16 @@ public class WxCouponController {
             return ResponseUtil.unlogin();
         }
 
-        List<LitemallCouponUser> couponUserList = couponUserService.queryList(userId, null, status, page, limit, sort, order);
+        List<YopsaasCouponUser> couponUserList = couponUserService.queryList(userId, null, status, page, limit, sort, order);
         List<CouponVo> couponVoList = change(couponUserList);
         return ResponseUtil.okList(couponVoList, couponUserList);
     }
 
-    private List<CouponVo> change(List<LitemallCouponUser> couponList) {
+    private List<CouponVo> change(List<YopsaasCouponUser> couponList) {
         List<CouponVo> couponVoList = new ArrayList<>(couponList.size());
-        for(LitemallCouponUser couponUser : couponList){
+        for(YopsaasCouponUser couponUser : couponList){
             Integer couponId = couponUser.getCouponId();
-            LitemallCoupon coupon = couponService.findById(couponId);
+            YopsaasCoupon coupon = couponService.findById(couponId);
             CouponVo couponVo = new CouponVo();
             couponVo.setId(couponUser.getId());
             couponVo.setCid(coupon.getId());
@@ -129,17 +129,17 @@ public class WxCouponController {
 
         // 团购优惠
         BigDecimal grouponPrice = new BigDecimal(0.00);
-        LitemallGrouponRules grouponRules = grouponRulesService.findById(grouponRulesId);
+        YopsaasGrouponRules grouponRules = grouponRulesService.findById(grouponRulesId);
         if (grouponRules != null) {
             grouponPrice = grouponRules.getDiscount();
         }
 
         // 商品价格
-        List<LitemallCart> checkedGoodsList = null;
+        List<YopsaasCart> checkedGoodsList = null;
         if (cartId == null || cartId.equals(0)) {
             checkedGoodsList = cartService.queryByUidAndChecked(userId);
         } else {
-            LitemallCart cart = cartService.findById(userId, cartId);
+            YopsaasCart cart = cartService.findById(userId, cartId);
             if (cart == null) {
                 return ResponseUtil.badArgumentValue();
             }
@@ -147,7 +147,7 @@ public class WxCouponController {
             checkedGoodsList.add(cart);
         }
         BigDecimal checkedGoodsPrice = new BigDecimal(0.00);
-        for (LitemallCart cart : checkedGoodsList) {
+        for (YopsaasCart cart : checkedGoodsList) {
             //  只有当团购规格商品ID符合才进行团购优惠
             if (grouponRules != null && grouponRules.getGoodsId().equals(cart.getGoodsId())) {
                 checkedGoodsPrice = checkedGoodsPrice.add(cart.getPrice().subtract(grouponPrice).multiply(new BigDecimal(cart.getNumber())));
@@ -157,10 +157,10 @@ public class WxCouponController {
         }
 
         // 计算优惠券可用情况
-        List<LitemallCouponUser> couponUserList = couponUserService.queryAll(userId);
+        List<YopsaasCouponUser> couponUserList = couponUserService.queryAll(userId);
         List<CouponVo> couponVoList = change(couponUserList);
         for (CouponVo cv : couponVoList) {
-            LitemallCoupon coupon = couponVerifyService.checkCoupon(userId, cv.getCid(), cv.getId(), checkedGoodsPrice);
+            YopsaasCoupon coupon = couponVerifyService.checkCoupon(userId, cv.getCid(), cv.getId(), checkedGoodsPrice);
             cv.setAvailable(coupon != null);
         }
 
@@ -185,7 +185,7 @@ public class WxCouponController {
             return ResponseUtil.badArgument();
         }
 
-        LitemallCoupon coupon = couponService.findById(couponId);
+        YopsaasCoupon coupon = couponService.findById(couponId);
         if(coupon == null){
             return ResponseUtil.badArgumentValue();
         }
@@ -227,7 +227,7 @@ public class WxCouponController {
         }
 
         // 用户领券记录
-        LitemallCouponUser couponUser = new LitemallCouponUser();
+        YopsaasCouponUser couponUser = new YopsaasCouponUser();
         couponUser.setCouponId(couponId);
         couponUser.setUserId(userId);
         Short timeType = coupon.getTimeType();
@@ -263,7 +263,7 @@ public class WxCouponController {
             return ResponseUtil.badArgument();
         }
 
-        LitemallCoupon coupon = couponService.findByCode(code);
+        YopsaasCoupon coupon = couponService.findByCode(code);
         if(coupon == null){
             return ResponseUtil.fail(WxResponseCode.COUPON_CODE_INVALID, "优惠券不正确");
         }
@@ -306,7 +306,7 @@ public class WxCouponController {
         }
 
         // 用户领券记录
-        LitemallCouponUser couponUser = new LitemallCouponUser();
+        YopsaasCouponUser couponUser = new YopsaasCouponUser();
         couponUser.setCouponId(couponId);
         couponUser.setUserId(userId);
         Short timeType = coupon.getTimeType();

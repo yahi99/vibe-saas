@@ -7,7 +7,7 @@ import com.yongche.yopsaas.admin.annotation.RequiresPermissionsDesc;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallIssue;
+import com.yongche.yopsaas.db.domain.YopsaasIssue;
 import com.yongche.yopsaas.db.service.YopsaasIssueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -34,11 +34,11 @@ public class AdminIssueController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallIssue> issueList = issueService.querySelective(question, page, limit, sort, order);
+        List<YopsaasIssue> issueList = issueService.querySelective(question, page, limit, sort, order);
         return ResponseUtil.okList(issueList);
     }
 
-    private Object validate(LitemallIssue issue) {
+    private Object validate(YopsaasIssue issue) {
         String question = issue.getQuestion();
         if (StringUtils.isEmpty(question)) {
             return ResponseUtil.badArgument();
@@ -53,7 +53,7 @@ public class AdminIssueController {
     @RequiresPermissions("admin:issue:create")
     @RequiresPermissionsDesc(menu = {"商场管理", "通用问题"}, button = "添加")
     @PostMapping("/create")
-    public Object create(@RequestBody LitemallIssue issue) {
+    public Object create(@RequestBody YopsaasIssue issue) {
         Object error = validate(issue);
         if (error != null) {
             return error;
@@ -65,14 +65,14 @@ public class AdminIssueController {
     @RequiresPermissions("admin:issue:read")
     @GetMapping("/read")
     public Object read(@NotNull Integer id) {
-        LitemallIssue issue = issueService.findById(id);
+        YopsaasIssue issue = issueService.findById(id);
         return ResponseUtil.ok(issue);
     }
 
     @RequiresPermissions("admin:issue:update")
     @RequiresPermissionsDesc(menu = {"商场管理", "通用问题"}, button = "编辑")
     @PostMapping("/update")
-    public Object update(@RequestBody LitemallIssue issue) {
+    public Object update(@RequestBody YopsaasIssue issue) {
         Object error = validate(issue);
         if (error != null) {
             return error;
@@ -87,7 +87,7 @@ public class AdminIssueController {
     @RequiresPermissions("admin:issue:delete")
     @RequiresPermissionsDesc(menu = {"商场管理", "通用问题"}, button = "删除")
     @PostMapping("/delete")
-    public Object delete(@RequestBody LitemallIssue issue) {
+    public Object delete(@RequestBody YopsaasIssue issue) {
         Integer id = issue.getId();
         if (id == null) {
             return ResponseUtil.badArgument();

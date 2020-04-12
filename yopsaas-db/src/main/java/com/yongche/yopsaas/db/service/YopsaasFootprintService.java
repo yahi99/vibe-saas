@@ -1,9 +1,9 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallFootprintMapper;
-import com.yongche.yopsaas.db.domain.LitemallFootprint;
-import com.yongche.yopsaas.db.domain.LitemallFootprintExample;
+import com.yongche.yopsaas.db.dao.YopsaasFootprintMapper;
+import com.yongche.yopsaas.db.domain.YopsaasFootprint;
+import com.yongche.yopsaas.db.domain.YopsaasFootprintExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -14,22 +14,22 @@ import java.util.List;
 @Service
 public class YopsaasFootprintService {
     @Resource
-    private LitemallFootprintMapper footprintMapper;
+    private YopsaasFootprintMapper footprintMapper;
 
-    public List<LitemallFootprint> queryByAddTime(Integer userId, Integer page, Integer size) {
-        LitemallFootprintExample example = new LitemallFootprintExample();
+    public List<YopsaasFootprint> queryByAddTime(Integer userId, Integer page, Integer size) {
+        YopsaasFootprintExample example = new YopsaasFootprintExample();
         example.or().andUserIdEqualTo(userId).andDeletedEqualTo(false);
-        example.setOrderByClause(LitemallFootprint.Column.addTime.desc());
+        example.setOrderByClause(YopsaasFootprint.Column.addTime.desc());
         PageHelper.startPage(page, size);
         return footprintMapper.selectByExample(example);
     }
 
-    public LitemallFootprint findById(Integer id) {
+    public YopsaasFootprint findById(Integer id) {
         return footprintMapper.selectByPrimaryKey(id);
     }
 
-    public LitemallFootprint findById(Integer userId, Integer id) {
-        LitemallFootprintExample example = new LitemallFootprintExample();
+    public YopsaasFootprint findById(Integer userId, Integer id) {
+        YopsaasFootprintExample example = new YopsaasFootprintExample();
         example.or().andIdEqualTo(id).andUserIdEqualTo(userId).andDeletedEqualTo(false);
         return footprintMapper.selectOneByExample(example);
     }
@@ -38,15 +38,15 @@ public class YopsaasFootprintService {
         footprintMapper.logicalDeleteByPrimaryKey(id);
     }
 
-    public void add(LitemallFootprint footprint) {
+    public void add(YopsaasFootprint footprint) {
         footprint.setAddTime(LocalDateTime.now());
         footprint.setUpdateTime(LocalDateTime.now());
         footprintMapper.insertSelective(footprint);
     }
 
-    public List<LitemallFootprint> querySelective(String userId, String goodsId, Integer page, Integer size, String sort, String order) {
-        LitemallFootprintExample example = new LitemallFootprintExample();
-        LitemallFootprintExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasFootprint> querySelective(String userId, String goodsId, Integer page, Integer size, String sort, String order) {
+        YopsaasFootprintExample example = new YopsaasFootprintExample();
+        YopsaasFootprintExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(userId)) {
             criteria.andUserIdEqualTo(Integer.valueOf(userId));

@@ -6,8 +6,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.storage.StorageService;
 import com.yongche.yopsaas.core.system.SystemConfig;
-import com.yongche.yopsaas.db.domain.LitemallGroupon;
-import com.yongche.yopsaas.db.domain.LitemallStorage;
+import com.yongche.yopsaas.db.domain.YopsaasGroupon;
+import com.yongche.yopsaas.db.domain.YopsaasStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class QCodeService {
     private StorageService storageService;
 
 
-    public String createGrouponShareImage(String goodName, String goodPicUrl, LitemallGroupon groupon) {
+    public String createGrouponShareImage(String goodName, String goodPicUrl, YopsaasGroupon groupon) {
         try {
             //创建该商品的二维码
             File file = wxMaService.getQrcodeService().createWxaCodeUnlimit("groupon," + groupon.getId(), "pages" +
@@ -38,7 +38,7 @@ public class QCodeService {
             byte[] imageData = drawPicture(inputStream, goodPicUrl, goodName);
             ByteArrayInputStream inputStream2 = new ByteArrayInputStream(imageData);
             //存储分享图
-            LitemallStorage storageInfo = storageService.store(inputStream2, imageData.length, "image/jpeg",
+            YopsaasStorage storageInfo = storageService.store(inputStream2, imageData.length, "image/jpeg",
                     getKeyName(groupon.getId().toString()));
 
             return storageInfo.getUrl();
@@ -73,7 +73,7 @@ public class QCodeService {
             byte[] imageData = drawPicture(inputStream, goodPicUrl, goodName);
             ByteArrayInputStream inputStream2 = new ByteArrayInputStream(imageData);
             //存储分享图
-            LitemallStorage yopsaasStorage = storageService.store(inputStream2, imageData.length, "image/jpeg",
+            YopsaasStorage yopsaasStorage = storageService.store(inputStream2, imageData.length, "image/jpeg",
                     getKeyName(goodId));
 
             return yopsaasStorage.getUrl();

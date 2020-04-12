@@ -7,7 +7,7 @@ import com.yongche.yopsaas.admin.annotation.RequiresPermissionsDesc;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallCollect;
+import com.yongche.yopsaas.db.domain.YopsaasCollect;
 import com.yongche.yopsaas.db.service.YopsaasCollectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -36,7 +36,7 @@ public class AdminCollectController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallCollect> collectList = collectService.querySelective(userId, valueId, page, limit, sort, order);
+        List<YopsaasCollect> collectList = collectService.querySelective(userId, valueId, page, limit, sort, order);
         return ResponseUtil.okList(collectList);
     }
 }

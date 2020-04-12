@@ -3,8 +3,8 @@ package com.yongche.yopsaas.wx.service;
 import com.github.pagehelper.Page;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import com.yongche.yopsaas.db.domain.LitemallGoods;
-import com.yongche.yopsaas.db.domain.LitemallGrouponRules;
+import com.yongche.yopsaas.db.domain.YopsaasGoods;
+import com.yongche.yopsaas.db.domain.YopsaasGrouponRules;
 import com.yongche.yopsaas.db.service.YopsaasGoodsService;
 import com.yongche.yopsaas.db.service.YopsaasGrouponRulesService;
 import com.yongche.yopsaas.db.service.YopsaasGrouponService;
@@ -32,7 +32,7 @@ public class WxGrouponRuleService {
 
 
     public List<GrouponRuleVo> queryList(Integer page, Integer size, String sort, String order) {
-        Page<LitemallGrouponRules> grouponRulesList = (Page<LitemallGrouponRules>)grouponRulesService.queryList(page, size, sort, order);
+        Page<YopsaasGrouponRules> grouponRulesList = (Page<YopsaasGrouponRules>)grouponRulesService.queryList(page, size, sort, order);
 
         Page<GrouponRuleVo> grouponList = new Page<GrouponRuleVo>();
         grouponList.setPages(grouponRulesList.getPages());
@@ -40,9 +40,9 @@ public class WxGrouponRuleService {
         grouponList.setPageSize(grouponRulesList.getPageSize());
         grouponList.setTotal(grouponRulesList.getTotal());
 
-        for (LitemallGrouponRules rule : grouponRulesList) {
+        for (YopsaasGrouponRules rule : grouponRulesList) {
             Integer goodsId = rule.getGoodsId();
-            LitemallGoods goods = goodsService.findById(goodsId);
+            YopsaasGoods goods = goodsService.findById(goodsId);
             if (goods == null)
                 continue;
 

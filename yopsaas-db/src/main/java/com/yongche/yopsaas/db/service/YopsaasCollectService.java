@@ -1,9 +1,9 @@
 package com.yongche.yopsaas.db.service;
 
 import com.github.pagehelper.PageHelper;
-import com.yongche.yopsaas.db.dao.LitemallCollectMapper;
-import com.yongche.yopsaas.db.domain.LitemallCollect;
-import com.yongche.yopsaas.db.domain.LitemallCollectExample;
+import com.yongche.yopsaas.db.dao.YopsaasCollectMapper;
+import com.yongche.yopsaas.db.domain.YopsaasCollect;
+import com.yongche.yopsaas.db.domain.YopsaasCollectExample;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -14,17 +14,17 @@ import java.util.List;
 @Service
 public class YopsaasCollectService {
     @Resource
-    private LitemallCollectMapper collectMapper;
+    private YopsaasCollectMapper collectMapper;
 
     public int count(int uid, Integer gid) {
-        LitemallCollectExample example = new LitemallCollectExample();
+        YopsaasCollectExample example = new YopsaasCollectExample();
         example.or().andUserIdEqualTo(uid).andValueIdEqualTo(gid).andDeletedEqualTo(false);
         return (int) collectMapper.countByExample(example);
     }
 
-    public List<LitemallCollect> queryByType(Integer userId, Byte type, Integer page, Integer limit, String sort, String order) {
-        LitemallCollectExample example = new LitemallCollectExample();
-        LitemallCollectExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasCollect> queryByType(Integer userId, Byte type, Integer page, Integer limit, String sort, String order) {
+        YopsaasCollectExample example = new YopsaasCollectExample();
+        YopsaasCollectExample.Criteria criteria = example.createCriteria();
 
         if (type != null) {
             criteria.andTypeEqualTo(type);
@@ -41,13 +41,13 @@ public class YopsaasCollectService {
     }
 
     public int countByType(Integer userId, Byte type) {
-        LitemallCollectExample example = new LitemallCollectExample();
+        YopsaasCollectExample example = new YopsaasCollectExample();
         example.or().andUserIdEqualTo(userId).andTypeEqualTo(type).andDeletedEqualTo(false);
         return (int) collectMapper.countByExample(example);
     }
 
-    public LitemallCollect queryByTypeAndValue(Integer userId, Byte type, Integer valueId) {
-        LitemallCollectExample example = new LitemallCollectExample();
+    public YopsaasCollect queryByTypeAndValue(Integer userId, Byte type, Integer valueId) {
+        YopsaasCollectExample example = new YopsaasCollectExample();
         example.or().andUserIdEqualTo(userId).andValueIdEqualTo(valueId).andTypeEqualTo(type).andDeletedEqualTo(false);
         return collectMapper.selectOneByExample(example);
     }
@@ -56,15 +56,15 @@ public class YopsaasCollectService {
         collectMapper.logicalDeleteByPrimaryKey(id);
     }
 
-    public int add(LitemallCollect collect) {
+    public int add(YopsaasCollect collect) {
         collect.setAddTime(LocalDateTime.now());
         collect.setUpdateTime(LocalDateTime.now());
         return collectMapper.insertSelective(collect);
     }
 
-    public List<LitemallCollect> querySelective(String userId, String valueId, Integer page, Integer size, String sort, String order) {
-        LitemallCollectExample example = new LitemallCollectExample();
-        LitemallCollectExample.Criteria criteria = example.createCriteria();
+    public List<YopsaasCollect> querySelective(String userId, String valueId, Integer page, Integer size, String sort, String order) {
+        YopsaasCollectExample example = new YopsaasCollectExample();
+        YopsaasCollectExample.Criteria criteria = example.createCriteria();
 
         if (!StringUtils.isEmpty(userId)) {
             criteria.andUserIdEqualTo(Integer.valueOf(userId));

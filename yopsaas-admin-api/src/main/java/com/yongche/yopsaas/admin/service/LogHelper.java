@@ -3,8 +3,8 @@ package com.yongche.yopsaas.admin.service;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import com.yongche.yopsaas.core.util.IpUtil;
-import com.yongche.yopsaas.db.domain.LitemallAdmin;
-import com.yongche.yopsaas.db.domain.LitemallLog;
+import com.yongche.yopsaas.db.domain.YopsaasAdmin;
+import com.yongche.yopsaas.db.domain.YopsaasLog;
 import com.yongche.yopsaas.db.service.YopsaasLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -82,11 +82,11 @@ public class LogHelper {
     }
 
     public void logAdmin(Integer type, String action, Boolean succeed, String result, String comment) {
-        LitemallLog log = new LitemallLog();
+        YopsaasLog log = new YopsaasLog();
 
         Subject currentUser = SecurityUtils.getSubject();
         if (currentUser != null) {
-            LitemallAdmin admin = (LitemallAdmin) currentUser.getPrincipal();
+            YopsaasAdmin admin = (YopsaasAdmin) currentUser.getPrincipal();
             if (admin != null) {
                 log.setAdmin(admin.getUsername());
             } else {

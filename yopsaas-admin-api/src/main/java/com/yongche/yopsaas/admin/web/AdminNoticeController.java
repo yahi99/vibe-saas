@@ -46,11 +46,11 @@ public class AdminNoticeController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallNotice> noticeList = noticeService.querySelective(title, content, page, limit, sort, order);
+        List<YopsaasNotice> noticeList = noticeService.querySelective(title, content, page, limit, sort, order);
         return ResponseUtil.okList(noticeList);
     }
 
-    private Object validate(LitemallNotice notice) {
+    private Object validate(YopsaasNotice notice) {
         String title = notice.getTitle();
         if (StringUtils.isEmpty(title)) {
             return ResponseUtil.badArgument();
@@ -60,14 +60,14 @@ public class AdminNoticeController {
 
     private Integer getAdminId(){
         Subject currentUser = SecurityUtils.getSubject();
-        LitemallAdmin admin = (LitemallAdmin) currentUser.getPrincipal();
+        YopsaasAdmin admin = (YopsaasAdmin) currentUser.getPrincipal();
         return admin.getId();
     }
 
     @RequiresPermissions("admin:notice:create")
     @RequiresPermissionsDesc(menu = {"推广管理", "通知管理"}, button = "添加")
     @PostMapping("/create")
-    public Object create(@RequestBody LitemallNotice notice) {
+    public Object create(@RequestBody YopsaasNotice notice) {
         Object error = validate(notice);
         if (error != null) {
             return error;
@@ -76,11 +76,11 @@ public class AdminNoticeController {
         notice.setAdminId(getAdminId());
         noticeService.add(notice);
         // 2. 添加管理员通知记录
-        List<LitemallAdmin> adminList = adminService.all();
-        LitemallNoticeAdmin noticeAdmin = new LitemallNoticeAdmin();
+        List<YopsaasAdmin> adminList = adminService.all();
+        YopsaasNoticeAdmin noticeAdmin = new YopsaasNoticeAdmin();
         noticeAdmin.setNoticeId(notice.getId());
         noticeAdmin.setNoticeTitle(notice.getTitle());
-        for(LitemallAdmin admin : adminList){
+        for(YopsaasAdmin admin : adminList){
             noticeAdmin.setAdminId(admin.getId());
             noticeAdminService.add(noticeAdmin);
         }
@@ -91,8 +91,8 @@ public class AdminNoticeController {
     @RequiresPermissionsDesc(menu = {"推广管理", "通知管理"}, button = "详情")
     @GetMapping("/read")
     public Object read(@NotNull Integer id) {
-        LitemallNotice notice = noticeService.findById(id);
-        List<LitemallNoticeAdmin> noticeAdminList = noticeAdminService.queryByNoticeId(id);
+        YopsaasNotice notice = noticeService.findById(id);
+        List<YopsaasNoticeAdmin> noticeAdminList = noticeAdminService.queryByNoticeId(id);
         Map<String, Object> data = new HashMap<>(2);
         data.put("notice", notice);
         data.put("noticeAdminList", noticeAdminList);
@@ -102,12 +102,12 @@ public class AdminNoticeController {
     @RequiresPermissions("admin:notice:update")
     @RequiresPermissionsDesc(menu = {"推广管理", "通知管理"}, button = "编辑")
     @PostMapping("/update")
-    public Object update(@RequestBody LitemallNotice notice) {
+    public Object update(@RequestBody YopsaasNotice notice) {
         Object error = validate(notice);
         if (error != null) {
             return error;
         }
-        LitemallNotice originalNotice = noticeService.findById(notice.getId());
+        YopsaasNotice originalNotice = noticeService.findById(notice.getId());
         if (originalNotice == null) {
             return ResponseUtil.badArgument();
         }
@@ -120,7 +120,7 @@ public class AdminNoticeController {
         noticeService.updateById(notice);
         // 2. 更新管理员通知记录
         if(!originalNotice.getTitle().equals(notice.getTitle())){
-            LitemallNoticeAdmin noticeAdmin = new LitemallNoticeAdmin();
+            YopsaasNoticeAdmin noticeAdmin = new YopsaasNoticeAdmin();
             noticeAdmin.setNoticeTitle(notice.getTitle());
             noticeAdminService.updateByNoticeId(noticeAdmin, notice.getId());
         }
@@ -130,7 +130,7 @@ public class AdminNoticeController {
     @RequiresPermissions("admin:notice:delete")
     @RequiresPermissionsDesc(menu = {"推广管理", "通知管理"}, button = "删除")
     @PostMapping("/delete")
-    public Object delete(@RequestBody LitemallNotice notice) {
+    public Object delete(@RequestBody YopsaasNotice notice) {
         // 1. 删除通知管理员记录
         noticeAdminService.deleteByNoticeId(notice.getId());
         // 2. 删除通知记录

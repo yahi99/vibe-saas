@@ -7,8 +7,8 @@ import com.yongche.yopsaas.admin.annotation.RequiresPermissionsDesc;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.LitemallCoupon;
-import com.yongche.yopsaas.db.domain.LitemallCouponUser;
+import com.yongche.yopsaas.db.domain.YopsaasCoupon;
+import com.yongche.yopsaas.db.domain.YopsaasCouponUser;
 import com.yongche.yopsaas.db.service.YopsaasCouponService;
 import com.yongche.yopsaas.db.service.YopsaasCouponUserService;
 import com.yongche.yopsaas.db.util.CouponConstant;
@@ -39,7 +39,7 @@ public class AdminCouponController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "add_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallCoupon> couponList = couponService.querySelective(name, type, status, page, limit, sort, order);
+        List<YopsaasCoupon> couponList = couponService.querySelective(name, type, status, page, limit, sort, order);
         return ResponseUtil.okList(couponList);
     }
 
@@ -51,12 +51,12 @@ public class AdminCouponController {
                            @RequestParam(defaultValue = "10") Integer limit,
                            @Sort @RequestParam(defaultValue = "add_time") String sort,
                            @Order @RequestParam(defaultValue = "desc") String order) {
-        List<LitemallCouponUser> couponList = couponUserService.queryList(userId, couponId, status, page,
+        List<YopsaasCouponUser> couponList = couponUserService.queryList(userId, couponId, status, page,
                 limit, sort, order);
         return ResponseUtil.okList(couponList);
     }
 
-    private Object validate(LitemallCoupon coupon) {
+    private Object validate(YopsaasCoupon coupon) {
         String name = coupon.getName();
         if (StringUtils.isEmpty(name)) {
             return ResponseUtil.badArgument();
@@ -67,7 +67,7 @@ public class AdminCouponController {
     @RequiresPermissions("admin:coupon:create")
     @RequiresPermissionsDesc(menu = {"推广管理", "优惠券管理"}, button = "添加")
     @PostMapping("/create")
-    public Object create(@RequestBody LitemallCoupon coupon) {
+    public Object create(@RequestBody YopsaasCoupon coupon) {
         Object error = validate(coupon);
         if (error != null) {
             return error;
@@ -87,14 +87,14 @@ public class AdminCouponController {
     @RequiresPermissionsDesc(menu = {"推广管理", "优惠券管理"}, button = "详情")
     @GetMapping("/read")
     public Object read(@NotNull Integer id) {
-        LitemallCoupon coupon = couponService.findById(id);
+        YopsaasCoupon coupon = couponService.findById(id);
         return ResponseUtil.ok(coupon);
     }
 
     @RequiresPermissions("admin:coupon:update")
     @RequiresPermissionsDesc(menu = {"推广管理", "优惠券管理"}, button = "编辑")
     @PostMapping("/update")
-    public Object update(@RequestBody LitemallCoupon coupon) {
+    public Object update(@RequestBody YopsaasCoupon coupon) {
         Object error = validate(coupon);
         if (error != null) {
             return error;
@@ -108,7 +108,7 @@ public class AdminCouponController {
     @RequiresPermissions("admin:coupon:delete")
     @RequiresPermissionsDesc(menu = {"推广管理", "优惠券管理"}, button = "删除")
     @PostMapping("/delete")
-    public Object delete(@RequestBody LitemallCoupon coupon) {
+    public Object delete(@RequestBody YopsaasCoupon coupon) {
         couponService.deleteById(coupon.getId());
         return ResponseUtil.ok();
     }

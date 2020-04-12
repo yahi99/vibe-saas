@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.admin.vo.RegionVo;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.db.domain.LitemallRegion;
-import com.yongche.yopsaas.db.service.LitemallRegionService;
+import com.yongche.yopsaas.db.service.YopsaasRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +25,7 @@ public class AdminRegionController {
     private final Log logger = LogFactory.getLog(AdminRegionController.class);
 
     @Autowired
-    private LitemallRegionService regionService;
+    private YopsaasRegionService regionService;
 
     @GetMapping("/clist")
     public Object clist(@NotNull Integer id) {

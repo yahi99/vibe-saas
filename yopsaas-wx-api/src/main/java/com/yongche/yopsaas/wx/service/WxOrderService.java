@@ -22,7 +22,6 @@ import com.yongche.yopsaas.core.task.TaskService;
 import com.yongche.yopsaas.core.util.DateTimeUtil;
 import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
-import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.db.util.CouponUserConstant;
 import com.yongche.yopsaas.db.util.GrouponConstant;
@@ -70,43 +69,43 @@ public class WxOrderService {
     private final Log logger = LogFactory.getLog(WxOrderService.class);
 
     @Autowired
-    private LitemallUserService userService;
+    private YopsaasUserService userService;
     @Autowired
-    private LitemallOrderService orderService;
+    private YopsaasOrderService orderService;
     @Autowired
-    private LitemallOrderGoodsService orderGoodsService;
+    private YopsaasOrderGoodsService orderGoodsService;
     @Autowired
-    private LitemallAddressService addressService;
+    private YopsaasAddressService addressService;
     @Autowired
-    private LitemallCartService cartService;
+    private YopsaasCartService cartService;
     @Autowired
-    private LitemallRegionService regionService;
+    private YopsaasRegionService regionService;
     @Autowired
-    private LitemallGoodsProductService productService;
+    private YopsaasGoodsProductService productService;
     @Autowired
     private WxPayService wxPayService;
     @Autowired
     private NotifyService notifyService;
     @Autowired
-    private LitemallGrouponRulesService grouponRulesService;
+    private YopsaasGrouponRulesService grouponRulesService;
     @Autowired
-    private LitemallGrouponService grouponService;
+    private YopsaasGrouponService grouponService;
     @Autowired
     private QCodeService qCodeService;
     @Autowired
     private ExpressService expressService;
     @Autowired
-    private LitemallCommentService commentService;
+    private YopsaasCommentService commentService;
     @Autowired
-    private LitemallCouponService couponService;
+    private YopsaasCouponService couponService;
     @Autowired
-    private LitemallCouponUserService couponUserService;
+    private YopsaasCouponUserService couponUserService;
     @Autowired
     private CouponVerifyService couponVerifyService;
     @Autowired
     private TaskService taskService;
     @Autowired
-    private LitemallAftersaleService aftersaleService;
+    private YopsaasAftersaleService aftersaleService;
 
     /**
      * 订单列表

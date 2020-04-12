@@ -35,15 +35,15 @@ public class AdminOrderService {
     private final Log logger = LogFactory.getLog(AdminOrderService.class);
 
     @Autowired
-    private LitemallOrderGoodsService orderGoodsService;
+    private YopsaasOrderGoodsService orderGoodsService;
     @Autowired
-    private LitemallOrderService orderService;
+    private YopsaasOrderService orderService;
     @Autowired
-    private LitemallGoodsProductService productService;
+    private YopsaasGoodsProductService productService;
     @Autowired
-    private LitemallUserService userService;
+    private YopsaasUserService userService;
     @Autowired
-    private LitemallCommentService commentService;
+    private YopsaasCommentService commentService;
     @Autowired
     private WxPayService wxPayService;
     @Autowired

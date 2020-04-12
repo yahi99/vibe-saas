@@ -7,7 +7,6 @@ import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.system.SystemConfig;
 import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
-import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,19 +29,19 @@ public class WxCartController {
     private final Log logger = LogFactory.getLog(WxCartController.class);
 
     @Autowired
-    private LitemallCartService cartService;
+    private YopsaasCartService cartService;
     @Autowired
-    private LitemallGoodsService goodsService;
+    private YopsaasGoodsService goodsService;
     @Autowired
-    private LitemallGoodsProductService productService;
+    private YopsaasGoodsProductService productService;
     @Autowired
-    private LitemallAddressService addressService;
+    private YopsaasAddressService addressService;
     @Autowired
-    private LitemallGrouponRulesService grouponRulesService;
+    private YopsaasGrouponRulesService grouponRulesService;
     @Autowired
-    private LitemallCouponService couponService;
+    private YopsaasCouponService couponService;
     @Autowired
-    private LitemallCouponUserService couponUserService;
+    private YopsaasCouponUserService couponUserService;
     @Autowired
     private CouponVerifyService couponVerifyService;
 

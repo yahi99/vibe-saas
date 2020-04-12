@@ -1,7 +1,7 @@
 package com.yongche.yopsaas.wx.service;
 
 import com.yongche.yopsaas.db.domain.LitemallUser;
-import com.yongche.yopsaas.db.service.LitemallUserService;
+import com.yongche.yopsaas.db.service.YopsaasUserService;
 import com.yongche.yopsaas.wx.dto.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import org.springframework.util.Assert;
 @Service
 public class UserInfoService {
     @Autowired
-    private LitemallUserService userService;
+    private YopsaasUserService userService;
 
 
     public UserInfo getInfo(Integer userId) {

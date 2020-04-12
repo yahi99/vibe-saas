@@ -3,13 +3,11 @@ package com.yongche.yopsaas.admin.job;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.system.SystemConfig;
-import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.db.util.OrderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -22,15 +20,15 @@ public class OrderJob {
     private final Log logger = LogFactory.getLog(OrderJob.class);
 
     @Autowired
-    private LitemallOrderGoodsService orderGoodsService;
+    private YopsaasOrderGoodsService orderGoodsService;
     @Autowired
-    private LitemallOrderService orderService;
+    private YopsaasOrderService orderService;
     @Autowired
-    private LitemallGoodsProductService productService;
+    private YopsaasGoodsProductService productService;
     @Autowired
-    private LitemallGrouponService grouponService;
+    private YopsaasGrouponService grouponService;
     @Autowired
-    private LitemallGrouponRulesService rulesService;
+    private YopsaasGrouponRulesService rulesService;
 
     /**
      * 自动确认订单

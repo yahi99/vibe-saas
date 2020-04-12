@@ -5,8 +5,8 @@ import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.RegexUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.db.domain.LitemallAddress;
-import com.yongche.yopsaas.db.service.LitemallAddressService;
-import com.yongche.yopsaas.db.service.LitemallRegionService;
+import com.yongche.yopsaas.db.service.YopsaasAddressService;
+import com.yongche.yopsaas.db.service.YopsaasRegionService;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
 import com.yongche.yopsaas.wx.service.GetRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +27,10 @@ public class WxAddressController extends GetRegionService {
 	private final Log logger = LogFactory.getLog(WxAddressController.class);
 
 	@Autowired
-	private LitemallAddressService addressService;
+	private YopsaasAddressService addressService;
 
 	@Autowired
-	private LitemallRegionService regionService;
+	private YopsaasRegionService regionService;
 
 
 	/**

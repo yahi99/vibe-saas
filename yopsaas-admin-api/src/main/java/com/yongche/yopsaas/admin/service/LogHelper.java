@@ -5,7 +5,7 @@ import org.apache.shiro.subject.Subject;
 import com.yongche.yopsaas.core.util.IpUtil;
 import com.yongche.yopsaas.db.domain.LitemallAdmin;
 import com.yongche.yopsaas.db.domain.LitemallLog;
-import com.yongche.yopsaas.db.service.LitemallLogService;
+import com.yongche.yopsaas.db.service.YopsaasLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -30,7 +30,7 @@ public class LogHelper {
     public static final  Integer LOG_TYPE_OTHER = 3;
 
     @Autowired
-    private LitemallLogService logService;
+    private YopsaasLogService logService;
 
     public void logGeneralSucceed(String action) {
         logAdmin(LOG_TYPE_GENERAL, action, true, "", "");

@@ -2,7 +2,7 @@ package com.yongche.yopsaas.core.storage;
 
 import com.yongche.yopsaas.core.util.CharUtil;
 import com.yongche.yopsaas.db.domain.LitemallStorage;
-import com.yongche.yopsaas.db.service.LitemallStorageService;
+import com.yongche.yopsaas.db.service.YopsaasStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 
@@ -17,7 +17,7 @@ public class StorageService {
     private String active;
     private Storage storage;
     @Autowired
-    private LitemallStorageService yopsaasStorageService;
+    private YopsaasStorageService yopsaasStorageService;
 
     public String getActive() {
         return active;

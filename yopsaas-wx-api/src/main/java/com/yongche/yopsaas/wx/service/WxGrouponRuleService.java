@@ -5,9 +5,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.db.domain.LitemallGoods;
 import com.yongche.yopsaas.db.domain.LitemallGrouponRules;
-import com.yongche.yopsaas.db.service.LitemallGoodsService;
-import com.yongche.yopsaas.db.service.LitemallGrouponRulesService;
-import com.yongche.yopsaas.db.service.LitemallGrouponService;
+import com.yongche.yopsaas.db.service.YopsaasGoodsService;
+import com.yongche.yopsaas.db.service.YopsaasGrouponRulesService;
+import com.yongche.yopsaas.db.service.YopsaasGrouponService;
 import com.yongche.yopsaas.wx.vo.GrouponRuleVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,11 +19,11 @@ public class WxGrouponRuleService {
     private final Log logger = LogFactory.getLog(WxGrouponRuleService.class);
 
     @Autowired
-    private LitemallGrouponRulesService grouponRulesService;
+    private YopsaasGrouponRulesService grouponRulesService;
     @Autowired
-    private LitemallGrouponService grouponService;
+    private YopsaasGrouponService grouponService;
     @Autowired
-    private LitemallGoodsService goodsService;
+    private YopsaasGoodsService goodsService;
 
 
     public List<GrouponRuleVo> queryList(Integer page, Integer size) {

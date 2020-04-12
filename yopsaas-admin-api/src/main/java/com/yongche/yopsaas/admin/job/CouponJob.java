@@ -4,8 +4,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.db.domain.LitemallCoupon;
 import com.yongche.yopsaas.db.domain.LitemallCouponUser;
-import com.yongche.yopsaas.db.service.LitemallCouponService;
-import com.yongche.yopsaas.db.service.LitemallCouponUserService;
+import com.yongche.yopsaas.db.service.YopsaasCouponService;
+import com.yongche.yopsaas.db.service.YopsaasCouponUserService;
 import com.yongche.yopsaas.db.util.CouponConstant;
 import com.yongche.yopsaas.db.util.CouponUserConstant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +22,9 @@ public class CouponJob {
     private final Log logger = LogFactory.getLog(CouponJob.class);
 
     @Autowired
-    private LitemallCouponService couponService;
+    private YopsaasCouponService couponService;
     @Autowired
-    private LitemallCouponUserService couponUserService;
+    private YopsaasCouponUserService couponUserService;
 
     /**
      * 每隔一个小时检查

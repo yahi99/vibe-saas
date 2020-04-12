@@ -1,7 +1,7 @@
 package com.yongche.yopsaas.wx.service;
 
 import com.yongche.yopsaas.db.domain.LitemallRegion;
-import com.yongche.yopsaas.db.service.LitemallRegionService;
+import com.yongche.yopsaas.db.service.YopsaasRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +15,7 @@ import java.util.List;
 public class GetRegionService {
 
 	@Autowired
-	private LitemallRegionService regionService;
+	private YopsaasRegionService regionService;
 
 	private static List<LitemallRegion> yopsaasRegions;
 

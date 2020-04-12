@@ -7,9 +7,9 @@ import com.yongche.yopsaas.core.task.Task;
 import com.yongche.yopsaas.core.util.BeanUtil;
 import com.yongche.yopsaas.db.domain.LitemallOrder;
 import com.yongche.yopsaas.db.domain.LitemallOrderGoods;
-import com.yongche.yopsaas.db.service.LitemallGoodsProductService;
-import com.yongche.yopsaas.db.service.LitemallOrderGoodsService;
-import com.yongche.yopsaas.db.service.LitemallOrderService;
+import com.yongche.yopsaas.db.service.YopsaasGoodsProductService;
+import com.yongche.yopsaas.db.service.YopsaasOrderGoodsService;
+import com.yongche.yopsaas.db.service.YopsaasOrderService;
 import com.yongche.yopsaas.db.util.OrderUtil;
 
 import java.time.LocalDateTime;
@@ -33,9 +33,9 @@ public class OrderUnpaidTask extends Task {
     public void run() {
         logger.info("系统开始处理延时任务---订单超时未付款---" + this.orderId);
 
-        LitemallOrderService orderService = BeanUtil.getBean(LitemallOrderService.class);
-        LitemallOrderGoodsService orderGoodsService = BeanUtil.getBean(LitemallOrderGoodsService.class);
-        LitemallGoodsProductService productService = BeanUtil.getBean(LitemallGoodsProductService.class);
+        YopsaasOrderService orderService = BeanUtil.getBean(YopsaasOrderService.class);
+        YopsaasOrderGoodsService orderGoodsService = BeanUtil.getBean(YopsaasOrderGoodsService.class);
+        YopsaasGoodsProductService productService = BeanUtil.getBean(YopsaasGoodsProductService.class);
 
         LitemallOrder order = orderService.findById(this.orderId);
         if(order == null){

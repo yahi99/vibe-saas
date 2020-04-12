@@ -8,7 +8,7 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallIssue;
-import com.yongche.yopsaas.db.service.LitemallIssueService;
+import com.yongche.yopsaas.db.service.YopsaasIssueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
@@ -24,7 +24,7 @@ public class AdminIssueController {
     private final Log logger = LogFactory.getLog(AdminIssueController.class);
 
     @Autowired
-    private LitemallIssueService issueService;
+    private YopsaasIssueService issueService;
 
     @RequiresPermissions("admin:issue:list")
     @RequiresPermissionsDesc(menu = {"商场管理", "通用问题"}, button = "查询")

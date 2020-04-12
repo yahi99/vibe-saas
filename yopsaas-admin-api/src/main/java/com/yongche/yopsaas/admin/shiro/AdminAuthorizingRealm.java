@@ -9,9 +9,9 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import com.yongche.yopsaas.core.util.bcrypt.BCryptPasswordEncoder;
 import com.yongche.yopsaas.db.domain.LitemallAdmin;
-import com.yongche.yopsaas.db.service.LitemallAdminService;
-import com.yongche.yopsaas.db.service.LitemallPermissionService;
-import com.yongche.yopsaas.db.service.LitemallRoleService;
+import com.yongche.yopsaas.db.service.YopsaasAdminService;
+import com.yongche.yopsaas.db.service.YopsaasPermissionService;
+import com.yongche.yopsaas.db.service.YopsaasRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
@@ -22,11 +22,11 @@ import java.util.Set;
 public class AdminAuthorizingRealm extends AuthorizingRealm {
 
     @Autowired
-    private LitemallAdminService adminService;
+    private YopsaasAdminService adminService;
     @Autowired
-    private LitemallRoleService roleService;
+    private YopsaasRoleService roleService;
     @Autowired
-    private LitemallPermissionService permissionService;
+    private YopsaasPermissionService permissionService;
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {

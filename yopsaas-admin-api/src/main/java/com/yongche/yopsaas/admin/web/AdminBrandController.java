@@ -8,7 +8,7 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallBrand;
-import com.yongche.yopsaas.db.service.LitemallBrandService;
+import com.yongche.yopsaas.db.service.YopsaasBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
@@ -25,7 +25,7 @@ public class AdminBrandController {
     private final Log logger = LogFactory.getLog(AdminBrandController.class);
 
     @Autowired
-    private LitemallBrandService brandService;
+    private YopsaasBrandService brandService;
 
     @RequiresPermissions("admin:brand:list")
     @RequiresPermissionsDesc(menu = {"商场管理", "品牌管理"}, button = "查询")

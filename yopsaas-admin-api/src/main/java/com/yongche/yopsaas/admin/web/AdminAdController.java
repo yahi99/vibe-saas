@@ -8,7 +8,7 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallAd;
-import com.yongche.yopsaas.db.service.LitemallAdService;
+import com.yongche.yopsaas.db.service.YopsaasAdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
@@ -24,7 +24,7 @@ public class AdminAdController {
     private final Log logger = LogFactory.getLog(AdminAdController.class);
 
     @Autowired
-    private LitemallAdService adService;
+    private YopsaasAdService adService;
 
     @RequiresPermissions("admin:ad:list")
     @RequiresPermissionsDesc(menu = {"推广管理", "广告管理"}, button = "查询")

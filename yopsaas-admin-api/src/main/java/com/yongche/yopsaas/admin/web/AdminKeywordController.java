@@ -8,7 +8,7 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallKeyword;
-import com.yongche.yopsaas.db.service.LitemallKeywordService;
+import com.yongche.yopsaas.db.service.YopsaasKeywordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
@@ -24,7 +24,7 @@ public class AdminKeywordController {
     private final Log logger = LogFactory.getLog(AdminKeywordController.class);
 
     @Autowired
-    private LitemallKeywordService keywordService;
+    private YopsaasKeywordService keywordService;
 
     @RequiresPermissions("admin:keyword:list")
     @RequiresPermissionsDesc(menu = {"商场管理", "关键词"}, button = "查询")

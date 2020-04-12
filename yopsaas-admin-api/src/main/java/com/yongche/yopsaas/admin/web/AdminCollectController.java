@@ -8,7 +8,7 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallCollect;
-import com.yongche.yopsaas.db.service.LitemallCollectService;
+import com.yongche.yopsaas.db.service.YopsaasCollectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +25,7 @@ public class AdminCollectController {
     private final Log logger = LogFactory.getLog(AdminCollectController.class);
 
     @Autowired
-    private LitemallCollectService collectService;
+    private YopsaasCollectService collectService;
 
 
     @RequiresPermissions("admin:collect:list")

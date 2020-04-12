@@ -6,7 +6,6 @@ import com.yongche.yopsaas.admin.dto.GoodsAllinone;
 import com.yongche.yopsaas.admin.vo.CatVo;
 import com.yongche.yopsaas.core.qcode.QCodeService;
 import com.yongche.yopsaas.core.util.ResponseUtil;
-import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,19 +25,19 @@ public class AdminGoodsService {
     private final Log logger = LogFactory.getLog(AdminGoodsService.class);
 
     @Autowired
-    private LitemallGoodsService goodsService;
+    private YopsaasGoodsService goodsService;
     @Autowired
-    private LitemallGoodsSpecificationService specificationService;
+    private YopsaasGoodsSpecificationService specificationService;
     @Autowired
-    private LitemallGoodsAttributeService attributeService;
+    private YopsaasGoodsAttributeService attributeService;
     @Autowired
-    private LitemallGoodsProductService productService;
+    private YopsaasGoodsProductService productService;
     @Autowired
-    private LitemallCategoryService categoryService;
+    private YopsaasCategoryService categoryService;
     @Autowired
-    private LitemallBrandService brandService;
+    private YopsaasBrandService brandService;
     @Autowired
-    private LitemallCartService cartService;
+    private YopsaasCartService cartService;
     @Autowired
     private QCodeService qCodeService;
 

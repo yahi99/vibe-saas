@@ -8,7 +8,7 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallUser;
-import com.yongche.yopsaas.db.service.LitemallUserService;
+import com.yongche.yopsaas.db.service.YopsaasUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +25,7 @@ public class AdminUserController {
     private final Log logger = LogFactory.getLog(AdminUserController.class);
 
     @Autowired
-    private LitemallUserService userService;
+    private YopsaasUserService userService;
 
     @RequiresPermissions("admin:user:list")
     @RequiresPermissionsDesc(menu = {"用户管理", "会员管理"}, button = "查询")

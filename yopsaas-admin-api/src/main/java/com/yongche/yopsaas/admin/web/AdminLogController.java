@@ -8,7 +8,7 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallLog;
-import com.yongche.yopsaas.db.service.LitemallLogService;
+import com.yongche.yopsaas.db.service.YopsaasLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +25,7 @@ public class AdminLogController {
     private final Log logger = LogFactory.getLog(AdminLogController.class);
 
     @Autowired
-    private LitemallLogService logService;
+    private YopsaasLogService logService;
 
     @RequiresPermissions("admin:log:list")
     @RequiresPermissionsDesc(menu = {"系统管理", "操作日志"}, button = "查询")

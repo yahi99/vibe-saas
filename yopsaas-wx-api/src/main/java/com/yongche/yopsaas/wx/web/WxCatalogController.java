@@ -4,13 +4,12 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.db.domain.LitemallCategory;
-import com.yongche.yopsaas.db.service.LitemallCategoryService;
+import com.yongche.yopsaas.db.service.YopsaasCategoryService;
 import com.yongche.yopsaas.wx.service.HomeCacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
@@ -28,7 +27,7 @@ public class WxCatalogController {
     private final Log logger = LogFactory.getLog(WxCatalogController.class);
 
     @Autowired
-    private LitemallCategoryService categoryService;
+    private YopsaasCategoryService categoryService;
 
     @GetMapping("/getfirstcategory")
     public Object getFirstCategory() {

@@ -7,7 +7,7 @@ import com.yongche.yopsaas.admin.annotation.RequiresPermissionsDesc;
 import com.yongche.yopsaas.admin.vo.CategoryVo;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.db.domain.LitemallCategory;
-import com.yongche.yopsaas.db.service.LitemallCategoryService;
+import com.yongche.yopsaas.db.service.YopsaasCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
@@ -26,7 +26,7 @@ public class AdminCategoryController {
     private final Log logger = LogFactory.getLog(AdminCategoryController.class);
 
     @Autowired
-    private LitemallCategoryService categoryService;
+    private YopsaasCategoryService categoryService;
 
     @RequiresPermissions("admin:category:list")
     @RequiresPermissionsDesc(menu = {"商场管理", "类目管理"}, button = "查询")

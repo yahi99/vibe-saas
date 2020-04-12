@@ -6,7 +6,6 @@ import com.yongche.yopsaas.db.util.CouponConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,9 +13,9 @@ import java.util.List;
 public class CouponAssignService {
 
     @Autowired
-    private LitemallCouponUserService couponUserService;
+    private YopsaasCouponUserService couponUserService;
     @Autowired
-    private LitemallCouponService couponService;
+    private YopsaasCouponService couponService;
 
     /**
      * 分发注册优惠券

@@ -13,16 +13,15 @@ import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallGoods;
 import com.yongche.yopsaas.db.domain.LitemallGroupon;
 import com.yongche.yopsaas.db.domain.LitemallGrouponRules;
-import com.yongche.yopsaas.db.service.LitemallGoodsService;
-import com.yongche.yopsaas.db.service.LitemallGrouponRulesService;
-import com.yongche.yopsaas.db.service.LitemallGrouponService;
+import com.yongche.yopsaas.db.service.YopsaasGoodsService;
+import com.yongche.yopsaas.db.service.YopsaasGrouponRulesService;
+import com.yongche.yopsaas.db.service.YopsaasGrouponService;
 import com.yongche.yopsaas.db.util.GrouponConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -37,11 +36,11 @@ public class AdminGrouponController {
     private final Log logger = LogFactory.getLog(AdminGrouponController.class);
 
     @Autowired
-    private LitemallGrouponRulesService rulesService;
+    private YopsaasGrouponRulesService rulesService;
     @Autowired
-    private LitemallGoodsService goodsService;
+    private YopsaasGoodsService goodsService;
     @Autowired
-    private LitemallGrouponService grouponService;
+    private YopsaasGrouponService grouponService;
     @Autowired
     private TaskService taskService;
 

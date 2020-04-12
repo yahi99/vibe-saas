@@ -34,13 +34,13 @@ public class WxCouponController {
     private final Log logger = LogFactory.getLog(WxCouponController.class);
 
     @Autowired
-    private LitemallCouponService couponService;
+    private YopsaasCouponService couponService;
     @Autowired
-    private LitemallCouponUserService couponUserService;
+    private YopsaasCouponUserService couponUserService;
     @Autowired
-    private LitemallGrouponRulesService grouponRulesService;
+    private YopsaasGrouponRulesService grouponRulesService;
     @Autowired
-    private LitemallCartService cartService;
+    private YopsaasCartService cartService;
     @Autowired
     private CouponVerifyService couponVerifyService;
 

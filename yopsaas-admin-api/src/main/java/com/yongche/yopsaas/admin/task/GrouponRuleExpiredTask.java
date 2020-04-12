@@ -26,9 +26,9 @@ public class GrouponRuleExpiredTask extends Task {
     public void run() {
         logger.info("系统开始处理延时任务---团购规则过期---" + this.grouponRuleId);
 
-        LitemallOrderService orderService = BeanUtil.getBean(LitemallOrderService.class);
-        LitemallGrouponService grouponService = BeanUtil.getBean(LitemallGrouponService.class);
-        LitemallGrouponRulesService grouponRulesService = BeanUtil.getBean(LitemallGrouponRulesService.class);
+        YopsaasOrderService orderService = BeanUtil.getBean(YopsaasOrderService.class);
+        YopsaasGrouponService grouponService = BeanUtil.getBean(YopsaasGrouponService.class);
+        YopsaasGrouponRulesService grouponRulesService = BeanUtil.getBean(YopsaasGrouponRulesService.class);
 
         LitemallGrouponRules grouponRules = grouponRulesService.findById(grouponRuleId);
         if(grouponRules == null){

@@ -13,7 +13,7 @@ import com.yongche.yopsaas.core.util.bcrypt.BCryptPasswordEncoder;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallAdmin;
-import com.yongche.yopsaas.db.service.LitemallAdminService;
+import com.yongche.yopsaas.db.service.YopsaasAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
@@ -31,7 +31,7 @@ public class AdminAdminController {
     private final Log logger = LogFactory.getLog(AdminAdminController.class);
 
     @Autowired
-    private LitemallAdminService adminService;
+    private YopsaasAdminService adminService;
     @Autowired
     private LogHelper logHelper;
 

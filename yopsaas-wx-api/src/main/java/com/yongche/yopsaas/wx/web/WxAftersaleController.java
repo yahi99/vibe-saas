@@ -6,7 +6,6 @@ import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.db.util.AftersaleConstant;
 import com.yongche.yopsaas.db.util.OrderUtil;
@@ -37,11 +36,11 @@ public class WxAftersaleController {
     private final Log logger = LogFactory.getLog(WxAftersaleController.class);
 
     @Autowired
-    private LitemallAftersaleService aftersaleService;
+    private YopsaasAftersaleService aftersaleService;
     @Autowired
-    private LitemallOrderService orderService;
+    private YopsaasOrderService orderService;
     @Autowired
-    private LitemallOrderGoodsService orderGoodsService;
+    private YopsaasOrderGoodsService orderGoodsService;
 
     /**
      * 售后列表

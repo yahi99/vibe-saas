@@ -9,8 +9,8 @@ import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallCoupon;
 import com.yongche.yopsaas.db.domain.LitemallCouponUser;
-import com.yongche.yopsaas.db.service.LitemallCouponService;
-import com.yongche.yopsaas.db.service.LitemallCouponUserService;
+import com.yongche.yopsaas.db.service.YopsaasCouponService;
+import com.yongche.yopsaas.db.service.YopsaasCouponUserService;
 import com.yongche.yopsaas.db.util.CouponConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -27,9 +27,9 @@ public class AdminCouponController {
     private final Log logger = LogFactory.getLog(AdminCouponController.class);
 
     @Autowired
-    private LitemallCouponService couponService;
+    private YopsaasCouponService couponService;
     @Autowired
-    private LitemallCouponUserService couponUserService;
+    private YopsaasCouponUserService couponUserService;
 
     @RequiresPermissions("admin:coupon:list")
     @RequiresPermissionsDesc(menu = {"推广管理", "优惠券管理"}, button = "查询")

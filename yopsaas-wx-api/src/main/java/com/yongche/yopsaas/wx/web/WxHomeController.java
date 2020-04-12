@@ -33,25 +33,25 @@ public class WxHomeController {
     private final Log logger = LogFactory.getLog(WxHomeController.class);
 
     @Autowired
-    private LitemallAdService adService;
+    private YopsaasAdService adService;
 
     @Autowired
-    private LitemallGoodsService goodsService;
+    private YopsaasGoodsService goodsService;
 
     @Autowired
-    private LitemallBrandService brandService;
+    private YopsaasBrandService brandService;
 
     @Autowired
-    private LitemallTopicService topicService;
+    private YopsaasTopicService topicService;
 
     @Autowired
-    private LitemallCategoryService categoryService;
+    private YopsaasCategoryService categoryService;
 
     @Autowired
     private WxGrouponRuleService grouponService;
 
     @Autowired
-    private LitemallCouponService couponService;
+    private YopsaasCouponService couponService;
 
     private final static ArrayBlockingQueue<Runnable> WORK_QUEUE = new ArrayBlockingQueue<>(9);
 

@@ -7,8 +7,8 @@ import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallGoods;
 import com.yongche.yopsaas.db.domain.LitemallTopic;
-import com.yongche.yopsaas.db.service.LitemallGoodsService;
-import com.yongche.yopsaas.db.service.LitemallTopicService;
+import com.yongche.yopsaas.db.service.YopsaasGoodsService;
+import com.yongche.yopsaas.db.service.YopsaasTopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +32,9 @@ public class WxTopicController {
     private final Log logger = LogFactory.getLog(WxTopicController.class);
 
     @Autowired
-    private LitemallTopicService topicService;
+    private YopsaasTopicService topicService;
     @Autowired
-    private LitemallGoodsService goodsService;
+    private YopsaasGoodsService goodsService;
 
     /**
      * 专题列表

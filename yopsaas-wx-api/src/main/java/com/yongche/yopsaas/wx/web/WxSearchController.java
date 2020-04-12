@@ -5,8 +5,8 @@ import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.db.domain.LitemallKeyword;
 import com.yongche.yopsaas.db.domain.LitemallSearchHistory;
-import com.yongche.yopsaas.db.service.LitemallKeywordService;
-import com.yongche.yopsaas.db.service.LitemallSearchHistoryService;
+import com.yongche.yopsaas.db.service.YopsaasKeywordService;
+import com.yongche.yopsaas.db.service.YopsaasSearchHistoryService;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -30,9 +30,9 @@ public class WxSearchController {
     private final Log logger = LogFactory.getLog(WxSearchController.class);
 
     @Autowired
-    private LitemallKeywordService keywordsService;
+    private YopsaasKeywordService keywordsService;
     @Autowired
-    private LitemallSearchHistoryService searchHistoryService;
+    private YopsaasSearchHistoryService searchHistoryService;
 
     /**
      * 搜索页面信息

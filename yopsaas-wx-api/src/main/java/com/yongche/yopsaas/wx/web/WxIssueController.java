@@ -1,20 +1,17 @@
 package com.yongche.yopsaas.wx.web;
 
-import com.github.pagehelper.PageInfo;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallIssue;
-import com.yongche.yopsaas.db.service.LitemallIssueService;
+import com.yongche.yopsaas.db.service.YopsaasIssueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/wx/issue")
@@ -23,7 +20,7 @@ public class WxIssueController {
     private final Log logger = LogFactory.getLog(WxIssueController.class);
 
     @Autowired
-    private LitemallIssueService issueService;
+    private YopsaasIssueService issueService;
 
     /**
      * 帮助中心

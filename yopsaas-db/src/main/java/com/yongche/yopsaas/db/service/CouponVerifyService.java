@@ -13,9 +13,9 @@ import java.time.LocalDateTime;
 public class CouponVerifyService {
 
     @Autowired
-    private LitemallCouponUserService couponUserService;
+    private YopsaasCouponUserService couponUserService;
     @Autowired
-    private LitemallCouponService couponService;
+    private YopsaasCouponService couponService;
 
     /**
      * 检测优惠券是否适合

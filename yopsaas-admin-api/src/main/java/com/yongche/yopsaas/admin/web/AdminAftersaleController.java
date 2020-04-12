@@ -22,7 +22,6 @@ import com.yongche.yopsaas.db.domain.LitemallOrder;
 import com.yongche.yopsaas.db.domain.LitemallOrderGoods;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.db.util.AftersaleConstant;
-import com.yongche.yopsaas.db.util.OrderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -40,13 +39,13 @@ public class AdminAftersaleController {
     private final Log logger = LogFactory.getLog(AdminAftersaleController.class);
 
     @Autowired
-    private LitemallAftersaleService aftersaleService;
+    private YopsaasAftersaleService aftersaleService;
     @Autowired
-    private LitemallOrderService orderService;
+    private YopsaasOrderService orderService;
     @Autowired
-    private LitemallOrderGoodsService orderGoodsService;
+    private YopsaasOrderGoodsService orderGoodsService;
     @Autowired
-    private LitemallGoodsProductService goodsProductService;
+    private YopsaasGoodsProductService goodsProductService;
     @Autowired
     private LogHelper logHelper;
     @Autowired

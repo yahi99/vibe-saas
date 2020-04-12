@@ -1,6 +1,5 @@
 package com.yongche.yopsaas.admin.web;
 
-import io.swagger.models.auth.In;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -11,8 +10,8 @@ import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallGoods;
 import com.yongche.yopsaas.db.domain.LitemallTopic;
-import com.yongche.yopsaas.db.service.LitemallGoodsService;
-import com.yongche.yopsaas.db.service.LitemallTopicService;
+import com.yongche.yopsaas.db.service.YopsaasGoodsService;
+import com.yongche.yopsaas.db.service.YopsaasTopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
@@ -32,9 +31,9 @@ public class AdminTopicController {
     private final Log logger = LogFactory.getLog(AdminTopicController.class);
 
     @Autowired
-    private LitemallTopicService topicService;
+    private YopsaasTopicService topicService;
     @Autowired
-    private LitemallGoodsService goodsService;
+    private YopsaasGoodsService goodsService;
 
     @RequiresPermissions("admin:topic:list")
     @RequiresPermissionsDesc(menu = {"推广管理", "专题管理"}, button = "查询")

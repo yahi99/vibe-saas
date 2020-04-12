@@ -16,9 +16,9 @@ import com.yongche.yopsaas.core.util.IpUtil;
 import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.db.domain.LitemallAdmin;
-import com.yongche.yopsaas.db.service.LitemallAdminService;
-import com.yongche.yopsaas.db.service.LitemallPermissionService;
-import com.yongche.yopsaas.db.service.LitemallRoleService;
+import com.yongche.yopsaas.db.service.YopsaasAdminService;
+import com.yongche.yopsaas.db.service.YopsaasPermissionService;
+import com.yongche.yopsaas.db.service.YopsaasRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.util.StringUtils;
@@ -38,11 +38,11 @@ public class AdminAuthController {
     private final Log logger = LogFactory.getLog(AdminAuthController.class);
 
     @Autowired
-    private LitemallAdminService adminService;
+    private YopsaasAdminService adminService;
     @Autowired
-    private LitemallRoleService roleService;
+    private YopsaasRoleService roleService;
     @Autowired
-    private LitemallPermissionService permissionService;
+    private YopsaasPermissionService permissionService;
     @Autowired
     private LogHelper logHelper;
 

@@ -9,8 +9,8 @@ import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallCollect;
 import com.yongche.yopsaas.db.domain.LitemallGoods;
-import com.yongche.yopsaas.db.service.LitemallCollectService;
-import com.yongche.yopsaas.db.service.LitemallGoodsService;
+import com.yongche.yopsaas.db.service.YopsaasCollectService;
+import com.yongche.yopsaas.db.service.YopsaasGoodsService;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -32,9 +32,9 @@ public class WxCollectController {
     private final Log logger = LogFactory.getLog(WxCollectController.class);
 
     @Autowired
-    private LitemallCollectService collectService;
+    private YopsaasCollectService collectService;
     @Autowired
-    private LitemallGoodsService goodsService;
+    private YopsaasGoodsService goodsService;
 
     /**
      * 用户收藏列表

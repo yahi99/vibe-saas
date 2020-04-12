@@ -8,7 +8,7 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallFootprint;
-import com.yongche.yopsaas.db.service.LitemallFootprintService;
+import com.yongche.yopsaas.db.service.YopsaasFootprintService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +25,7 @@ public class AdminFootprintController {
     private final Log logger = LogFactory.getLog(AdminFootprintController.class);
 
     @Autowired
-    private LitemallFootprintService footprintService;
+    private YopsaasFootprintService footprintService;
 
     @RequiresPermissions("admin:footprint:list")
     @RequiresPermissionsDesc(menu = {"用户管理", "用户足迹"}, button = "查询")

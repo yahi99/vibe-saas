@@ -6,7 +6,7 @@ import com.yongche.yopsaas.core.storage.StorageService;
 import com.yongche.yopsaas.core.util.CharUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.db.domain.LitemallStorage;
-import com.yongche.yopsaas.db.service.LitemallStorageService;
+import com.yongche.yopsaas.db.service.YopsaasStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 对象存储服务
@@ -32,7 +30,7 @@ public class WxStorageController {
     @Autowired
     private StorageService storageService;
     @Autowired
-    private LitemallStorageService yopsaasStorageService;
+    private YopsaasStorageService yopsaasStorageService;
 
     private String generateKey(String originalFilename) {
         int index = originalFilename.lastIndexOf('.');

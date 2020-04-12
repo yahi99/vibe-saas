@@ -9,7 +9,7 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallStorage;
-import com.yongche.yopsaas.db.service.LitemallStorageService;
+import com.yongche.yopsaas.db.service.YopsaasStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
@@ -29,7 +29,7 @@ public class AdminStorageController {
     @Autowired
     private StorageService storageService;
     @Autowired
-    private LitemallStorageService yopsaasStorageService;
+    private YopsaasStorageService yopsaasStorageService;
 
     @RequiresPermissions("admin:storage:list")
     @RequiresPermissionsDesc(menu = {"系统管理", "对象存储"}, button = "查询")

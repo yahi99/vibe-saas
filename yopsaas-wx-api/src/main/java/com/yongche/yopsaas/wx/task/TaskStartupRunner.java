@@ -1,11 +1,9 @@
 package com.yongche.yopsaas.wx.task;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.system.SystemConfig;
 import com.yongche.yopsaas.core.task.TaskService;
 import com.yongche.yopsaas.db.domain.LitemallOrder;
-import com.yongche.yopsaas.db.service.LitemallOrderService;
+import com.yongche.yopsaas.db.service.YopsaasOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -19,7 +17,7 @@ import java.util.List;
 public class TaskStartupRunner implements ApplicationRunner {
 
     @Autowired
-    private LitemallOrderService orderService;
+    private YopsaasOrderService orderService;
     @Autowired
     private TaskService taskService;
 

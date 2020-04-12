@@ -10,10 +10,9 @@ import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.*;
-import com.yongche.yopsaas.db.service.LitemallAdminService;
-import com.yongche.yopsaas.db.service.LitemallNoticeAdminService;
-import com.yongche.yopsaas.db.service.LitemallNoticeService;
+import com.yongche.yopsaas.db.service.YopsaasAdminService;
+import com.yongche.yopsaas.db.service.YopsaasNoticeAdminService;
+import com.yongche.yopsaas.db.service.YopsaasNoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
@@ -33,11 +32,11 @@ public class AdminNoticeController {
     private final Log logger = LogFactory.getLog(AdminNoticeController.class);
 
     @Autowired
-    private LitemallNoticeService noticeService;
+    private YopsaasNoticeService noticeService;
     @Autowired
-    private LitemallAdminService adminService;
+    private YopsaasAdminService adminService;
     @Autowired
-    private LitemallNoticeAdminService noticeAdminService;
+    private YopsaasNoticeAdminService noticeAdminService;
 
     @RequiresPermissions("admin:notice:list")
     @RequiresPermissionsDesc(menu = {"系统管理", "通知管理"}, button = "查询")

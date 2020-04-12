@@ -8,7 +8,7 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallFeedback;
-import com.yongche.yopsaas.db.service.LitemallFeedbackService;
+import com.yongche.yopsaas.db.service.YopsaasFeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +29,7 @@ public class AdminFeedbackController {
     private final Log logger = LogFactory.getLog(AdminFeedbackController.class);
 
     @Autowired
-    private LitemallFeedbackService feedbackService;
+    private YopsaasFeedbackService feedbackService;
 
     @RequiresPermissions("admin:feedback:list")
     @RequiresPermissionsDesc(menu = {"用户管理", "意见反馈"}, button = "查询")

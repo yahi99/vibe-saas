@@ -7,8 +7,8 @@ import com.yongche.yopsaas.core.util.RegexUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.db.domain.LitemallFeedback;
 import com.yongche.yopsaas.db.domain.LitemallUser;
-import com.yongche.yopsaas.db.service.LitemallFeedbackService;
-import com.yongche.yopsaas.db.service.LitemallUserService;
+import com.yongche.yopsaas.db.service.YopsaasFeedbackService;
+import com.yongche.yopsaas.db.service.YopsaasUserService;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -30,9 +30,9 @@ public class WxFeedbackController {
     private final Log logger = LogFactory.getLog(WxFeedbackController.class);
 
     @Autowired
-    private LitemallFeedbackService feedbackService;
+    private YopsaasFeedbackService feedbackService;
     @Autowired
-    private LitemallUserService userService;
+    private YopsaasUserService userService;
 
     private Object validate(LitemallFeedback feedback) {
         String content = feedback.getContent();

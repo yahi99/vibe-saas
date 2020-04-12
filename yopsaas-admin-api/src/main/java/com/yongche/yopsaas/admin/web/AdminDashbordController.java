@@ -3,10 +3,10 @@ package com.yongche.yopsaas.admin.web;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.ResponseUtil;
-import com.yongche.yopsaas.db.service.LitemallGoodsProductService;
-import com.yongche.yopsaas.db.service.LitemallGoodsService;
-import com.yongche.yopsaas.db.service.LitemallOrderService;
-import com.yongche.yopsaas.db.service.LitemallUserService;
+import com.yongche.yopsaas.db.service.YopsaasGoodsProductService;
+import com.yongche.yopsaas.db.service.YopsaasGoodsService;
+import com.yongche.yopsaas.db.service.YopsaasOrderService;
+import com.yongche.yopsaas.db.service.YopsaasUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,13 +23,13 @@ public class AdminDashbordController {
     private final Log logger = LogFactory.getLog(AdminDashbordController.class);
 
     @Autowired
-    private LitemallUserService userService;
+    private YopsaasUserService userService;
     @Autowired
-    private LitemallGoodsService goodsService;
+    private YopsaasGoodsService goodsService;
     @Autowired
-    private LitemallGoodsProductService productService;
+    private YopsaasGoodsProductService productService;
     @Autowired
-    private LitemallOrderService orderService;
+    private YopsaasOrderService orderService;
 
     @GetMapping("")
     public Object info() {

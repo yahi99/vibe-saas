@@ -1,6 +1,5 @@
 package com.yongche.yopsaas.admin.web;
 
-import io.swagger.models.auth.In;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.SecurityUtils;
@@ -15,15 +14,14 @@ import com.yongche.yopsaas.db.domain.LitemallAdmin;
 import com.yongche.yopsaas.db.domain.LitemallIssue;
 import com.yongche.yopsaas.db.domain.LitemallNotice;
 import com.yongche.yopsaas.db.domain.LitemallNoticeAdmin;
-import com.yongche.yopsaas.db.service.LitemallAdminService;
-import com.yongche.yopsaas.db.service.LitemallNoticeAdminService;
-import com.yongche.yopsaas.db.service.LitemallNoticeService;
+import com.yongche.yopsaas.db.service.YopsaasAdminService;
+import com.yongche.yopsaas.db.service.YopsaasNoticeAdminService;
+import com.yongche.yopsaas.db.service.YopsaasNoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -38,11 +36,11 @@ public class AdminProfileController {
     private final Log logger = LogFactory.getLog(AdminProfileController.class);
 
     @Autowired
-    private LitemallAdminService adminService;
+    private YopsaasAdminService adminService;
     @Autowired
-    private LitemallNoticeService noticeService;
+    private YopsaasNoticeService noticeService;
     @Autowired
-    private LitemallNoticeAdminService noticeAdminService;
+    private YopsaasNoticeAdminService noticeAdminService;
 
     @RequiresAuthentication
     @PostMapping("/password")

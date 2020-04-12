@@ -40,23 +40,23 @@ public class WxGrouponController {
     private final Log logger = LogFactory.getLog(WxGrouponController.class);
 
     @Autowired
-    private LitemallGrouponRulesService rulesService;
+    private YopsaasGrouponRulesService rulesService;
     @Autowired
     private WxGrouponRuleService wxGrouponRuleService;
     @Autowired
-    private LitemallGrouponService grouponService;
+    private YopsaasGrouponService grouponService;
     @Autowired
-    private LitemallGoodsService goodsService;
+    private YopsaasGoodsService goodsService;
     @Autowired
-    private LitemallOrderService orderService;
+    private YopsaasOrderService orderService;
     @Autowired
-    private LitemallOrderGoodsService orderGoodsService;
+    private YopsaasOrderGoodsService orderGoodsService;
     @Autowired
-    private LitemallUserService userService;
+    private YopsaasUserService userService;
     @Autowired
     private ExpressService expressService;
     @Autowired
-    private LitemallGrouponRulesService grouponRulesService;
+    private YopsaasGrouponRulesService grouponRulesService;
 
     /**
      * 团购规则列表

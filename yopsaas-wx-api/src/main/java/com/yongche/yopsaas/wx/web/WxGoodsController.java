@@ -8,7 +8,6 @@ import com.yongche.yopsaas.core.system.SystemConfig;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
-import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,43 +34,43 @@ public class WxGoodsController {
 	private final Log logger = LogFactory.getLog(WxGoodsController.class);
 
 	@Autowired
-	private LitemallGoodsService goodsService;
+	private YopsaasGoodsService goodsService;
 
 	@Autowired
-	private LitemallGoodsProductService productService;
+	private YopsaasGoodsProductService productService;
 
 	@Autowired
-	private LitemallIssueService goodsIssueService;
+	private YopsaasIssueService goodsIssueService;
 
 	@Autowired
-	private LitemallGoodsAttributeService goodsAttributeService;
+	private YopsaasGoodsAttributeService goodsAttributeService;
 
 	@Autowired
-	private LitemallBrandService brandService;
+	private YopsaasBrandService brandService;
 
 	@Autowired
-	private LitemallCommentService commentService;
+	private YopsaasCommentService commentService;
 
 	@Autowired
-	private LitemallUserService userService;
+	private YopsaasUserService userService;
 
 	@Autowired
-	private LitemallCollectService collectService;
+	private YopsaasCollectService collectService;
 
 	@Autowired
-	private LitemallFootprintService footprintService;
+	private YopsaasFootprintService footprintService;
 
 	@Autowired
-	private LitemallCategoryService categoryService;
+	private YopsaasCategoryService categoryService;
 
 	@Autowired
-	private LitemallSearchHistoryService searchHistoryService;
+	private YopsaasSearchHistoryService searchHistoryService;
 
 	@Autowired
-	private LitemallGoodsSpecificationService goodsSpecificationService;
+	private YopsaasGoodsSpecificationService goodsSpecificationService;
 
 	@Autowired
-	private LitemallGrouponRulesService rulesService;
+	private YopsaasGrouponRulesService rulesService;
 
 	private final static ArrayBlockingQueue<Runnable> WORK_QUEUE = new ArrayBlockingQueue<>(9);
 

@@ -15,9 +15,9 @@ import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallAdmin;
 import com.yongche.yopsaas.db.domain.LitemallPermission;
 import com.yongche.yopsaas.db.domain.LitemallRole;
-import com.yongche.yopsaas.db.service.LitemallAdminService;
-import com.yongche.yopsaas.db.service.LitemallPermissionService;
-import com.yongche.yopsaas.db.service.LitemallRoleService;
+import com.yongche.yopsaas.db.service.YopsaasAdminService;
+import com.yongche.yopsaas.db.service.YopsaasPermissionService;
+import com.yongche.yopsaas.db.service.YopsaasRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.util.StringUtils;
@@ -37,11 +37,11 @@ public class AdminRoleController {
     private final Log logger = LogFactory.getLog(AdminRoleController.class);
 
     @Autowired
-    private LitemallRoleService roleService;
+    private YopsaasRoleService roleService;
     @Autowired
-    private LitemallPermissionService permissionService;
+    private YopsaasPermissionService permissionService;
     @Autowired
-    private LitemallAdminService adminService;
+    private YopsaasAdminService adminService;
 
     @RequiresPermissions("admin:role:list")
     @RequiresPermissionsDesc(menu = {"系统管理", "角色管理"}, button = "角色查询")

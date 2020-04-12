@@ -7,7 +7,7 @@ import com.yongche.yopsaas.admin.annotation.RequiresPermissionsDesc;
 import com.yongche.yopsaas.core.system.SystemConfig;
 import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
-import com.yongche.yopsaas.db.service.LitemallSystemConfigService;
+import com.yongche.yopsaas.db.service.YopsaasSystemConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,7 @@ public class AdminConfigController {
     private final Log logger = LogFactory.getLog(AdminConfigController.class);
 
     @Autowired
-    private LitemallSystemConfigService systemConfigService;
+    private YopsaasSystemConfigService systemConfigService;
 
     @RequiresPermissions("admin:config:mall:list")
     @RequiresPermissionsDesc(menu = {"配置管理", "商场配置"}, button = "详情")

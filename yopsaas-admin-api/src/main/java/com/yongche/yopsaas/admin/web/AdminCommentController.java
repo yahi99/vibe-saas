@@ -8,7 +8,7 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallComment;
-import com.yongche.yopsaas.db.service.LitemallCommentService;
+import com.yongche.yopsaas.db.service.YopsaasCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +22,7 @@ public class AdminCommentController {
     private final Log logger = LogFactory.getLog(AdminCommentController.class);
 
     @Autowired
-    private LitemallCommentService commentService;
+    private YopsaasCommentService commentService;
 
     @RequiresPermissions("admin:comment:list")
     @RequiresPermissionsDesc(menu = {"商品管理", "评论管理"}, button = "查询")

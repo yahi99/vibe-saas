@@ -14,10 +14,9 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.util.bcrypt.BCryptPasswordEncoder;
 import com.yongche.yopsaas.db.domain.LitemallUser;
 import com.yongche.yopsaas.db.service.CouponAssignService;
-import com.yongche.yopsaas.db.service.LitemallUserService;
+import com.yongche.yopsaas.db.service.YopsaasUserService;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
 import com.yongche.yopsaas.wx.dto.UserInfo;
-import com.yongche.yopsaas.wx.dto.UserToken;
 import com.yongche.yopsaas.wx.dto.WxLoginInfo;
 import com.yongche.yopsaas.wx.service.CaptchaCodeManager;
 import com.yongche.yopsaas.wx.service.UserTokenManager;
@@ -45,7 +44,7 @@ public class WxAuthController {
     private final Log logger = LogFactory.getLog(WxAuthController.class);
 
     @Autowired
-    private LitemallUserService userService;
+    private YopsaasUserService userService;
 
     @Autowired
     private WxMaService wxService;

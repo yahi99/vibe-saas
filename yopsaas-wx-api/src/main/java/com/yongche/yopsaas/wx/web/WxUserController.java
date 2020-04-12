@@ -3,7 +3,7 @@ package com.yongche.yopsaas.wx.web;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.ResponseUtil;
-import com.yongche.yopsaas.db.service.LitemallOrderService;
+import com.yongche.yopsaas.db.service.YopsaasOrderService;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -24,7 +24,7 @@ public class WxUserController {
     private final Log logger = LogFactory.getLog(WxUserController.class);
 
     @Autowired
-    private LitemallOrderService orderService;
+    private YopsaasOrderService orderService;
 
     /**
      * 用户个人页面数据

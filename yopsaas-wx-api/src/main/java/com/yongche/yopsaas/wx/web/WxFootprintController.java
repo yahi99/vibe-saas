@@ -1,20 +1,18 @@
 package com.yongche.yopsaas.wx.web;
 
-import com.github.pagehelper.PageInfo;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.db.domain.LitemallFootprint;
 import com.yongche.yopsaas.db.domain.LitemallGoods;
-import com.yongche.yopsaas.db.service.LitemallFootprintService;
-import com.yongche.yopsaas.db.service.LitemallGoodsService;
+import com.yongche.yopsaas.db.service.YopsaasFootprintService;
+import com.yongche.yopsaas.db.service.YopsaasGoodsService;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,9 +28,9 @@ public class WxFootprintController {
     private final Log logger = LogFactory.getLog(WxFootprintController.class);
 
     @Autowired
-    private LitemallFootprintService footprintService;
+    private YopsaasFootprintService footprintService;
     @Autowired
-    private LitemallGoodsService goodsService;
+    private YopsaasGoodsService goodsService;
 
     /**
      * 删除用户足迹

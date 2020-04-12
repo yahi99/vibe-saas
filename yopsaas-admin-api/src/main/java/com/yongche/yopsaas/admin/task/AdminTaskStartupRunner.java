@@ -2,7 +2,7 @@ package com.yongche.yopsaas.admin.task;
 
 import com.yongche.yopsaas.core.task.TaskService;
 import com.yongche.yopsaas.db.domain.LitemallGrouponRules;
-import com.yongche.yopsaas.db.service.LitemallGrouponRulesService;
+import com.yongche.yopsaas.db.service.YopsaasGrouponRulesService;
 import com.yongche.yopsaas.db.util.GrouponConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -17,7 +17,7 @@ import java.util.List;
 public class AdminTaskStartupRunner implements ApplicationRunner {
 
     @Autowired
-    private LitemallGrouponRulesService rulesService;
+    private YopsaasGrouponRulesService rulesService;
     @Autowired
     private TaskService taskService;
 

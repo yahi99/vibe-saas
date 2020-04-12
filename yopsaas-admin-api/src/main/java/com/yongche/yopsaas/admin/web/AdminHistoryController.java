@@ -8,7 +8,7 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallSearchHistory;
-import com.yongche.yopsaas.db.service.LitemallSearchHistoryService;
+import com.yongche.yopsaas.db.service.YopsaasSearchHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +23,7 @@ public class AdminHistoryController {
     private final Log logger = LogFactory.getLog(AdminHistoryController.class);
 
     @Autowired
-    private LitemallSearchHistoryService searchHistoryService;
+    private YopsaasSearchHistoryService searchHistoryService;
 
     @RequiresPermissions("admin:history:list")
     @RequiresPermissionsDesc(menu = {"用户管理", "搜索历史"}, button = "查询")

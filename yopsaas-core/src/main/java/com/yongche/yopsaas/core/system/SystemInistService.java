@@ -1,7 +1,7 @@
 package com.yongche.yopsaas.core.system;
 
 import com.yongche.yopsaas.core.util.SystemInfoPrinter;
-import com.yongche.yopsaas.db.service.LitemallSystemConfigService;
+import com.yongche.yopsaas.db.service.YopsaasSystemConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
@@ -58,7 +58,7 @@ class SystemInistService {
     }
 
     @Autowired
-    private LitemallSystemConfigService yopsaasSystemConfigService;
+    private YopsaasSystemConfigService yopsaasSystemConfigService;
 
     private void initConfigs() {
         // 1. 读取数据库全部配置信息

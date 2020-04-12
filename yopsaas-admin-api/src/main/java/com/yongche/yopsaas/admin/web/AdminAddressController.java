@@ -8,8 +8,8 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallAddress;
-import com.yongche.yopsaas.db.service.LitemallAddressService;
-import com.yongche.yopsaas.db.service.LitemallRegionService;
+import com.yongche.yopsaas.db.service.YopsaasAddressService;
+import com.yongche.yopsaas.db.service.YopsaasRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,9 +26,9 @@ public class AdminAddressController {
     private final Log logger = LogFactory.getLog(AdminAddressController.class);
 
     @Autowired
-    private LitemallAddressService addressService;
+    private YopsaasAddressService addressService;
     @Autowired
-    private LitemallRegionService regionService;
+    private YopsaasRegionService regionService;
 
     @RequiresPermissions("admin:address:list")
     @RequiresPermissionsDesc(menu = {"用户管理", "收货地址"}, button = "查询")

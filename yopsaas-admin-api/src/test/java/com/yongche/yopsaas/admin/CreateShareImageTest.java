@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.yongche.yopsaas.core.qcode.QCodeService;
 import com.yongche.yopsaas.db.domain.LitemallGoods;
-import com.yongche.yopsaas.db.service.LitemallGoodsService;
+import com.yongche.yopsaas.db.service.YopsaasGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -17,7 +17,7 @@ public class CreateShareImageTest {
     @Autowired
     QCodeService qCodeService;
     @Autowired
-    LitemallGoodsService yopsaasGoodsService;
+    YopsaasGoodsService yopsaasGoodsService;
 
     @Test
     public void test() {

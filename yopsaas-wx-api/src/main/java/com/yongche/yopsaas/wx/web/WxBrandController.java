@@ -6,7 +6,7 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.Sort;
 import com.yongche.yopsaas.db.domain.LitemallBrand;
-import com.yongche.yopsaas.db.service.LitemallBrandService;
+import com.yongche.yopsaas.db.service.YopsaasBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 专题服务
@@ -29,7 +27,7 @@ public class WxBrandController {
     private final Log logger = LogFactory.getLog(WxBrandController.class);
 
     @Autowired
-    private LitemallBrandService brandService;
+    private YopsaasBrandService brandService;
 
     /**
      * 品牌列表

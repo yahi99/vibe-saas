@@ -5,10 +5,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.db.domain.LitemallComment;
-import com.yongche.yopsaas.db.service.LitemallCommentService;
-import com.yongche.yopsaas.db.service.LitemallGoodsService;
-import com.yongche.yopsaas.db.service.LitemallTopicService;
-import com.yongche.yopsaas.db.service.LitemallUserService;
+import com.yongche.yopsaas.db.service.YopsaasCommentService;
+import com.yongche.yopsaas.db.service.YopsaasGoodsService;
+import com.yongche.yopsaas.db.service.YopsaasTopicService;
+import com.yongche.yopsaas.db.service.YopsaasUserService;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
 import com.yongche.yopsaas.wx.dto.UserInfo;
 import com.yongche.yopsaas.wx.service.UserInfoService;
@@ -32,15 +32,15 @@ public class WxCommentController {
     private final Log logger = LogFactory.getLog(WxCommentController.class);
 
     @Autowired
-    private LitemallCommentService commentService;
+    private YopsaasCommentService commentService;
     @Autowired
-    private LitemallUserService userService;
+    private YopsaasUserService userService;
     @Autowired
     private UserInfoService userInfoService;
     @Autowired
-    private LitemallGoodsService goodsService;
+    private YopsaasGoodsService goodsService;
     @Autowired
-    private LitemallTopicService topicService;
+    private YopsaasTopicService topicService;
 
     private Object validate(LitemallComment comment) {
         String content = comment.getContent();

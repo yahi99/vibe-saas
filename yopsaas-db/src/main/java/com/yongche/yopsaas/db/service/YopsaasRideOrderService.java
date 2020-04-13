@@ -18,7 +18,7 @@ import java.util.*;
 @Service
 public class YopsaasRideOrderService {
     @Resource
-    private YopsaasRideOrderMapper yopsaasOrderMapper;
+    private YopsaasRideOrderMapper yopsaasRideOrderMapper;
     @Resource
     private RideOrderMapper orderMapper;
 
@@ -43,23 +43,23 @@ public class YopsaasRideOrderService {
         int time = YopsaasRideOrderService.getSecondTimestamp(new Date());
         order.setCreateTime(time);
         order.setUpdateTime(time);
-        return yopsaasOrderMapper.insertSelective(order);
+        return yopsaasRideOrderMapper.insertSelective(order);
     }
 
     public int count(Long userId) {
         YopsaasRideOrderExample example = new YopsaasRideOrderExample();
         example.or().andUserIdEqualTo(userId);
-        return (int) yopsaasOrderMapper.countByExample(example);
+        return (int) yopsaasRideOrderMapper.countByExample(example);
     }
 
     public YopsaasRideOrder findById(Long orderId) {
-        return yopsaasOrderMapper.selectByPrimaryKey(orderId);
+        return yopsaasRideOrderMapper.selectByPrimaryKey(orderId);
     }
 
     public YopsaasRideOrder findById(Long userId, Long orderId) {
         YopsaasRideOrderExample example = new YopsaasRideOrderExample();
         example.or().andRideOrderIdEqualTo(orderId).andUserIdEqualTo(userId);
-        return yopsaasOrderMapper.selectOneByExample(example);
+        return yopsaasRideOrderMapper.selectOneByExample(example);
     }
 
     private String getRandomNum(Integer num) {
@@ -88,7 +88,7 @@ public class YopsaasRideOrderService {
         }
 
         PageHelper.startPage(page, limit);
-        return yopsaasOrderMapper.selectByExample(example);
+        return yopsaasRideOrderMapper.selectByExample(example);
     }
 
     public List<YopsaasRideOrder> querySelective(Long userId, int start, int end, List<Byte> orderStatusArray, Integer page, Integer limit, String sort, String order) {
@@ -113,7 +113,7 @@ public class YopsaasRideOrderService {
         }
 
         PageHelper.startPage(page, limit);
-        return yopsaasOrderMapper.selectByExample(example);
+        return yopsaasRideOrderMapper.selectByExample(example);
     }
 
     public int updateWithOptimisticLocker(YopsaasRideOrder order) {
@@ -130,20 +130,20 @@ public class YopsaasRideOrderService {
     public int count() {
         YopsaasRideOrderExample example = new YopsaasRideOrderExample();
         example.or();
-        return (int) yopsaasOrderMapper.countByExample(example);
+        return (int) yopsaasRideOrderMapper.countByExample(example);
     }
 
     public List<YopsaasRideOrder> queryUnpaid(int minutes) {
         YopsaasRideOrderExample example = new YopsaasRideOrderExample();
         example.or().andStatusEqualTo(RideOrderUtil.STATUS_SERVICE_DONE);
-        return yopsaasOrderMapper.selectByExample(example);
+        return yopsaasRideOrderMapper.selectByExample(example);
     }
 
 
     public Map<Object, Object> orderInfo(Long userId) {
         YopsaasRideOrderExample example = new YopsaasRideOrderExample();
         example.or().andUserIdEqualTo(userId);
-        List<YopsaasRideOrder> orders = yopsaasOrderMapper.selectByExampleSelective(example, YopsaasRideOrder.Column.status, YopsaasRideOrder.Column.payStatus);
+        List<YopsaasRideOrder> orders = yopsaasRideOrderMapper.selectByExampleSelective(example, YopsaasRideOrder.Column.status, YopsaasRideOrder.Column.payStatus);
 
         int unpaid = 0;
         for (YopsaasRideOrder order : orders) {

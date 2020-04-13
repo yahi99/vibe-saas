@@ -5,7 +5,6 @@ import com.yongche.yopsaas.db.dao.RideOrderMapper;
 import com.yongche.yopsaas.db.dao.YopsaasRideOrderMapper;
 import com.yongche.yopsaas.db.domain.YopsaasRideOrder;
 import com.yongche.yopsaas.db.domain.YopsaasRideOrderExample;
-import com.yongche.yopsaas.db.domain.YopsaasRideOrderWithBLOBs;
 import com.yongche.yopsaas.db.util.RideOrderUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -40,7 +39,7 @@ public class YopsaasRideOrderService {
         }
     }
 
-    public int add(YopsaasRideOrderWithBLOBs order) {
+    public int add(YopsaasRideOrder order) {
         int time = YopsaasRideOrderService.getSecondTimestamp(new Date());
         order.setCreateTime(time);
         order.setUpdateTime(time);
@@ -144,7 +143,7 @@ public class YopsaasRideOrderService {
     public Map<Object, Object> orderInfo(Long userId) {
         YopsaasRideOrderExample example = new YopsaasRideOrderExample();
         example.or().andUserIdEqualTo(userId);
-        List<YopsaasRideOrderWithBLOBs> orders = yopsaasOrderMapper.selectByExampleSelective(example, YopsaasRideOrderWithBLOBs.Column.status, YopsaasRideOrderWithBLOBs.Column.payStatus);
+        List<YopsaasRideOrder> orders = yopsaasOrderMapper.selectByExampleSelective(example, YopsaasRideOrder.Column.status, YopsaasRideOrder.Column.payStatus);
 
         int unpaid = 0;
         for (YopsaasRideOrder order : orders) {

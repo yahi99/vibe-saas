@@ -326,6 +326,7 @@ public class YopsaasRideOrderWithBLOBs extends YopsaasRideOrder {
             && (this.getEndLongitude() == null ? other.getEndLongitude() == null : this.getEndLongitude().equals(other.getEndLongitude()))
             && (this.getPayment() == null ? other.getPayment() == null : this.getPayment().equals(other.getPayment()))
             && (this.getPayStatus() == null ? other.getPayStatus() == null : this.getPayStatus().equals(other.getPayStatus()))
+            && (this.getPayTime() == null ? other.getPayTime() == null : this.getPayTime().equals(other.getPayTime()))
             && (this.getFirstRechargeTransactionId() == null ? other.getFirstRechargeTransactionId() == null : this.getFirstRechargeTransactionId().equals(other.getFirstRechargeTransactionId()))
             && (this.getFirstRechargeAmount() == null ? other.getFirstRechargeAmount() == null : this.getFirstRechargeAmount().equals(other.getFirstRechargeAmount()))
             && (this.getCouponMemberId() == null ? other.getCouponMemberId() == null : this.getCouponMemberId().equals(other.getCouponMemberId()))
@@ -347,6 +348,12 @@ public class YopsaasRideOrderWithBLOBs extends YopsaasRideOrder {
             && (this.getOriginAmount() == null ? other.getOriginAmount() == null : this.getOriginAmount().equals(other.getOriginAmount()))
             && (this.getOriginSharingAmount() == null ? other.getOriginSharingAmount() == null : this.getOriginSharingAmount().equals(other.getOriginSharingAmount()))
             && (this.getSharingAmount() == null ? other.getSharingAmount() == null : this.getSharingAmount().equals(other.getSharingAmount()))
+            && (this.getWxOrderSn() == null ? other.getWxOrderSn() == null : this.getWxOrderSn().equals(other.getWxOrderSn()))
+            && (this.getPayId() == null ? other.getPayId() == null : this.getPayId().equals(other.getPayId()))
+            && (this.getRefundAmount() == null ? other.getRefundAmount() == null : this.getRefundAmount().equals(other.getRefundAmount()))
+            && (this.getRefundType() == null ? other.getRefundType() == null : this.getRefundType().equals(other.getRefundType()))
+            && (this.getRefundContent() == null ? other.getRefundContent() == null : this.getRefundContent().equals(other.getRefundContent()))
+            && (this.getRefundTime() == null ? other.getRefundTime() == null : this.getRefundTime().equals(other.getRefundTime()))
             && (this.getActualTimeLength() == null ? other.getActualTimeLength() == null : this.getActualTimeLength().equals(other.getActualTimeLength()))
             && (this.getDependableDistance() == null ? other.getDependableDistance() == null : this.getDependableDistance().equals(other.getDependableDistance()))
             && (this.getMileage() == null ? other.getMileage() == null : this.getMileage().equals(other.getMileage()))
@@ -424,6 +431,7 @@ public class YopsaasRideOrderWithBLOBs extends YopsaasRideOrder {
         result = prime * result + ((getEndLongitude() == null) ? 0 : getEndLongitude().hashCode());
         result = prime * result + ((getPayment() == null) ? 0 : getPayment().hashCode());
         result = prime * result + ((getPayStatus() == null) ? 0 : getPayStatus().hashCode());
+        result = prime * result + ((getPayTime() == null) ? 0 : getPayTime().hashCode());
         result = prime * result + ((getFirstRechargeTransactionId() == null) ? 0 : getFirstRechargeTransactionId().hashCode());
         result = prime * result + ((getFirstRechargeAmount() == null) ? 0 : getFirstRechargeAmount().hashCode());
         result = prime * result + ((getCouponMemberId() == null) ? 0 : getCouponMemberId().hashCode());
@@ -445,6 +453,12 @@ public class YopsaasRideOrderWithBLOBs extends YopsaasRideOrder {
         result = prime * result + ((getOriginAmount() == null) ? 0 : getOriginAmount().hashCode());
         result = prime * result + ((getOriginSharingAmount() == null) ? 0 : getOriginSharingAmount().hashCode());
         result = prime * result + ((getSharingAmount() == null) ? 0 : getSharingAmount().hashCode());
+        result = prime * result + ((getWxOrderSn() == null) ? 0 : getWxOrderSn().hashCode());
+        result = prime * result + ((getPayId() == null) ? 0 : getPayId().hashCode());
+        result = prime * result + ((getRefundAmount() == null) ? 0 : getRefundAmount().hashCode());
+        result = prime * result + ((getRefundType() == null) ? 0 : getRefundType().hashCode());
+        result = prime * result + ((getRefundContent() == null) ? 0 : getRefundContent().hashCode());
+        result = prime * result + ((getRefundTime() == null) ? 0 : getRefundTime().hashCode());
         result = prime * result + ((getActualTimeLength() == null) ? 0 : getActualTimeLength().hashCode());
         result = prime * result + ((getDependableDistance() == null) ? 0 : getDependableDistance().hashCode());
         result = prime * result + ((getMileage() == null) ? 0 : getMileage().hashCode());
@@ -520,6 +534,7 @@ public class YopsaasRideOrderWithBLOBs extends YopsaasRideOrder {
         endLongitude("end_longitude", "endLongitude", "DOUBLE", false),
         payment("payment", "payment", "INTEGER", false),
         payStatus("pay_status", "payStatus", "TINYINT", false),
+        payTime("pay_time", "payTime", "INTEGER", false),
         firstRechargeTransactionId("first_recharge_transaction_id", "firstRechargeTransactionId", "BIGINT", false),
         firstRechargeAmount("first_recharge_amount", "firstRechargeAmount", "DECIMAL", false),
         couponMemberId("coupon_member_id", "couponMemberId", "BIGINT", false),
@@ -541,6 +556,12 @@ public class YopsaasRideOrderWithBLOBs extends YopsaasRideOrder {
         originAmount("origin_amount", "originAmount", "DECIMAL", false),
         originSharingAmount("origin_sharing_amount", "originSharingAmount", "DECIMAL", false),
         sharingAmount("sharing_amount", "sharingAmount", "DECIMAL", false),
+        wxOrderSn("wx_order_sn", "wxOrderSn", "VARCHAR", false),
+        payId("pay_id", "payId", "VARCHAR", false),
+        refundAmount("refund_amount", "refundAmount", "DECIMAL", false),
+        refundType("refund_type", "refundType", "VARCHAR", false),
+        refundContent("refund_content", "refundContent", "VARCHAR", false),
+        refundTime("refund_time", "refundTime", "INTEGER", false),
         actualTimeLength("actual_time_length", "actualTimeLength", "INTEGER", false),
         dependableDistance("dependable_distance", "dependableDistance", "INTEGER", false),
         mileage("mileage", "mileage", "INTEGER", false),

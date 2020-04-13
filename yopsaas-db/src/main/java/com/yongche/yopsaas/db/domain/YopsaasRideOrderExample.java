@@ -284,7 +284,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRideOrderIdEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRideOrderIdEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("ride_order_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -300,7 +300,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRideOrderIdNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRideOrderIdNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("ride_order_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -316,7 +316,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRideOrderIdGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRideOrderIdGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("ride_order_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -332,7 +332,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRideOrderIdGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRideOrderIdGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("ride_order_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -348,7 +348,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRideOrderIdLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRideOrderIdLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("ride_order_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -364,7 +364,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRideOrderIdLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRideOrderIdLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("ride_order_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -410,7 +410,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andProductTypeIdEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andProductTypeIdEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("product_type_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -426,7 +426,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andProductTypeIdNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andProductTypeIdNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("product_type_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -442,7 +442,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andProductTypeIdGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andProductTypeIdGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("product_type_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -458,7 +458,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andProductTypeIdGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andProductTypeIdGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("product_type_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -474,7 +474,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andProductTypeIdLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andProductTypeIdLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("product_type_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -490,7 +490,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andProductTypeIdLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andProductTypeIdLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("product_type_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -536,7 +536,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFixedProductIdEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFixedProductIdEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("fixed_product_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -552,7 +552,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFixedProductIdNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFixedProductIdNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("fixed_product_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -568,7 +568,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFixedProductIdGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFixedProductIdGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("fixed_product_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -584,7 +584,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFixedProductIdGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFixedProductIdGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("fixed_product_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -600,7 +600,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFixedProductIdLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFixedProductIdLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("fixed_product_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -616,7 +616,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFixedProductIdLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFixedProductIdLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("fixed_product_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -662,7 +662,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andIsAsapEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andIsAsapEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("is_asap = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -678,7 +678,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andIsAsapNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andIsAsapNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("is_asap <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -694,7 +694,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andIsAsapGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andIsAsapGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("is_asap > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -710,7 +710,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andIsAsapGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andIsAsapGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("is_asap >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -726,7 +726,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andIsAsapLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andIsAsapLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("is_asap < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -742,7 +742,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andIsAsapLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andIsAsapLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("is_asap <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -788,7 +788,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSourceEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSourceEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("`source` = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -804,7 +804,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSourceNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSourceNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("`source` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -820,7 +820,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSourceGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSourceGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("`source` > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -836,7 +836,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSourceGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSourceGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("`source` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -852,7 +852,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSourceLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSourceLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("`source` < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -868,7 +868,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSourceLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSourceLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("`source` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -914,7 +914,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPlatformEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPlatformEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("platform = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -930,7 +930,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPlatformNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPlatformNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("platform <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -946,7 +946,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPlatformGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPlatformGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("platform > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -962,7 +962,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPlatformGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPlatformGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("platform >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -978,7 +978,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPlatformLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPlatformLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("platform < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -994,7 +994,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPlatformLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPlatformLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("platform <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1040,7 +1040,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStatusEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStatusEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("`status` = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1056,7 +1056,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStatusNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStatusNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("`status` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1072,7 +1072,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStatusGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStatusGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("`status` > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1088,7 +1088,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStatusGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStatusGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("`status` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1104,7 +1104,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStatusLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStatusLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("`status` < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1120,7 +1120,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStatusLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStatusLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("`status` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1166,7 +1166,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRcStatusEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRcStatusEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("rc_status = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1182,7 +1182,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRcStatusNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRcStatusNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("rc_status <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1198,7 +1198,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRcStatusGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRcStatusGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("rc_status > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1214,7 +1214,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRcStatusGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRcStatusGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("rc_status >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1230,7 +1230,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRcStatusLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRcStatusLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("rc_status < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1246,7 +1246,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRcStatusLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRcStatusLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("rc_status <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1292,7 +1292,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndStatusEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndStatusEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_status = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1308,7 +1308,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndStatusNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndStatusNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_status <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1324,7 +1324,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndStatusGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndStatusGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_status > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1340,7 +1340,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndStatusGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndStatusGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_status >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1356,7 +1356,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndStatusLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndStatusLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_status < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1372,7 +1372,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndStatusLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndStatusLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_status <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1418,7 +1418,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAbnormalMarkEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAbnormalMarkEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("abnormal_mark = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1434,7 +1434,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAbnormalMarkNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAbnormalMarkNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("abnormal_mark <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1450,7 +1450,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAbnormalMarkGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAbnormalMarkGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("abnormal_mark > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1466,7 +1466,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAbnormalMarkGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAbnormalMarkGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("abnormal_mark >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1482,7 +1482,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAbnormalMarkLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAbnormalMarkLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("abnormal_mark < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1498,7 +1498,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAbnormalMarkLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAbnormalMarkLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("abnormal_mark <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1544,7 +1544,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFlagEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFlagEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("flag = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1560,7 +1560,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFlagNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFlagNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("flag <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1576,7 +1576,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFlagGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFlagGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("flag > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1592,7 +1592,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFlagGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFlagGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("flag >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1608,7 +1608,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFlagLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFlagLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("flag < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1624,7 +1624,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFlagLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFlagLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("flag <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1670,7 +1670,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAccountIdEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAccountIdEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("account_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1686,7 +1686,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAccountIdNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAccountIdNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("account_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1702,7 +1702,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAccountIdGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAccountIdGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("account_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1718,7 +1718,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAccountIdGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAccountIdGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("account_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1734,7 +1734,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAccountIdLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAccountIdLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("account_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1750,7 +1750,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAccountIdLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAccountIdLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("account_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1796,7 +1796,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andUserIdEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andUserIdEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("user_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1812,7 +1812,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andUserIdNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andUserIdNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("user_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1828,7 +1828,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andUserIdGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andUserIdGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("user_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1844,7 +1844,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andUserIdGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andUserIdGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("user_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1860,7 +1860,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andUserIdLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andUserIdLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("user_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1876,7 +1876,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andUserIdLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andUserIdLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("user_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1901,6 +1901,142 @@ public class YopsaasRideOrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andUserPhoneIsNull() {
+            addCriterion("user_phone is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserPhoneIsNotNull() {
+            addCriterion("user_phone is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserPhoneEqualTo(String value) {
+            addCriterion("user_phone =", value, "userPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andUserPhoneEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("user_phone = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andUserPhoneNotEqualTo(String value) {
+            addCriterion("user_phone <>", value, "userPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andUserPhoneNotEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("user_phone <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andUserPhoneGreaterThan(String value) {
+            addCriterion("user_phone >", value, "userPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andUserPhoneGreaterThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("user_phone > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andUserPhoneGreaterThanOrEqualTo(String value) {
+            addCriterion("user_phone >=", value, "userPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andUserPhoneGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("user_phone >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andUserPhoneLessThan(String value) {
+            addCriterion("user_phone <", value, "userPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andUserPhoneLessThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("user_phone < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andUserPhoneLessThanOrEqualTo(String value) {
+            addCriterion("user_phone <=", value, "userPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andUserPhoneLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("user_phone <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andUserPhoneLike(String value) {
+            addCriterion("user_phone like", value, "userPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserPhoneNotLike(String value) {
+            addCriterion("user_phone not like", value, "userPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserPhoneIn(List<String> values) {
+            addCriterion("user_phone in", values, "userPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserPhoneNotIn(List<String> values) {
+            addCriterion("user_phone not in", values, "userPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserPhoneBetween(String value1, String value2) {
+            addCriterion("user_phone between", value1, value2, "userPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserPhoneNotBetween(String value1, String value2) {
+            addCriterion("user_phone not between", value1, value2, "userPhone");
+            return (Criteria) this;
+        }
+
         public Criteria andPassengerNameIsNull() {
             addCriterion("passenger_name is null");
             return (Criteria) this;
@@ -1922,7 +2058,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPassengerNameEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPassengerNameEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("passenger_name = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1938,7 +2074,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPassengerNameNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPassengerNameNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("passenger_name <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1954,7 +2090,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPassengerNameGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPassengerNameGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("passenger_name > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1970,7 +2106,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPassengerNameGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPassengerNameGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("passenger_name >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -1986,7 +2122,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPassengerNameLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPassengerNameLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("passenger_name < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2002,7 +2138,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPassengerNameLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPassengerNameLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("passenger_name <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2037,6 +2173,142 @@ public class YopsaasRideOrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andPassengerPhoneIsNull() {
+            addCriterion("passenger_phone is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerPhoneIsNotNull() {
+            addCriterion("passenger_phone is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerPhoneEqualTo(String value) {
+            addCriterion("passenger_phone =", value, "passengerPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPassengerPhoneEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("passenger_phone = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerPhoneNotEqualTo(String value) {
+            addCriterion("passenger_phone <>", value, "passengerPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPassengerPhoneNotEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("passenger_phone <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerPhoneGreaterThan(String value) {
+            addCriterion("passenger_phone >", value, "passengerPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPassengerPhoneGreaterThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("passenger_phone > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerPhoneGreaterThanOrEqualTo(String value) {
+            addCriterion("passenger_phone >=", value, "passengerPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPassengerPhoneGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("passenger_phone >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerPhoneLessThan(String value) {
+            addCriterion("passenger_phone <", value, "passengerPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPassengerPhoneLessThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("passenger_phone < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerPhoneLessThanOrEqualTo(String value) {
+            addCriterion("passenger_phone <=", value, "passengerPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPassengerPhoneLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("passenger_phone <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerPhoneLike(String value) {
+            addCriterion("passenger_phone like", value, "passengerPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerPhoneNotLike(String value) {
+            addCriterion("passenger_phone not like", value, "passengerPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerPhoneIn(List<String> values) {
+            addCriterion("passenger_phone in", values, "passengerPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerPhoneNotIn(List<String> values) {
+            addCriterion("passenger_phone not in", values, "passengerPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerPhoneBetween(String value1, String value2) {
+            addCriterion("passenger_phone between", value1, value2, "passengerPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerPhoneNotBetween(String value1, String value2) {
+            addCriterion("passenger_phone not between", value1, value2, "passengerPhone");
+            return (Criteria) this;
+        }
+
         public Criteria andCorporateIdIsNull() {
             addCriterion("corporate_id is null");
             return (Criteria) this;
@@ -2058,7 +2330,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCorporateIdEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCorporateIdEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("corporate_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2074,7 +2346,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCorporateIdNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCorporateIdNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("corporate_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2090,7 +2362,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCorporateIdGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCorporateIdGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("corporate_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2106,7 +2378,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCorporateIdGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCorporateIdGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("corporate_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2122,7 +2394,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCorporateIdLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCorporateIdLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("corporate_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2138,7 +2410,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCorporateIdLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCorporateIdLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("corporate_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2184,7 +2456,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCorporateDeptIdEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCorporateDeptIdEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("corporate_dept_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2200,7 +2472,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCorporateDeptIdNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCorporateDeptIdNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("corporate_dept_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2216,7 +2488,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCorporateDeptIdGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCorporateDeptIdGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("corporate_dept_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2232,7 +2504,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCorporateDeptIdGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCorporateDeptIdGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("corporate_dept_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2248,7 +2520,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCorporateDeptIdLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCorporateDeptIdLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("corporate_dept_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2264,7 +2536,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCorporateDeptIdLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCorporateDeptIdLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("corporate_dept_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2289,6 +2561,142 @@ public class YopsaasRideOrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andCityIsNull() {
+            addCriterion("city is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityIsNotNull() {
+            addCriterion("city is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityEqualTo(String value) {
+            addCriterion("city =", value, "city");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andCityEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("city = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCityNotEqualTo(String value) {
+            addCriterion("city <>", value, "city");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andCityNotEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("city <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCityGreaterThan(String value) {
+            addCriterion("city >", value, "city");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andCityGreaterThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("city > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCityGreaterThanOrEqualTo(String value) {
+            addCriterion("city >=", value, "city");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andCityGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("city >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCityLessThan(String value) {
+            addCriterion("city <", value, "city");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andCityLessThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("city < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCityLessThanOrEqualTo(String value) {
+            addCriterion("city <=", value, "city");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andCityLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("city <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCityLike(String value) {
+            addCriterion("city like", value, "city");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityNotLike(String value) {
+            addCriterion("city not like", value, "city");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityIn(List<String> values) {
+            addCriterion("city in", values, "city");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityNotIn(List<String> values) {
+            addCriterion("city not in", values, "city");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityBetween(String value1, String value2) {
+            addCriterion("city between", value1, value2, "city");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityNotBetween(String value1, String value2) {
+            addCriterion("city not between", value1, value2, "city");
+            return (Criteria) this;
+        }
+
         public Criteria andReasonIdIsNull() {
             addCriterion("reason_id is null");
             return (Criteria) this;
@@ -2310,7 +2718,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andReasonIdEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andReasonIdEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("reason_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2326,7 +2734,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andReasonIdNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andReasonIdNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("reason_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2342,7 +2750,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andReasonIdGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andReasonIdGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("reason_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2358,7 +2766,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andReasonIdGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andReasonIdGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("reason_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2374,7 +2782,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andReasonIdLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andReasonIdLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("reason_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2390,7 +2798,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andReasonIdLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andReasonIdLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("reason_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2415,6 +2823,142 @@ public class YopsaasRideOrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andFlightNumberIsNull() {
+            addCriterion("flight_number is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlightNumberIsNotNull() {
+            addCriterion("flight_number is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlightNumberEqualTo(String value) {
+            addCriterion("flight_number =", value, "flightNumber");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andFlightNumberEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("flight_number = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andFlightNumberNotEqualTo(String value) {
+            addCriterion("flight_number <>", value, "flightNumber");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andFlightNumberNotEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("flight_number <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andFlightNumberGreaterThan(String value) {
+            addCriterion("flight_number >", value, "flightNumber");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andFlightNumberGreaterThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("flight_number > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andFlightNumberGreaterThanOrEqualTo(String value) {
+            addCriterion("flight_number >=", value, "flightNumber");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andFlightNumberGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("flight_number >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andFlightNumberLessThan(String value) {
+            addCriterion("flight_number <", value, "flightNumber");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andFlightNumberLessThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("flight_number < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andFlightNumberLessThanOrEqualTo(String value) {
+            addCriterion("flight_number <=", value, "flightNumber");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andFlightNumberLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("flight_number <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andFlightNumberLike(String value) {
+            addCriterion("flight_number like", value, "flightNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlightNumberNotLike(String value) {
+            addCriterion("flight_number not like", value, "flightNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlightNumberIn(List<String> values) {
+            addCriterion("flight_number in", values, "flightNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlightNumberNotIn(List<String> values) {
+            addCriterion("flight_number not in", values, "flightNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlightNumberBetween(String value1, String value2) {
+            addCriterion("flight_number between", value1, value2, "flightNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andFlightNumberNotBetween(String value1, String value2) {
+            addCriterion("flight_number not between", value1, value2, "flightNumber");
+            return (Criteria) this;
+        }
+
         public Criteria andCreateTimeIsNull() {
             addCriterion("create_time is null");
             return (Criteria) this;
@@ -2436,7 +2980,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCreateTimeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCreateTimeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("create_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2452,7 +2996,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCreateTimeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCreateTimeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("create_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2468,7 +3012,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCreateTimeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCreateTimeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("create_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2484,7 +3028,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCreateTimeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCreateTimeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("create_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2500,7 +3044,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCreateTimeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCreateTimeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("create_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2516,7 +3060,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCreateTimeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCreateTimeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("create_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2562,7 +3106,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andUpdateTimeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andUpdateTimeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("update_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2578,7 +3122,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andUpdateTimeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andUpdateTimeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("update_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2594,7 +3138,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andUpdateTimeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andUpdateTimeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("update_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2610,7 +3154,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andUpdateTimeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andUpdateTimeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("update_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2626,7 +3170,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andUpdateTimeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andUpdateTimeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("update_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2642,7 +3186,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andUpdateTimeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andUpdateTimeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("update_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2688,7 +3232,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andInitTimeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andInitTimeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("init_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2704,7 +3248,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andInitTimeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andInitTimeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("init_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2720,7 +3264,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andInitTimeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andInitTimeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("init_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2736,7 +3280,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andInitTimeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andInitTimeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("init_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2752,7 +3296,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andInitTimeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andInitTimeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("init_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2768,7 +3312,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andInitTimeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andInitTimeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("init_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2814,7 +3358,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSelectCarTimeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSelectCarTimeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("select_car_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2830,7 +3374,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSelectCarTimeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSelectCarTimeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("select_car_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2846,7 +3390,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSelectCarTimeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSelectCarTimeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("select_car_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2862,7 +3406,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSelectCarTimeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSelectCarTimeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("select_car_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2878,7 +3422,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSelectCarTimeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSelectCarTimeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("select_car_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2894,7 +3438,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSelectCarTimeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSelectCarTimeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("select_car_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2940,7 +3484,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andArrivalTimeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andArrivalTimeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("arrival_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2956,7 +3500,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andArrivalTimeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andArrivalTimeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("arrival_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2972,7 +3516,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andArrivalTimeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andArrivalTimeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("arrival_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -2988,7 +3532,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andArrivalTimeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andArrivalTimeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("arrival_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3004,7 +3548,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andArrivalTimeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andArrivalTimeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("arrival_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3020,7 +3564,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andArrivalTimeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andArrivalTimeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("arrival_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3066,7 +3610,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCancelTimeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCancelTimeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("cancel_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3082,7 +3626,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCancelTimeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCancelTimeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("cancel_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3098,7 +3642,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCancelTimeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCancelTimeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("cancel_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3114,7 +3658,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCancelTimeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCancelTimeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("cancel_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3130,7 +3674,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCancelTimeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCancelTimeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("cancel_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3146,7 +3690,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCancelTimeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCancelTimeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("cancel_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3192,7 +3736,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarIdEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarIdEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3208,7 +3752,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarIdNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarIdNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3224,7 +3768,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarIdGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarIdGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3240,7 +3784,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarIdGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarIdGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3256,7 +3800,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarIdLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarIdLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3272,7 +3816,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarIdLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarIdLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3318,7 +3862,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarTypeIdEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarTypeIdEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_type_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3334,7 +3878,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarTypeIdNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarTypeIdNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_type_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3350,7 +3894,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarTypeIdGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarTypeIdGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_type_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3366,7 +3910,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarTypeIdGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarTypeIdGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_type_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3382,7 +3926,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarTypeIdLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarTypeIdLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_type_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3398,7 +3942,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarTypeIdLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarTypeIdLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_type_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3423,6 +3967,142 @@ public class YopsaasRideOrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andCarTypeIdsIsNull() {
+            addCriterion("car_type_ids is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarTypeIdsIsNotNull() {
+            addCriterion("car_type_ids is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarTypeIdsEqualTo(String value) {
+            addCriterion("car_type_ids =", value, "carTypeIds");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andCarTypeIdsEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("car_type_ids = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCarTypeIdsNotEqualTo(String value) {
+            addCriterion("car_type_ids <>", value, "carTypeIds");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andCarTypeIdsNotEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("car_type_ids <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCarTypeIdsGreaterThan(String value) {
+            addCriterion("car_type_ids >", value, "carTypeIds");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andCarTypeIdsGreaterThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("car_type_ids > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCarTypeIdsGreaterThanOrEqualTo(String value) {
+            addCriterion("car_type_ids >=", value, "carTypeIds");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andCarTypeIdsGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("car_type_ids >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCarTypeIdsLessThan(String value) {
+            addCriterion("car_type_ids <", value, "carTypeIds");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andCarTypeIdsLessThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("car_type_ids < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCarTypeIdsLessThanOrEqualTo(String value) {
+            addCriterion("car_type_ids <=", value, "carTypeIds");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andCarTypeIdsLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("car_type_ids <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andCarTypeIdsLike(String value) {
+            addCriterion("car_type_ids like", value, "carTypeIds");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarTypeIdsNotLike(String value) {
+            addCriterion("car_type_ids not like", value, "carTypeIds");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarTypeIdsIn(List<String> values) {
+            addCriterion("car_type_ids in", values, "carTypeIds");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarTypeIdsNotIn(List<String> values) {
+            addCriterion("car_type_ids not in", values, "carTypeIds");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarTypeIdsBetween(String value1, String value2) {
+            addCriterion("car_type_ids between", value1, value2, "carTypeIds");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarTypeIdsNotBetween(String value1, String value2) {
+            addCriterion("car_type_ids not between", value1, value2, "carTypeIds");
+            return (Criteria) this;
+        }
+
         public Criteria andCarTypeIsNull() {
             addCriterion("car_type is null");
             return (Criteria) this;
@@ -3444,7 +4124,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarTypeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarTypeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_type = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3460,7 +4140,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarTypeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarTypeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_type <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3476,7 +4156,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarTypeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarTypeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_type > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3492,7 +4172,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarTypeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarTypeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_type >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3508,7 +4188,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarTypeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarTypeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_type < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3524,7 +4204,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarTypeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarTypeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_type <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3580,7 +4260,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarBrandEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarBrandEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_brand = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3596,7 +4276,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarBrandNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarBrandNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_brand <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3612,7 +4292,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarBrandGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarBrandGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_brand > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3628,7 +4308,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarBrandGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarBrandGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_brand >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3644,7 +4324,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarBrandLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarBrandLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_brand < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3660,7 +4340,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCarBrandLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCarBrandLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("car_brand <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3716,7 +4396,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDriverIdEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDriverIdEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("driver_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3732,7 +4412,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDriverIdNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDriverIdNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("driver_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3748,7 +4428,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDriverIdGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDriverIdGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("driver_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3764,7 +4444,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDriverIdGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDriverIdGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("driver_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3780,7 +4460,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDriverIdLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDriverIdLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("driver_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3796,7 +4476,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDriverIdLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDriverIdLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("driver_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3821,6 +4501,142 @@ public class YopsaasRideOrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andDriverPhoneIsNull() {
+            addCriterion("driver_phone is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverPhoneIsNotNull() {
+            addCriterion("driver_phone is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverPhoneEqualTo(String value) {
+            addCriterion("driver_phone =", value, "driverPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andDriverPhoneEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("driver_phone = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverPhoneNotEqualTo(String value) {
+            addCriterion("driver_phone <>", value, "driverPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andDriverPhoneNotEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("driver_phone <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverPhoneGreaterThan(String value) {
+            addCriterion("driver_phone >", value, "driverPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andDriverPhoneGreaterThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("driver_phone > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverPhoneGreaterThanOrEqualTo(String value) {
+            addCriterion("driver_phone >=", value, "driverPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andDriverPhoneGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("driver_phone >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverPhoneLessThan(String value) {
+            addCriterion("driver_phone <", value, "driverPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andDriverPhoneLessThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("driver_phone < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverPhoneLessThanOrEqualTo(String value) {
+            addCriterion("driver_phone <=", value, "driverPhone");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andDriverPhoneLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("driver_phone <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverPhoneLike(String value) {
+            addCriterion("driver_phone like", value, "driverPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverPhoneNotLike(String value) {
+            addCriterion("driver_phone not like", value, "driverPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverPhoneIn(List<String> values) {
+            addCriterion("driver_phone in", values, "driverPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverPhoneNotIn(List<String> values) {
+            addCriterion("driver_phone not in", values, "driverPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverPhoneBetween(String value1, String value2) {
+            addCriterion("driver_phone between", value1, value2, "driverPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andDriverPhoneNotBetween(String value1, String value2) {
+            addCriterion("driver_phone not between", value1, value2, "driverPhone");
+            return (Criteria) this;
+        }
+
         public Criteria andDriverNameIsNull() {
             addCriterion("driver_name is null");
             return (Criteria) this;
@@ -3842,7 +4658,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDriverNameEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDriverNameEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("driver_name = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3858,7 +4674,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDriverNameNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDriverNameNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("driver_name <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3874,7 +4690,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDriverNameGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDriverNameGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("driver_name > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3890,7 +4706,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDriverNameGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDriverNameGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("driver_name >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3906,7 +4722,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDriverNameLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDriverNameLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("driver_name < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3922,7 +4738,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDriverNameLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDriverNameLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("driver_name <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3978,7 +4794,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andVehicleNumberEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andVehicleNumberEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("vehicle_number = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -3994,7 +4810,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andVehicleNumberNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andVehicleNumberNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("vehicle_number <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4010,7 +4826,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andVehicleNumberGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andVehicleNumberGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("vehicle_number > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4026,7 +4842,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andVehicleNumberGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andVehicleNumberGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("vehicle_number >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4042,7 +4858,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andVehicleNumberLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andVehicleNumberLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("vehicle_number < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4058,7 +4874,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andVehicleNumberLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andVehicleNumberLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("vehicle_number <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4114,7 +4930,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartTimeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartTimeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4130,7 +4946,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartTimeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartTimeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4146,7 +4962,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartTimeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartTimeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4162,7 +4978,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartTimeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartTimeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4178,7 +4994,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartTimeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartTimeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4194,7 +5010,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartTimeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartTimeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4240,7 +5056,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndTimeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndTimeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4256,7 +5072,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndTimeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndTimeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4272,7 +5088,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndTimeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndTimeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4288,7 +5104,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndTimeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndTimeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4304,7 +5120,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndTimeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndTimeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4320,7 +5136,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndTimeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndTimeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4366,7 +5182,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andTimeLengthEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andTimeLengthEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("time_length = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4382,7 +5198,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andTimeLengthNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andTimeLengthNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("time_length <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4398,7 +5214,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andTimeLengthGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andTimeLengthGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("time_length > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4414,7 +5230,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andTimeLengthGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andTimeLengthGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("time_length >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4430,7 +5246,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andTimeLengthLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andTimeLengthLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("time_length < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4446,7 +5262,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andTimeLengthLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andTimeLengthLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("time_length <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4492,7 +5308,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartTimeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartTimeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4508,7 +5324,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartTimeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartTimeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4524,7 +5340,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartTimeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartTimeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4540,7 +5356,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartTimeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartTimeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4556,7 +5372,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartTimeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartTimeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4572,7 +5388,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartTimeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartTimeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4618,7 +5434,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndTimeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndTimeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4634,7 +5450,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndTimeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndTimeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4650,7 +5466,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndTimeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndTimeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4666,7 +5482,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndTimeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndTimeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4682,7 +5498,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndTimeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndTimeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4698,7 +5514,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndTimeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndTimeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4744,7 +5560,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andConfirmTimeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andConfirmTimeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("confirm_time = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4760,7 +5576,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andConfirmTimeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andConfirmTimeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("confirm_time <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4776,7 +5592,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andConfirmTimeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andConfirmTimeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("confirm_time > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4792,7 +5608,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andConfirmTimeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andConfirmTimeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("confirm_time >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4808,7 +5624,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andConfirmTimeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andConfirmTimeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("confirm_time < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4824,7 +5640,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andConfirmTimeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andConfirmTimeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("confirm_time <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4870,7 +5686,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartPositionEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartPositionEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_position = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4886,7 +5702,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartPositionNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartPositionNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_position <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4902,7 +5718,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartPositionGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartPositionGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_position > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4918,7 +5734,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartPositionGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartPositionGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_position >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4934,7 +5750,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartPositionLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartPositionLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_position < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -4950,7 +5766,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartPositionLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartPositionLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_position <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5006,7 +5822,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartAddressEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartAddressEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_address = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5022,7 +5838,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartAddressNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartAddressNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_address <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5038,7 +5854,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartAddressGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartAddressGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_address > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5054,7 +5870,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartAddressGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartAddressGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_address >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5070,7 +5886,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartAddressLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartAddressLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_address < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5086,7 +5902,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartAddressLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartAddressLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_address <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5142,7 +5958,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndPositionEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndPositionEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_position = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5158,7 +5974,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndPositionNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndPositionNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_position <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5174,7 +5990,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndPositionGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndPositionGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_position > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5190,7 +6006,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndPositionGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndPositionGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_position >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5206,7 +6022,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndPositionLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndPositionLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_position < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5222,7 +6038,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndPositionLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndPositionLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_position <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5278,7 +6094,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndAddressEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndAddressEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_address = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5294,7 +6110,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndAddressNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndAddressNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_address <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5310,7 +6126,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndAddressGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndAddressGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_address > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5326,7 +6142,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndAddressGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndAddressGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_address >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5342,7 +6158,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndAddressLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndAddressLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_address < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5358,7 +6174,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndAddressLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndAddressLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_address <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5414,7 +6230,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartLatitudeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartLatitudeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_latitude = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5430,7 +6246,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartLatitudeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartLatitudeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_latitude <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5446,7 +6262,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartLatitudeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartLatitudeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_latitude > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5462,7 +6278,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartLatitudeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartLatitudeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_latitude >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5478,7 +6294,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartLatitudeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartLatitudeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_latitude < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5494,7 +6310,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartLatitudeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartLatitudeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_latitude <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5540,7 +6356,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartLongitudeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartLongitudeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_longitude = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5556,7 +6372,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartLongitudeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartLongitudeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_longitude <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5572,7 +6388,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartLongitudeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartLongitudeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_longitude > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5588,7 +6404,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartLongitudeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartLongitudeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_longitude >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5604,7 +6420,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartLongitudeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartLongitudeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_longitude < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5620,7 +6436,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectStartLongitudeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectStartLongitudeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_start_longitude <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5666,7 +6482,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndLatitudeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndLatitudeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_latitude = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5682,7 +6498,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndLatitudeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndLatitudeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_latitude <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5698,7 +6514,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndLatitudeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndLatitudeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_latitude > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5714,7 +6530,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndLatitudeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndLatitudeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_latitude >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5730,7 +6546,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndLatitudeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndLatitudeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_latitude < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5746,7 +6562,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndLatitudeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndLatitudeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_latitude <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5792,7 +6608,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndLongitudeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndLongitudeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_longitude = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5808,7 +6624,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndLongitudeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndLongitudeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_longitude <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5824,7 +6640,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndLongitudeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndLongitudeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_longitude > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5840,7 +6656,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndLongitudeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndLongitudeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_longitude >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5856,7 +6672,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndLongitudeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndLongitudeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_longitude < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5872,7 +6688,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andExpectEndLongitudeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andExpectEndLongitudeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("expect_end_longitude <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5918,7 +6734,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartLatitudeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartLatitudeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_latitude = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5934,7 +6750,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartLatitudeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartLatitudeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_latitude <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5950,7 +6766,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartLatitudeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartLatitudeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_latitude > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5966,7 +6782,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartLatitudeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartLatitudeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_latitude >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5982,7 +6798,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartLatitudeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartLatitudeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_latitude < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -5998,7 +6814,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartLatitudeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartLatitudeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_latitude <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6044,7 +6860,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartLongitudeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartLongitudeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_longitude = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6060,7 +6876,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartLongitudeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartLongitudeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_longitude <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6076,7 +6892,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartLongitudeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartLongitudeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_longitude > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6092,7 +6908,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartLongitudeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartLongitudeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_longitude >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6108,7 +6924,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartLongitudeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartLongitudeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_longitude < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6124,7 +6940,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andStartLongitudeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andStartLongitudeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("start_longitude <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6170,7 +6986,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndLatitudeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndLatitudeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_latitude = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6186,7 +7002,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndLatitudeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndLatitudeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_latitude <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6202,7 +7018,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndLatitudeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndLatitudeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_latitude > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6218,7 +7034,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndLatitudeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndLatitudeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_latitude >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6234,7 +7050,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndLatitudeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndLatitudeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_latitude < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6250,7 +7066,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndLatitudeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndLatitudeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_latitude <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6296,7 +7112,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndLongitudeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndLongitudeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_longitude = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6312,7 +7128,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndLongitudeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndLongitudeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_longitude <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6328,7 +7144,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndLongitudeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndLongitudeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_longitude > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6344,7 +7160,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndLongitudeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndLongitudeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_longitude >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6360,7 +7176,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndLongitudeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndLongitudeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_longitude < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6376,7 +7192,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andEndLongitudeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andEndLongitudeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("end_longitude <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6422,7 +7238,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPaymentEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPaymentEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("payment = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6438,7 +7254,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPaymentNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPaymentNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("payment <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6454,7 +7270,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPaymentGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPaymentGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("payment > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6470,7 +7286,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPaymentGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPaymentGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("payment >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6486,7 +7302,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPaymentLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPaymentLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("payment < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6502,7 +7318,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPaymentLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPaymentLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("payment <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6548,7 +7364,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayStatusEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayStatusEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_status = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6564,7 +7380,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayStatusNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayStatusNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_status <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6580,7 +7396,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayStatusGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayStatusGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_status > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6596,7 +7412,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayStatusGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayStatusGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_status >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6612,7 +7428,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayStatusLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayStatusLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_status < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6628,7 +7444,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayStatusLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayStatusLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_status <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6653,6 +7469,132 @@ public class YopsaasRideOrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andPayTimeIsNull() {
+            addCriterion("pay_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayTimeIsNotNull() {
+            addCriterion("pay_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayTimeEqualTo(Integer value) {
+            addCriterion("pay_time =", value, "payTime");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPayTimeEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("pay_time = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPayTimeNotEqualTo(Integer value) {
+            addCriterion("pay_time <>", value, "payTime");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPayTimeNotEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("pay_time <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPayTimeGreaterThan(Integer value) {
+            addCriterion("pay_time >", value, "payTime");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPayTimeGreaterThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("pay_time > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPayTimeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("pay_time >=", value, "payTime");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPayTimeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("pay_time >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPayTimeLessThan(Integer value) {
+            addCriterion("pay_time <", value, "payTime");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPayTimeLessThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("pay_time < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPayTimeLessThanOrEqualTo(Integer value) {
+            addCriterion("pay_time <=", value, "payTime");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPayTimeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("pay_time <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPayTimeIn(List<Integer> values) {
+            addCriterion("pay_time in", values, "payTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayTimeNotIn(List<Integer> values) {
+            addCriterion("pay_time not in", values, "payTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayTimeBetween(Integer value1, Integer value2) {
+            addCriterion("pay_time between", value1, value2, "payTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayTimeNotBetween(Integer value1, Integer value2) {
+            addCriterion("pay_time not between", value1, value2, "payTime");
+            return (Criteria) this;
+        }
+
         public Criteria andFirstRechargeTransactionIdIsNull() {
             addCriterion("first_recharge_transaction_id is null");
             return (Criteria) this;
@@ -6674,7 +7616,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFirstRechargeTransactionIdEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFirstRechargeTransactionIdEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("first_recharge_transaction_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6690,7 +7632,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFirstRechargeTransactionIdNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFirstRechargeTransactionIdNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("first_recharge_transaction_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6706,7 +7648,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFirstRechargeTransactionIdGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFirstRechargeTransactionIdGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("first_recharge_transaction_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6722,7 +7664,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFirstRechargeTransactionIdGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFirstRechargeTransactionIdGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("first_recharge_transaction_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6738,7 +7680,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFirstRechargeTransactionIdLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFirstRechargeTransactionIdLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("first_recharge_transaction_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6754,7 +7696,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFirstRechargeTransactionIdLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFirstRechargeTransactionIdLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("first_recharge_transaction_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6800,7 +7742,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFirstRechargeAmountEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFirstRechargeAmountEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("first_recharge_amount = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6816,7 +7758,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFirstRechargeAmountNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFirstRechargeAmountNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("first_recharge_amount <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6832,7 +7774,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFirstRechargeAmountGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFirstRechargeAmountGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("first_recharge_amount > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6848,7 +7790,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFirstRechargeAmountGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFirstRechargeAmountGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("first_recharge_amount >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6864,7 +7806,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFirstRechargeAmountLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFirstRechargeAmountLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("first_recharge_amount < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6880,7 +7822,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFirstRechargeAmountLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFirstRechargeAmountLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("first_recharge_amount <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6926,7 +7868,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponMemberIdEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponMemberIdEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_member_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6942,7 +7884,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponMemberIdNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponMemberIdNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_member_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6958,7 +7900,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponMemberIdGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponMemberIdGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_member_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6974,7 +7916,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponMemberIdGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponMemberIdGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_member_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -6990,7 +7932,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponMemberIdLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponMemberIdLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_member_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7006,7 +7948,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponMemberIdLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponMemberIdLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_member_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7052,7 +7994,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponNameEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponNameEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_name = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7068,7 +8010,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponNameNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponNameNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_name <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7084,7 +8026,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponNameGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponNameGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_name > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7100,7 +8042,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponNameGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponNameGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_name >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7116,7 +8058,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponNameLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponNameLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_name < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7132,7 +8074,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponNameLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponNameLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_name <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7188,7 +8130,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponTypeEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponTypeEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_type = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7204,7 +8146,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponTypeNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponTypeNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_type <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7220,7 +8162,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponTypeGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponTypeGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_type > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7236,7 +8178,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponTypeGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponTypeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_type >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7252,7 +8194,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponTypeLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponTypeLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_type < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7268,7 +8210,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponTypeLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponTypeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_type <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7314,7 +8256,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponFacevalueEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponFacevalueEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_facevalue = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7330,7 +8272,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponFacevalueNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponFacevalueNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_facevalue <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7346,7 +8288,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponFacevalueGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponFacevalueGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_facevalue > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7362,7 +8304,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponFacevalueGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponFacevalueGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_facevalue >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7378,7 +8320,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponFacevalueLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponFacevalueLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_facevalue < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7394,7 +8336,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andCouponFacevalueLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andCouponFacevalueLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("coupon_facevalue <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7440,7 +8382,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDiscountEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDiscountEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("discount = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7456,7 +8398,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDiscountNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDiscountNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("discount <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7472,7 +8414,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDiscountGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDiscountGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("discount > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7488,7 +8430,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDiscountGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDiscountGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("discount >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7504,7 +8446,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDiscountLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDiscountLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("discount < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7520,7 +8462,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDiscountLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDiscountLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("discount <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7566,7 +8508,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andVersionEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andVersionEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("version = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7582,7 +8524,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andVersionNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andVersionNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("version <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7598,7 +8540,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andVersionGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andVersionGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("version > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7614,7 +8556,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andVersionGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andVersionGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("version >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7630,7 +8572,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andVersionLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andVersionLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("version < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7646,7 +8588,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andVersionLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andVersionLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("version <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7692,7 +8634,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFeeVersionEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFeeVersionEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("fee_version = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7708,7 +8650,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFeeVersionNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFeeVersionNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("fee_version <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7724,7 +8666,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFeeVersionGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFeeVersionGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("fee_version > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7740,7 +8682,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFeeVersionGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFeeVersionGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("fee_version >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7756,7 +8698,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFeeVersionLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFeeVersionLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("fee_version < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7772,7 +8714,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andFeeVersionLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andFeeVersionLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("fee_version <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7818,7 +8760,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRefundStatusEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRefundStatusEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("refund_status = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7834,7 +8776,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRefundStatusNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRefundStatusNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("refund_status <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7850,7 +8792,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRefundStatusGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRefundStatusGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("refund_status > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7866,7 +8808,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRefundStatusGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRefundStatusGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("refund_status >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7882,7 +8824,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRefundStatusLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRefundStatusLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("refund_status < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7898,7 +8840,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andRefundStatusLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andRefundStatusLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("refund_status <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7944,7 +8886,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayMethodEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayMethodEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_method = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7960,7 +8902,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayMethodNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayMethodNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_method <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7976,7 +8918,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayMethodGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayMethodGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_method > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -7992,7 +8934,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayMethodGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayMethodGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_method >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8008,7 +8950,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayMethodLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayMethodLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_method < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8024,7 +8966,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayMethodLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayMethodLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_method <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8070,7 +9012,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andBalanceStatusEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andBalanceStatusEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("balance_status = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8086,7 +9028,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andBalanceStatusNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andBalanceStatusNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("balance_status <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8102,7 +9044,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andBalanceStatusGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andBalanceStatusGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("balance_status > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8118,7 +9060,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andBalanceStatusGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andBalanceStatusGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("balance_status >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8134,7 +9076,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andBalanceStatusLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andBalanceStatusLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("balance_status < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8150,7 +9092,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andBalanceStatusLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andBalanceStatusLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("balance_status <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8196,7 +9138,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayableEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayableEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("payable = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8212,7 +9154,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayableNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayableNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("payable <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8228,7 +9170,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayableGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayableGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("payable > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8244,7 +9186,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayableGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayableGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("payable >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8260,7 +9202,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayableLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayableLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("payable < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8276,7 +9218,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayableLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayableLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("payable <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8322,7 +9264,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andTotalAmountEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andTotalAmountEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("total_amount = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8338,7 +9280,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andTotalAmountNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andTotalAmountNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("total_amount <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8354,7 +9296,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andTotalAmountGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andTotalAmountGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("total_amount > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8370,7 +9312,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andTotalAmountGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andTotalAmountGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("total_amount >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8386,7 +9328,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andTotalAmountLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andTotalAmountLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("total_amount < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8402,7 +9344,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andTotalAmountLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andTotalAmountLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("total_amount <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8448,7 +9390,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDepositEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDepositEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("deposit = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8464,7 +9406,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDepositNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDepositNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("deposit <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8480,7 +9422,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDepositGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDepositGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("deposit > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8496,7 +9438,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDepositGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDepositGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("deposit >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8512,7 +9454,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDepositLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDepositLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("deposit < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8528,7 +9470,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDepositLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDepositLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("deposit <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8574,7 +9516,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andLoanInCreditEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andLoanInCreditEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("loan_in_credit = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8590,7 +9532,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andLoanInCreditNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andLoanInCreditNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("loan_in_credit <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8606,7 +9548,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andLoanInCreditGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andLoanInCreditGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("loan_in_credit > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8622,7 +9564,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andLoanInCreditGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andLoanInCreditGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("loan_in_credit >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8638,7 +9580,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andLoanInCreditLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andLoanInCreditLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("loan_in_credit < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8654,7 +9596,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andLoanInCreditLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andLoanInCreditLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("loan_in_credit <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8700,7 +9642,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayAmountEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayAmountEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_amount = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8716,7 +9658,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayAmountNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayAmountNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_amount <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8732,7 +9674,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayAmountGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayAmountGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_amount > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8748,7 +9690,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayAmountGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayAmountGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_amount >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8764,7 +9706,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayAmountLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayAmountLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_amount < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8780,7 +9722,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andPayAmountLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andPayAmountLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("pay_amount <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8826,7 +9768,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andMinAmountEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andMinAmountEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("min_amount = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8842,7 +9784,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andMinAmountNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andMinAmountNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("min_amount <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8858,7 +9800,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andMinAmountGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andMinAmountGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("min_amount > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8874,7 +9816,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andMinAmountGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andMinAmountGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("min_amount >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8890,7 +9832,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andMinAmountLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andMinAmountLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("min_amount < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8906,7 +9848,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andMinAmountLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andMinAmountLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("min_amount <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8952,7 +9894,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andOriginAmountEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andOriginAmountEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("origin_amount = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8968,7 +9910,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andOriginAmountNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andOriginAmountNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("origin_amount <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -8984,7 +9926,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andOriginAmountGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andOriginAmountGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("origin_amount > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9000,7 +9942,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andOriginAmountGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andOriginAmountGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("origin_amount >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9016,7 +9958,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andOriginAmountLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andOriginAmountLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("origin_amount < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9032,7 +9974,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andOriginAmountLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andOriginAmountLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("origin_amount <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9078,7 +10020,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andOriginSharingAmountEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andOriginSharingAmountEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("origin_sharing_amount = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9094,7 +10036,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andOriginSharingAmountNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andOriginSharingAmountNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("origin_sharing_amount <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9110,7 +10052,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andOriginSharingAmountGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andOriginSharingAmountGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("origin_sharing_amount > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9126,7 +10068,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andOriginSharingAmountGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andOriginSharingAmountGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("origin_sharing_amount >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9142,7 +10084,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andOriginSharingAmountLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andOriginSharingAmountLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("origin_sharing_amount < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9158,7 +10100,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andOriginSharingAmountLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andOriginSharingAmountLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("origin_sharing_amount <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9204,7 +10146,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSharingAmountEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSharingAmountEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("sharing_amount = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9220,7 +10162,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSharingAmountNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSharingAmountNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("sharing_amount <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9236,7 +10178,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSharingAmountGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSharingAmountGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("sharing_amount > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9252,7 +10194,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSharingAmountGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSharingAmountGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("sharing_amount >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9268,7 +10210,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSharingAmountLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSharingAmountLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("sharing_amount < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9284,7 +10226,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSharingAmountLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSharingAmountLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("sharing_amount <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9309,6 +10251,802 @@ public class YopsaasRideOrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andWxOrderSnIsNull() {
+            addCriterion("wx_order_sn is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxOrderSnIsNotNull() {
+            addCriterion("wx_order_sn is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxOrderSnEqualTo(String value) {
+            addCriterion("wx_order_sn =", value, "wxOrderSn");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andWxOrderSnEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("wx_order_sn = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWxOrderSnNotEqualTo(String value) {
+            addCriterion("wx_order_sn <>", value, "wxOrderSn");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andWxOrderSnNotEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("wx_order_sn <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWxOrderSnGreaterThan(String value) {
+            addCriterion("wx_order_sn >", value, "wxOrderSn");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andWxOrderSnGreaterThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("wx_order_sn > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWxOrderSnGreaterThanOrEqualTo(String value) {
+            addCriterion("wx_order_sn >=", value, "wxOrderSn");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andWxOrderSnGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("wx_order_sn >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWxOrderSnLessThan(String value) {
+            addCriterion("wx_order_sn <", value, "wxOrderSn");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andWxOrderSnLessThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("wx_order_sn < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWxOrderSnLessThanOrEqualTo(String value) {
+            addCriterion("wx_order_sn <=", value, "wxOrderSn");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andWxOrderSnLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("wx_order_sn <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andWxOrderSnLike(String value) {
+            addCriterion("wx_order_sn like", value, "wxOrderSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxOrderSnNotLike(String value) {
+            addCriterion("wx_order_sn not like", value, "wxOrderSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxOrderSnIn(List<String> values) {
+            addCriterion("wx_order_sn in", values, "wxOrderSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxOrderSnNotIn(List<String> values) {
+            addCriterion("wx_order_sn not in", values, "wxOrderSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxOrderSnBetween(String value1, String value2) {
+            addCriterion("wx_order_sn between", value1, value2, "wxOrderSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andWxOrderSnNotBetween(String value1, String value2) {
+            addCriterion("wx_order_sn not between", value1, value2, "wxOrderSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayIdIsNull() {
+            addCriterion("pay_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayIdIsNotNull() {
+            addCriterion("pay_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayIdEqualTo(String value) {
+            addCriterion("pay_id =", value, "payId");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPayIdEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("pay_id = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPayIdNotEqualTo(String value) {
+            addCriterion("pay_id <>", value, "payId");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPayIdNotEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("pay_id <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPayIdGreaterThan(String value) {
+            addCriterion("pay_id >", value, "payId");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPayIdGreaterThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("pay_id > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPayIdGreaterThanOrEqualTo(String value) {
+            addCriterion("pay_id >=", value, "payId");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPayIdGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("pay_id >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPayIdLessThan(String value) {
+            addCriterion("pay_id <", value, "payId");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPayIdLessThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("pay_id < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPayIdLessThanOrEqualTo(String value) {
+            addCriterion("pay_id <=", value, "payId");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPayIdLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("pay_id <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPayIdLike(String value) {
+            addCriterion("pay_id like", value, "payId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayIdNotLike(String value) {
+            addCriterion("pay_id not like", value, "payId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayIdIn(List<String> values) {
+            addCriterion("pay_id in", values, "payId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayIdNotIn(List<String> values) {
+            addCriterion("pay_id not in", values, "payId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayIdBetween(String value1, String value2) {
+            addCriterion("pay_id between", value1, value2, "payId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPayIdNotBetween(String value1, String value2) {
+            addCriterion("pay_id not between", value1, value2, "payId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundAmountIsNull() {
+            addCriterion("refund_amount is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundAmountIsNotNull() {
+            addCriterion("refund_amount is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundAmountEqualTo(BigDecimal value) {
+            addCriterion("refund_amount =", value, "refundAmount");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundAmountEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_amount = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundAmountNotEqualTo(BigDecimal value) {
+            addCriterion("refund_amount <>", value, "refundAmount");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundAmountNotEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_amount <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundAmountGreaterThan(BigDecimal value) {
+            addCriterion("refund_amount >", value, "refundAmount");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundAmountGreaterThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_amount > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundAmountGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("refund_amount >=", value, "refundAmount");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundAmountGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_amount >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundAmountLessThan(BigDecimal value) {
+            addCriterion("refund_amount <", value, "refundAmount");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundAmountLessThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_amount < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundAmountLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("refund_amount <=", value, "refundAmount");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundAmountLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_amount <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundAmountIn(List<BigDecimal> values) {
+            addCriterion("refund_amount in", values, "refundAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundAmountNotIn(List<BigDecimal> values) {
+            addCriterion("refund_amount not in", values, "refundAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundAmountBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("refund_amount between", value1, value2, "refundAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundAmountNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("refund_amount not between", value1, value2, "refundAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTypeIsNull() {
+            addCriterion("refund_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTypeIsNotNull() {
+            addCriterion("refund_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTypeEqualTo(String value) {
+            addCriterion("refund_type =", value, "refundType");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundTypeEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_type = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTypeNotEqualTo(String value) {
+            addCriterion("refund_type <>", value, "refundType");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundTypeNotEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_type <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTypeGreaterThan(String value) {
+            addCriterion("refund_type >", value, "refundType");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundTypeGreaterThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_type > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("refund_type >=", value, "refundType");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundTypeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_type >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTypeLessThan(String value) {
+            addCriterion("refund_type <", value, "refundType");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundTypeLessThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_type < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTypeLessThanOrEqualTo(String value) {
+            addCriterion("refund_type <=", value, "refundType");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundTypeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_type <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTypeLike(String value) {
+            addCriterion("refund_type like", value, "refundType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTypeNotLike(String value) {
+            addCriterion("refund_type not like", value, "refundType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTypeIn(List<String> values) {
+            addCriterion("refund_type in", values, "refundType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTypeNotIn(List<String> values) {
+            addCriterion("refund_type not in", values, "refundType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTypeBetween(String value1, String value2) {
+            addCriterion("refund_type between", value1, value2, "refundType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTypeNotBetween(String value1, String value2) {
+            addCriterion("refund_type not between", value1, value2, "refundType");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundContentIsNull() {
+            addCriterion("refund_content is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundContentIsNotNull() {
+            addCriterion("refund_content is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundContentEqualTo(String value) {
+            addCriterion("refund_content =", value, "refundContent");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundContentEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_content = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundContentNotEqualTo(String value) {
+            addCriterion("refund_content <>", value, "refundContent");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundContentNotEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_content <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundContentGreaterThan(String value) {
+            addCriterion("refund_content >", value, "refundContent");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundContentGreaterThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_content > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundContentGreaterThanOrEqualTo(String value) {
+            addCriterion("refund_content >=", value, "refundContent");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundContentGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_content >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundContentLessThan(String value) {
+            addCriterion("refund_content <", value, "refundContent");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundContentLessThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_content < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundContentLessThanOrEqualTo(String value) {
+            addCriterion("refund_content <=", value, "refundContent");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundContentLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_content <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundContentLike(String value) {
+            addCriterion("refund_content like", value, "refundContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundContentNotLike(String value) {
+            addCriterion("refund_content not like", value, "refundContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundContentIn(List<String> values) {
+            addCriterion("refund_content in", values, "refundContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundContentNotIn(List<String> values) {
+            addCriterion("refund_content not in", values, "refundContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundContentBetween(String value1, String value2) {
+            addCriterion("refund_content between", value1, value2, "refundContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundContentNotBetween(String value1, String value2) {
+            addCriterion("refund_content not between", value1, value2, "refundContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTimeIsNull() {
+            addCriterion("refund_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTimeIsNotNull() {
+            addCriterion("refund_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTimeEqualTo(Integer value) {
+            addCriterion("refund_time =", value, "refundTime");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundTimeEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_time = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTimeNotEqualTo(Integer value) {
+            addCriterion("refund_time <>", value, "refundTime");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundTimeNotEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_time <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTimeGreaterThan(Integer value) {
+            addCriterion("refund_time >", value, "refundTime");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundTimeGreaterThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_time > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTimeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("refund_time >=", value, "refundTime");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundTimeGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_time >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTimeLessThan(Integer value) {
+            addCriterion("refund_time <", value, "refundTime");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundTimeLessThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_time < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTimeLessThanOrEqualTo(Integer value) {
+            addCriterion("refund_time <=", value, "refundTime");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andRefundTimeLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("refund_time <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTimeIn(List<Integer> values) {
+            addCriterion("refund_time in", values, "refundTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTimeNotIn(List<Integer> values) {
+            addCriterion("refund_time not in", values, "refundTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTimeBetween(Integer value1, Integer value2) {
+            addCriterion("refund_time between", value1, value2, "refundTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRefundTimeNotBetween(Integer value1, Integer value2) {
+            addCriterion("refund_time not between", value1, value2, "refundTime");
+            return (Criteria) this;
+        }
+
         public Criteria andActualTimeLengthIsNull() {
             addCriterion("actual_time_length is null");
             return (Criteria) this;
@@ -9330,7 +11068,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andActualTimeLengthEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andActualTimeLengthEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("actual_time_length = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9346,7 +11084,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andActualTimeLengthNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andActualTimeLengthNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("actual_time_length <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9362,7 +11100,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andActualTimeLengthGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andActualTimeLengthGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("actual_time_length > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9378,7 +11116,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andActualTimeLengthGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andActualTimeLengthGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("actual_time_length >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9394,7 +11132,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andActualTimeLengthLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andActualTimeLengthLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("actual_time_length < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9410,7 +11148,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andActualTimeLengthLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andActualTimeLengthLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("actual_time_length <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9456,7 +11194,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDependableDistanceEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDependableDistanceEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("dependable_distance = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9472,7 +11210,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDependableDistanceNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDependableDistanceNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("dependable_distance <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9488,7 +11226,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDependableDistanceGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDependableDistanceGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("dependable_distance > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9504,7 +11242,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDependableDistanceGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDependableDistanceGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("dependable_distance >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9520,7 +11258,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDependableDistanceLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDependableDistanceLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("dependable_distance < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9536,7 +11274,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andDependableDistanceLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andDependableDistanceLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("dependable_distance <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9582,7 +11320,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andMileageEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andMileageEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("mileage = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9598,7 +11336,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andMileageNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andMileageNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("mileage <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9614,7 +11352,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andMileageGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andMileageGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("mileage > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9630,7 +11368,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andMileageGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andMileageGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("mileage >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9646,7 +11384,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andMileageLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andMileageLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("mileage < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9662,7 +11400,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andMileageLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andMileageLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("mileage <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9708,7 +11446,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSystemDistanceEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSystemDistanceEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("system_distance = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9724,7 +11462,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSystemDistanceNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSystemDistanceNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("system_distance <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9740,7 +11478,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSystemDistanceGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSystemDistanceGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("system_distance > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9756,7 +11494,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSystemDistanceGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSystemDistanceGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("system_distance >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9772,7 +11510,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSystemDistanceLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSystemDistanceLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("system_distance < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9788,7 +11526,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andSystemDistanceLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andSystemDistanceLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("system_distance <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9834,7 +11572,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinSecretNoXEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinSecretNoXEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_secret_no_x = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9850,7 +11588,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinSecretNoXNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinSecretNoXNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_secret_no_x <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9866,7 +11604,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinSecretNoXGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinSecretNoXGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_secret_no_x > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9882,7 +11620,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinSecretNoXGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinSecretNoXGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_secret_no_x >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9898,7 +11636,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinSecretNoXLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinSecretNoXLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_secret_no_x < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9914,7 +11652,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinSecretNoXLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinSecretNoXLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_secret_no_x <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9970,7 +11708,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinSubsIdEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinSubsIdEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_subs_id = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -9986,7 +11724,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinSubsIdNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinSubsIdNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_subs_id <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -10002,7 +11740,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinSubsIdGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinSubsIdGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_subs_id > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -10018,7 +11756,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinSubsIdGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinSubsIdGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_subs_id >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -10034,7 +11772,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinSubsIdLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinSubsIdLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_subs_id < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -10050,7 +11788,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinSubsIdLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinSubsIdLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_subs_id <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -10096,7 +11834,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinStatusEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinStatusEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_status = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -10112,7 +11850,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinStatusNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinStatusNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_status <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -10128,7 +11866,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinStatusGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinStatusGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_status > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -10144,7 +11882,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinStatusGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinStatusGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_status >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -10160,7 +11898,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinStatusLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinStatusLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_status < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -10176,7 +11914,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andAlitongxinStatusLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andAlitongxinStatusLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("alitongxin_status <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -10201,6 +11939,142 @@ public class YopsaasRideOrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andPassengerSessionIdIsNull() {
+            addCriterion("passenger_session_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerSessionIdIsNotNull() {
+            addCriterion("passenger_session_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerSessionIdEqualTo(String value) {
+            addCriterion("passenger_session_id =", value, "passengerSessionId");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPassengerSessionIdEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("passenger_session_id = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerSessionIdNotEqualTo(String value) {
+            addCriterion("passenger_session_id <>", value, "passengerSessionId");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPassengerSessionIdNotEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("passenger_session_id <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerSessionIdGreaterThan(String value) {
+            addCriterion("passenger_session_id >", value, "passengerSessionId");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPassengerSessionIdGreaterThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("passenger_session_id > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerSessionIdGreaterThanOrEqualTo(String value) {
+            addCriterion("passenger_session_id >=", value, "passengerSessionId");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPassengerSessionIdGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("passenger_session_id >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerSessionIdLessThan(String value) {
+            addCriterion("passenger_session_id <", value, "passengerSessionId");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPassengerSessionIdLessThanColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("passenger_session_id < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerSessionIdLessThanOrEqualTo(String value) {
+            addCriterion("passenger_session_id <=", value, "passengerSessionId");
+            return (Criteria) this;
+        }
+
+        /**
+         * This method was generated by MyBatis Generator.
+         * This method corresponds to the database table yopsaas_ride_order
+         *
+         * @mbg.generated
+         */
+        public Criteria andPassengerSessionIdLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
+            addCriterion(new StringBuilder("passenger_session_id <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerSessionIdLike(String value) {
+            addCriterion("passenger_session_id like", value, "passengerSessionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerSessionIdNotLike(String value) {
+            addCriterion("passenger_session_id not like", value, "passengerSessionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerSessionIdIn(List<String> values) {
+            addCriterion("passenger_session_id in", values, "passengerSessionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerSessionIdNotIn(List<String> values) {
+            addCriterion("passenger_session_id not in", values, "passengerSessionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerSessionIdBetween(String value1, String value2) {
+            addCriterion("passenger_session_id between", value1, value2, "passengerSessionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPassengerSessionIdNotBetween(String value1, String value2) {
+            addCriterion("passenger_session_id not between", value1, value2, "passengerSessionId");
+            return (Criteria) this;
+        }
+
         public Criteria andLastOperatorIsNull() {
             addCriterion("last_operator is null");
             return (Criteria) this;
@@ -10222,7 +12096,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andLastOperatorEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andLastOperatorEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("last_operator = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -10238,7 +12112,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andLastOperatorNotEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andLastOperatorNotEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("last_operator <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -10254,7 +12128,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andLastOperatorGreaterThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andLastOperatorGreaterThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("last_operator > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -10270,7 +12144,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andLastOperatorGreaterThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andLastOperatorGreaterThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("last_operator >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -10286,7 +12160,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andLastOperatorLessThanColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andLastOperatorLessThanColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("last_operator < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
@@ -10302,7 +12176,7 @@ public class YopsaasRideOrderExample {
          *
          * @mbg.generated
          */
-        public Criteria andLastOperatorLessThanOrEqualToColumn(YopsaasRideOrderWithBLOBs.Column column) {
+        public Criteria andLastOperatorLessThanOrEqualToColumn(YopsaasRideOrder.Column column) {
             addCriterion(new StringBuilder("last_operator <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }

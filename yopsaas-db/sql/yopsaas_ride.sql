@@ -15,16 +15,16 @@ create table yopsaas_ride_order(
 
   `account_id` bigint(20) not null default 0 COMMENT '冗余账户id',
   `user_id` bigint(20) NOT NULL default 0 COMMENT '用户ID',
-  `user_phone` varbinary(20) not null DEFAULT '' COMMENT '用户的电话号码, 国际标准, 电话号码最多15个数字',
+  `user_phone` varchar(20) not null DEFAULT '' COMMENT '用户的电话号码, 国际标准, 电话号码最多15个数字',
   `passenger_name` varchar(32) not null DEFAULT '' COMMENT '乘客的名称',
-  `passenger_phone` varbinary(20) not null DEFAULT '' COMMENT '乘客的电话号码, 国际标准, 电话号码最多15个数字',
+  `passenger_phone` varchar(20) not null DEFAULT '' COMMENT '乘客的电话号码, 国际标准, 电话号码最多15个数字',
   `corporate_id` bigint(20) NOT NULL default 0 COMMENT '企业ID',
   `corporate_dept_id` int(11) NOT NULL DEFAULT '0' COMMENT '企业账户关系id，即所属的最小账户级别id',
 
-  `city` varbinary(16) not null DEFAULT '' COMMENT '订单出发地所在城市(区域)',
+  `city` varchar(16) not null DEFAULT '' COMMENT '订单出发地所在城市(区域)',
 
   `reason_id`  int(11) NOT NULL DEFAULT '0' COMMENT '订单取消原因',
-  `flight_number` varbinary(20) not null DEFAULT '' COMMENT '航班号, 需要转换成大写字母',
+  `flight_number` varchar(20) not null DEFAULT '' COMMENT '航班号, 需要转换成大写字母',
 
   `create_time` int(11) NOT NULL default 0 COMMENT '创建订单的时间',
   `update_time` int(11) NOT NULL default 0 COMMENT '创建修改的时间',
@@ -35,12 +35,12 @@ create table yopsaas_ride_order(
 
   `car_id` int(11) NOT NULL DEFAULT '0' COMMENT '分配的车辆的ID',
   `car_type_id` int(11) NOT NULL DEFAULT '0' COMMENT '分配的车型的ID',
-  `car_type_ids` varbinary(50) NOT NULL DEFAULT '' COMMENT 'mixed car_type support',
+  `car_type_ids` varchar(50) NOT NULL DEFAULT '' COMMENT 'mixed car_type support',
   `car_type` varchar(64) NOT NULL DEFAULT '' COMMENT '分配的车型的名称, ',
   `car_brand` varchar(64) NOT NULL DEFAULT '' COMMENT '分配的车的牌子',
 
   `driver_id` int(11) NOT NULL DEFAULT '0' COMMENT '分配的司机的ID',
-  `driver_phone` varbinary(20) NOT NULL DEFAULT '' COMMENT '分配的司机的手机号码',
+  `driver_phone` varchar(20) NOT NULL DEFAULT '' COMMENT '分配的司机的手机号码',
   `driver_name` varchar(32) NOT NULL DEFAULT ''COMMENT '分配的司机的名称',
   `vehicle_number` varchar(32) NOT NULL DEFAULT '' COMMENT '分配的车牌号码',
 
@@ -69,6 +69,7 @@ create table yopsaas_ride_order(
 
   `payment` int(10) not null DEFAULT 0 comment '支付方式',
   `pay_status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '付款状态 1:未付款 2:部分付款 3:已付款',
+  `pay_time` int(11) NOT NULL DEFAULT '0' COMMENT '支付时间',
   `first_recharge_transaction_id` bigint(20) NOT NULL DEFAULT 0 COMMENT '首次支付时的事务ID',
   `first_recharge_amount` decimal(10,2) NOT NULL DEFAULT 0 ,
 
@@ -94,6 +95,13 @@ create table yopsaas_ride_order(
   `origin_sharing_amount` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '司机统计金额',
   `sharing_amount` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '服务结束后，给司机的费用',
 
+  `wx_order_sn` varchar(63) NOT NULL COMMENT '微信订单编号',
+  `pay_id` varchar(63) NOT NULL DEFAULT '' COMMENT '微信付款编号',
+  `refund_amount` decimal(10,2) NOT NULL DEFAULT 0 COMMENT '实际退款金额，（有可能退款金额小于实际支付金额）',
+  `refund_type` varchar(63) NOT NULL DEFAULT 0 COMMENT '退款方式',
+  `refund_content` varchar(127) NOT NULL DEFAULT '' COMMENT '退款备注',
+  `refund_time` int(11) NOT NULL DEFAULT 0 COMMENT '退款时间',
+
   `actual_time_length` int(11) NOT NULL DEFAULT '0' COMMENT  '实际使用时长',
   `dependable_distance` int(11) NOT NULL DEFAULT '0',
   `mileage` int(11) NOT NULL DEFAULT 0 COMMENT  '司机手动输入里程数',
@@ -103,7 +111,7 @@ create table yopsaas_ride_order(
   `alitongxin_subs_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '阿里小号ID',
   `alitongxin_status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '阿里小号状态未绑定0，绑定1，解绑成功2，解绑失败3',
 
-  `passenger_session_id` varbinary(32) NOT NULL DEFAULT '' COMMENT '乘客聊天会话',
+  `passenger_session_id` varchar(32) NOT NULL DEFAULT '' COMMENT '乘客聊天会话',
   `last_operator` varchar(50) NOT NULL default '',
   PRIMARY KEY (`ride_order_id`),
   KEY `idx_user_id_create_time_status` (`user_id`,`create_time`,`status`),
@@ -130,9 +138,9 @@ create table yopsaas_ride_order_ext(
 
   `src_city_name` varchar(100) NOT NULL DEFAULT '' ,
   `dst_city_name` varchar(100) NOT NULL DEFAULT '' ,
-  `dest_city` varbinary(16) NOT NULL DEFAULT '' COMMENT '下车地点所在城市',
+  `dest_city` varchar(16) NOT NULL DEFAULT '' COMMENT '下车地点所在城市',
 
-  `dispatch_driver_ids` varbinary(1024) NOT NULL DEFAULT '' COMMENT '预约收藏司机订单，派单司机ID',
+  `dispatch_driver_ids` varchar(1024) NOT NULL DEFAULT '' COMMENT '预约收藏司机订单，派单司机ID',
   `change_driver_reason_id` int(11) NOT NULL DEFAULT '0' COMMENT '改派司机的原因，只记录第一次, 1.司机原因， 2. 客户原因',
   `before_cancel_status` tinyint(3) NOT NULL DEFAULT '0' COMMENT '取消前状态',
 
@@ -171,7 +179,7 @@ create table yopsaas_ride_order_ext(
   `estimate_snap` varchar(4096) NOT NULL DEFAULT '' COMMENT '订单预估快照',   -- to cache
   `app_msg` text COMMENT '客户端消息',                                    -- to driver order 冗余表
   `comment` text NOT NULL COMMENT '订单的留言, CRM 客服，添加的留言',   -- erp专用
-  `ip` varbinary(40) NOT NULL DEFAULT '' COMMENT '用户下单时的IP',
+  `ip` varchar(40) NOT NULL DEFAULT '' COMMENT '用户下单时的IP',
   `order_port` int(11) NOT NULL DEFAULT '0' COMMENT '订单下单端口',
   `update_time` int(11) NOT NULL DEFAULT 0 COMMENT '更新订单的时间',
   PRIMARY KEY (`ride_order_id`),

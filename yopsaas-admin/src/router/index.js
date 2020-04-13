@@ -153,6 +153,30 @@ export const asyncRouterMap = [
   },
 
   {
+    path: '/ride',
+    component: Layout,
+    redirect: 'noredirect',
+    alwaysShow: true,
+    name: 'rideManage',
+    meta: {
+      title: '网约车管理',
+      icon: 'chart'
+    },
+    children: [
+      {
+        path: 'rideorder',
+        component: () => import('@/views/ride/order'),
+        name: 'rideorder',
+        meta: {
+          perms: ['GET /admin/rideorder/list', 'GET /admin/rideorder/detail', 'POST /admin/rideorder/ship', 'POST /admin/rideorder/refund', 'POST /admin/rideorder/delete', 'POST /admin/rideorder/reply'],
+          title: '订单管理',
+          noCache: true
+        }
+      }
+    ]
+  },
+
+  {
     path: '/mall',
     component: Layout,
     redirect: 'noredirect',

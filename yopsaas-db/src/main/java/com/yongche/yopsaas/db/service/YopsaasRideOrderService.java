@@ -20,7 +20,7 @@ public class YopsaasRideOrderService {
     @Resource
     private YopsaasRideOrderMapper yopsaasRideOrderMapper;
     @Resource
-    private RideOrderMapper orderMapper;
+    private RideOrderMapper rideOrderMapper;
 
     /**
      * 获取精确到秒的时间戳
@@ -120,7 +120,7 @@ public class YopsaasRideOrderService {
         int preUpdateTime = order.getUpdateTime();
         int time = YopsaasRideOrderService.getSecondTimestamp(new Date());
         order.setUpdateTime(time);
-        return orderMapper.updateWithOptimisticLocker(preUpdateTime, order);
+        return rideOrderMapper.updateWithOptimisticLocker(preUpdateTime, order);
     }
 
     public void deleteById(Long rideOrderId) {

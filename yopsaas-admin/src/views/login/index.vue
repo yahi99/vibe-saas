@@ -2,7 +2,7 @@
   <div class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
       <div class="title-container">
-        <h3 class="title">管理员登录</h3>
+        <h3 class="title">易到开放平台-商家</h3>
       </div>
       <el-form-item prop="username">
         <span class="svg-container">
@@ -22,22 +22,16 @@
 
       <div style="position:relative">
         <div class="tips">
-          <span> 超级管理员用户名: admin123</span>
-          <span> 超级管理员用户名：admin123</span>
+          <span>一期仅支持项目整体打包部署到第三方平台</span>
         </div>
         <div class="tips">
-          <span> 商城管理员用户名: mall123</span>
-          <span> 商城管理员用户名：mall123</span>
-        </div>
-        <div class="tips">
-          <span> 推广管理员用户名: promotion123</span>
-          <span> 推广管理员用户名：promotion123</span>
+          <span>三方平台需提供营业执照以申请微信支付，需要和易到签署合作协议以申请网约车微信小程序</span>
         </div>
       </div>
     </el-form>
 
     <div class="copyright">
-      Copyright © 2020 xxx.com 版权所有 <a href="http://www.example.com/">沪ICP备xxx号</a>
+      Copyright © 2020 yongche.com 版权所有 <a href="http://www.beian.miit.gov.cn/publish/query/indexFirst.action">京ICP备11005954号-1</a>
     </div>
   </div>
 </template>

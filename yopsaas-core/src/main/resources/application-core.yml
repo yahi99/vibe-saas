@@ -87,7 +87,7 @@ yopsaas:
     local:
       storagePath: storage
       # 这个地方应该是wx模块的WxStorageController的fetch方法对应的地址
-      address: http://yop-saas.yongche.com:8080/wx/storage/fetch/
+      address: http://yop-saas.yongche.com/wx/storage/fetch/
     # 阿里云对象存储配置信息
     aliyun:
       endpoint: oss-cn-shenzhen.aliyuncs.com

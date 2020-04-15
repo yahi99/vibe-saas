@@ -78,6 +78,10 @@
             <artifactId>weixin-java-pay</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.github.zhangchunsheng</groupId>
+            <artifactId>yop-java</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.yongche</groupId>
             <artifactId>yopsaas-db</artifactId>
         </dependency>

@@ -40,7 +40,11 @@ public class WxYopPriceController {
                         @RequestParam(defaultValue = "17", name = "product_type") String productType) {
 
         PriceNew data = priceService.getPrice(city, productType);
-        return ResponseUtil.ok(data);
+        if(data.getCode().equals("200")) {
+            return ResponseUtil.ok(data.getResult());
+        } else {
+            return ResponseUtil.fail(Integer.valueOf(data.getCode()), data.getMsg());
+        }
     }
 
 }

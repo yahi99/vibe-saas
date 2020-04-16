@@ -109,6 +109,13 @@ public class ResponseUtil {
         return obj;
     }
 
+    public static Object fail(String errno, String errmsg) {
+        Map<String, Object> obj = new HashMap<String, Object>();
+        obj.put("errno", errno);
+        obj.put("errmsg", errmsg);
+        return obj;
+    }
+
     public static Object badArgument() {
         return fail(401, "参数不对");
     }

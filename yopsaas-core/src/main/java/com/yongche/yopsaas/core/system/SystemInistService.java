@@ -108,6 +108,9 @@ class SystemInistService {
         infos.put("微信支付MCH-KEY", environment.getProperty("yopsaas.wx.mch-key"));
         infos.put("微信支付通知地址", environment.getProperty("yopsaas.wx.notify-url"));
 
+        // YOP 相关信息
+        infos.put("YOP access-token", environment.getProperty("yopsaas.yop.access-token"));
+
         //测试获取System表配置信息
         infos.put(SystemInfoPrinter.CREATE_PART_COPPER + 3, "系统设置");
         infos.put("自动创建朋友圈分享图", Boolean.toString(SystemConfig.isAutoCreateShareImage()));

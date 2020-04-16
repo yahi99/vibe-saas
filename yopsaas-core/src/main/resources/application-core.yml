@@ -9,6 +9,9 @@ yopsaas:
     # 商户证书文件路径
     # 请参考“商户证书”一节 https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=4_3
     key-path: xxxxx
+  yop:
+    # 合作方access_token由平台直接提供，长期有效
+    access-token: AAuPlpLwVpCm3blBEbiKqOyOP1W97V3PtgJQoAf3
 
   #通知相关配置
   notify:

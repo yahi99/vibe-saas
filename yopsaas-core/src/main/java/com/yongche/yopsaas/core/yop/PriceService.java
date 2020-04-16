@@ -8,13 +8,11 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PriceService {
+public class PriceService extends BaseService {
     private final Log logger = LogFactory.getLog(PriceService.class);
 
-    private YopProperties properties;
-
     public PriceNew getPrice(String city, String type) {
-        String accessToken = properties.getAccessToken();
+        String accessToken = this.getProperties().getAccessToken();
         return PriceNewAPI.getPrice(accessToken, city, type);
     }
 }

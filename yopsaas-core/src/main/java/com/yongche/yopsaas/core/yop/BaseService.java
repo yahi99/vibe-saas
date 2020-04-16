@@ -2,7 +2,7 @@ package com.yongche.yopsaas.core.yop;
 
 import com.yongche.yopsaas.core.config.YopProperties;
 
-public class OrderService extends BaseService {
+public class BaseService {
     private YopProperties properties;
 
     public YopProperties getProperties() {

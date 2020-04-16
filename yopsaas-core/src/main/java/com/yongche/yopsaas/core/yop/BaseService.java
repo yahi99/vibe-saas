@@ -1,6 +1,6 @@
 package com.yongche.yopsaas.core.yop;
 
-import com.yongche.yopsaas.core.config.YopProperties;
+import com.yongche.yopsaas.core.yop.config.YopProperties;
 
 public class BaseService {
     private YopProperties properties;

@@ -1,6 +1,6 @@
 package com.yongche.yopsaas.core.yop.config;
 
-import com.yongche.yopsaas.core.config.YopProperties;
+import com.yongche.yopsaas.core.yop.config.YopProperties;
 import com.yongche.yopsaas.core.yop.OrderService;
 import com.yongche.yopsaas.core.yop.PriceService;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableConfigurationProperties({PriceService.class, OrderService.class})
+@EnableConfigurationProperties(YopProperties.class)
 public class YopAutoConfiguration {
 
     private final YopProperties properties;

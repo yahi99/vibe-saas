@@ -1,5 +1,6 @@
 package com.yongche.yopsaas.wx.web;
 
+import com.ridegroup.yop.bean.price.PriceNew;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.yop.PriceService;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
@@ -38,8 +39,7 @@ public class WxYopPriceController {
     public Object index(@RequestParam(defaultValue = "bj") String city,
                         @RequestParam(defaultValue = "17", name = "product_type") String productType) {
 
-        Map<Object, Object> data = new HashMap<Object, Object>();
-        data.put("price", priceService.getPrice(city, productType));
+        PriceNew data = priceService.getPrice(city, productType);
         return ResponseUtil.ok(data);
     }
 

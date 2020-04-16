@@ -5,9 +5,7 @@ import com.ridegroup.yop.bean.price.PriceNew;
 import com.yongche.yopsaas.core.config.YopProperties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.stereotype.Service;
 
-@Service
 public class PriceService extends BaseService {
     private final Log logger = LogFactory.getLog(PriceService.class);
 

@@ -27,7 +27,7 @@ public class RegexUtil {
      * <p>global star: 1349</p>
      * <p>virtual operator: 170</p>
      */
-    public static final String REGEX_MOBILE_EXACT = "^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(16[6])|(17[0,1,3,5-8])|" +
+    public static final String REGEX_MOBILE_EXACT = "^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(16[0-9])|(17[0,1,3,5-8])|" +
             "(18[0-9])|(19[8,9]))\\d{8}$";
     /**
      * Regex of telephone number.

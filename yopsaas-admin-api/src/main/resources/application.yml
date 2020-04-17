@@ -13,4 +13,4 @@ logging:
     org.springframework:  ERROR
     org.mybatis:  ERROR
     com.yongche.yopsaas.admin:  DEBUG
-    com.yongche.yopsaas:  ERROR
+    com.yongche.yopsaas:  DEBUG

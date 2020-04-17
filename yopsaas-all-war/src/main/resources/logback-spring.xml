@@ -50,8 +50,8 @@
     </root>
     <logger name="org.mybatis" level="ERROR" />
     <logger name="org.springframework" level="ERROR" />
-    <logger name="com.yongche.yopsaas.core" level="ERROR" />
-    <logger name="com.yongche.yopsaas.db" level="ERROR" />
+    <logger name="com.yongche.yopsaas.core" level="DEBUG" />
+    <logger name="com.yongche.yopsaas.db" level="DEBUG" />
     <logger name="com.yongche.yopsaas.admin" level="DEBUG" />
     <logger name="com.yongche.yopsaas.wx" level="DEBUG" />
     <logger name="com.yongche.yopsaas" level="DEBUG" />

@@ -40,7 +40,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `yopsaas_admin` WRITE;
 /*!40000 ALTER TABLE `yopsaas_admin` DISABLE KEYS */;
-INSERT INTO `yopsaas_admin` VALUES (1,'yopadmin','$2a$10$rHzxRGQ2jT/qjdvVBBOeJuqs5IF2BR5dLgG4vKVuPRAYmfzA2YkMS',NULL,NULL,'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif','2020-04-17 00:00:00','2020-04-17 00:00:00',0,'[1]'),(4,'yop_promotion','$2a$10$rHzxRGQ2jT/qjdvVBBOeJuqs5IF2BR5dLgG4vKVuPRAYmfzA2YkMS','',NULL,'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif','2020-04-17 15:16:59','2020-04-17 15:17:34',0,'[3]'),(5,'yop_mall','$2a$10$rHzxRGQ2jT/qjdvVBBOeJuqs5IF2BR5dLgG4vKVuPRAYmfzA2YkMS','',NULL,'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif','2020-04-17 15:17:25','2020-04-17 15:21:05',0,'[2]');
+INSERT INTO `yopsaas_admin` VALUES (1,'yopadmin','$2a$10$rHzxRGQ2jT/qjdvVBBOeJuqs5IF2BR5dLgG4vKVuPRAYmfzA2YkMS',NULL,NULL,'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif','2020-04-17 00:00:00','2020-04-17 00:00:00',0,'[1]'),(2,'yop_promotion','$2a$10$rHzxRGQ2jT/qjdvVBBOeJuqs5IF2BR5dLgG4vKVuPRAYmfzA2YkMS','',NULL,'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif','2020-04-17 15:16:59','2020-04-17 15:17:34',0,'[3]'),(3,'yop_mall','$2a$10$rHzxRGQ2jT/qjdvVBBOeJuqs5IF2BR5dLgG4vKVuPRAYmfzA2YkMS','',NULL,'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif','2020-04-17 15:17:25','2020-04-17 15:21:05',0,'[2]'),(4,'yongche','$2a$10$rHzxRGQ2jT/qjdvVBBOeJuqs5IF2BR5dLgG4vKVuPRAYmfzA2YkMS','172.17.0.49','2020-04-13 03:14:57','https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif','2020-04-13 03:14:31','2020-04-13 03:14:57',0,'[1]');
 /*!40000 ALTER TABLE `yopsaas_admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,7 +339,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `yopsaas_user` WRITE;
 /*!40000 ALTER TABLE `yopsaas_user` DISABLE KEYS */;
-INSERT INTO `yopsaas_user` VALUES (1,'yopuser','$2a$10$rHzxRGQ2jT/qjdvVBBOeJuqs5IF2BR5dLgG4vKVuPRAYmfzA2YkMS',1,NULL,'2020-04-17 22:17:43','0:0:0:0:0:0:0:1',0,'yopuser','','','','',0,'2020-04-17 22:17:43','2020-04-17 22:17:43',0);
+INSERT INTO `yopsaas_user` VALUES (1,'yopuser','$2a$10$rHzxRGQ2jT/qjdvVBBOeJuqs5IF2BR5dLgG4vKVuPRAYmfzA2YkMS',1,NULL,'2020-04-17 03:59:12','172.17.0.49',0,'user123','','','','',0,'2019-04-20 22:17:43','2020-04-17 03:59:12',0),(2,'oLF6b5YbAP4a21Fe2awU2xc1ySM8','oLF6b5YbAP4a21Fe2awU2xc1ySM8',1,NULL,'2020-04-11 19:18:39','172.17.0.49',0,'SSHAI','','https://wx.qlogo.cn/mmopen/vi_32/ajNVdqHZLLDoYm9A7znPleAm20qsRiciat4mYte33v0tbrGccnFiaqEcFJg21prnQJvhxESbDkfzZKwSq9bOydm3w/132','oLF6b5YbAP4a21Fe2awU2xc1ySM8','S66rxzS0WjnLLL8NJ4jKqQ==',0,'2020-04-11 19:18:39','2020-04-11 19:18:39',0),(3,'oLF6b5auv2rStgfybogz_qYi4gPY','oLF6b5auv2rStgfybogz_qYi4gPY',2,NULL,'2020-04-11 21:02:27','172.17.0.49',0,'Fiona','','https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKrczOEsEQBAA9jzviarLXl6Tic3bIkblHQG0BEBLt3oF7xxBrKJMYhicxXWBodov4pibsXv0LzogB92g/132','oLF6b5auv2rStgfybogz_qYi4gPY','eoHM9PS5rz9kWESO3fOsPA==',0,'2020-04-11 21:02:27','2020-04-11 21:02:27',0);
 /*!40000 ALTER TABLE `yopsaas_user` ENABLE KEYS */;
 UNLOCK TABLES;
 

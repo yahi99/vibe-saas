@@ -8,7 +8,7 @@ yopsaas:
     notify-url: https://yop-saas.yongche.com/wx/order/pay-notify
     # 商户证书文件路径
     # 请参考“商户证书”一节 https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=4_3
-    key-path: xxxxx
+    key-path: /etc/pki/tls/certs/yopsaas/apiclient_cert.p12
   yop:
     # 合作方access_token由平台直接提供，长期有效
     access-token: AAuPlpLwVpCm3blBEbiKqOyOP1W97V3PtgJQoAf3

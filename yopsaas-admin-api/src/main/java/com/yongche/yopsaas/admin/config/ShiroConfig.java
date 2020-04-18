@@ -45,8 +45,9 @@ public class ShiroConfig {
 
     @Bean
     public SessionManager sessionManager() {
-
-        return new AdminWebSessionManager();
+        AdminWebSessionManager manager = new AdminWebSessionManager();
+        manager.setGlobalSessionTimeout(28800000L);
+        return manager;
     }
 
     @Bean

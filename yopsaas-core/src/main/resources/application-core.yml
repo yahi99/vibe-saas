@@ -12,6 +12,8 @@ yopsaas:
   yop:
     # 合作方access_token由平台直接提供，长期有效
     access-token: AAuPlpLwVpCm3blBEbiKqOyOP1W97V3PtgJQoAf3
+  amap:
+    key: ddd6611f54602b2f83039be6ba04f981
 
   #通知相关配置
   notify:

@@ -110,7 +110,19 @@
             <dependency>
                 <groupId>com.github.zhangchunsheng</groupId>
                 <artifactId>yop-java</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.zhangchunsheng</groupId>
+                <artifactId>amap-java-geo</artifactId>
+                <version>1.0.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.zhangchunsheng</groupId>
+                <artifactId>amap-java-place</artifactId>
+                <version>1.0.1</version>
             </dependency>
 
             <dependency>

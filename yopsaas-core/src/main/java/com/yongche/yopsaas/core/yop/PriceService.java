@@ -2,7 +2,6 @@ package com.yongche.yopsaas.core.yop;
 
 import com.ridegroup.yop.api.PriceNewAPI;
 import com.ridegroup.yop.bean.price.PriceNew;
-import com.yongche.yopsaas.core.config.YopProperties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

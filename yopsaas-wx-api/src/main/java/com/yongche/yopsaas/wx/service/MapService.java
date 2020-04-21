@@ -75,7 +75,7 @@ public class MapService {
             RegeoResult data = geoService.regeo(location);
             if(data.getStatus().equals("1")) {
                 Regeocode regeo = data.getRegeocode();
-                locationDto.setFormatted_address(regeo.getFormattedAddress());
+                locationDto.setFormattedAddress(regeo.getFormattedAddress());
                 String city = LocationInfo.DEFAULT_CITY;
                 if(regeo.getAddressComponent().getCity().getClass().isArray()) {
                     city = regeo.getAddressComponent().getProvince();
@@ -84,6 +84,14 @@ public class MapService {
                 }
                 locationDto.setCity(city);
                 // city short
+                locationDto.setCityShort("bj");
+                String[] sourceArray = location.split(",");
+                locationDto.setLng(Double.valueOf(sourceArray[0]));
+                locationDto.setLat(Double.valueOf(sourceArray[1]));
+                locationDto.setCode(regeo.getAddressComponent().getCitycode());
+                locationDto.setRegionCode(Integer.valueOf(regeo.getAddressComponent().getAdcode()));
+                locationDto.setProvince(regeo.getAddressComponent().getProvince());
+                locationDto.setDistrict(regeo.getAddressComponent().getDistrict());
             }
         } catch(AmapGeoException e) {
             logger.error("amap regeo error, location:" + location, e);

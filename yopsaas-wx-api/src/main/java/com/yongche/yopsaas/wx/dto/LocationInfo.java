@@ -32,19 +32,23 @@ public class LocationInfo {
         private String name = "北京";
         private String district = "朝阳区";
         private String street = "朝阳门外大街";
-        private String street_number = "34号";
+        @JsonProperty("street_number")
+        private String streetNumber = "34号";
         private String business = "";
-        private String formatted_address = "北京市朝阳区人民政府";
-        private String building_name = "北京市朝阳区人民政府";
+        @JsonProperty("formatted_address")
+        private String formattedAddress = "北京市朝阳区人民政府";
+        @JsonProperty("building_name")
+        private String buildingName = "北京市朝阳区人民政府";
         @JsonProperty("short")
-        private String city_short = "bj";
+        private String cityShort = "bj";
         private String en = "BeiJing";
         private double lng = 116.44355;
         private double lat = 39.9219;
         private String code = "010";
         private String country = "CN";
         private String timezone = "Asia/Shanghai";
-        private int region_code = 110000;
+        @JsonProperty("region_code")
+        private int regionCode = 110000;
 
         public String getProvince() {
             return province;
@@ -86,12 +90,12 @@ public class LocationInfo {
             this.street = street;
         }
 
-        public String getStreet_number() {
-            return street_number;
+        public String getStreetNumber() {
+            return streetNumber;
         }
 
-        public void setStreet_number(String street_number) {
-            this.street_number = street_number;
+        public void setStreetNumber(String streetNumber) {
+            this.streetNumber = streetNumber;
         }
 
         public String getBusiness() {
@@ -102,28 +106,28 @@ public class LocationInfo {
             this.business = business;
         }
 
-        public String getFormatted_address() {
-            return formatted_address;
+        public String getFormattedAddress() {
+            return formattedAddress;
         }
 
-        public void setFormatted_address(String formatted_address) {
-            this.formatted_address = formatted_address;
+        public void setFormattedAddress(String formattedAddress) {
+            this.formattedAddress = formattedAddress;
         }
 
-        public String getBuilding_name() {
-            return building_name;
+        public String getBuildingName() {
+            return buildingName;
         }
 
-        public void setBuilding_name(String building_name) {
-            this.building_name = building_name;
+        public void setBuildingName(String buildingName) {
+            this.buildingName = buildingName;
         }
 
-        public String getCity_short() {
-            return city_short;
+        public String getCityShort() {
+            return cityShort;
         }
 
-        public void setCity_short(String city_short) {
-            this.city_short = city_short;
+        public void setCityShort(String cityShort) {
+            this.cityShort = cityShort;
         }
 
         public String getEn() {
@@ -174,12 +178,12 @@ public class LocationInfo {
             this.timezone = timezone;
         }
 
-        public int getRegion_code() {
-            return region_code;
+        public int getRegionCode() {
+            return regionCode;
         }
 
-        public void setRegion_code(int region_code) {
-            this.region_code = region_code;
+        public void setRegionCode(int regionCode) {
+            this.regionCode = regionCode;
         }
     }
 }

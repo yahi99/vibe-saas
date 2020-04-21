@@ -1,13 +1,13 @@
 package com.yongche.yopsaas.wx.dto;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LocationInfo {
     public final static String DEFAULT_CITY = "北京市";
 
     private int count = 0;
 
-    @JSONField(name = "location_info")
+    @JsonProperty("location_info")
     private Location locationInfo;
 
     public int getCount() {
@@ -36,7 +36,7 @@ public class LocationInfo {
         private String business = "";
         private String formatted_address = "北京市朝阳区人民政府";
         private String building_name = "北京市朝阳区人民政府";
-        @JSONField(name = "short")
+        @JsonProperty("short")
         private String city_short = "bj";
         private String en = "BeiJing";
         private double lng = 116.44355;

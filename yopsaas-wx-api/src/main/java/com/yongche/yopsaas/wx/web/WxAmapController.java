@@ -36,7 +36,11 @@ public class WxAmapController {
     public Object index(@RequestParam(defaultValue = "中国技术交易大厦") String address) {
         try {
             GeoResult data = geoService.geo(address);
-            return ResponseUtil.ok(data);
+            if(data.getStatus().equals("1")) {
+                return ResponseUtil.ok(data.getGeocodes());
+            } else {
+                return ResponseUtil.fail(Integer.valueOf(data.getInfoCode()), data.getInfo());
+            }
         } catch(AmapGeoException e) {
             return ResponseUtil.fail(Integer.valueOf(e.getReturnInfoCode()), e.getReturnInfo());
         }

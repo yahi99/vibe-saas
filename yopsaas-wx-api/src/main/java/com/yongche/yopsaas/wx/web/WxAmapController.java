@@ -39,7 +39,7 @@ public class WxAmapController {
      *
      * @param address 地址
      * @param city 城市
-     * @return 价格数据
+     * @return GeoResult
      */
     @GetMapping("geo")
     public Object geo(@RequestParam(defaultValue = "中国技术交易大厦") String address,
@@ -60,7 +60,7 @@ public class WxAmapController {
      * 逆地址解析
      *
      * @param location 经纬度
-     * @return 价格数据
+     * @return RegeoResult
      */
     @GetMapping("regeo")
     public Object regeo(@RequestParam(defaultValue = "116.307487,39.984123") String location) {
@@ -81,7 +81,7 @@ public class WxAmapController {
      *
      * @param city 城市
      * @param keywords 关键字
-     * @return 价格数据
+     * @return InputTips
      */
     @GetMapping("inputtips")
     public Object inputTips(@RequestParam(defaultValue = "北京") String city,
@@ -105,7 +105,7 @@ public class WxAmapController {
      * @param keywords 关键字
      * @param page 当前页数 最大翻页数100
      * @param offset 每页记录数据 强烈建议不超过25，若超过25可能造成访问报错
-     * @return 价格数据
+     * @return PoiSearchResult
      */
     @GetMapping("placetext")
     public Object placeText(@RequestParam(defaultValue = "北京") String city,

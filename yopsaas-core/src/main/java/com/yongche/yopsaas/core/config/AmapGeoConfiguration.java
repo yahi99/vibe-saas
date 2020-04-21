@@ -30,8 +30,8 @@ public class AmapGeoConfiguration {
 
     @Bean
     public GeoService geoService(AmapGeoConfig amapConfig) {
-        GeoService gepService = new GeoServiceImpl();
-        gepService.setConfig(amapConfig);
-        return gepService;
+        GeoService geoService = new GeoServiceImpl();
+        geoService.setConfig(amapConfig);
+        return geoService;
     }
 }

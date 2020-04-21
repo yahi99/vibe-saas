@@ -1,10 +1,15 @@
 package com.yongche.yopsaas.wx.web;
 
 import com.github.zhangchunsheng.amapgeo.bean.result.GeoResult;
+import com.github.zhangchunsheng.amapgeo.bean.result.RegeoResult;
 import com.github.zhangchunsheng.amapgeo.exception.AmapGeoException;
 import com.github.zhangchunsheng.amapgeo.service.GeoService;
+import com.github.zhangchunsheng.amapplace.bean.result.InputTips;
+import com.github.zhangchunsheng.amapplace.bean.result.PoiSearchResult;
+import com.github.zhangchunsheng.amapplace.service.PlaceService;
 import com.ridegroup.yop.bean.price.PriceNew;
 import com.yongche.yopsaas.core.util.ResponseUtil;
+import me.zhangchunsheng.amap.common.exception.AmapException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,22 +31,95 @@ public class WxAmapController {
     @Autowired
     private GeoService geoService;
 
+    @Autowired
+    private PlaceService placeService;
+
     /**
-     * 价格数据
+     * 地址解析
      *
      * @param address 地址
+     * @param city 城市
      * @return 价格数据
      */
     @GetMapping("geo")
-    public Object index(@RequestParam(defaultValue = "中国技术交易大厦") String address) {
+    public Object geo(@RequestParam(defaultValue = "中国技术交易大厦") String address,
+                        @RequestParam(defaultValue = "北京") String city) {
         try {
-            GeoResult data = geoService.geo(address);
+            GeoResult data = geoService.geo(address, city);
             if(data.getStatus().equals("1")) {
                 return ResponseUtil.ok(data.getGeocodes());
             } else {
                 return ResponseUtil.fail(Integer.valueOf(data.getInfoCode()), data.getInfo());
             }
         } catch(AmapGeoException e) {
+            return ResponseUtil.fail(Integer.valueOf(e.getReturnInfoCode()), e.getReturnInfo());
+        }
+    }
+
+    /**
+     * 逆地址解析
+     *
+     * @param location 经纬度
+     * @return 价格数据
+     */
+    @GetMapping("regeo")
+    public Object regeo(@RequestParam(defaultValue = "116.307487,39.984123") String location) {
+        try {
+            RegeoResult data = geoService.regeo(location);
+            if(data.getStatus().equals("1")) {
+                return ResponseUtil.ok(data.getRegeocode());
+            } else {
+                return ResponseUtil.fail(Integer.valueOf(data.getInfoCode()), data.getInfo());
+            }
+        } catch(AmapGeoException e) {
+            return ResponseUtil.fail(Integer.valueOf(e.getReturnInfoCode()), e.getReturnInfo());
+        }
+    }
+
+    /**
+     * 输入提示
+     *
+     * @param city 城市
+     * @param keywords 关键字
+     * @return 价格数据
+     */
+    @GetMapping("inputtips")
+    public Object inputTips(@RequestParam(defaultValue = "北京") String city,
+                            @RequestParam(defaultValue = "交易大厦") String keywords) {
+        try {
+            InputTips data = placeService.inputTips(city, keywords);
+            if(data.getStatus().equals("1")) {
+                return ResponseUtil.ok(data.getTips());
+            } else {
+                return ResponseUtil.fail(Integer.valueOf(data.getInfoCode()), data.getInfo());
+            }
+        } catch(AmapException e) {
+            return ResponseUtil.fail(Integer.valueOf(e.getReturnInfoCode()), e.getReturnInfo());
+        }
+    }
+
+    /**
+     * 关键字搜索
+     *
+     * @param city 城市
+     * @param keywords 关键字
+     * @param page 当前页数 最大翻页数100
+     * @param offset 每页记录数据 强烈建议不超过25，若超过25可能造成访问报错
+     * @return 价格数据
+     */
+    @GetMapping("placetext")
+    public Object placeText(@RequestParam(defaultValue = "北京") String city,
+                            @RequestParam(defaultValue = "交易大厦") String keywords,
+                            @RequestParam(defaultValue = "1") String page,
+                            @RequestParam(defaultValue = "20") String offset) {
+        try {
+            PoiSearchResult data = placeService.placeText(city, keywords, page, offset);
+            if(data.getStatus().equals("1")) {
+                return ResponseUtil.ok(data.getPois());
+            } else {
+                return ResponseUtil.fail(Integer.valueOf(data.getInfoCode()), data.getInfo());
+            }
+        } catch(AmapException e) {
             return ResponseUtil.fail(Integer.valueOf(e.getReturnInfoCode()), e.getReturnInfo());
         }
     }

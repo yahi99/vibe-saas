@@ -1,5 +1,6 @@
 package com.yongche.yopsaas.core.yop.config;
 
+import com.yongche.yopsaas.core.yop.ToftService;
 import com.yongche.yopsaas.core.yop.config.YopProperties;
 import com.yongche.yopsaas.core.yop.OrderService;
 import com.yongche.yopsaas.core.yop.PriceService;
@@ -22,6 +23,13 @@ public class YopAutoConfiguration {
         PriceService priceService = new PriceService();
         priceService.setProperties(properties);
         return priceService;
+    }
+
+    @Bean
+    public ToftService toftService() {
+        ToftService toftService = new ToftService();
+        toftService.setProperties(properties);
+        return toftService;
     }
 
     @Bean

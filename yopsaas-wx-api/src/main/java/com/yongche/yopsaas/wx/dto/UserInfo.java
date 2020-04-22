@@ -1,5 +1,7 @@
 package com.yongche.yopsaas.wx.dto;
 
+import com.yongche.yopsaas.wx.util.StringUtil;
+
 public class UserInfo {
     public final static int LOGIN_TYPE_PASSWORD = 1;
     public final static int LOGIN_TYPE_WECHAT = 2;
@@ -75,7 +77,7 @@ public class UserInfo {
     }
 
     public void setMobile(String mobile) {
-        mobile = mobile.replaceAll("(\\d{3})\\d{4}(\\d{4})","$1****$2");
+        mobile = StringUtil.getPartMobile(mobile);
         this.mobile = mobile;
     }
 

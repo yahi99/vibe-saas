@@ -75,6 +75,7 @@ public class WxYopToftController {
         reqMap.put("expect_end_latitude", endLatitude);
         reqMap.put("expect_end_longitude", endLongitude);
         reqMap.put("map_type", BaseAPI.MAP_TYPE_MARS);
+        logger.debug(reqMap);
 
         BaseResultT<List<Estimated>> data = this.toftService.estimatedAll(reqMap);
         if(data.getCode().equals("200")) {

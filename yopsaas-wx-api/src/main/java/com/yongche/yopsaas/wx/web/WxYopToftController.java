@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,7 +72,10 @@ public class WxYopToftController {
         reqMap.put("start_position", startAddress);
         reqMap.put("expect_start_latitude", startLatitude);
         reqMap.put("expect_start_longitude", startLongitude);
-        reqMap.put("time", startTime);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //Date date = new Date(System.currentTimeMillis());
+        Date date = new Date(Long.valueOf(startTime) * 1000);
+        reqMap.put("time", date);
         reqMap.put("rent_time", "2");
         reqMap.put("end_position", endAddress);
         reqMap.put("expect_end_latitude", endLatitude);

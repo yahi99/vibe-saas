@@ -114,12 +114,16 @@ public class MapService {
             if(data.getStatus().equals("1")) {
                 List<Poi> pois = data.getPois();
                 for(int i = 0; i < pois.size(); i++) {
+                    if(pois.get(i).getAddress().getClass().isArray()) {
+                        continue;
+                    }
                     PlaceSearch place = new PlaceSearch();
                     String[] locationArray = pois.get(i).getLocation().split(",");
                     place.setCity(pois.get(i).getCityName());
                     place.setLng(Double.valueOf(locationArray[0]));
                     place.setLat(Double.valueOf(locationArray[1]));
-                    place.setAddress(pois.get(i).getAddress());
+
+                    place.setAddress(pois.get(i).getAddress().toString());
                     place.setName(pois.get(i).getName());
                     place.setPoiId(pois.get(i).getId());
                     list.add(place);

@@ -2,6 +2,7 @@ use yopsaas;
 
 create table yopsaas_ride_order(
   `ride_order_id` bigint(20) NOT NULL  DEFAULT '0',
+  `yc_order_id` bigint(20) NOT NULL DEFAULT '0' COMMENT 'yc order_id',
   `product_type_id` int(11) NOT NULL DEFAULT '0' COMMENT '产品的ID',
   `fixed_product_id` int(11) NOT NULL DEFAULT '0' COMMENT '固定价格的产品ID',
   `is_asap` tinyint(4) NOT NULL DEFAULT '0' COMMENT  '是否是即时用订单 0:否 1:是',
@@ -114,6 +115,7 @@ create table yopsaas_ride_order(
   `passenger_session_id` varchar(32) NOT NULL DEFAULT '' COMMENT '乘客聊天会话',
   `last_operator` varchar(50) NOT NULL default '',
   PRIMARY KEY (`ride_order_id`),
+  KEY `yc_order_id` (`yc_order_id`),
   KEY `idx_user_id_create_time_status` (`user_id`,`create_time`,`status`),
   KEY `idx_user_id_status` (`user_id`,`status`),
   KEY `idx_uid_endtime` (`user_id`,`end_time`),

@@ -62,7 +62,7 @@ public class AdminConfigController {
     @RequiresPermissions("admin:config:order:list")
     @RequiresPermissionsDesc(menu = {"配置管理", "订单配置"}, button = "详情")
     @GetMapping("/order")
-    public Object lisOrder() {
+    public Object listOrder() {
         Map<String, String> data = systemConfigService.listOrder();
         return ResponseUtil.ok(data);
     }
@@ -71,6 +71,23 @@ public class AdminConfigController {
     @RequiresPermissionsDesc(menu = {"配置管理", "订单配置"}, button = "编辑")
     @PostMapping("/order")
     public Object updateOrder(@RequestBody String body) {
+        Map<String, String> data = JacksonUtil.toMap(body);
+        systemConfigService.updateConfig(data);
+        return ResponseUtil.ok();
+    }
+
+    @RequiresPermissions("admin:config:yoporder:list")
+    @RequiresPermissionsDesc(menu = {"配置管理", "网约车订单配置"}, button = "详情")
+    @GetMapping("/yoporder")
+    public Object listYopOrder() {
+        Map<String, String> data = systemConfigService.listYopOrder();
+        return ResponseUtil.ok(data);
+    }
+
+    @RequiresPermissions("admin:config:yoporder:updateConfigs")
+    @RequiresPermissionsDesc(menu = {"配置管理", "网约车订单配置"}, button = "编辑")
+    @PostMapping("/yoporder")
+    public Object updateYopOrder(@RequestBody String body) {
         Map<String, String> data = JacksonUtil.toMap(body);
         systemConfigService.updateConfig(data);
         return ResponseUtil.ok();

@@ -45,6 +45,21 @@ export function updateOrder(data) {
   })
 }
 
+export function listYopOrder() {
+  return request({
+    url: '/config/yoporder',
+    method: 'get'
+  })
+}
+
+export function updateYopOrder(data) {
+  return request({
+    url: '/config/yoporder',
+    method: 'post',
+    data
+  })
+}
+
 export function listWx() {
   return request({
     url: '/config/wx',

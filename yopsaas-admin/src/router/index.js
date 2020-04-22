@@ -516,6 +516,16 @@ export const asyncRouterMap = [
         }
       },
       {
+        path: 'yoporder',
+        component: () => import('@/views/config/yoporder'),
+        name: 'configOrder',
+        meta: {
+          perms: ['GET /admin/config/yoporder', 'POST /admin/config/yoporder'],
+          title: '网约车订单配置',
+          noCache: true
+        }
+      },
+      {
         path: 'wx',
         component: () => import('@/views/config/wx'),
         name: 'configWx',

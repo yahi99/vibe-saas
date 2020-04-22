@@ -30,6 +30,8 @@ public class SystemConfig {
     public final static String YOPSAAS_MALL_QQ = "yopsaas_mall_qq";
     public final static String YOPSAAS_MALL_LONGITUDE = "yopsaas_mall_longitude";
     public final static String YOPSAAS_MALL_Latitude = "yopsaas_mall_latitude";
+    // 网约车相关配置
+    public final static String YOPSAAS_RIDE_ORDER_UNCHOOSE_CAR = "yopsaas_ride_order_unchoose_car";
 
     //所有的配置均保存在该 HashMap 中
     private static Map<String, String> SYSTEM_CONFIGS = new HashMap<>();
@@ -88,6 +90,10 @@ public class SystemConfig {
 
     public static Integer getOrderUnpaid() {
         return getConfigInt(YOPSAAS_ORDER_UNPAID);
+    }
+
+    public static Integer getRideOrderUnchooseCar() {
+        return getConfigInt(YOPSAAS_RIDE_ORDER_UNCHOOSE_CAR);
     }
 
     public static Integer getOrderUnconfirm() {

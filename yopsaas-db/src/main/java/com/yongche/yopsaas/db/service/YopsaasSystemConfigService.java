@@ -62,6 +62,17 @@ public class YopsaasSystemConfigService {
         return data;
     }
 
+    public Map<String, String> listYopOrder() {
+        YopsaasSystemExample example = new YopsaasSystemExample();
+        example.or().andKeyNameLike("yopsaas_ride_order_%").andDeletedEqualTo(false);
+        List<YopsaasSystem> systemList = systemMapper.selectByExample(example);
+        Map<String, String> data = new HashMap<>();
+        for(YopsaasSystem system : systemList){
+            data.put(system.getKeyName(), system.getKeyValue());
+        }
+        return data;
+    }
+
     public Map<String, String> listExpress() {
         YopsaasSystemExample example = new YopsaasSystemExample();
         example.or().andKeyNameLike("yopsaas_express_%").andDeletedEqualTo(false);

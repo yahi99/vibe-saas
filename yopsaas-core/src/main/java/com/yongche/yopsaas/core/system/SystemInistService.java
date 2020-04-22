@@ -50,11 +50,12 @@ class SystemInistService {
         DEFAULT_CONFIGS.put(SystemConfig.YOPSAAS_ORDER_COMMENT, "7");
         // 商城相关配置默认值
         DEFAULT_CONFIGS.put(SystemConfig.YOPSAAS_MALL_NAME, "yopsaas");
-        DEFAULT_CONFIGS.put(SystemConfig.YOPSAAS_MALL_ADDRESS, "上海");
-        DEFAULT_CONFIGS.put(SystemConfig.YOPSAAS_MALL_Latitude, "31.201900");
-        DEFAULT_CONFIGS.put(SystemConfig.YOPSAAS_MALL_LONGITUDE, "121.587839");
-        DEFAULT_CONFIGS.put(SystemConfig.YOPSAAS_MALL_PHONE, "021-xxxx-xxxx");
-        DEFAULT_CONFIGS.put(SystemConfig.YOPSAAS_MALL_QQ, "705144434");
+        DEFAULT_CONFIGS.put(SystemConfig.YOPSAAS_MALL_ADDRESS, "北京");
+        DEFAULT_CONFIGS.put(SystemConfig.YOPSAAS_MALL_Latitude, "39.984123");
+        DEFAULT_CONFIGS.put(SystemConfig.YOPSAAS_MALL_LONGITUDE, "116.307487");
+        DEFAULT_CONFIGS.put(SystemConfig.YOPSAAS_MALL_PHONE, "010-xxxx-xxxx");
+        DEFAULT_CONFIGS.put(SystemConfig.YOPSAAS_MALL_QQ, "1097692918");
+        DEFAULT_CONFIGS.put(SystemConfig.YOPSAAS_RIDE_ORDER_UNCHOOSE_CAR, "120");
     }
 
     @Autowired

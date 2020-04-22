@@ -176,6 +176,17 @@ public class JacksonUtil {
         return null;
     }
 
+    public static Map<String, Object> toMapObj(String data) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(data, new TypeReference<Map<String, Object>>() {
+            });
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
     public static String toJson(Object data) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {

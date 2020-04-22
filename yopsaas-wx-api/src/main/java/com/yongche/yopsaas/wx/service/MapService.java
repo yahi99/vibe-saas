@@ -4,13 +4,20 @@ import com.github.zhangchunsheng.amapgeo.bean.result.RegeoResult;
 import com.github.zhangchunsheng.amapgeo.bean.result.Regeocode;
 import com.github.zhangchunsheng.amapgeo.exception.AmapGeoException;
 import com.github.zhangchunsheng.amapgeo.service.GeoService;
+import com.github.zhangchunsheng.amapplace.bean.result.Poi;
+import com.github.zhangchunsheng.amapplace.bean.result.PoiSearchResult;
 import com.github.zhangchunsheng.amapplace.service.PlaceService;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.wx.dto.LocationInfo;
+import com.yongche.yopsaas.wx.dto.PlaceSearch;
+import me.zhangchunsheng.amap.common.exception.AmapException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class MapService {
@@ -85,9 +92,9 @@ public class MapService {
                 locationDto.setCity(city);
                 // city short
                 locationDto.setCityShort("bj");
-                String[] sourceArray = location.split(",");
-                locationDto.setLng(Double.valueOf(sourceArray[0]));
-                locationDto.setLat(Double.valueOf(sourceArray[1]));
+                String[] locationArray = location.split(",");
+                locationDto.setLng(Double.valueOf(locationArray[0]));
+                locationDto.setLat(Double.valueOf(locationArray[1]));
                 locationDto.setCode(regeo.getAddressComponent().getCitycode());
                 locationDto.setRegionCode(Integer.valueOf(regeo.getAddressComponent().getAdcode()));
                 locationDto.setProvince(regeo.getAddressComponent().getProvince());
@@ -97,5 +104,30 @@ public class MapService {
             logger.error("amap regeo error, location:" + location, e);
         }
         return locationInfo;
+    }
+
+    public List<PlaceSearch> placeSearch(String city, String keywords) {
+        List<PlaceSearch> list = new ArrayList<PlaceSearch>();
+
+        try {
+            PoiSearchResult data = placeService.placeText(city, keywords, "1", "20");
+            if(data.getStatus().equals("1")) {
+                List<Poi> pois = data.getPois();
+                for(int i = 0; i < pois.size(); i++) {
+                    PlaceSearch place = new PlaceSearch();
+                    String[] locationArray = pois.get(i).getLocation().split(",");
+                    place.setCity(pois.get(i).getCityName());
+                    place.setLng(Double.valueOf(locationArray[0]));
+                    place.setLat(Double.valueOf(locationArray[1]));
+                    place.setAddress(pois.get(i).getAddress());
+                    place.setName(pois.get(i).getName());
+                    place.setPoiId(pois.get(i).getId());
+                    list.add(place);
+                }
+            }
+        } catch(AmapException e) {
+            logger.error(String.format("amap placeText error, city:%s, keywords:%s", city, keywords), e);
+        }
+        return list;
     }
 }

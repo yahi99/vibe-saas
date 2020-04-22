@@ -97,6 +97,7 @@ public class WxAuthController {
         userInfo.setNickName(username);
         userInfo.setAvatarUrl(user.getAvatar());
         userInfo.setMobile(user.getMobile());
+        userInfo.setLoginType(UserInfo.LOGIN_TYPE_PASSWORD);
 
         // token
         String token = UserTokenManager.generateToken(user.getId());
@@ -165,6 +166,7 @@ public class WxAuthController {
             }
         }
         userInfo.setMobile(user.getMobile());
+        userInfo.setLoginType(UserInfo.LOGIN_TYPE_WECHAT);
 
         // token
         String token = UserTokenManager.generateToken(user.getId());

@@ -1,6 +1,9 @@
 package com.yongche.yopsaas.wx.dto;
 
 public class UserInfo {
+    public final static int LOGIN_TYPE_PASSWORD = 1;
+    public final static int LOGIN_TYPE_WECHAT = 2;
+
     private String nickName;
     private String avatarUrl;
     private String country;
@@ -9,6 +12,15 @@ public class UserInfo {
     private String language;
     private String mobile;
     private Byte gender;
+    private int loginType;
+
+    public int getLoginType() {
+        return loginType;
+    }
+
+    public void setLoginType(int loginType) {
+        this.loginType = loginType;
+    }
 
     public String getNickName() {
         return nickName;

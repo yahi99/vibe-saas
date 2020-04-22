@@ -96,6 +96,7 @@ public class WxAuthController {
         UserInfo userInfo = new UserInfo();
         userInfo.setNickName(username);
         userInfo.setAvatarUrl(user.getAvatar());
+        userInfo.setMobile(user.getMobile());
 
         // token
         String token = UserTokenManager.generateToken(user.getId());
@@ -149,6 +150,7 @@ public class WxAuthController {
             user.setLastLoginTime(LocalDateTime.now());
             user.setLastLoginIp(IpUtil.getIpAddr(request));
             user.setSessionKey(sessionKey);
+            user.setMobile("");
 
             userService.add(user);
 
@@ -162,6 +164,7 @@ public class WxAuthController {
                 return ResponseUtil.updatedDataFailed();
             }
         }
+        userInfo.setMobile(user.getMobile());
 
         // token
         String token = UserTokenManager.generateToken(user.getId());

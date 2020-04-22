@@ -84,7 +84,7 @@ public class MapService {
                 Regeocode regeo = data.getRegeocode();
                 locationDto.setFormattedAddress(regeo.getFormattedAddress());
                 String city = LocationInfo.DEFAULT_CITY;
-                if(regeo.getAddressComponent().getCity().getClass().isArray()) {
+                if(regeo.getAddressComponent().getCity() instanceof List) {
                     city = regeo.getAddressComponent().getProvince();
                 } else {
                     city = regeo.getAddressComponent().getCity().toString();
@@ -114,7 +114,7 @@ public class MapService {
             if(data.getStatus().equals("1")) {
                 List<Poi> pois = data.getPois();
                 for(int i = 0; i < pois.size(); i++) {
-                    if(pois.get(i).getAddress().getClass().isArray()) {
+                    if(pois.get(i).getAddress() instanceof List) {
                         continue;
                     }
                     PlaceSearch place = new PlaceSearch();

@@ -3,6 +3,7 @@ package com.yongche.yopsaas.wx.web;
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import cn.binarywang.wx.miniapp.bean.WxMaPhoneNumberInfo;
+import com.yongche.yopsaas.wx.util.StringUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.notify.NotifyService;
@@ -534,7 +535,10 @@ public class WxAuthController {
         if (userService.updateById(user) == 0) {
             return ResponseUtil.updatedDataFailed();
         }
-        return ResponseUtil.ok();
+        phone = StringUtil.getPartMobile(phone);
+        Map<Object, Object> result = new HashMap<Object, Object>();
+        result.put("phone", phone);
+        return ResponseUtil.ok(result);
     }
 
     @PostMapping("logout")

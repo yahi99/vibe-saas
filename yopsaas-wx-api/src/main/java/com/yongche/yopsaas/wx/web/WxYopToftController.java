@@ -3,6 +3,7 @@ package com.yongche.yopsaas.wx.web;
 import com.ridegroup.yop.api.BaseAPI;
 import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.toft.Estimated;
+import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.yop.ToftService;
 import org.apache.commons.logging.Log;

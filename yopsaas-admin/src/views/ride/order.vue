@@ -22,12 +22,12 @@
 
       <el-table-column align="center" label="产品类型" prop="productTypeId">
         <template slot-scope="scope">
-          <el-tag>{{ scope.row.productTypeId | productFilter }}</el-tag>
+          {{ scope.row.productTypeId | productFilter }}
         </template>
       </el-table-column>
       <el-table-column align="center" label="用车时间" prop="startTime">
         <template slot-scope="scope">
-          <el-tag>{{ scope.row.startTime | timeFilter }}</el-tag>
+          {{ scope.row.startTime | timeFilter }}
         </template>
       </el-table-column>
       <el-table-column width="200" align="center" label="上车地点" prop="startAddress" />

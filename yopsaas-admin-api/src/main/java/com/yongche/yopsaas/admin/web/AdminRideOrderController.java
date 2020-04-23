@@ -55,10 +55,17 @@ public class AdminRideOrderController {
                        @RequestParam(defaultValue = "10") Integer limit,
                        @RideSort @RequestParam(defaultValue = "create_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        Timestamp startTime = Timestamp.valueOf(start);
-        Timestamp endTime = Timestamp.valueOf(end);
-        int startT = Math.round(startTime.getTime() / 1000);
-        int endT = Math.round(endTime.getTime() / 1000);
+        int startT = 0;
+        if(start != null) {
+            Timestamp startTime = Timestamp.valueOf(start);
+            startT = Math.round(startTime.getTime() / 1000);
+        }
+        int endT = 0;
+        if(end != null) {
+            Timestamp endTime = Timestamp.valueOf(end);
+            endT = Math.round(endTime.getTime() / 1000);
+        }
+
         return adminRideOrderService.list(Long.valueOf(userId), startT, endT, orderStatusArray, page, limit, sort, order);
     }
 

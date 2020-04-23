@@ -183,7 +183,7 @@
             <generatedKey column="ride_order_id" sqlStatement="MySql" identity="true"/>
         </table>
         <table tableName="yopsaas_ride_order_ext">
-            <generatedKey column="ride_order_id" sqlStatement="MySql" identity="true"/>
+            <!--<generatedKey column="ride_order_id" sqlStatement="MySql" identity="true"/>-->
         </table>
         <table tableName="yopsaas_ride_order_transaction_history">
             <generatedKey column="ride_order_transaction_history_id" sqlStatement="MySql" identity="true"/>

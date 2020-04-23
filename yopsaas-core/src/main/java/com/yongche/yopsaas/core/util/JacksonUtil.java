@@ -29,6 +29,15 @@ public class JacksonUtil {
         return null;
     }
 
+    public static String parseString(String body, String field, String defaultValue) {
+        String value = JacksonUtil.parseString(body, field);
+        if(value == null) {
+            return defaultValue;
+        } else {
+            return value;
+        }
+    }
+
 
     public static List<String> parseStringList(String body, String field) {
         ObjectMapper mapper = new ObjectMapper();
@@ -58,6 +67,15 @@ public class JacksonUtil {
             logger.error(e.getMessage(), e);
         }
         return null;
+    }
+
+    public static Integer parseInteger(String body, String field, Integer defaultValue) {
+        Integer value = JacksonUtil.parseInteger(body, field);
+        if(value == null) {
+            return defaultValue;
+        } else {
+            return value;
+        }
     }
 
     public static Long parseLong(String body, String field) {

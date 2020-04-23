@@ -1,4 +1,4 @@
-package com.yongche.yopsaas.wx.web;
+package com.yongche.yopsaas.wx.service;
 
 import com.ridegroup.yop.api.BaseAPI;
 import com.ridegroup.yop.bean.BaseResultT;
@@ -7,46 +7,24 @@ import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.yop.ToftService;
 import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
+import org.apache.commons.logging.LogFactory;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-/**
- * YOP服务
- */
-@RestController
-@RequestMapping("/wx/yoptoft")
-@Validated
-public class WxYopToftController {
-    private final Log logger = LogFactory.getLog(WxYopToftController.class);
+@Service
+public class YopToftService {
+    private final Log logger = LogFactory.getLog(YopToftService.class);
 
     @Autowired
     private ToftService toftService;
 
-    /**
-     * 预估
-     *
-     * @param city 城市
-     * @param productType 产品类型
-     * @return 预估数据
-     */
-    @GetMapping("estimateAll")
-    public Object estimateAll(@RequestParam(defaultValue = "bj") String city,
-                  @RequestParam(defaultValue = "17", name = "product_type_id") String productType,
-                  @RequestParam(defaultValue = "1587529853", name = "start_time") String startTime,
-                  @RequestParam(defaultValue = "39.90469", name = "start_latitude") String startLatitude,
-                  @RequestParam(defaultValue = "116.40717", name = "start_longitude") String startLongitude,
-                  @RequestParam(defaultValue = "北京市东城区东华门街道正义路北京市人民政府(旧址)", name = "start_address") String startAddress,
-                  @RequestParam(defaultValue = "39.927464", name = "end_latitude") String endLatitude,
-                  @RequestParam(defaultValue = "116.333305", name = "end_longitude") String endLongitude,
-                  @RequestParam(defaultValue = "NS专柜", name = "end_position") String endAddress) {
+    public Object estimatedAll(String body) {
         /*
         * city	城市	*	bj
          type	产品类型	*	7
@@ -75,6 +53,16 @@ public class WxYopToftController {
         reqMap.put("expect_end_latitude", "39.911093");
         reqMap.put("expect_end_longitude", "116.373055");
         reqMap.put("map_type", BaseAPI.MAP_TYPE_MARS);*/
+        String city = JacksonUtil.parseString(body, "city");
+        String productType = JacksonUtil.parseString(body, "product_type_id");
+        String startAddress = JacksonUtil.parseString(body, "start_address");
+        String startLatitude = JacksonUtil.parseString(body, "start_latitude");
+        String startLongitude = JacksonUtil.parseString(body, "start_longitude");
+        String startTime = JacksonUtil.parseString(body, "start_time");
+        String endAddress = JacksonUtil.parseString(body, "end_position");
+        String endLatitude = JacksonUtil.parseString(body, "end_latitude");
+        String endLongitude = JacksonUtil.parseString(body, "end_longitude");
+
         Map<String, Object> reqMap = new HashMap<String, Object>();
         reqMap.put("city", city);
         reqMap.put("type", productType);

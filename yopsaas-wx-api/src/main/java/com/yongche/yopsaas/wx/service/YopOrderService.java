@@ -1,11 +1,13 @@
 package com.yongche.yopsaas.wx.service;
 
+import com.ridegroup.yop.bean.order.CreateOrderResult;
 import com.yongche.yopsaas.core.system.SystemConfig;
 import com.yongche.yopsaas.core.task.TaskService;
 import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.yop.OrderService;
 import com.yongche.yopsaas.db.domain.*;
+import com.yongche.yopsaas.db.service.YopsaasRideOrderExtService;
 import com.yongche.yopsaas.db.service.YopsaasRideOrderService;
 import com.yongche.yopsaas.wx.task.RideOrderUnchooseCarTask;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.yongche.yopsaas.wx.util.WxResponseCode.*;
 import static com.yongche.yopsaas.wx.util.WxResponseCode.GROUPON_JOIN;
@@ -28,6 +28,7 @@ public class YopOrderService {
     private OrderService orderService;
     @Autowired
     private YopsaasRideOrderService rideOrderService;
+    private YopsaasRideOrderExtService rideOrderExtService;
     @Autowired
     private TaskService taskService;
 
@@ -84,8 +85,8 @@ public class YopOrderService {
             corporate_dept_id: '0', //企业账号组id
             is_need_manual_dispatch: is_need_manual_dispatch, //是否派单失败后转人工, ASAP 强制0，其他默认1
             pa_bargain_amount: 0, //	议价金额*/
-        String isSupportSystemDecision = JacksonUtil.parseString(body, "is_support_system_decision");
-        String hasCustomDecision = JacksonUtil.parseString(body, "has_custom_decision");
+        String isSupportSystemDecision = JacksonUtil.parseString(body, "is_support_system_decision", "1");
+        String hasCustomDecision = JacksonUtil.parseString(body, "has_custom_decision", "0");
         Double orderLat = JacksonUtil.parseDouble(body, "order_lat");
         Double orderLng = JacksonUtil.parseDouble(body, "order_lng");
         String startAddress = JacksonUtil.parseString(body, "start_address");
@@ -99,7 +100,7 @@ public class YopOrderService {
         String dstCityName = JacksonUtil.parseString(body, "dst_city_name");
         String destCity = JacksonUtil.parseString(body, "dest_city");
         String city = JacksonUtil.parseString(body, "city");
-        Integer isAsap = JacksonUtil.parseInteger(body, "is_asap");
+        Byte isAsap = JacksonUtil.parseByte(body, "is_asap");
         Double estimatePrice = JacksonUtil.parseDouble(body, "estimate_price");
         Integer distance = JacksonUtil.parseInteger(body, "distance");
         Integer timeLength = JacksonUtil.parseInteger(body, "time_length");
@@ -108,39 +109,181 @@ public class YopOrderService {
         Integer startTime = JacksonUtil.parseInteger(body, "start_time");
         String inCoordType = JacksonUtil.parseString(body, "in_coord_type");
         String passengerPhone = JacksonUtil.parseString(body, "passenger_phone");
-        String isTaximeter = JacksonUtil.parseString(body, "is_taximeter");
+        String isTaximeter = JacksonUtil.parseString(body, "is_taximeter", "0");
         String estimateInfo = JacksonUtil.parseString(body, "estimate_info");
-        String productTypeId = JacksonUtil.parseString(body, "product_type_id");
+        String productTypeId = JacksonUtil.parseString(body, "product_type_id", "1");
         String passengerCountryshort = JacksonUtil.parseString(body, "passenger_countryshort");
         String passengerName = JacksonUtil.parseString(body, "passenger_name");
         String outCoordType = JacksonUtil.parseString(body, "out_coord_type");
-        String isBargain = JacksonUtil.parseString(body, "is_bargain");
-        String passengerSms = JacksonUtil.parseString(body, "passenger_sms");
-        String corporateId = JacksonUtil.parseString(body, "corporate_id");
-        String corporateDeptId = JacksonUtil.parseString(body, "corporate_dept_id");
-        Integer isNeedManualDispatch = JacksonUtil.parseInteger(body, "is_need_manual_dispatch");
+        String isBargain = JacksonUtil.parseString(body, "is_bargain", "0");
+        String passengerSms = JacksonUtil.parseString(body, "passenger_sms", "1");
+        String corporateId = JacksonUtil.parseString(body, "corporate_id", "0");
+        String corporateDeptId = JacksonUtil.parseString(body, "corporate_dept_id", "0");
+        Integer isNeedManualDispatch = JacksonUtil.parseInteger(body, "is_need_manual_dispatch", 0);
         Integer paBargainAmount = JacksonUtil.parseInteger(body, "pa_bargain_amount");
 
         if (startLat == null || startLng == null || endLat == null || endLng == null) {
             return ResponseUtil.badArgument();
         }
 
+        Long flag = 0L;
+
+        if(isSupportSystemDecision.equals("0")) {
+            flag = flag & YopsaasRideOrderService.FLAG_NOT_SUPPORT_SYSTEM_DECISION;
+        }
+        if(hasCustomDecision.equals("1")) {
+            flag = flag & YopsaasRideOrderService.FLAG_IS_CUSTOM_DECISION;
+        }
+        if(isBargain.equals("1")) {
+            flag = flag & YopsaasRideOrderService.FLAG_BARGAIN;
+        }
+        if(isTaximeter.equals("1")) {
+            flag = flag & YopsaasRideOrderService.FLAG_TAXIMETER;
+        }
+        if(isNeedManualDispatch == 1) {
+            flag = flag & YopsaasRideOrderService.FLAG_SUPPORT_MANUAL_DISPATCH;
+        }
         Long rideOrderId = null;
         YopsaasRideOrder order = null;
+        YopsaasRideOrderExtWithBLOBs orderExt = null;
         // 订单
         order = new YopsaasRideOrder();
         order.setUserId(Long.valueOf(userId));
+        order.setCity(city);
+        order.setProductTypeId(Integer.valueOf(productTypeId));
+        order.setIsAsap(isAsap);
+        order.setCarTypeId(carTypeId);
+        order.setStartAddress(startAddress);
+        order.setStartPosition(fromPos);
+        order.setStartLatitude(startLat);
+        order.setStartLongitude(startLng);
+        order.setStartTime(startTime);
+        order.setEndAddress(endAddress);
+        order.setEndPosition(toPos);
+        order.setEndLatitude(endLat);
+        order.setEndLongitude(endLng);
+        order.setPassengerName(passengerName);
+        order.setPassengerPhone(passengerPhone);
+        order.setFlag(flag);
+        order.setCorporateId(Long.valueOf(corporateId));
+        order.setCorporateDeptId(Integer.valueOf(corporateDeptId));
+        order.setCreateTime(this.getTimestamp());
 
         // 添加订单表项
         rideOrderService.add(order);
         rideOrderId = order.getRideOrderId();
 
-        // 订单支付超期任务
-        taskService.addTask(new RideOrderUnchooseCarTask(rideOrderId));
+        // order ext
+        orderExt = new YopsaasRideOrderExtWithBLOBs();
+        orderExt.setRideOrderId(rideOrderId);
+        orderExt.setDestCity(destCity);
+        orderExt.setDstCityName(dstCityName);
+        orderExt.setCreateOrderLatitude(orderLat);
+        orderExt.setCreateOrderLongitude(orderLng);
+        orderExt.setEstimateSnap(estimateInfo);
+        orderExt.setSms(Integer.valueOf(passengerSms));
 
-        Map<String, Object> data = new HashMap<>();
-        data.put("rideOrderId", rideOrderId);
+        rideOrderExtService.add(orderExt);
 
-        return ResponseUtil.ok(data);
+        Map<String, Object> reqMap = this.getCreateOrderParams(order);
+        CreateOrderResult result = orderService.create(reqMap);
+
+        if(result.getCode().equals("200")) {
+            // 订单未选择司机
+            taskService.addTask(new RideOrderUnchooseCarTask(rideOrderId));
+
+            Map<String, Object> data = new HashMap<>();
+            data.put("rideOrderId", rideOrderId);
+
+            return ResponseUtil.ok(data);
+        } else {
+            // TODO check order status
+            return ResponseUtil.fail(Integer.valueOf(result.getCode()), result.getMsg());
+        }
+    }
+
+    public int getTimestamp() {
+        long time = System.currentTimeMillis();
+        return Math.round(time / 1000);
+    }
+
+    public Map<String, Object> getCreateOrderParams(YopsaasRideOrder order) {
+        /*
+         * 名称	含义	说明(*必填)	举例	校验规则
+        city	城市简码	*	bj	请从服务接口取
+        type	产品类型	*	2	同上
+        aircode	机场三字码	接送机必填	PEK	请从机场接口取
+        flight_number	航班号	不是必须，只是记录一下	ca1801	2位（数字或者字母） + 2-4位（数字）
+        car_type_id	车型	*	2	请从服务价格接口取
+        start_position	出发地点	*	总部基地	最大长度 utf8 100
+        start_address	出发详细地点		总部基地详细	最大长度 utf8 100
+        expect_start_longitude	出发地点经度	*	116.458637
+        expect_start_latitude	出发地点纬度	*	39.955538
+        time	出发时间	*，随叫随到可以不填	2013-04-19 11:22:33	时间格式如前面举例，其他格式会报错
+        rent_time	使用时长	单位：小时,默认1	2
+        end_position	目的地点	送机必填	总部基地	最大长度 utf8 100
+        end_address	目的详细地点		总部基地详细	最大长度 utf8 100
+        map_type	坐标类型	1：百度，2：火星 3-谷歌 默认值：1
+        expect_end_longitude	目的地点经度	同end_position	116.373055
+        expect_end_latitude	目的地点纬度	同end_position	39.911093
+        passenger_name	乘车人姓名	*	test	最大长度 utf8 30
+        passenger_phone	乘车人电话	*	111111111	1[345678][\d]{9}
+        passenger_number	乘车人数	默认1	2
+        invoice	是否需要发票		1	请调用发票接口，这里准备废弃
+        receipt_title	发票抬头	invoice为1必填	**有限公司	同上
+        receipt_content	发票内容	invoice为1必填	打车费	同上
+        address	发票邮寄地址	invoice为1必填	总部基地	同上
+        postcode	邮政编码	invoice为1必填	100000	同上
+        receipt_user	发票接收人姓名			同上
+        receipt_phone	发票接收人电话			同上
+        msg	客户留言			最大长度 utf8 30
+        is_asap	是否随叫随到	1是随叫随到的订单，0是普通订单
+        is_face_pay	是否当面付	1面付，0或不传为非面付
+        third_party_coupon	优惠券金额	100
+        sms_type	是否给乘车人短信	1：发短信 0：不发短信	对于yop企业，特殊处理，把乘车人当做订车人接收短信
+        ad	第三方的额外信息，对账用，json格式	可选	{"wid":1}	准备废弃
+        app_trade_no	第三方订单号，字符串，不可重复,用于排除重复订单请求，请尽量填写	可选	order_12345	用之前重复的app_trade_no，会返回之前的易到订单号
+        dep_date_local	飞机起飞日期，接机产品如果传值，司机可收到航班信息	可选	2014-04-21
+        app_user_id	第三方用户唯一标识，用于判断取消订单	必填		最大长度 utf8 20
+        appoint_price	新一口价价格，用于校验价格是否一致	新一品价日租、半日租必填
+
+        reqMap.put("city", "bj");
+        reqMap.put("type", "7");
+        reqMap.put("aircode", "PEK");
+        reqMap.put("car_type_id", "2");
+        reqMap.put("start_position", "颐和园");
+        reqMap.put("expect_start_latitude", "39.955538");
+        reqMap.put("expect_start_longitude", "116.458637");
+        reqMap.put("time", df.format(calendar.getTime()));
+        reqMap.put("rent_time", "2");
+        reqMap.put("end_position", "总部基地");
+        reqMap.put("expect_end_latitude", "39.911093");
+        reqMap.put("expect_end_longitude", "116.373055");
+        reqMap.put("passenger_name", "test");
+        reqMap.put("passenger_phone", "16811116667");
+        reqMap.put("sms_type", "1");
+        reqMap.put("msg", "1");
+        reqMap.put("app_trade_no", "ceshi" + time);*/
+        Map<String, Object> reqMap = new HashMap<String, Object>();
+        reqMap.put("city", order.getCity());
+        reqMap.put("type", order.getProductTypeId());
+        reqMap.put("car_type_id", order.getCarTypeId());
+        reqMap.put("start_position", order.getStartAddress());
+        reqMap.put("expect_start_latitude", order.getExpectStartLatitude());
+        reqMap.put("expect_start_longitude", order.getExpectStartLongitude());
+        Date date = new Date(Long.valueOf(order.getStartTime()) * 1000);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        reqMap.put("time", df.format(date));
+        reqMap.put("rent_time", "2");
+        reqMap.put("end_position", order.getEndAddress());
+        reqMap.put("expect_end_latitude", order.getExpectEndLatitude());
+        reqMap.put("expect_end_longitude", order.getExpectEndLongitude());
+        reqMap.put("passenger_name", order.getPassengerName());
+        reqMap.put("passenger_phone", order.getPassengerPhone());
+        reqMap.put("sms_type", "1");// 对于yop企业，特殊处理，把乘车人当做订车人接收短信
+        reqMap.put("msg", "第三方订单");// 客户留言
+        reqMap.put("app_trade_no", "yopsaas" + order.getRideOrderId());
+
+        return reqMap;
     }
 }

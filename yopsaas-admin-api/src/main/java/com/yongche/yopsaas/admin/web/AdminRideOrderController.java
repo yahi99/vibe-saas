@@ -50,7 +50,7 @@ public class AdminRideOrderController {
                        @RequestParam(required = false) List<Short> orderStatusArray,
                        @RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "10") Integer limit,
-                       @Sort @RequestParam(defaultValue = "add_time") String sort,
+                       @Sort @RequestParam(defaultValue = "create_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
         return adminOrderService.list(userId, orderSn, start, end, orderStatusArray, page, limit, sort, order);
     }

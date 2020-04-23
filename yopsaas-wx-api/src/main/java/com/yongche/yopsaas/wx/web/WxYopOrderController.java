@@ -1,5 +1,6 @@
 package com.yongche.yopsaas.wx.web;
 
+import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.yop.OrderService;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
@@ -84,7 +85,7 @@ public class WxYopOrderController {
      */
     @GetMapping("callback")
     public Object callback(HttpServletRequest httpServletRequest) {
-        logger.debug(httpServletRequest.getParameterMap());
+        logger.debug(JacksonUtil.toJson(httpServletRequest.getParameterMap()));
         return ResponseUtil.ok();
     }
 }

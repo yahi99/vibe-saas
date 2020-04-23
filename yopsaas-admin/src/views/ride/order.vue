@@ -20,8 +20,16 @@
 
       <el-table-column align="center" label="用户ID" prop="userId" />
 
-      <el-table-column align="center" label="产品类型" prop="{{ roductTypeId | productFilter }}" />
-      <el-table-column align="center" label="用车时间" prop="{{ startTime | timeFilter }}" />
+      <el-table-column align="center" label="产品类型" prop="productTypeId">
+        <template slot-scope="scope">
+          <el-tag>{{ scope.row.productTypeId | productFilter }}</el-tag>
+        </template>
+      </el-table-column>
+      <el-table-column align="center" label="用车时间" prop="startTime">
+        <template slot-scope="scope">
+          <el-tag>{{ scope.row.startTime | timeFilter }}</el-tag>
+        </template>
+      </el-table-column>
       <el-table-column width="200" align="center" label="上车地点" prop="startAddress" />
       <el-table-column width="200" align="center" label="下车地点" prop="endAddress" />
 

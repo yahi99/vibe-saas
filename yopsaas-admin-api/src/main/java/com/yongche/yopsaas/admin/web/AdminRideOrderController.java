@@ -2,6 +2,7 @@ package com.yongche.yopsaas.admin.web;
 
 import com.yongche.yopsaas.admin.annotation.RequiresPermissionsDesc;
 import com.yongche.yopsaas.admin.service.AdminOrderService;
+import com.yongche.yopsaas.admin.service.AdminRideOrderService;
 import com.yongche.yopsaas.core.express.ExpressService;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
@@ -15,6 +16,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -25,12 +27,12 @@ public class AdminRideOrderController {
     private final Log logger = LogFactory.getLog(AdminRideOrderController.class);
 
     @Autowired
-    private AdminOrderService adminOrderService;
+    private AdminRideOrderService adminRideOrderService;
     @Autowired
     private ExpressService expressService;
 
     /**
-     * 查询订单
+     * 查询网约车订单
      *
      * @param userId
      * @param orderSn
@@ -47,26 +49,20 @@ public class AdminRideOrderController {
     public Object list(Integer userId, String orderSn,
                        @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
                        @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end,
-                       @RequestParam(required = false) List<Short> orderStatusArray,
+                       @RequestParam(required = false) List<Byte> orderStatusArray,
                        @RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "10") Integer limit,
                        @Sort @RequestParam(defaultValue = "create_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
-        return adminOrderService.list(userId, orderSn, start, end, orderStatusArray, page, limit, sort, order);
+        Timestamp startTime = Timestamp.valueOf(start);
+        Timestamp endTime = Timestamp.valueOf(end);
+        int startT = Math.round(startTime.getTime() / 1000);
+        int endT = Math.round(endTime.getTime() / 1000);
+        return adminRideOrderService.list(Long.valueOf(userId), startT, endT, orderStatusArray, page, limit, sort, order);
     }
 
     /**
-     * 查询物流公司
-     *
-     * @return
-     */
-    @GetMapping("/channel")
-    public Object channel() {
-        return ResponseUtil.ok(expressService.getVendors());
-    }
-
-    /**
-     * 订单详情
+     * 网约车订单详情
      *
      * @param id
      * @return
@@ -74,8 +70,8 @@ public class AdminRideOrderController {
     @RequiresPermissions("admin:rideorder:read")
     @RequiresPermissionsDesc(menu = {"网约车管理", "订单管理"}, button = "详情")
     @GetMapping("/detail")
-    public Object detail(@NotNull Integer id) {
-        return adminOrderService.detail(id);
+    public Object detail(@NotNull Long id) {
+        return adminRideOrderService.detail(id);
     }
 
     /**
@@ -88,7 +84,7 @@ public class AdminRideOrderController {
     @RequiresPermissionsDesc(menu = {"网约车管理", "订单管理"}, button = "订单退款")
     @PostMapping("/refund")
     public Object refund(@RequestBody String body) {
-        return adminOrderService.refund(body);
+        return adminRideOrderService.refund(body);
     }
 
 
@@ -102,19 +98,6 @@ public class AdminRideOrderController {
     @RequiresPermissionsDesc(menu = {"网约车管理", "订单管理"}, button = "订单删除")
     @PostMapping("/delete")
     public Object delete(@RequestBody String body) {
-        return adminOrderService.delete(body);
-    }
-
-    /**
-     * 回复订单商品
-     *
-     * @param body 订单信息，{ orderId：xxx }
-     * @return 订单操作结果
-     */
-    @RequiresPermissions("admin:rideorder:reply")
-    @RequiresPermissionsDesc(menu = {"网约车管理", "订单管理"}, button = "订单商品回复")
-    @PostMapping("/reply")
-    public Object reply(@RequestBody String body) {
-        return adminOrderService.reply(body);
+        return adminRideOrderService.delete(body);
     }
 }

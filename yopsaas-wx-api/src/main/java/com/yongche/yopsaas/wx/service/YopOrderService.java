@@ -28,6 +28,7 @@ public class YopOrderService {
     private OrderService orderService;
     @Autowired
     private YopsaasRideOrderService rideOrderService;
+    @Autowired
     private YopsaasRideOrderExtService rideOrderExtService;
     @Autowired
     private TaskService taskService;

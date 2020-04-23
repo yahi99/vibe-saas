@@ -20,6 +20,11 @@
 
       <el-table-column align="center" label="用户ID" prop="userId" />
 
+      <el-table-column align="center" label="产品类型" prop="{{ scope.row.productTypeId | productFilter }}" />
+      <el-table-column align="center" label="用车时间" prop="{{ scope.row.startTime | timeFilter }}" />
+      <el-table-column align="center" label="上车地点" prop="startAddress" />
+      <el-table-column align="center" label="下车地点" prop="endAddress" />
+
       <el-table-column align="center" label="订单状态" prop="status">
         <template slot-scope="scope">
           <el-tag>{{ scope.row.status | statusFilter }}</el-tag>
@@ -27,9 +32,7 @@
       </el-table-column>
 
       <el-table-column align="center" label="订单金额" prop="totalAmount" />
-
       <el-table-column align="center" label="支付金额" prop="deposit" />
-
       <el-table-column align="center" label="支付时间" prop="payTime" />
 
       <el-table-column align="center" label="操作" width="250" class-name="small-padding fixed-width">
@@ -105,7 +108,7 @@
 </template>
 
 <script>
-import { detailOrder, listOrder, listChannel, refundOrder, deleteOrder } from '@/api/rideorder'
+import { detailOrder, listOrder, refundOrder, deleteOrder } from '@/api/rideorder'
 import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
 import checkPermission from '@/utils/permission' // 权限判断函数
 
@@ -120,6 +123,10 @@ const statusMap = {
   7: '服务结束',
   8: '订单取消'
 }
+const productMap = {
+  1: '预约',
+  17: '马上用车'
+}
 
 export default {
   name: 'RideOrder',
@@ -127,6 +134,14 @@ export default {
   filters: {
     statusFilter(status) {
       return statusMap[status]
+    },
+    productFilter(productTypeId) {
+      return productMap[productTypeId]
+    },
+    timeFilter(time) {
+      var date1 = new Date(time * 1000)
+      var date = date1.toLocaleDateString().replace(/\//g, '-') + ' ' + date1.toTimeString().substr(0, 8)
+      return date
     }
   },
   data() {
@@ -181,13 +196,11 @@ export default {
         refundMoney: undefined
       },
       refundDialogVisible: false,
-      downloadLoading: false,
-      channels: []
+      downloadLoading: false
     }
   },
   created() {
     this.getList()
-    this.getChannel()
   },
   methods: {
     checkPermission,
@@ -209,11 +222,6 @@ export default {
         this.list = []
         this.total = 0
         this.listLoading = false
-      })
-    },
-    getChannel() {
-      listChannel().then(response => {
-        this.channels = response.data.data
       })
     },
     handleFilter() {

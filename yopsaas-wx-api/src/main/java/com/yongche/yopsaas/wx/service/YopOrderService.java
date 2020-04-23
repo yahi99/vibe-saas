@@ -145,7 +145,7 @@ public class YopOrderService {
         if(isNeedManualDispatch == 1) {
             flag = flag & YopsaasRideOrderService.FLAG_SUPPORT_MANUAL_DISPATCH;
         }
-        Byte status = 1;
+        Byte status = 2;
         Long rideOrderId = null;
         YopsaasRideOrder order = null;
         YopsaasRideOrderExtWithBLOBs orderExt = null;

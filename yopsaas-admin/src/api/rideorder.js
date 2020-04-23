@@ -35,18 +35,3 @@ export function deleteOrder(data) {
     data
   })
 }
-
-export function replyComment(data) {
-  return request({
-    url: '/rideorder/reply',
-    method: 'post',
-    data
-  })
-}
-
-export function listChannel(id) {
-  return request({
-    url: '/rideorder/channel',
-    method: 'get'
-  })
-}

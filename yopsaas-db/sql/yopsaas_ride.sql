@@ -1,11 +1,11 @@
 use yopsaas;
 
--- drop table yopsaas_ride_order;
--- drop table yopsaas_ride_order_ext;
--- drop table yopsaas_ride_order_transaction_history;
+drop table yopsaas_ride_order;
+drop table yopsaas_ride_order_ext;
+drop table yopsaas_ride_order_transaction_history;
 
 create table yopsaas_ride_order(
-  `ride_order_id` bigint(20) NOT NULL  DEFAULT '0',
+  `ride_order_id` bigint(20) NOT NULL,
   `yc_order_id` bigint(20) NOT NULL DEFAULT '0' COMMENT 'yc order_id',
   `product_type_id` int(11) NOT NULL DEFAULT '0' COMMENT '产品的ID',
   `fixed_product_id` int(11) NOT NULL DEFAULT '0' COMMENT '固定价格的产品ID',
@@ -193,7 +193,7 @@ create table yopsaas_ride_order_ext(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网约车订单扩展表';
 
 create table yopsaas_ride_order_transaction_history(
-  `ride_order_transaction_history_id` bigint(20) NOT NULL  default 0  COMMENT '主键ID',
+  `ride_order_transaction_history_id` bigint(20) NOT NULL  COMMENT '主键ID',
   `account_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '账户ID',
   `ride_order_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '订单ID',
   `recharge_transaction_id` bigint(20) NOT NULL DEFAULT 0 COMMENT '支付事务ID 余额和信用相关交易时置NULL',

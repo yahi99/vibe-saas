@@ -36,8 +36,8 @@ public class AdminRideOrderController {
      * 查询网约车订单
      *
      * @param userId
-     * @param orderSn
-     * @param orderStatusArray
+     * @param rideOrderId
+     * @param rideOrderStatusArray
      * @param page
      * @param limit
      * @param sort
@@ -47,10 +47,10 @@ public class AdminRideOrderController {
     @RequiresPermissions("admin:rideorder:list")
     @RequiresPermissionsDesc(menu = {"网约车管理", "订单管理"}, button = "查询")
     @GetMapping("/list")
-    public Object list(Integer userId, String orderSn,
+    public Object list(Integer userId, Long rideOrderId,
                        @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
                        @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end,
-                       @RequestParam(required = false) List<Byte> orderStatusArray,
+                       @RequestParam(required = false) List<Byte> rideOrderStatusArray,
                        @RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "10") Integer limit,
                        @RideSort @RequestParam(defaultValue = "create_time") String sort,
@@ -70,7 +70,7 @@ public class AdminRideOrderController {
             uId = Long.valueOf(userId);
         }
 
-        return adminRideOrderService.list(uId, startT, endT, orderStatusArray, page, limit, sort, order);
+        return adminRideOrderService.list(uId, rideOrderId, startT, endT, rideOrderStatusArray, page, limit, sort, order);
     }
 
     /**

@@ -181,12 +181,15 @@ public class YopsaasRideOrderService {
         return yopsaasRideOrderMapper.selectByExample(example);
     }
 
-    public List<YopsaasRideOrder> querySelective(Long userId, int start, int end, List<Byte> orderStatusArray, Integer page, Integer limit, String sort, String order) {
+    public List<YopsaasRideOrder> querySelective(Long userId, Long rideOrderId, int start, int end, List<Byte> orderStatusArray, Integer page, Integer limit, String sort, String order) {
         YopsaasRideOrderExample example = new YopsaasRideOrderExample();
         YopsaasRideOrderExample.Criteria criteria = example.createCriteria();
 
         if (userId != null) {
             criteria.andUserIdEqualTo(userId);
+        }
+        if (rideOrderId != null) {
+            criteria.andRideOrderIdEqualTo(rideOrderId);
         }
         if (start != 0) {
             criteria.andCreateTimeLessThanOrEqualTo(start);

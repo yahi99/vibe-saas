@@ -46,9 +46,9 @@ public class AdminRideOrderService {
     @Autowired
     private LogHelper logHelper;
 
-    public Object list(Long userId, int start, int end, List<Byte> orderStatusArray,
+    public Object list(Long userId, Long rideOrderId, int start, int end, List<Byte> orderStatusArray,
                        Integer page, Integer limit, String sort, String order) {
-        List<YopsaasRideOrder> orderList = orderService.querySelective(userId, start, end, orderStatusArray, page, limit,
+        List<YopsaasRideOrder> orderList = orderService.querySelective(userId, rideOrderId, start, end, orderStatusArray, page, limit,
                 sort, order);
         return ResponseUtil.okList(orderList);
     }

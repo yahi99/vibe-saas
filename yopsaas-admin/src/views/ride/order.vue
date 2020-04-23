@@ -22,8 +22,8 @@
 
       <el-table-column align="center" label="产品类型" prop="{{ scope.row.productTypeId | productFilter }}" />
       <el-table-column align="center" label="用车时间" prop="{{ scope.row.startTime | timeFilter }}" />
-      <el-table-column min-width="20%" align="center" label="上车地点" prop="startAddress" />
-      <el-table-column min-width="20%" align="center" label="下车地点" prop="endAddress" />
+      <el-table-column width="20%" align="center" label="上车地点" prop="startAddress" />
+      <el-table-column width="20%" align="center" label="下车地点" prop="endAddress" />
 
       <el-table-column align="center" label="订单状态" prop="status">
         <template slot-scope="scope">

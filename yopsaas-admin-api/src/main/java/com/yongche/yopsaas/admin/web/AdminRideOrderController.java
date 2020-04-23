@@ -76,14 +76,14 @@ public class AdminRideOrderController {
     /**
      * 网约车订单详情
      *
-     * @param id
+     * @param rideOrderId
      * @return
      */
     @RequiresPermissions("admin:rideorder:read")
     @RequiresPermissionsDesc(menu = {"网约车管理", "订单管理"}, button = "详情")
     @GetMapping("/detail")
-    public Object detail(@NotNull Long id) {
-        return adminRideOrderService.detail(id);
+    public Object detail(@NotNull Long rideOrderId) {
+        return adminRideOrderService.detail(rideOrderId);
     }
 
     /**

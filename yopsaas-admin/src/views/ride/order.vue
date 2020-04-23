@@ -229,13 +229,13 @@ export default {
       this.getList()
     },
     handleDetail(row) {
-      detailOrder(row.ride_order_id).then(response => {
+      detailOrder(row.rideOrderId).then(response => {
         this.orderDetail = response.data.data
       })
       this.orderDialogVisible = true
     },
     handleDelete(row) {
-      deleteOrder({ rideOrderId: row.ride_order_id }).then(response => {
+      deleteOrder({ rideOrderId: row.rideOrderId }).then(response => {
         this.$notify.success({
           title: '成功',
           message: '订单删除成功'
@@ -249,7 +249,7 @@ export default {
       })
     },
     handleRefund(row) {
-      this.refundForm.orderId = row.ride_order_id
+      this.refundForm.orderId = row.rideOrderId
       this.refundForm.refundMoney = row.deposit
 
       this.refundDialogVisible = true

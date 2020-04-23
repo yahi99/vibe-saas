@@ -12,11 +12,11 @@ export function listOrder(query) {
   })
 }
 
-export function detailOrder(id) {
+export function detailOrder(rideOrderId) {
   return request({
     url: '/rideorder/detail',
     method: 'get',
-    params: { id }
+    params: { rideOrderId }
   })
 }
 

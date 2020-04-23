@@ -148,7 +148,10 @@ export default {
     },
     timeFilter(time) {
       var date1 = new Date(time * 1000)
-      var date = date1.toLocaleDateString().replace(/\//g, '-') + ' ' + date1.toTimeString().substr(0, 8)
+      var y = date1.getFullYear()
+      var m = date1.getMonth() + 1
+      var d = date1.getDate()
+      var date = y + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d) + ' ' + date1.toTimeString().substr(0, 8)
       return date
     }
   },

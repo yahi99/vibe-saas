@@ -206,6 +206,13 @@ public class YopOrderService {
 
             return ResponseUtil.ok(data);
         } else {
+            if(result.getCode().equals("400")) {
+                status = 8;
+                YopsaasRideOrder updateOrder = new YopsaasRideOrder();
+                updateOrder.setRideOrderId(rideOrderId);
+                updateOrder.setStatus(status);
+                rideOrderService.update(updateOrder);
+            }
             // TODO check order status
             return ResponseUtil.fail(Integer.valueOf(result.getCode()), result.getMsg());
         }

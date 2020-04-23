@@ -43,7 +43,7 @@
       <el-table-column align="center" label="支付金额" prop="deposit" />
       <el-table-column align="center" label="支付时间" prop="payTime" />
 
-      <el-table-column align="center" label="操作" width="80" class-name="small-padding fixed-width">
+      <el-table-column align="center" label="操作" width="160" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button v-permission="['GET /admin/rideorder/detail']" type="primary" size="mini" @click="handleDetail(scope.row)">详情</el-button>
           <el-button v-permission="['POST /admin/rideorder/delete']" type="danger" size="mini" @click="handleDelete(scope.row)">删除</el-button>

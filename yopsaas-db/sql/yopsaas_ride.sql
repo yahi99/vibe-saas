@@ -188,7 +188,7 @@ create table yopsaas_ride_order_ext(
   `ip` varchar(40) NOT NULL DEFAULT '' COMMENT '用户下单时的IP',
   `order_port` int(11) NOT NULL DEFAULT '0' COMMENT '订单下单端口',
   `update_time` int(11) NOT NULL DEFAULT 0 COMMENT '更新订单的时间',
-  PRIMARY KEY (`ride_order_id`),
+  UNIQUE KEY (`ride_order_id`),
   KEY `idx_update_time` (`update_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网约车订单扩展表';
 

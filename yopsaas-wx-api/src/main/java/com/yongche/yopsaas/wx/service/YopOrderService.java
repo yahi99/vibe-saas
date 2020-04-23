@@ -144,6 +144,7 @@ public class YopOrderService {
         if(isNeedManualDispatch == 1) {
             flag = flag & YopsaasRideOrderService.FLAG_SUPPORT_MANUAL_DISPATCH;
         }
+        Byte status = 1;
         Long rideOrderId = null;
         YopsaasRideOrder order = null;
         YopsaasRideOrderExtWithBLOBs orderExt = null;
@@ -168,6 +169,7 @@ public class YopOrderService {
         order.setFlag(flag);
         order.setCorporateId(Long.valueOf(corporateId));
         order.setCorporateDeptId(Integer.valueOf(corporateDeptId));
+        order.setStatus(status);
         order.setCreateTime(this.getTimestamp());
 
         // 添加订单表项
@@ -192,6 +194,12 @@ public class YopOrderService {
         if(result.getCode().equals("200")) {
             // 订单未选择司机
             taskService.addTask(new RideOrderUnchooseCarTask(rideOrderId));
+
+            status = 3;
+            YopsaasRideOrder updateOrder = new YopsaasRideOrder();
+            updateOrder.setRideOrderId(rideOrderId);
+            updateOrder.setStatus(status);
+            rideOrderService.update(updateOrder);
 
             Map<String, Object> data = new HashMap<>();
             data.put("rideOrderId", rideOrderId);
@@ -267,18 +275,18 @@ public class YopOrderService {
         reqMap.put("app_trade_no", "ceshi" + time);*/
         Map<String, Object> reqMap = new HashMap<String, Object>();
         reqMap.put("city", order.getCity());
-        reqMap.put("type", order.getProductTypeId());
-        reqMap.put("car_type_id", order.getCarTypeId());
+        reqMap.put("type", String.valueOf(order.getProductTypeId()));
+        reqMap.put("car_type_id", String.valueOf(order.getCarTypeId()));
         reqMap.put("start_position", order.getStartAddress());
-        reqMap.put("expect_start_latitude", order.getExpectStartLatitude());
-        reqMap.put("expect_start_longitude", order.getExpectStartLongitude());
+        reqMap.put("expect_start_latitude", String.valueOf(order.getExpectStartLatitude()));
+        reqMap.put("expect_start_longitude", String.valueOf((order.getExpectStartLongitude())));
         Date date = new Date(Long.valueOf(order.getStartTime()) * 1000);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         reqMap.put("time", df.format(date));
         reqMap.put("rent_time", "2");
         reqMap.put("end_position", order.getEndAddress());
-        reqMap.put("expect_end_latitude", order.getExpectEndLatitude());
-        reqMap.put("expect_end_longitude", order.getExpectEndLongitude());
+        reqMap.put("expect_end_latitude", String.valueOf(order.getExpectEndLatitude()));
+        reqMap.put("expect_end_longitude", String.valueOf(order.getExpectEndLongitude()));
         reqMap.put("passenger_name", order.getPassengerName());
         reqMap.put("passenger_phone", order.getPassengerPhone());
         reqMap.put("sms_type", "1");// 对于yop企业，特殊处理，把乘车人当做订车人接收短信

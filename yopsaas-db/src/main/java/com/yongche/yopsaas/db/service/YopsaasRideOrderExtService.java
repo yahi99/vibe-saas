@@ -42,7 +42,9 @@ public class YopsaasRideOrderExtService {
     }
 
     public YopsaasRideOrderExt findById(Long orderId) {
-        return yopsaasRideOrderExtMapper.selectByPrimaryKey(orderId);
+        YopsaasRideOrderExtExample example = new YopsaasRideOrderExtExample();
+        example.or().andRideOrderIdEqualTo(orderId);
+        return yopsaasRideOrderExtMapper.selectByExampleSelective(example).get(0);
     }
 
     public void deleteById(Long rideOrderId) {

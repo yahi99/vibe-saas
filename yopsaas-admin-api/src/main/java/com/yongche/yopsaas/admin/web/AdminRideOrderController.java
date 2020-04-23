@@ -6,6 +6,7 @@ import com.yongche.yopsaas.admin.service.AdminRideOrderService;
 import com.yongche.yopsaas.core.express.ExpressService;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
+import com.yongche.yopsaas.core.validator.RideSort;
 import com.yongche.yopsaas.core.validator.Sort;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -52,7 +53,7 @@ public class AdminRideOrderController {
                        @RequestParam(required = false) List<Byte> orderStatusArray,
                        @RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "10") Integer limit,
-                       @Sort @RequestParam(defaultValue = "create_time") String sort,
+                       @RideSort @RequestParam(defaultValue = "create_time") String sort,
                        @Order @RequestParam(defaultValue = "desc") String order) {
         Timestamp startTime = Timestamp.valueOf(start);
         Timestamp endTime = Timestamp.valueOf(end);

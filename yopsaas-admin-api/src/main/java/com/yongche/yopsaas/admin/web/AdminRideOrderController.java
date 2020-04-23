@@ -65,8 +65,12 @@ public class AdminRideOrderController {
             Timestamp endTime = Timestamp.valueOf(end);
             endT = Math.round(endTime.getTime() / 1000);
         }
+        Long uId = null;
+        if(userId != null) {
+            uId = Long.valueOf(userId);
+        }
 
-        return adminRideOrderService.list(Long.valueOf(userId), startT, endT, orderStatusArray, page, limit, sort, order);
+        return adminRideOrderService.list(uId, startT, endT, orderStatusArray, page, limit, sort, order);
     }
 
     /**

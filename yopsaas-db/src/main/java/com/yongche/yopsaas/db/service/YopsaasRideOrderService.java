@@ -123,7 +123,7 @@ public class YopsaasRideOrderService {
     public int update(YopsaasRideOrder order) {
         int time = YopsaasRideOrderService.getSecondTimestamp(new Date());
         order.setUpdateTime(time);
-        return yopsaasRideOrderMapper.updateByPrimaryKey(order);
+        return yopsaasRideOrderMapper.updateByPrimaryKeySelective(order);
     }
 
     public int count(Long userId) {

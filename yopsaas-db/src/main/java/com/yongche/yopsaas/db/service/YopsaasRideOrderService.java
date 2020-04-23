@@ -6,6 +6,8 @@ import com.yongche.yopsaas.db.dao.YopsaasRideOrderMapper;
 import com.yongche.yopsaas.db.domain.YopsaasRideOrder;
 import com.yongche.yopsaas.db.domain.YopsaasRideOrderExample;
 import com.yongche.yopsaas.db.util.RideOrderUtil;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -17,6 +19,8 @@ import java.util.*;
 
 @Service
 public class YopsaasRideOrderService {
+    private final Log logger = LogFactory.getLog(YopsaasRideOrderService.class);
+
     public static final Long FLAG_COMMENTED = 0x01L; // 已评价
     public static final Long FLAG_NOT_SUPPORT_SYSTEM_DECISION = 0x02L; // 不支持系统决策
     public static final Long FLAG_SET_ACCOUNT = 0x04L; // 是否已设置结算帐号
@@ -199,6 +203,7 @@ public class YopsaasRideOrderService {
         }
 
         PageHelper.startPage(page, limit);
+        logger.debug(example.toString());
         return yopsaasRideOrderMapper.selectByExample(example);
     }
 

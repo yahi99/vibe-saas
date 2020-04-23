@@ -12,7 +12,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target({METHOD, FIELD, PARAMETER})
 @Retention(RUNTIME)
 @Documented
-@Constraint(validatedBy = SortValidator.class)
+@Constraint(validatedBy = RideSortValidator.class)
 public @interface RideSort {
     String message() default "排序字段不支持";
 

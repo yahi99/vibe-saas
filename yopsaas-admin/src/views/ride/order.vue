@@ -22,8 +22,8 @@
 
       <el-table-column align="center" label="产品类型" prop="{{ scope.row.productTypeId | productFilter }}" />
       <el-table-column align="center" label="用车时间" prop="{{ scope.row.startTime | timeFilter }}" />
-      <el-table-column width="20%" align="center" label="上车地点" prop="startAddress" />
-      <el-table-column width="20%" align="center" label="下车地点" prop="endAddress" />
+      <el-table-column width="200" align="center" label="上车地点" prop="startAddress" />
+      <el-table-column width="200" align="center" label="下车地点" prop="endAddress" />
 
       <el-table-column align="center" label="订单状态" prop="status">
         <template slot-scope="scope">
@@ -35,7 +35,7 @@
       <el-table-column align="center" label="支付金额" prop="deposit" />
       <el-table-column align="center" label="支付时间" prop="payTime" />
 
-      <el-table-column align="center" label="操作" width="250" class-name="small-padding fixed-width">
+      <el-table-column align="center" label="操作" width="200" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button v-permission="['GET /admin/rideorder/detail']" type="primary" size="mini" @click="handleDetail(scope.row)">详情</el-button>
           <el-button v-permission="['POST /admin/rideorder/delete']" type="danger" size="mini" @click="handleDelete(scope.row)">删除</el-button>

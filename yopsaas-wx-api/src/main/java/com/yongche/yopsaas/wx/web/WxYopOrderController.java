@@ -86,6 +86,6 @@ public class WxYopOrderController {
     @GetMapping("callback")
     public Object callback(HttpServletRequest httpServletRequest) {
         logger.debug(JacksonUtil.toJson(httpServletRequest.getParameterMap()));
-        return ResponseUtil.ok();
+        return yopOrderService.updateByCallback(httpServletRequest);
     }
 }

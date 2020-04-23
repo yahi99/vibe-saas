@@ -126,6 +126,12 @@ public class YopsaasRideOrderService {
         return yopsaasRideOrderMapper.updateByPrimaryKeySelective(order);
     }
 
+    public int updateByExample(YopsaasRideOrder order, YopsaasRideOrderExample example) {
+        int time = YopsaasRideOrderService.getSecondTimestamp(new Date());
+        order.setUpdateTime(time);
+        return yopsaasRideOrderMapper.updateByExampleSelective(order, example);
+    }
+
     public int count(Long userId) {
         YopsaasRideOrderExample example = new YopsaasRideOrderExample();
         example.or().andUserIdEqualTo(userId);

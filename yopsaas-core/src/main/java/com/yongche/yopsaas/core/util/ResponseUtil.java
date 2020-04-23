@@ -55,6 +55,14 @@ public class ResponseUtil {
         return obj;
     }
 
+    public static Object okCode(Object data) {
+        Map<String, Object> obj = new HashMap<String, Object>();
+        obj.put("code", 200);
+        obj.put("msg", "成功");
+        obj.put("result", data);
+        return obj;
+    }
+
     public static Object okList(List list) {
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("list", list);
@@ -109,6 +117,13 @@ public class ResponseUtil {
         return obj;
     }
 
+    public static Object failCode(int errno, String errmsg) {
+        Map<String, Object> obj = new HashMap<String, Object>();
+        obj.put("code", errno);
+        obj.put("msg", errmsg);
+        return obj;
+    }
+
     public static Object fail(String errno, String errmsg) {
         Map<String, Object> obj = new HashMap<String, Object>();
         obj.put("errno", errno);
@@ -118,6 +133,10 @@ public class ResponseUtil {
 
     public static Object badArgument() {
         return fail(401, "参数不对");
+    }
+
+    public static Object badArgumentCode() {
+        return failCode(401, "参数不对");
     }
 
     public static Object badArgumentValue() {

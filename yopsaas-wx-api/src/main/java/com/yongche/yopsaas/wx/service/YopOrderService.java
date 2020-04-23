@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -216,6 +217,22 @@ public class YopOrderService {
             // TODO check order status
             return ResponseUtil.fail(Integer.valueOf(result.getCode()), result.getMsg());
         }
+    }
+
+    public Object updateByCallback(HttpServletRequest httpServletRequest) {
+        String yongcheOrderId = httpServletRequest.getParameter("yongche_order_id");
+        String yongcheOrderStatus = httpServletRequest.getParameter("yongche_order_status");
+
+        if (yongcheOrderId == null || yongcheOrderStatus == null) {
+            return ResponseUtil.badArgumentCode();
+        }
+        YopsaasRideOrder updateOrder = new YopsaasRideOrder();
+        updateOrder.setStatus(Byte.valueOf(yongcheOrderStatus));
+        YopsaasRideOrderExample example = new YopsaasRideOrderExample();
+        example.or().andYcOrderIdEqualTo(Long.valueOf(yongcheOrderId));
+
+        int result = rideOrderService.updateByExample(updateOrder, example);
+        return ResponseUtil.okCode(result);
     }
 
     public int getTimestamp() {

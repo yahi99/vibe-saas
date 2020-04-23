@@ -1,8 +1,8 @@
 use yopsaas;
 
--- drop table yopsaas_ride_order;
--- drop table yopsaas_ride_order_ext;
--- drop table yopsaas_ride_order_transaction_history;
+drop table yopsaas_ride_order;
+drop table yopsaas_ride_order_ext;
+drop table yopsaas_ride_order_transaction_history;
 
 create table yopsaas_ride_order(
   `ride_order_id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -183,8 +183,8 @@ create table yopsaas_ride_order_ext(
   `regulate_amount` decimal(8,2) NOT NULL DEFAULT '0.00' COMMENT '调整金额.若是负数，则表示返回用户的钱。',
 
   `estimate_snap` varchar(4096) NOT NULL DEFAULT '' COMMENT '订单预估快照',   -- to cache
-  `app_msg` text COMMENT '客户端消息',                                    -- to driver order 冗余表
-  `comment` text NOT NULL COMMENT '订单的留言, CRM 客服，添加的留言',   -- erp专用
+  `app_msg` text NOT NULL default '' COMMENT '客户端消息',                                    -- to driver order 冗余表
+  `comment` text NOT NULL default '' COMMENT '订单的留言, CRM 客服，添加的留言',   -- erp专用
   `ip` varchar(40) NOT NULL DEFAULT '' COMMENT '用户下单时的IP',
   `order_port` int(11) NOT NULL DEFAULT '0' COMMENT '订单下单端口',
   `update_time` int(11) NOT NULL DEFAULT 0 COMMENT '更新订单的时间',

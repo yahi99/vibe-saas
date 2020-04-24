@@ -227,7 +227,10 @@ public class YopOrderService {
 
             return ResponseUtil.ok(data);
         } else {
-            if(result.getCode().equals("400")) {
+            List<String> codes = new ArrayList<String>();
+            codes.add("400");
+            codes.add("500");
+            if(codes.contains(result.getCode())) {
                 status = YopsaasRideOrderService.ORDER_STATUS_CANCELLED;
                 YopsaasRideOrder updateOrder = new YopsaasRideOrder();
                 updateOrder.setRideOrderId(rideOrderId);

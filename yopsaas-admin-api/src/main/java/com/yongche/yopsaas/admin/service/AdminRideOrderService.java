@@ -23,10 +23,7 @@ import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.yongche.yopsaas.admin.util.AdminResponseCode.*;
 
@@ -50,7 +47,23 @@ public class AdminRideOrderService {
                        Integer page, Integer limit, String sort, String order) {
         List<YopsaasRideOrder> orderList = orderService.querySelective(userId, rideOrderId, start, end, orderStatusArray, page, limit,
                 sort, order);
-        return ResponseUtil.okList(orderList);
+        List<Map<String, Object>> rets = new ArrayList<>();
+        for(int i = 0 ; i < orderList.size() ; i++) {
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("rideOrderId", orderList.get(i).getRideOrderId());
+            map.put("userId", orderList.get(i).getUserId());
+            map.put("ycOrderId", String.valueOf(orderList.get(i).getYcOrderId()));
+            map.put("productTypeId", orderList.get(i).getProductTypeId());
+            map.put("expectStartTime", orderList.get(i).getExpectStartTime());
+            map.put("startAddress", orderList.get(i).getStartAddress());
+            map.put("endAddress", orderList.get(i).getEndAddress());
+            map.put("status", orderList.get(i).getStatus());
+            map.put("totalAmount", orderList.get(i).getTotalAmount());
+            map.put("deposit", orderList.get(i).getDeposit());
+            map.put("payTime", orderList.get(i).getPayTime());
+            rets.add(map);
+        }
+        return ResponseUtil.okList(rets);
     }
 
     public Object detail(Long rideOrderId) {

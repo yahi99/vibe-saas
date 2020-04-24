@@ -40,6 +40,17 @@ public class WxYopOrderController {
     }
 
     /**
+     * 获取当前和未付订单
+     *
+     * @param userId 用户ID
+     * @return 提交订单操作结果
+     */
+    @PostMapping("getCurrentAndUnpayOrder")
+    public Object getCurrentAndUnpayOrder(@LoginUser Integer userId) {
+        return yopOrderService.getCurrentAndUnpayOrder(userId);
+    }
+
+    /**
      * 回调
      *
      * https://github.com/yongche/developer.yongche.com/wiki/order#callback

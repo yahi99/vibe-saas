@@ -145,7 +145,7 @@ public class YopOrderService {
         if(isNeedManualDispatch == 1) {
             flag = flag & YopsaasRideOrderService.FLAG_SUPPORT_MANUAL_DISPATCH;
         }
-        Byte status = 2;
+        Byte status = YopsaasRideOrderService.ORDER_STATUS_WAITFORCAR;
         Long rideOrderId = null;
         YopsaasRideOrder order = null;
         YopsaasRideOrderExtWithBLOBs orderExt = null;
@@ -196,7 +196,7 @@ public class YopOrderService {
             // 订单未选择司机
             taskService.addTask(new RideOrderUnchooseCarTask(rideOrderId));
 
-            status = 3;
+            status = YopsaasRideOrderService.ORDER_STATUS_WAITDRIVERCONFIRM;
             YopsaasRideOrder updateOrder = new YopsaasRideOrder();
             updateOrder.setRideOrderId(rideOrderId);
             updateOrder.setStatus(status);
@@ -208,7 +208,7 @@ public class YopOrderService {
             return ResponseUtil.ok(data);
         } else {
             if(result.getCode().equals("400")) {
-                status = 8;
+                status = YopsaasRideOrderService.ORDER_STATUS_CANCELLED;
                 YopsaasRideOrder updateOrder = new YopsaasRideOrder();
                 updateOrder.setRideOrderId(rideOrderId);
                 updateOrder.setStatus(status);
@@ -217,6 +217,23 @@ public class YopOrderService {
             // TODO check order status
             return ResponseUtil.fail(Integer.valueOf(result.getCode()), result.getMsg());
         }
+    }
+
+    public Object getCurrentAndUnpayOrder(Integer userId) {
+        Long uid = Long.valueOf(userId);
+        List<Byte> orderStatus = new ArrayList<Byte>();
+        orderStatus.add(YopsaasRideOrderService.ORDER_STATUS_SERVICEREADY);
+        orderStatus.add(YopsaasRideOrderService.ORDER_STATUS_ARRIVED);
+        orderStatus.add(YopsaasRideOrderService.ORDER_STATUS_SERVICESTART);
+        List<YopsaasRideOrder> currentOrder = rideOrderService.queryByOrderStatus(uid, orderStatus);
+        List<Byte> payStatus = new ArrayList<>();
+        payStatus.add(YopsaasRideOrderService.PAY_STATUS_NONE);
+        List<YopsaasRideOrder> unPayOrder = rideOrderService.queryByPayStatus(uid, payStatus);
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("current_trip", currentOrder);
+        data.put("unpay_trip", unPayOrder);
+        return ResponseUtil.ok(data);
     }
 
     public Object updateByCallback(HttpServletRequest httpServletRequest) {

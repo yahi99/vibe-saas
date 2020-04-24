@@ -21,6 +21,24 @@ import java.util.*;
 public class YopsaasRideOrderService {
     private final Log logger = LogFactory.getLog(YopsaasRideOrderService.class);
 
+    // order status
+    public final static Byte ORDER_STATUS_DISABLED = -1;            //无效
+    public final static Byte ORDER_STATUS_PRECREATE = 0;            //未初始化
+    public final static Byte ORDER_STATUS_INIT = 1;                 //等待用户付款
+    public final static Byte ORDER_STATUS_WAITFORCAR = 2;           //等待选择车辆
+    public final static Byte ORDER_STATUS_WAITDRIVERCONFIRM = 3;    //等待司机确认
+    public final static Byte ORDER_STATUS_SERVICEREADY = 4;         //司机已确认
+    public final static Byte ORDER_STATUS_ARRIVED = 5;              //司机已到达
+    public final static Byte ORDER_STATUS_SERVICESTART = 6;         //服务开始
+    public final static Byte ORDER_STATUS_SERVICEEND = 7;           //服务结束
+    public final static Byte ORDER_STATUS_CANCELLED = 8;            //取消
+
+    // pay status
+    public final static Byte PAY_STATUS_NO_NEED = 0;                  //0:无需付款
+    public final static Byte PAY_STATUS_NONE = 1;                     //1:未付款
+    public final static Byte PAY_STATUS_PORTION = 2;                  //2:部分付款
+    public final static Byte PAY_STATUS_OFF = 3;                      //3:已付款
+
     public static final Long FLAG_COMMENTED = 0x01L; // 已评价
     public static final Long FLAG_NOT_SUPPORT_SYSTEM_DECISION = 0x02L; // 不支持系统决策
     public static final Long FLAG_SET_ACCOUNT = 0x04L; // 是否已设置结算帐号
@@ -178,6 +196,27 @@ public class YopsaasRideOrderService {
         }
 
         PageHelper.startPage(page, limit);
+        return yopsaasRideOrderMapper.selectByExample(example);
+    }
+
+    public List<YopsaasRideOrder> queryByOrderStatus(Long userId, List<Byte> orderStatus) {
+        YopsaasRideOrderExample example = new YopsaasRideOrderExample();
+        YopsaasRideOrderExample.Criteria criteria = example.or();
+        criteria.andUserIdEqualTo(userId);
+        if (orderStatus != null) {
+            criteria.andStatusIn(orderStatus);
+        }
+
+        return yopsaasRideOrderMapper.selectByExample(example);
+    }
+
+    public List<YopsaasRideOrder> queryByPayStatus(Long userId, List<Byte> payStatus) {
+        YopsaasRideOrderExample example = new YopsaasRideOrderExample();
+        YopsaasRideOrderExample.Criteria criteria = example.or();
+        criteria.andUserIdEqualTo(userId);
+        criteria.andStatusEqualTo(YopsaasRideOrderService.ORDER_STATUS_SERVICEEND);
+        criteria.andPayStatusIn(payStatus);
+
         return yopsaasRideOrderMapper.selectByExample(example);
     }
 

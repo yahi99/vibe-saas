@@ -169,13 +169,18 @@ public class YopOrderService {
         order.setCarTypeIds(String.valueOf(carTypeId));
         order.setStartAddress(startAddress);
         order.setStartPosition(fromPos);
-        order.setStartLatitude(startLat);
-        order.setStartLongitude(startLng);
-        order.setStartTime(startTime);
+        //order.setStartLatitude(startLat);
+        //order.setStartLongitude(startLng);
+        order.setExpectStartLatitude(startLat);
+        order.setExpectStartLongitude(startLng);
+        //order.setStartTime(startTime);
+        order.setExpectStartTime(startTime);
         order.setEndAddress(endAddress);
         order.setEndPosition(toPos);
-        order.setEndLatitude(endLat);
-        order.setEndLongitude(endLng);
+        //order.setEndLatitude(endLat);
+        //order.setEndLongitude(endLng);
+        order.setExpectEndLatitude(endLat);
+        order.setExpectEndLongitude(endLng);
         order.setPassengerName(passengerName);
         order.setPassengerPhone(user.getMobile());
         order.setUserPhone(user.getMobile());
@@ -296,6 +301,11 @@ public class YopOrderService {
                 updateOrder.setCarBrand(orderInfo.getCar_brand());
                 updateOrder.setConfirmTime(orderInfo.getConfirm_time());
                 updateOrder.setPayable(YopsaasRideOrderService.PAYABLE_ALLOW);
+            }
+            if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_SERVICESTART)) {
+                updateOrder.setStartLatitude(orderInfo.getStart_latitude());
+                updateOrder.setStartLongitude(orderInfo.getStart_longitude());
+                updateOrder.setStartTime(orderInfo.getStart_time());
             }
         }
         if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_SERVICEEND)) {

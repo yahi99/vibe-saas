@@ -210,7 +210,9 @@ create table yopsaas_ride_order_transaction_history(
   `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`ride_order_transaction_history_id`),
+  KEY `recharge_transaction_id` (`recharge_transaction_id`),
+  KEY `consumer_id` (`consumer_id`),
+  KEY `account_id` (`account_id`),
   KEY `ride_order_id` (`ride_order_id`),
-  KEY `idx_create_time` (`create_time`),
-  KEY `idx_update_time` (`update_time`)
+  KEY `idx_create_time` (`create_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网约车订单交易表';

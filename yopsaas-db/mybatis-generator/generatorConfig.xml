@@ -188,6 +188,9 @@
         <table tableName="yopsaas_ride_order_transaction_history">
             <generatedKey column="ride_order_transaction_history_id" sqlStatement="MySql" identity="true"/>
         </table>
+        <table tableName="yopsaas_ride_order_dispatch">
+            <generatedKey column="ride_order_dispatch_id" sqlStatement="MySql" identity="true"/>
+        </table>
         <table tableName="yopsaas_aftersale">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride column="pictures" javaType="java.lang.String[]"

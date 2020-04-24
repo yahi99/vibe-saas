@@ -75,9 +75,9 @@ public class RideOrderUtil {
     }
 
 
-    public static OrderHandleOption build(YopsaasRideOrder order) {
+    public static RideOrderHandleOption build(YopsaasRideOrder order) {
         int status = order.getStatus().intValue();
-        OrderHandleOption handleOption = new OrderHandleOption();
+        RideOrderHandleOption handleOption = new RideOrderHandleOption();
 
         if (status == 7) {
             // 如果服务完成，且没有支付，则可支付，可取消

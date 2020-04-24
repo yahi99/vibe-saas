@@ -219,7 +219,7 @@ create table if not exists yopsaas_ride_order_transaction_history(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网约车订单交易表';
 
 create table if not exists yopsaas_ride_order_dispatch(
-  `yopsaas_ride_order_dispatch_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `ride_order_dispatch_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
   `ride_order_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '订单ID',
   `driver_id` int(11) NOT NULL DEFAULT '0' COMMENT '司机ID',
   `name` varchar(32) NOT NULL DEFAULT '' COMMENT '司机姓名',
@@ -234,8 +234,9 @@ create table if not exists yopsaas_ride_order_dispatch(
   `car_type_id` int(11) NOT NULL DEFAULT '0' COMMENT '车型id',
   `is_default` smallint(1) NOT NULL DEFAULT '0' COMMENT '头像是否默认 1：默认，0非默认',
   `photo` varchar(256) NOT NULL DEFAULT '' COMMENT '司机头像url',
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '状态 1-已选',
   `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
-  PRIMARY KEY (`yopsaas_ride_order_dispatch_id`),
+  PRIMARY KEY (`ride_order_dispatch_id`),
   KEY `ride_order_id` (`ride_order_id`),
   KEY `idx_create_time` (`create_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网约车派单表';

@@ -6,11 +6,11 @@ import java.time.LocalDateTime;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 
-public abstract class Task implements Delayed, Runnable{
+public abstract class Task implements Delayed, Runnable {
     private String id = "";
     private long start = 0;
 
-    public Task(String id, long delayInMilliseconds){
+    public Task(String id, long delayInMilliseconds) {
         this.id = id;
         this.start = System.currentTimeMillis() + delayInMilliseconds;
     }
@@ -37,7 +37,7 @@ public abstract class Task implements Delayed, Runnable{
         if (!(o instanceof Task)) {
             return false;
         }
-        Task t = (Task)o;
+        Task t = (Task) o;
         return this.id.equals(t.getId());
     }
 

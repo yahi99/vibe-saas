@@ -1,7 +1,9 @@
 package com.yongche.yopsaas.core.yop;
 
 import com.ridegroup.yop.api.OrderAPI;
+import com.ridegroup.yop.bean.BaseResult;
 import com.ridegroup.yop.bean.BaseResultT;
+import com.ridegroup.yop.bean.order.AcceptedDriver;
 import com.ridegroup.yop.bean.order.CreateOrderResult;
 import com.ridegroup.yop.bean.order.OrderInfo;
 import org.apache.commons.logging.Log;
@@ -65,5 +67,20 @@ public class OrderService extends BaseService {
         } else {
             return null;
         }
+    }
+
+    public AcceptedDriver getSelectDriver(String orderId, String driverIds) {
+        String accessToken = this.getProperties().getAccessToken();
+        BaseResultT<AcceptedDriver> acceptedDriver = OrderAPI.getSelectDriver(accessToken, orderId, driverIds, OrderAPI.MAP_TYPE_MARS);
+        if(acceptedDriver.getCode().equals("200")) {
+            return acceptedDriver.getResult();
+        } else {
+            return null;
+        }
+    }
+
+    public BaseResult decisionDriver(String orderId, String driverId) {
+        String accessToken = this.getProperties().getAccessToken();
+        return OrderAPI.decisionDriver(accessToken, orderId, driverId, "");
     }
 }

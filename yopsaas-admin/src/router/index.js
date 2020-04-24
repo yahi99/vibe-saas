@@ -168,8 +168,18 @@ export const asyncRouterMap = [
         component: () => import('@/views/ride/order'),
         name: 'rideorder',
         meta: {
-          perms: ['GET /admin/rideorder/list', 'GET /admin/rideorder/detail', 'POST /admin/rideorder/ship', 'POST /admin/rideorder/refund', 'POST /admin/rideorder/delete', 'POST /admin/rideorder/reply'],
+          perms: ['GET /admin/rideorder/list', 'GET /admin/rideorder/detail', 'POST /admin/rideorder/refund', 'POST /admin/rideorder/delete', 'POST /admin/rideorder/reply'],
           title: '订单管理',
+          noCache: true
+        }
+      },
+      {
+        path: 'rideorderdispatch',
+        component: () => import('@/views/ride/orderdispatch'),
+        name: 'rideorderdispatch',
+        meta: {
+          perms: ['GET /admin/rideorderdispatch/list', 'GET /admin/rideorderdispatch/detail', 'POST /admin/rideorderdispatch/delete'],
+          title: '派单管理',
           noCache: true
         }
       }

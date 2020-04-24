@@ -18,3 +18,5 @@
 3. update order callback api
 4. add order status api
 5. add dispatch table
+6. add dispatch api
+7. add dispatch admin page

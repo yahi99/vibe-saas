@@ -282,10 +282,10 @@ public class YopsaasRideOrderService {
             criteria.andRideOrderIdEqualTo(rideOrderId);
         }
         if (start != 0) {
-            criteria.andCreateTimeLessThanOrEqualTo(start);
+            criteria.andCreateTimeGreaterThanOrEqualTo(start);
         }
         if (end != 0) {
-            criteria.andEndTimeLessThanOrEqualTo(end);
+            criteria.andCreateTimeLessThanOrEqualTo(end);
         }
         if (orderStatusArray != null && orderStatusArray.size() != 0) {
             criteria.andStatusIn(orderStatusArray);

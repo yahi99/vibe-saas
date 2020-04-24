@@ -1,6 +1,8 @@
 package com.yongche.yopsaas.wx.service;
 
 import com.ridegroup.yop.api.OrderAPI;
+import com.ridegroup.yop.bean.BaseResult;
+import com.ridegroup.yop.bean.order.AcceptedDriver;
 import com.ridegroup.yop.bean.order.CreateOrderResult;
 import com.ridegroup.yop.bean.order.OrderInfo;
 import com.yongche.yopsaas.core.system.SystemConfig;
@@ -12,6 +14,7 @@ import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.YopsaasRideOrderExtService;
 import com.yongche.yopsaas.db.service.YopsaasRideOrderService;
 import com.yongche.yopsaas.db.service.YopsaasUserService;
+import com.yongche.yopsaas.wx.task.RideOrderDecisionDriver;
 import com.yongche.yopsaas.wx.task.RideOrderUnchooseCarTask;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -218,12 +221,14 @@ public class YopOrderService {
 
         if(result.getCode().equals("200")) {
             // 订单未选择司机
+            String ycOrderId = result.getResult().getOrder_id();
             taskService.addTask(new RideOrderUnchooseCarTask(rideOrderId));
+            taskService.addTask(new RideOrderDecisionDriver(rideOrderId, ycOrderId));
 
             status = YopsaasRideOrderService.ORDER_STATUS_WAITDRIVERCONFIRM;
             YopsaasRideOrder updateOrder = new YopsaasRideOrder();
             updateOrder.setRideOrderId(rideOrderId);
-            updateOrder.setYcOrderId(Long.valueOf(result.getResult().getOrder_id()));
+            updateOrder.setYcOrderId(Long.valueOf(ycOrderId));
             updateOrder.setStatus(status);
             updateOrder.setConfirmTime(getTimestamp());
             logger.debug(JacksonUtil.toJson(updateOrder) + " yop ret:" + JacksonUtil.toJson(result));
@@ -346,6 +351,14 @@ public class YopOrderService {
 
         int result = rideOrderService.updateByExample(updateOrder, example);
         return ResponseUtil.okCode(result);
+    }
+
+    public AcceptedDriver getSelectDriver(String orderId, String driverIds) {
+        return orderService.getSelectDriver(orderId, driverIds);
+    }
+
+    public BaseResult decisionDriver(String orderId, String driverId) {
+        return orderService.decisionDriver(orderId, driverId);
     }
 
     public int getTimestamp() {

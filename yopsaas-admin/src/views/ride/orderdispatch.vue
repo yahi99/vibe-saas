@@ -115,7 +115,7 @@ export default {
         rideOrderId: undefined,
         timeArray: [],
         rideOrderStatusArray: [],
-        sort: 'ride_order_id',
+        sort: 'ride_order_dispatch_id',
         order: 'desc'
       },
       pickerOptions: {

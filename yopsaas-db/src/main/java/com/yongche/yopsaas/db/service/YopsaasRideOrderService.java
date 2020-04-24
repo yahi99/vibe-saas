@@ -27,7 +27,7 @@ public class YopsaasRideOrderService {
     public final static Byte ORDER_STATUS_INIT = 1;                 //等待用户付款
     public final static Byte ORDER_STATUS_WAITFORCAR = 2;           //等待选择车辆
     public final static Byte ORDER_STATUS_WAITDRIVERCONFIRM = 3;    //等待司机确认
-    public final static Byte ORDER_STATUS_SERVICEREADY = 4;         //司机已确认
+    public final static Byte ORDER_STATUS_SERVICEREADY = 4;         //司机已确认，用户已确认
     public final static Byte ORDER_STATUS_ARRIVED = 5;              //司机已到达
     public final static Byte ORDER_STATUS_SERVICESTART = 6;         //服务开始
     public final static Byte ORDER_STATUS_SERVICEEND = 7;           //服务结束
@@ -38,6 +38,38 @@ public class YopsaasRideOrderService {
     public final static Byte PAY_STATUS_NONE = 1;                     //1:未付款
     public final static Byte PAY_STATUS_PORTION = 2;                  //2:部分付款
     public final static Byte PAY_STATUS_OFF = 3;                      //3:已付款
+
+    //reason
+    /*59	没有信用卡无法验证
+        60	没有网银无法充值
+        61	变更信息重新下单
+        54	车辆未在预定时间到达
+        58	其它
+
+        取消原因状态码说明
+
+        状态码	含义	说明
+        63001	无车可派
+        63002	有车无人接单(无有效司机接单)
+        63003	有司机接单，用户未选车，系统自动取消
+        63004	有司机接单，用户未选车，客户端自动取消
+        100	合作方取消*/
+    public final static int REASON_NO_CARD = 59;                      //没有信用卡无法验证
+    public final static int REASON_NO_UNIONPAY = 60;                  //没有网银无法充值
+    public final static int REASON_CHANGE_INFO_REORDER = 61;          //变更信息重新下单
+    public final static int REASON_CAR_NOT_ARRIVE = 54;               //车辆未在预定时间到达
+    public final static int REASON_OTHER = 58;                        //其它
+
+    public final static int REASON_DISPATCH_NO_DRIVER             = 63001; //无车可派
+    public final static int REASON_DISPATCH_NO_DRIVER_ACCEPT      = 63002; //有车无人接单(无有效司机接单)
+    public final static int REASON_DISPATCH_SYSTEM_CANCEL         = 63003; //有司机接单，用户未选车，系统自动取消
+    public final static int REASON_DISPATCH_APP_CANCEL            = 63004; //有司机接单，用户未选车，客户端自动取消
+    public final static int REASON_DISPATCH_DRIVER_CANCEL         = 64001; //IVR联系乘客取消用车
+    public final static int REASON_DISPATCH_UNCONTACT_CANCEL      = 64002; //IVR联系不上乘客
+    public final static int REASON_DISPATCH_CANCEL_BY_DRIVER      = 65001; //司机自助取消订单
+    public final static int REASON_DISPATCH_REDISPATCH_FAILED     = 66001; //改派失败（客服项目改派失败直接取消订单，不生成客服工单）
+
+    public final static int REASON_SYSTEM     = 101; //saas系统取消
 
     public static final Long FLAG_COMMENTED = 0x01L; // 已评价
     public static final Long FLAG_NOT_SUPPORT_SYSTEM_DECISION = 0x02L; // 不支持系统决策
@@ -160,13 +192,13 @@ public class YopsaasRideOrderService {
         return (int) yopsaasRideOrderMapper.countByExample(example);
     }
 
-    public YopsaasRideOrder findById(Long orderId) {
-        return yopsaasRideOrderMapper.selectByPrimaryKey(orderId);
+    public YopsaasRideOrder findById(Long rideOrderId) {
+        return yopsaasRideOrderMapper.selectByPrimaryKey(rideOrderId);
     }
 
-    public YopsaasRideOrder findById(Long userId, Long orderId) {
+    public YopsaasRideOrder findById(Long userId, Long rideOrderId) {
         YopsaasRideOrderExample example = new YopsaasRideOrderExample();
-        example.or().andRideOrderIdEqualTo(orderId).andUserIdEqualTo(userId);
+        example.or().andRideOrderIdEqualTo(rideOrderId).andUserIdEqualTo(userId);
         return yopsaasRideOrderMapper.selectOneByExample(example);
     }
 

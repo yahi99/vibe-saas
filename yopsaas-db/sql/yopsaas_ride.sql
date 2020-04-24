@@ -1,11 +1,11 @@
 use yopsaas;
 
-drop table yopsaas_ride_order;
-drop table yopsaas_ride_order_ext;
+-- drop table yopsaas_ride_order;
+-- drop table yopsaas_ride_order_ext;
 drop table yopsaas_ride_order_transaction_history;
 -- drop table yopsaas_ride_order_dispatch;
 
-create table yopsaas_ride_order(
+create table if not exists yopsaas_ride_order(
   `ride_order_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `yc_order_id` bigint(20) NOT NULL DEFAULT '0' COMMENT 'yc order_id',
   `product_type_id` int(11) NOT NULL DEFAULT '0' COMMENT '产品的ID',
@@ -129,7 +129,7 @@ create table yopsaas_ride_order(
   KEY `idx_end_pay_status` (`end_time`,`status`,`pay_status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网约车订单表';
 
-create table yopsaas_ride_order_ext(
+create table if not exists yopsaas_ride_order_ext(
   `ride_order_id` bigint(20) NOT NULL default 0,
   `operator_id` int(11) NOT NULL DEFAULT '0' COMMENT '操作人的ID',
   `user_type` tinyint(2) NOT NULL DEFAULT '1' COMMENT '用户类型',
@@ -193,7 +193,7 @@ create table yopsaas_ride_order_ext(
   KEY `idx_update_time` (`update_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网约车订单扩展表';
 
-create table yopsaas_ride_order_transaction_history(
+create table if not exists yopsaas_ride_order_transaction_history(
   `ride_order_transaction_history_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
   `account_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '账户ID',
   `ride_order_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '订单ID',
@@ -218,7 +218,7 @@ create table yopsaas_ride_order_transaction_history(
   KEY `idx_create_time` (`create_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网约车订单交易表';
 
-create table yopsaas_ride_order_dispatch(
+create table if not exists yopsaas_ride_order_dispatch(
   `yopsaas_ride_order_dispatch_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
   `ride_order_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '订单ID',
   `driver_id` int(11) NOT NULL DEFAULT '0' COMMENT '司机ID',

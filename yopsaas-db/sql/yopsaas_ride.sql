@@ -1,8 +1,8 @@
 use yopsaas;
 
--- drop table yopsaas_ride_order;
--- drop table yopsaas_ride_order_ext;
--- drop table yopsaas_ride_order_transaction_history;
+drop table yopsaas_ride_order;
+drop table yopsaas_ride_order_ext;
+drop table yopsaas_ride_order_transaction_history;
 
 create table yopsaas_ride_order(
   `ride_order_id` bigint(20) NOT NULL AUTO_INCREMENT,

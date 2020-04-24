@@ -45,7 +45,7 @@ public class WxYopOrderController {
      * @param userId 用户ID
      * @return 提交订单操作结果
      */
-    @PostMapping("getCurrentAndUnpayOrder")
+    @GetMapping("getCurrentAndUnpayOrder")
     public Object getCurrentAndUnpayOrder(@LoginUser Integer userId) {
         return yopOrderService.getCurrentAndUnpayOrder(userId);
     }

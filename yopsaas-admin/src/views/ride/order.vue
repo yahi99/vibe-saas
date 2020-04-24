@@ -27,9 +27,9 @@
           {{ scope.row.productTypeId | productFilter }}
         </template>
       </el-table-column>
-      <el-table-column align="center" label="用车时间" prop="startTime">
+      <el-table-column align="center" label="用车时间" prop="expectStartTime">
         <template slot-scope="scope">
-          {{ scope.row.startTime | timeFilter }}
+          {{ scope.row.expectStartTime | timeFilter }}
         </template>
       </el-table-column>
       <el-table-column width="200" align="center" label="上车地点" prop="startAddress" />

@@ -257,8 +257,6 @@ public class YopOrderService {
             return ResponseUtil.badArgumentCode();
         }
         Byte orderStatus = Byte.valueOf(yongcheOrderStatus);
-        YopsaasRideOrder updateOrder = new YopsaasRideOrder();
-        updateOrder.setStatus(orderStatus);
         List<Byte> currentTripStatus = YopsaasRideOrderService.getCurrentTripStatus();
         YopsaasRideOrderExample example = new YopsaasRideOrderExample();
         example.or().andYcOrderIdEqualTo(Long.valueOf(yongcheOrderId));
@@ -270,6 +268,11 @@ public class YopOrderService {
         if(orderInfo == null) {
             return ResponseUtil.failCode(404, "yop order not exist");
         }
+        if(rideOrder.getStatus().equals(orderStatus)) {
+            return ResponseUtil.failCode(400, "order already update");
+        }
+        YopsaasRideOrder updateOrder = new YopsaasRideOrder();
+        updateOrder.setStatus(orderStatus);
         if(currentTripStatus.contains(orderStatus)) {
             // update driver
             if(!orderInfo.getDriver_id().equals("")) {
@@ -285,9 +288,6 @@ public class YopOrderService {
             }
         }
         if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_SERVICEEND)) {
-            if(rideOrder.getStatus().equals(YopsaasRideOrderService.ORDER_STATUS_SERVICEEND)) {
-                return ResponseUtil.failCode(400, "order already update");
-            }
             // update amount
             updateOrder.setEndTime(orderInfo.getEnd_time());
             updateOrder.setOriginAmount(BigDecimal.valueOf(Double.valueOf(orderInfo.getTotal_amount())));
@@ -295,9 +295,6 @@ public class YopOrderService {
             updateOrder.setActualTimeLength(orderInfo.getTime_length());
         }
         if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_CANCELLED)) {
-            if(rideOrder.getStatus().equals(YopsaasRideOrderService.ORDER_STATUS_CANCELLED)) {
-                return ResponseUtil.failCode(400, "order already update");
-            }
             updateOrder.setCancelTime(getTimestamp());
         }
 

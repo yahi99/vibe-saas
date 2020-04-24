@@ -285,6 +285,9 @@ public class YopOrderService {
             }
         }
         if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_SERVICEEND)) {
+            if(rideOrder.getStatus().equals(YopsaasRideOrderService.ORDER_STATUS_SERVICEEND)) {
+                return ResponseUtil.failCode(400, "order already update");
+            }
             // update amount
             updateOrder.setEndTime(orderInfo.getEnd_time());
             updateOrder.setOriginAmount(BigDecimal.valueOf(Double.valueOf(orderInfo.getTotal_amount())));
@@ -292,6 +295,9 @@ public class YopOrderService {
             updateOrder.setActualTimeLength(orderInfo.getTime_length());
         }
         if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_CANCELLED)) {
+            if(rideOrder.getStatus().equals(YopsaasRideOrderService.ORDER_STATUS_CANCELLED)) {
+                return ResponseUtil.failCode(400, "order already update");
+            }
             updateOrder.setCancelTime(getTimestamp());
         }
 

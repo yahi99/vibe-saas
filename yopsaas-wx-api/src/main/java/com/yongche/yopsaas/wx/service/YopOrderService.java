@@ -13,6 +13,8 @@ import com.yongche.yopsaas.db.service.YopsaasRideOrderExtService;
 import com.yongche.yopsaas.db.service.YopsaasRideOrderService;
 import com.yongche.yopsaas.db.service.YopsaasUserService;
 import com.yongche.yopsaas.wx.task.RideOrderUnchooseCarTask;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +30,8 @@ import static com.yongche.yopsaas.wx.util.WxResponseCode.GROUPON_JOIN;
 
 @Service
 public class YopOrderService {
+    private final Log logger = LogFactory.getLog(YopOrderService.class);
+
     @Autowired
     private OrderService orderService;
     @Autowired
@@ -213,6 +217,7 @@ public class YopOrderService {
             updateOrder.setYcOrderId(Long.valueOf(result.getResult().getOrder_id()));
             updateOrder.setStatus(status);
             updateOrder.setConfirmTime(getTimestamp());
+            logger.debug(JacksonUtil.toJson(updateOrder) + " yop ret:" + JacksonUtil.toJson(result));
             rideOrderService.update(updateOrder);
 
             Map<String, Object> data = new HashMap<>();

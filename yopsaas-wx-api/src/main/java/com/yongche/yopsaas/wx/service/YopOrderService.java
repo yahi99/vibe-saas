@@ -210,6 +210,7 @@ public class YopOrderService {
             status = YopsaasRideOrderService.ORDER_STATUS_WAITDRIVERCONFIRM;
             YopsaasRideOrder updateOrder = new YopsaasRideOrder();
             updateOrder.setRideOrderId(rideOrderId);
+            updateOrder.setYcOrderId(Long.valueOf(result.getResult().getOrder_id()));
             updateOrder.setStatus(status);
             updateOrder.setConfirmTime(getTimestamp());
             rideOrderService.update(updateOrder);

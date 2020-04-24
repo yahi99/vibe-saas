@@ -207,6 +207,8 @@ public class YopOrderService {
         Map<String, Object> reqMap = this.getCreateOrderParams(order);
         CreateOrderResult result = orderService.create(reqMap);
 
+        logger.debug(" yop ret:" + JacksonUtil.toJson(result));
+
         if(result.getCode().equals("200")) {
             // 订单未选择司机
             taskService.addTask(new RideOrderUnchooseCarTask(rideOrderId));

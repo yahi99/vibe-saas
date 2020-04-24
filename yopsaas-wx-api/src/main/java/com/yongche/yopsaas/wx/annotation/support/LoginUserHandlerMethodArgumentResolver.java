@@ -20,8 +20,6 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer container,
                                   NativeWebRequest request, WebDataBinderFactory factory) throws Exception {
-
-//        return new Integer(1);
         String token = request.getHeader(LOGIN_TOKEN_KEY);
         if (token == null || token.isEmpty()) {
             return null;

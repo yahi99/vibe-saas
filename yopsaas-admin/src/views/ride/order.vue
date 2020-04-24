@@ -20,6 +20,8 @@
 
       <el-table-column align="center" label="用户ID" prop="userId" />
 
+      <el-table-column align="center" label="第三方订单ID" prop="ycOrderId" />
+
       <el-table-column align="center" label="产品类型" prop="productTypeId">
         <template slot-scope="scope">
           {{ scope.row.productTypeId | productFilter }}

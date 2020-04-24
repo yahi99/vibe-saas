@@ -1,7 +1,9 @@
 package com.yongche.yopsaas.core.yop;
 
 import com.ridegroup.yop.api.OrderAPI;
+import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.order.CreateOrderResult;
+import com.ridegroup.yop.bean.order.OrderInfo;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -53,5 +55,15 @@ public class OrderService extends BaseService {
     public CreateOrderResult create(Map<String, Object> reqMap) {
         String accessToken = this.getProperties().getAccessToken();
         return OrderAPI.createOrder(accessToken, reqMap);
+    }
+
+    public OrderInfo getOrderInfo(String orderId) {
+        String accessToken = this.getProperties().getAccessToken();
+        BaseResultT<OrderInfo> result = OrderAPI.getOrderInfo(accessToken, orderId);
+        if(result.getCode().equals("200")) {
+            return result.getResult();
+        } else {
+            return null;
+        }
     }
 }

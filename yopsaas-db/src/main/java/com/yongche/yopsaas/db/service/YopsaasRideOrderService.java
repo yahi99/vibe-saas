@@ -33,6 +33,9 @@ public class YopsaasRideOrderService {
     public final static Byte ORDER_STATUS_SERVICEEND = 7;           //服务结束
     public final static Byte ORDER_STATUS_CANCELLED = 8;            //取消
 
+    public final static Byte PAYABLE_ALLOW = 1;            //允许支付
+    public final static Byte PAYABLE_NOT_ALLOW = 2;            //不允许支付
+
     // pay status
     public final static Byte PAY_STATUS_NO_NEED = 0;                  //0:无需付款
     public final static Byte PAY_STATUS_NONE = 1;                     //1:未付款
@@ -186,6 +189,14 @@ public class YopsaasRideOrderService {
         return yopsaasRideOrderMapper.updateByExampleSelective(order, example);
     }
 
+    public YopsaasRideOrder queryOneByExample(YopsaasRideOrderExample example) {
+        return yopsaasRideOrderMapper.selectOneByExample(example);
+    }
+
+    public List<YopsaasRideOrder> queryByExample(YopsaasRideOrderExample example) {
+        return yopsaasRideOrderMapper.selectByExample(example);
+    }
+
     public int count(Long userId) {
         YopsaasRideOrderExample example = new YopsaasRideOrderExample();
         example.or().andUserIdEqualTo(userId);
@@ -229,6 +240,14 @@ public class YopsaasRideOrderService {
 
         PageHelper.startPage(page, limit);
         return yopsaasRideOrderMapper.selectByExample(example);
+    }
+
+    public static List<Byte> getCurrentTripStatus() {
+        List<Byte> orderStatus = new ArrayList<Byte>();
+        orderStatus.add(YopsaasRideOrderService.ORDER_STATUS_SERVICEREADY);
+        orderStatus.add(YopsaasRideOrderService.ORDER_STATUS_ARRIVED);
+        orderStatus.add(YopsaasRideOrderService.ORDER_STATUS_SERVICESTART);
+        return orderStatus;
     }
 
     public List<YopsaasRideOrder> queryByOrderStatus(Long userId, List<Byte> orderStatus) {

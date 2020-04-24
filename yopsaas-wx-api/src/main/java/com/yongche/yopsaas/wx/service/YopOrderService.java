@@ -1,6 +1,8 @@
 package com.yongche.yopsaas.wx.service;
 
+import com.ridegroup.yop.api.OrderAPI;
 import com.ridegroup.yop.bean.order.CreateOrderResult;
+import com.ridegroup.yop.bean.order.OrderInfo;
 import com.yongche.yopsaas.core.system.SystemConfig;
 import com.yongche.yopsaas.core.task.TaskService;
 import com.yongche.yopsaas.core.util.JacksonUtil;
@@ -9,6 +11,7 @@ import com.yongche.yopsaas.core.yop.OrderService;
 import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.YopsaasRideOrderExtService;
 import com.yongche.yopsaas.db.service.YopsaasRideOrderService;
+import com.yongche.yopsaas.db.service.YopsaasUserService;
 import com.yongche.yopsaas.wx.task.RideOrderUnchooseCarTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +36,8 @@ public class YopOrderService {
     private YopsaasRideOrderExtService rideOrderExtService;
     @Autowired
     private TaskService taskService;
+    @Autowired
+    private YopsaasUserService userService;
 
     /**
      * 提交订单
@@ -87,6 +92,7 @@ public class YopOrderService {
             corporate_dept_id: '0', //企业账号组id
             is_need_manual_dispatch: is_need_manual_dispatch, //是否派单失败后转人工, ASAP 强制0，其他默认1
             pa_bargain_amount: 0, //	议价金额*/
+        YopsaasUser user = userService.findById(userId);
         String isSupportSystemDecision = JacksonUtil.parseString(body, "is_support_system_decision", "1");
         String hasCustomDecision = JacksonUtil.parseString(body, "has_custom_decision", "0");
         Double orderLat = JacksonUtil.parseDouble(body, "order_lat");
@@ -156,6 +162,7 @@ public class YopOrderService {
         order.setProductTypeId(Integer.valueOf(productTypeId));
         order.setIsAsap(isAsap);
         order.setCarTypeId(carTypeId);
+        order.setCarTypeIds(String.valueOf(carTypeId));
         order.setStartAddress(startAddress);
         order.setStartPosition(fromPos);
         order.setStartLatitude(startLat);
@@ -166,12 +173,16 @@ public class YopOrderService {
         order.setEndLatitude(endLat);
         order.setEndLongitude(endLng);
         order.setPassengerName(passengerName);
-        order.setPassengerPhone(passengerPhone);
+        order.setPassengerPhone(user.getMobile());
+        order.setUserPhone(user.getMobile());
+        order.setTimeLength(timeLength);
         order.setFlag(flag);
         order.setCorporateId(Long.valueOf(corporateId));
         order.setCorporateDeptId(Integer.valueOf(corporateDeptId));
         order.setStatus(status);
-        order.setCreateTime(this.getTimestamp());
+        int now = this.getTimestamp();
+        order.setCreateTime(now);
+        order.setInitTime(now);
 
         // 添加订单表项
         rideOrderService.add(order);
@@ -200,6 +211,7 @@ public class YopOrderService {
             YopsaasRideOrder updateOrder = new YopsaasRideOrder();
             updateOrder.setRideOrderId(rideOrderId);
             updateOrder.setStatus(status);
+            updateOrder.setConfirmTime(getTimestamp());
             rideOrderService.update(updateOrder);
 
             Map<String, Object> data = new HashMap<>();
@@ -212,6 +224,7 @@ public class YopOrderService {
                 YopsaasRideOrder updateOrder = new YopsaasRideOrder();
                 updateOrder.setRideOrderId(rideOrderId);
                 updateOrder.setStatus(status);
+                updateOrder.setCancelTime(getTimestamp());
                 rideOrderService.update(updateOrder);
             }
             // TODO check order status
@@ -243,10 +256,44 @@ public class YopOrderService {
         if (yongcheOrderId == null || yongcheOrderStatus == null) {
             return ResponseUtil.badArgumentCode();
         }
+        Byte orderStatus = Byte.valueOf(yongcheOrderStatus);
         YopsaasRideOrder updateOrder = new YopsaasRideOrder();
-        updateOrder.setStatus(Byte.valueOf(yongcheOrderStatus));
+        updateOrder.setStatus(orderStatus);
+        List<Byte> currentTripStatus = YopsaasRideOrderService.getCurrentTripStatus();
         YopsaasRideOrderExample example = new YopsaasRideOrderExample();
         example.or().andYcOrderIdEqualTo(Long.valueOf(yongcheOrderId));
+        YopsaasRideOrder rideOrder = rideOrderService.queryOneByExample(example);
+        if(rideOrder == null) {
+            return ResponseUtil.failCode(404, "not exist");
+        }
+        OrderInfo orderInfo = orderService.getOrderInfo(yongcheOrderId);
+        if(orderInfo == null) {
+            return ResponseUtil.failCode(404, "yop order not exist");
+        }
+        if(currentTripStatus.contains(orderStatus)) {
+            // update driver
+            if(!orderInfo.getDriver_id().equals("")) {
+                updateOrder.setDriverId(Integer.valueOf(orderInfo.getDriver_id()));
+                updateOrder.setDriverName(orderInfo.getDriver_name());
+                updateOrder.setDriverPhone(orderInfo.getDriver_phone());
+                updateOrder.setVehicleNumber(orderInfo.getVehicle_number());
+                updateOrder.setCarTypeId(orderInfo.getCar_type_id());
+                updateOrder.setCarType(orderInfo.getCar_type());
+                updateOrder.setCarBrand(orderInfo.getCar_brand());
+                updateOrder.setConfirmTime(orderInfo.getConfirm_time());
+                updateOrder.setPayable(YopsaasRideOrderService.PAYABLE_ALLOW);
+            }
+        }
+        if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_SERVICEEND)) {
+            // update amount
+            updateOrder.setEndTime(orderInfo.getEnd_time());
+            updateOrder.setOriginAmount(BigDecimal.valueOf(Double.valueOf(orderInfo.getTotal_amount())));
+            updateOrder.setTotalAmount(BigDecimal.valueOf(Double.valueOf(orderInfo.getTotal_amount())));
+            updateOrder.setActualTimeLength(orderInfo.getTime_length());
+        }
+        if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_CANCELLED)) {
+            updateOrder.setCancelTime(getTimestamp());
+        }
 
         int result = rideOrderService.updateByExample(updateOrder, example);
         return ResponseUtil.okCode(result);

@@ -40,6 +40,9 @@ import java.util.Map;
  * </ul>
  */
 public class ResponseUtil {
+    public final static int RET_OK_0 = 0;
+    public final static int RET_INVALID_PARAM_400 = 400;
+
     public static Object ok() {
         Map<String, Object> obj = new HashMap<String, Object>();
         obj.put("errno", 0);

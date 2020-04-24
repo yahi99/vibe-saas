@@ -51,6 +51,18 @@ public class WxYopOrderController {
     }
 
     /**
+     * 获取订单状态
+     *
+     * @param userId 用户ID
+     * @param rideOrderId 订单ID
+     * @return 提交订单操作结果
+     */
+    @GetMapping("getStatus")
+    public Object getStatus(@LoginUser Integer userId, @RequestParam(defaultValue = "1", name = "ride_order_id") Long rideOrderId) {
+        return yopOrderService.getStatus(userId, rideOrderId);
+    }
+
+    /**
      * 回调
      *
      * https://github.com/yongche/developer.yongche.com/wiki/order#callback

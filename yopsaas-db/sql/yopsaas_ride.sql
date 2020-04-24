@@ -6,7 +6,7 @@ drop table yopsaas_ride_order_transaction_history;
 
 create table yopsaas_ride_order(
   `ride_order_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `yc_order_id` varchar(40) NOT NULL DEFAULT '' COMMENT 'yc order_id',
+  `yc_order_id` bigint(20) NOT NULL DEFAULT '0' COMMENT 'yc order_id',
   `product_type_id` int(11) NOT NULL DEFAULT '0' COMMENT '产品的ID',
   `fixed_product_id` int(11) NOT NULL DEFAULT '0' COMMENT '固定价格的产品ID',
   `is_asap` tinyint(4) NOT NULL DEFAULT '0' COMMENT  '是否是即时用订单 0:否 1:是',

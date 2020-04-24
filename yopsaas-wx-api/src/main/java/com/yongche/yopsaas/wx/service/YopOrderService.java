@@ -209,6 +209,8 @@ public class YopOrderService {
 
         rideOrderExtService.add(orderExt);
 
+        logger.debug(JacksonUtil.toJson(order));
+
         Map<String, Object> reqMap = this.getCreateOrderParams(order);
         CreateOrderResult result = orderService.create(reqMap);
 

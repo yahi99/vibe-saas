@@ -397,7 +397,7 @@ public class YopOrderService {
         reqMap.put("start_position", order.getStartAddress());
         reqMap.put("expect_start_latitude", String.valueOf(order.getExpectStartLatitude()));
         reqMap.put("expect_start_longitude", String.valueOf((order.getExpectStartLongitude())));
-        Date date = new Date(Long.valueOf(order.getStartTime()) * 1000);
+        Date date = new Date(Long.valueOf(order.getExpectStartTime()) * 1000);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         reqMap.put("time", df.format(date));
         reqMap.put("rent_time", "2");

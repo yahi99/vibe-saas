@@ -314,6 +314,9 @@ public class YopOrderService {
             updateOrder.setOriginAmount(BigDecimal.valueOf(Double.valueOf(orderInfo.getTotal_amount())));
             updateOrder.setTotalAmount(BigDecimal.valueOf(Double.valueOf(orderInfo.getTotal_amount())));
             updateOrder.setActualTimeLength(orderInfo.getTime_length());
+            updateOrder.setEndLatitude(orderInfo.getEnd_latitude());
+            updateOrder.setEndLongitude(orderInfo.getStart_longitude());
+            updateOrder.setEndTime(orderInfo.getEnd_time());
         }
         if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_CANCELLED)) {
             updateOrder.setCancelTime(getTimestamp());

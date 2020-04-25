@@ -97,6 +97,7 @@ public class RideOrderDecisionDriver extends Task {
                             } else {
                                 decisionDriverId = String.valueOf(driver.getDriver_id());
                             }
+                            logger.debug("RideOrderDecisionDriver decisionDriverId:" + decisionDriverId);
                             if(!decisionDriverId.equals("")) {
                                 BaseResult decisionResult = yopOrderService.decisionDriver(ycOrderId, decisionDriverId);
                                 if(decisionResult.getCode().equals("200")) {

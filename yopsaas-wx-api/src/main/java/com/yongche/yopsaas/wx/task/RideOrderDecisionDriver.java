@@ -89,6 +89,7 @@ public class RideOrderDecisionDriver extends Task {
                         orderDispatch.setUnittimeCompleteCount(driver.getUnittime_complete_count());
                         orderDispatch.setCreateTime(YopOrderService.getTimestamp());
                         logger.debug("RideOrderDecisionDriver hasDecision:" + hasDecision);
+                        driverIds += driver.getDriver_id() + ",";
                         if(!hasDecision) {
                             decisionDriverId = "";
                             if(userId.intValue() == 1) {

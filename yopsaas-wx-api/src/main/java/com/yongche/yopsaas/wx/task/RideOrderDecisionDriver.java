@@ -104,7 +104,9 @@ public class RideOrderDecisionDriver extends Task {
                             }
                             logger.debug("RideOrderDecisionDriver decisionDriverId:" + decisionDriverId);
                             if(!decisionDriverId.equals("")) {
+                                logger.debug("RideOrderDecisionDriver decisionDriver");
                                 BaseResult decisionResult = yopOrderService.decisionDriver(ycOrderId, decisionDriverId);
+                                logger.debug(JacksonUtil.toJson(decisionResult));
                                 if(decisionResult.getCode().equals("200")) {
                                     hasDecision = true;
                                     orderDispatch.setStatus(RideOrderDispatchUtil.STATUS_SELECTED);

@@ -427,14 +427,16 @@ public class YopOrderService {
         reqMap.put("city", order.getCity());
         reqMap.put("type", String.valueOf(order.getProductTypeId()));
         reqMap.put("car_type_id", String.valueOf(order.getCarTypeId()));
-        reqMap.put("start_position", order.getStartAddress());
+        reqMap.put("start_position", order.getStartPosition());
+        reqMap.put("start_address", order.getStartAddress());
         reqMap.put("expect_start_latitude", String.valueOf(order.getExpectStartLatitude()));
         reqMap.put("expect_start_longitude", String.valueOf((order.getExpectStartLongitude())));
         Date date = new Date(Long.valueOf(order.getExpectStartTime()) * 1000);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         reqMap.put("time", df.format(date));
         reqMap.put("rent_time", "2");
-        reqMap.put("end_position", order.getEndAddress());
+        reqMap.put("end_position", order.getEndPosition());
+        reqMap.put("end_address", order.getEndAddress());
         reqMap.put("expect_end_latitude", String.valueOf(order.getExpectEndLatitude()));
         reqMap.put("expect_end_longitude", String.valueOf(order.getExpectEndLongitude()));
         reqMap.put("passenger_name", order.getPassengerName());

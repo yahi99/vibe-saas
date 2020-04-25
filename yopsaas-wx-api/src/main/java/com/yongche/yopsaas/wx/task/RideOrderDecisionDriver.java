@@ -54,12 +54,14 @@ public class RideOrderDecisionDriver extends Task {
             boolean hasDecision = false;
             String decisionDriverId = "";
             while(true) {
+                logger.debug("loop for getSelectDriver num:" + num);
                 if(num >= maxNum) {
                     hasDriver = false;
                     break;
                 }
                 selectDriver = yopOrderService.getSelectDriver(this.ycOrderId, driverIds);
 
+                logger.debug(selectDriver);
                 if(selectDriver.getWait_driver_time_length() <= 0
                         && selectDriver.getWait_user_time_length() <= 0) {
                     hasDriver = false;

@@ -88,10 +88,13 @@ public class RideOrderDecisionDriver extends Task {
                         orderDispatch.setLongitude(driver.getLongitude());
                         orderDispatch.setUnittimeCompleteCount(driver.getUnittime_complete_count());
                         orderDispatch.setCreateTime(YopOrderService.getTimestamp());
+                        logger.debug("RideOrderDecisionDriver hasDecision:" + hasDecision);
                         if(!hasDecision) {
                             decisionDriverId = "";
                             if(userId.intValue() == 1) {
+                                logger.debug("RideOrderDecisionDriver userId:" + userId);
                                 if(driver.getDriver_id() == 52968) {
+                                    logger.debug("RideOrderDecisionDriver driverId:" + driver.getDriver_id());
                                     decisionDriverId = String.valueOf(driver.getDriver_id());
                                 }
                             } else {

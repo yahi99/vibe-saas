@@ -98,6 +98,7 @@ public class RideOrderDecisionDriver extends Task {
                                     decisionDriverId = String.valueOf(driver.getDriver_id());
                                 }
                             } else {
+                                logger.debug("RideOrderDecisionDriver userId is " + userId);
                                 decisionDriverId = String.valueOf(driver.getDriver_id());
                             }
                             logger.debug("RideOrderDecisionDriver decisionDriverId:" + decisionDriverId);

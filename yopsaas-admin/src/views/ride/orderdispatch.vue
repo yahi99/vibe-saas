@@ -67,7 +67,7 @@
           </el-form-item>
           <el-form-item label="派单信息">
             <span>（车辆品牌）{{ orderDetail.order.brand }}</span>
-            <span>（车型）{{ orderDetail.order.car_type }}</span>
+            <span>（车型）{{ orderDetail.order.carType }}</span>
           </el-form-item>
         </el-form>
       </section>

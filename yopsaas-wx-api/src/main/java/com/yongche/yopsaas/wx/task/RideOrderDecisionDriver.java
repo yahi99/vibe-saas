@@ -90,7 +90,7 @@ public class RideOrderDecisionDriver extends Task {
                         orderDispatch.setCreateTime(YopOrderService.getTimestamp());
                         if(!hasDecision) {
                             decisionDriverId = "";
-                            if(userId == 1L) {
+                            if(userId.intValue() == 1) {
                                 if(driver.getDriver_id() == 52968) {
                                     decisionDriverId = String.valueOf(driver.getDriver_id());
                                 }

@@ -105,6 +105,7 @@ public class RideOrderDecisionDriver extends Task {
                             logger.debug("RideOrderDecisionDriver decisionDriverId:" + decisionDriverId);
                             if(!decisionDriverId.equals("")) {
                                 logger.debug("RideOrderDecisionDriver decisionDriver");
+                                // check order status
                                 BaseResult decisionResult = yopOrderService.decisionDriver(ycOrderId, decisionDriverId);
                                 logger.debug(JacksonUtil.toJson(decisionResult));
                                 if(decisionResult.getCode().equals("200")) {

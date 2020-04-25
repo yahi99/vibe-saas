@@ -20,15 +20,16 @@
 
       <el-table-column align="center" label="订单ID" prop="rideOrderId" />
 
+      <el-table-column align="center" label="司机ID" prop="driverId" />
       <el-table-column align="center" label="司机姓名" prop="name" />
       <el-table-column align="center" label="星级" prop="score" />
       <el-table-column align="center" label="好评率" prop="goodCommentRate" />
       <el-table-column align="center" label="车辆品牌" prop="brand" />
-      <el-table-column align="center" label="车型" prop="car_type" />
+      <el-table-column align="center" label="车型" prop="carType" />
 
-      <el-table-column align="center" label="时间" prop="create_time">
+      <el-table-column align="center" label="时间" prop="createTime">
         <template slot-scope="scope">
-          {{ scope.row.create_time | timeFilter }}
+          {{ scope.row.createTime | timeFilter }}
         </template>
       </el-table-column>
 

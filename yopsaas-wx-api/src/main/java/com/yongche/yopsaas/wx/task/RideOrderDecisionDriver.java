@@ -5,6 +5,7 @@ import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.order.AcceptedDriver;
 import com.yongche.yopsaas.core.task.Task;
 import com.yongche.yopsaas.core.util.BeanUtil;
+import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.db.domain.YopsaasRideOrder;
 import com.yongche.yopsaas.db.domain.YopsaasRideOrderDispatch;
 import com.yongche.yopsaas.db.service.YopsaasRideOrderDispatchService;
@@ -61,7 +62,7 @@ public class RideOrderDecisionDriver extends Task {
                 }
                 selectDriver = yopOrderService.getSelectDriver(this.ycOrderId, driverIds);
 
-                logger.debug(selectDriver);
+                logger.debug(JacksonUtil.toJson(selectDriver));
                 if(selectDriver.getWait_driver_time_length() <= 0
                         && selectDriver.getWait_user_time_length() <= 0) {
                     hasDriver = false;

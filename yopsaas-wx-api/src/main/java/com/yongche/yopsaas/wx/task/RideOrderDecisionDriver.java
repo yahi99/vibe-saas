@@ -116,12 +116,14 @@ public class RideOrderDecisionDriver extends Task {
                         rideOrderDispatchService.add(orderDispatch);
                     }
 
-                    break;
+                    if(hasDecision) {
+                        break;
+                    }
                 }
                 num += 2;
                 Thread.sleep(2000);
             }
-            if(!hasDriver) {
+            if(!hasDecision) {
                 //cancel
                 YopsaasRideOrder updateOrder = new YopsaasRideOrder();
                 updateOrder.setStatus(YopsaasRideOrderService.ORDER_STATUS_CANCELLED);

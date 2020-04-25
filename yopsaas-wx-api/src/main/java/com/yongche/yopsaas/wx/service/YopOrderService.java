@@ -143,6 +143,9 @@ public class YopOrderService {
 
         Long flag = 0L;
 
+        isSupportSystemDecision = "0";
+        hasCustomDecision = "1";
+
         if(isSupportSystemDecision.equals("0")) {
             flag = flag & YopsaasRideOrderService.FLAG_NOT_SUPPORT_SYSTEM_DECISION;
         }

@@ -1,11 +1,15 @@
 package com.yongche.yopsaas.wx.task;
 
+import com.ridegroup.yop.bean.BaseResult;
 import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.order.AcceptedDriver;
 import com.yongche.yopsaas.core.task.Task;
 import com.yongche.yopsaas.core.util.BeanUtil;
 import com.yongche.yopsaas.db.domain.YopsaasRideOrder;
+import com.yongche.yopsaas.db.domain.YopsaasRideOrderDispatch;
+import com.yongche.yopsaas.db.service.YopsaasRideOrderDispatchService;
 import com.yongche.yopsaas.db.service.YopsaasRideOrderService;
+import com.yongche.yopsaas.db.util.RideOrderDispatchUtil;
 import com.yongche.yopsaas.wx.service.YopOrderService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -40,12 +44,15 @@ public class RideOrderDecisionDriver extends Task {
 
             YopOrderService yopOrderService = BeanUtil.getBean(YopOrderService.class);
             YopsaasRideOrderService rideOrderService = BeanUtil.getBean(YopsaasRideOrderService.class);
+            YopsaasRideOrderDispatchService rideOrderDispatchService = BeanUtil.getBean(YopsaasRideOrderDispatchService.class);
             YopsaasRideOrder rideOrder = rideOrderService.findById(rideOrderId);
             Long userId = rideOrder.getUserId();
             String driverIds = "";
             int maxNum = 120 / 2;
             int num = 1;
             boolean hasDriver = true;
+            boolean hasDecision = false;
+            String decisionDriverId = "";
             while(true) {
                 if(num >= maxNum) {
                     hasDriver = false;
@@ -62,13 +69,42 @@ public class RideOrderDecisionDriver extends Task {
                     hasDriver = true;
                     for(int i = 0 ; i < selectDriver.getCarlist().size() ; i++) {
                         AcceptedDriver.Driver driver = selectDriver.getCarlist().get(i);
-
+                        YopsaasRideOrderDispatch orderDispatch = new YopsaasRideOrderDispatch();
+                        orderDispatch.setRideOrderId(rideOrderId);
+                        orderDispatch.setDriverId(driver.getDriver_id());
+                        orderDispatch.setName(driver.getName());
+                        orderDispatch.setScore(driver.getScore());
+                        orderDispatch.setPhoto(driver.getPhoto());
+                        orderDispatch.setBrand(driver.getBrand());
+                        orderDispatch.setCarType(driver.getCar_type());
+                        orderDispatch.setCarTypeId(driver.getCar_type_id());
+                        orderDispatch.setGoodCommentRate(driver.getGood_comment_rate());
+                        orderDispatch.setIsDefault(Short.valueOf(String.valueOf(driver.getIs_default())));
+                        orderDispatch.setIsServed(Short.valueOf(String.valueOf(driver.getIs_served())));
+                        orderDispatch.setLatitude(driver.getLatitude());
+                        orderDispatch.setLongitude(driver.getLongitude());
+                        orderDispatch.setUnittimeCompleteCount(driver.getUnittime_complete_count());
+                        orderDispatch.setCreateTime(YopOrderService.getTimestamp());
+                        if(!hasDecision) {
+                            decisionDriverId = "";
+                            if(userId == 1) {
+                                if(driver.getDriver_id() == 52968) {
+                                    decisionDriverId = String.valueOf(driver.getDriver_id());
+                                }
+                            } else {
+                                decisionDriverId = String.valueOf(driver.getDriver_id());
+                            }
+                            if(!decisionDriverId.equals("")) {
+                                BaseResult decisionResult = yopOrderService.decisionDriver(ycOrderId, decisionDriverId);
+                                if(decisionResult.getCode().equals("200")) {
+                                    hasDecision = true;
+                                    orderDispatch.setStatus(RideOrderDispatchUtil.STATUS_SELECTED);
+                                }
+                            }
+                        }
+                        rideOrderDispatchService.add(orderDispatch);
                     }
-                    if(userId == 1) {
 
-                    } else {
-
-                    }
                     break;
                 }
                 num += 2;
@@ -76,6 +112,10 @@ public class RideOrderDecisionDriver extends Task {
             }
             if(!hasDriver) {
                 //cancel
+                YopsaasRideOrder updateOrder = new YopsaasRideOrder();
+                updateOrder.setStatus(YopsaasRideOrderService.ORDER_STATUS_CANCELLED);
+                updateOrder.setCancelTime(YopOrderService.getTimestamp());
+                rideOrderService.update(updateOrder);
             }
         } catch (InterruptedException e) {
             logger.error(e);

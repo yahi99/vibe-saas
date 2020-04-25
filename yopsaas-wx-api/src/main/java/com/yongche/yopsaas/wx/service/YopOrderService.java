@@ -192,7 +192,7 @@ public class YopOrderService {
         order.setCorporateId(Long.valueOf(corporateId));
         order.setCorporateDeptId(Integer.valueOf(corporateDeptId));
         order.setStatus(status);
-        int now = this.getTimestamp();
+        int now = YopOrderService.getTimestamp();
         order.setCreateTime(now);
         order.setInitTime(now);
 
@@ -230,7 +230,7 @@ public class YopOrderService {
             updateOrder.setRideOrderId(rideOrderId);
             updateOrder.setYcOrderId(Long.valueOf(ycOrderId));
             updateOrder.setStatus(status);
-            updateOrder.setConfirmTime(getTimestamp());
+            updateOrder.setConfirmTime(YopOrderService.getTimestamp());
             logger.debug(JacksonUtil.toJson(updateOrder) + " yop ret:" + JacksonUtil.toJson(result));
             rideOrderService.update(updateOrder);
 
@@ -247,7 +247,7 @@ public class YopOrderService {
                 YopsaasRideOrder updateOrder = new YopsaasRideOrder();
                 updateOrder.setRideOrderId(rideOrderId);
                 updateOrder.setStatus(status);
-                updateOrder.setCancelTime(getTimestamp());
+                updateOrder.setCancelTime(YopOrderService.getTimestamp());
                 rideOrderService.update(updateOrder);
             }
             // TODO check order status
@@ -346,7 +346,7 @@ public class YopOrderService {
             updateOrder.setEndTime(orderInfo.getEnd_time());
         }
         if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_CANCELLED)) {
-            updateOrder.setCancelTime(getTimestamp());
+            updateOrder.setCancelTime(YopOrderService.getTimestamp());
         }
 
         int result = rideOrderService.updateByExample(updateOrder, example);
@@ -361,7 +361,7 @@ public class YopOrderService {
         return orderService.decisionDriver(orderId, driverId);
     }
 
-    public int getTimestamp() {
+    public static int getTimestamp() {
         long time = System.currentTimeMillis();
         return Math.round(time / 1000);
     }

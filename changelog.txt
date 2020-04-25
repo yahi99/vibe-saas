@@ -20,3 +20,6 @@
 5. add dispatch table
 6. add dispatch api
 7. add dispatch admin page
+
+2020-04-25
+1. add decision api

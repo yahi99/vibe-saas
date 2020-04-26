@@ -4,9 +4,7 @@ import com.ridegroup.yop.api.OrderAPI;
 import com.ridegroup.yop.bean.BaseResult;
 import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.driver.DriverInfo;
-import com.ridegroup.yop.bean.order.AcceptedDriver;
-import com.ridegroup.yop.bean.order.CreateOrderResult;
-import com.ridegroup.yop.bean.order.OrderInfo;
+import com.ridegroup.yop.bean.order.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -90,6 +88,22 @@ public class OrderService extends BaseService {
         BaseResultT<DriverInfo> driverInfo = OrderAPI.getOrderDriverInfo(accessToken, orderId);
         if(driverInfo.getCode().equals("200")) {
             return driverInfo.getResult();
+        } else {
+            return null;
+        }
+    }
+
+    public BaseResultT<CancelOrder> cancel(String orderId, String reasonId, String otherReason) {
+        String accessToken = this.getProperties().getAccessToken();
+        BaseResultT<CancelOrder> cancelOrder = OrderAPI.cancelOrder(accessToken, orderId, reasonId, otherReason);
+        return cancelOrder;
+    }
+
+    public CancelOrderFee getCancelOrderFee(String orderId) {
+        String accessToken = this.getProperties().getAccessToken();
+        BaseResultT<CancelOrderFee> cancelOrder = OrderAPI.getCancelOrderFee(accessToken, orderId);
+        if(cancelOrder.getCode().equals("200")) {
+            return cancelOrder.getResult();
         } else {
             return null;
         }

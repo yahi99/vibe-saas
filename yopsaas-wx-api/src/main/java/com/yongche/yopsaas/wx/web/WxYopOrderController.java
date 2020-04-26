@@ -123,4 +123,15 @@ public class WxYopOrderController {
         logger.debug(JacksonUtil.toJson(httpServletRequest.getParameterMap()));
         return yopOrderService.updateByCallback(httpServletRequest);
     }
+
+    /**
+     * 取消订单
+     * @param userId userId
+     * @param body 订单ID
+     * @return 预估数据
+     */
+    @PostMapping("cancel")
+    public Object cancel(@LoginUser Integer userId, @RequestBody String body) {
+        return yopOrderService.cancel(userId, body);
+    }
 }

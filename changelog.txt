@@ -32,3 +32,4 @@
 5. add driver when callback
 6. add order info api
 7. add coupon api
+8. add cancel order api

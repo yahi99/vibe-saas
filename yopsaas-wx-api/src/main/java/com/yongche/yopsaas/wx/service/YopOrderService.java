@@ -2,8 +2,10 @@ package com.yongche.yopsaas.wx.service;
 
 import com.ridegroup.yop.api.OrderAPI;
 import com.ridegroup.yop.bean.BaseResult;
+import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.driver.DriverInfo;
 import com.ridegroup.yop.bean.order.AcceptedDriver;
+import com.ridegroup.yop.bean.order.CancelOrder;
 import com.ridegroup.yop.bean.order.CreateOrderResult;
 import com.ridegroup.yop.bean.order.OrderInfo;
 import com.yongche.yopsaas.core.system.SystemConfig;
@@ -483,6 +485,42 @@ public class YopOrderService {
 
         int result = rideOrderService.updateByExample(updateOrder, example);
         return ResponseUtil.okCode(result);
+    }
+
+    public Object cancel(Integer userId, String body) {
+        Long rideOrderId = JacksonUtil.parseLong(body, "ride_order_id");
+        if(rideOrderId != null) {
+            YopsaasRideOrder rideOrder = rideOrderService.findById(rideOrderId);
+            if(rideOrder != null) {
+                Long dbUserId = rideOrder.getUserId();
+                if(dbUserId.intValue() != userId) {
+                    return ResponseUtil.fail(ResponseUtil.RET_INVALID_PARAM_400, "rideOrderId is not yours");
+                }
+                String ycOrderId = String.valueOf(rideOrder.getYcOrderId());
+                BaseResultT<CancelOrder> cancelOrder = orderService.cancel(ycOrderId, "", "");
+                if(cancelOrder.getCode().equals("200")) {
+                    YopsaasRideOrder updateOrder = new YopsaasRideOrder();
+                    updateOrder.setRideOrderId(rideOrderId);
+                    updateOrder.setStatus(YopsaasRideOrderService.ORDER_STATUS_CANCELLED);
+                    if(cancelOrder.getResult().getFee() > 0) {
+                        updateOrder.setPayable(YopsaasRideOrderService.PAYABLE_ALLOW);
+                        updateOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_NONE);
+                        updateOrder.setTotalAmount(BigDecimal.valueOf(cancelOrder.getResult().getFee()));
+                    }
+                    // TODO reason
+                    updateOrder.setReasonId(0);
+
+                    int result = rideOrderService.update(updateOrder);
+                    return ResponseUtil.ok(cancelOrder.getResult());
+                } else {
+                    return ResponseUtil.fail(cancelOrder.getCode(), cancelOrder.getMsg());
+                }
+            } else {
+                return ResponseUtil.badArgument();
+            }
+        } else {
+            return ResponseUtil.badArgument();
+        }
     }
 
     public AcceptedDriver getSelectDriver(String orderId, String driverIds) {

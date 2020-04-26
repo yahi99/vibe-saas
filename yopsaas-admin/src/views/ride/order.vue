@@ -73,8 +73,8 @@
             <span>{{ orderDetail.order.message }}</span>
           </el-form-item>
           <el-form-item label="订单信息">
-            <span>（上车地点）{{ orderDetail.order.start_position }}</span>
-            <span>（手机号）{{ orderDetail.order.passenger_phone }}</span>
+            <span>（上车地点）{{ orderDetail.order.startPosition }}</span>
+            <span>（手机号）{{ orderDetail.order.passengerPhone }}</span>
           </el-form-item>
           <el-form-item label="费用信息">
             <span>

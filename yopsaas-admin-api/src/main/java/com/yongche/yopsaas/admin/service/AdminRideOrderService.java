@@ -56,7 +56,9 @@ public class AdminRideOrderService {
             map.put("productTypeId", orderList.get(i).getProductTypeId());
             map.put("expectStartTime", orderList.get(i).getExpectStartTime());
             map.put("startAddress", orderList.get(i).getStartAddress());
+            map.put("startPosition", orderList.get(i).getStartPosition());
             map.put("endAddress", orderList.get(i).getEndAddress());
+            map.put("endPosition", orderList.get(i).getEndPosition());
             map.put("status", orderList.get(i).getStatus());
             map.put("totalAmount", orderList.get(i).getTotalAmount());
             map.put("deposit", orderList.get(i).getDeposit());

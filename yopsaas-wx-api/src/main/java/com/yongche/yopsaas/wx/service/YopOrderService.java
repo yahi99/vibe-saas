@@ -147,19 +147,19 @@ public class YopOrderService {
         hasCustomDecision = "1";
 
         if(isSupportSystemDecision.equals("0")) {
-            flag = flag & YopsaasRideOrderService.FLAG_NOT_SUPPORT_SYSTEM_DECISION;
+            flag = flag | YopsaasRideOrderService.FLAG_NOT_SUPPORT_SYSTEM_DECISION;
         }
         if(hasCustomDecision.equals("1")) {
-            flag = flag & YopsaasRideOrderService.FLAG_IS_CUSTOM_DECISION;
+            flag = flag | YopsaasRideOrderService.FLAG_IS_CUSTOM_DECISION;
         }
         if(isBargain.equals("1")) {
-            flag = flag & YopsaasRideOrderService.FLAG_BARGAIN;
+            flag = flag | YopsaasRideOrderService.FLAG_BARGAIN;
         }
         if(isTaximeter.equals("1")) {
-            flag = flag & YopsaasRideOrderService.FLAG_TAXIMETER;
+            flag = flag | YopsaasRideOrderService.FLAG_TAXIMETER;
         }
         if(isNeedManualDispatch == 1) {
-            flag = flag & YopsaasRideOrderService.FLAG_SUPPORT_MANUAL_DISPATCH;
+            flag = flag | YopsaasRideOrderService.FLAG_SUPPORT_MANUAL_DISPATCH;
         }
         Byte status = YopsaasRideOrderService.ORDER_STATUS_WAITFORCAR;
         Long rideOrderId = null;

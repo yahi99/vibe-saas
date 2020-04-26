@@ -146,6 +146,7 @@ public class YopsaasRideOrderService {
 
     public static final Long FLAG_IS_COMPENSATION_WITHDRAW = 0x100000000000000L;   // 是否补偿提现订单
     public static final Long FLAG_IS_PREPAYMENT = 0x200000000000000L;   // 是否预付订单
+    public static final Long FLAG_IS_FAMILIAR = 0x400000000000000L;   // 是否熟司机
 
     @Resource
     private YopsaasRideOrderMapper yopsaasRideOrderMapper;

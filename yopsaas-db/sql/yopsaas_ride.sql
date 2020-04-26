@@ -4,6 +4,7 @@ use yopsaas;
 -- drop table yopsaas_ride_order_ext;
 drop table yopsaas_ride_order_transaction_history;
 -- drop table yopsaas_ride_order_dispatch;
+-- drop table yopsaas_ride_driver;
 
 create table if not exists yopsaas_ride_order(
   `ride_order_id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -120,7 +121,7 @@ create table if not exists yopsaas_ride_order(
   `passenger_session_id` varchar(32) NOT NULL DEFAULT '' COMMENT '乘客聊天会话',
   `last_operator` varchar(50) NOT NULL default '',
   PRIMARY KEY (`ride_order_id`),
-  KEY `yc_order_id` (`yc_order_id`),
+  KEY `idx_yc_order_id` (`yc_order_id`),
   KEY `idx_user_id_create_time_status` (`user_id`,`create_time`,`status`),
   KEY `idx_user_id_status` (`user_id`,`status`),
   KEY `idx_uid_endtime` (`user_id`,`end_time`),
@@ -209,12 +210,12 @@ create table if not exists yopsaas_ride_order_transaction_history(
   `operator` varchar(50) NOT NULL DEFAULT '' COMMENT '操作人 记录操作人用户名，程序自动执行时记system',
   `comment` varchar(100) NOT NULL DEFAULT '' COMMENT '备注(如：退款原因描述)',
   `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`ride_order_transaction_history_id`),
-  KEY `recharge_transaction_id` (`recharge_transaction_id`),
-  KEY `consumer_id` (`consumer_id`),
-  KEY `account_id` (`account_id`),
-  KEY `ride_order_id` (`ride_order_id`),
+  KEY `idx_recharge_transaction_id` (`recharge_transaction_id`),
+  KEY `idx_consumer_id` (`consumer_id`),
+  KEY `idx_account_id` (`account_id`),
+  KEY `idx_ride_order_id` (`ride_order_id`),
   KEY `idx_create_time` (`create_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网约车订单交易表';
 
@@ -237,6 +238,32 @@ create table if not exists yopsaas_ride_order_dispatch(
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '状态 1-已选',
   `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`ride_order_dispatch_id`),
-  KEY `ride_order_id` (`ride_order_id`),
+  KEY `idx_ride_order_id` (`ride_order_id`),
   KEY `idx_create_time` (`create_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网约车派单表';
+
+create table if not exists yopsaas_ride_driver(
+  `ride_driver_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `yc_driver_id` int(11) NOT NULL DEFAULT '0' COMMENT '司机ID',
+  `name` varchar(32) NOT NULL DEFAULT '' COMMENT '司机姓名',
+  `driving_years` int(11) NOT NULL DEFAULT '0' COMMENT '司机驾龄',
+  `gender` varchar(6) NOT NULL DEFAULT '' COMMENT '司机性别',
+  `cellphone` varchar(20) NOT NULL DEFAULT '' COMMENT '司机电话',
+  `vehicle_number` varchar(32) NOT NULL DEFAULT '' COMMENT '车牌号码',
+  `star_level` int(4) NOT NULL DEFAULT '0' comment '星级',
+  `good_comment_rate` int(11) NOT NULL DEFAULT '0' COMMENT '司机好评率百度比',
+  `unittime_complete_count` int(11) NOT NULL DEFAULT '0' COMMENT '月完成订单数',
+  `brand` varchar(64) NOT NULL DEFAULT '' COMMENT '车辆品牌',
+  `car_setup` varchar(128) NOT NULL DEFAULT '' COMMENT '车内设施',
+  `car_company_name` varchar(256) NOT NULL DEFAULT '' COMMENT '租赁公司',
+  `driver_company_name` varchar(256) NOT NULL DEFAULT '' COMMENT '劳务公司',
+  `car_type` varchar(64) NOT NULL DEFAULT '' COMMENT '车型',
+  `car_type_id` int(11) NOT NULL DEFAULT '0' COMMENT '车型id',
+  `is_default` smallint(1) NOT NULL DEFAULT '0' COMMENT '头像是否默认 1：默认，0非默认',
+  `photo` varchar(256) NOT NULL DEFAULT '' COMMENT '司机头像url',
+  `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '更新时间',
+  PRIMARY KEY (`ride_driver_id`),
+  unique KEY `idx_yc_driver_id` (`yc_driver_id`),
+  KEY `idx_create_time` (`create_time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网约车司机表';

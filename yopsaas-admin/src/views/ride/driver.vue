@@ -41,22 +41,22 @@
     <!-- 派单详情对话框 -->
     <el-dialog :visible.sync="driverDialogVisible" title="司机详情" width="800">
       <section ref="print">
-        <el-form :data="orderDetail" label-position="left">
+        <el-form :data="driverDetail" label-position="left">
           <el-form-item label="司机ID">
-            <span>{{ orderDetail.driver.rideDriverId }}</span>
+            <span>{{ driverDetail.driver.rideDriverId }}</span>
           </el-form-item>
           <el-form-item label="第三方司机ID">
-            <span>{{ orderDetail.driver.ycDriverId }}</span>
+            <span>{{ driverDetail.driver.ycDriverId }}</span>
           </el-form-item>
           <el-form-item label="司机姓名">
-            <span>{{ orderDetail.driver.name }}</span>
+            <span>{{ driverDetail.driver.name }}</span>
           </el-form-item>
           <el-form-item label="星级">
-            <span>{{ orderDetail.driver.starLevel }}</span>
+            <span>{{ driverDetail.driver.starLevel }}</span>
           </el-form-item>
           <el-form-item label="派单信息">
-            <span>（车辆品牌）{{ orderDetail.driver.brand }}</span>
-            <span>（车型）{{ orderDetail.driver.carType }}</span>
+            <span>（车辆品牌）{{ driverDetail.driver.brand }}</span>
+            <span>（车型）{{ driverDetail.driver.carType }}</span>
           </el-form-item>
         </el-form>
       </section>

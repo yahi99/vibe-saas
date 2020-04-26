@@ -473,6 +473,9 @@ public class YopOrderService {
             updateOrder.setEndLatitude(orderInfo.getEnd_latitude());
             updateOrder.setEndLongitude(orderInfo.getStart_longitude());
             updateOrder.setEndTime(orderInfo.getEnd_time());
+            if(orderInfo.getTotal_amount().equals("0")) {
+                // add task?
+            }
         }
         if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_CANCELLED)) {
             updateOrder.setCancelTime(YopOrderService.getTimestamp());

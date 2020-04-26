@@ -530,6 +530,10 @@ public class YopOrderService {
                 }
                 String ycOrderId = String.valueOf(rideOrder.getYcOrderId());
                 CancelOrderFee orderFee = orderService.getCancelOrderFee(ycOrderId);
+                /*
+                * allow_cancel	是否允许取消 0：不允许、1：允许
+                cancel_order_amount	取消订单罚金金额
+                state	罚金的说明*/
                 return ResponseUtil.ok(orderFee);
             } else {
                 return ResponseUtil.badArgument();

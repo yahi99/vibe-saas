@@ -8,6 +8,7 @@ import com.ridegroup.yop.bean.order.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.util.List;
 import java.util.Map;
 
 public class OrderService extends BaseService {
@@ -104,6 +105,16 @@ public class OrderService extends BaseService {
         BaseResultT<CancelOrderFee> cancelOrder = OrderAPI.getCancelOrderFee(accessToken, orderId);
         if(cancelOrder.getCode().equals("200")) {
             return cancelOrder.getResult();
+        } else {
+            return null;
+        }
+    }
+
+    public List<Position> getOrderTrack(String orderId) {
+        String accessToken = this.getProperties().getAccessToken();
+        BaseResultT<List<Position>> orderTrack = OrderAPI.getOrderTrack(accessToken, orderId, OrderAPI.MAP_TYPE_MARS);
+        if(orderTrack.getCode().equals("200")) {
+            return orderTrack.getResult();
         } else {
             return null;
         }

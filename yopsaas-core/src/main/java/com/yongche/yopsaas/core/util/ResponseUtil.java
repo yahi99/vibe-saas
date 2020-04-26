@@ -42,6 +42,7 @@ import java.util.Map;
 public class ResponseUtil {
     public final static int RET_OK_0 = 0;
     public final static int RET_INVALID_PARAM_400 = 400;
+    public final static int RET_NOT_FOUND_404 = 404;
 
     public static Object ok() {
         Map<String, Object> obj = new HashMap<String, Object>();

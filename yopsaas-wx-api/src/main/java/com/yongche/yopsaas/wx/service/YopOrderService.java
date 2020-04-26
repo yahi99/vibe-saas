@@ -329,6 +329,30 @@ public class YopOrderService {
         }
     }
 
+    public Object getOrderInfo(Integer userId, Long rideOrderId) {
+        if(rideOrderId != null) {
+            YopsaasRideOrder rideOrder = rideOrderService.findById(rideOrderId);
+            if(rideOrder != null) {
+                Long dbUserId = rideOrder.getUserId();
+                if(dbUserId.intValue() != userId) {
+                    return ResponseUtil.fail(ResponseUtil.RET_INVALID_PARAM_400, "rideOrderId is not yours");
+                }
+                Map<String, Object> data = new HashMap<>();
+                YopsaasRideDriver driverInfo = null;
+                if(rideOrder.getDriverId() > 0) {
+                    driverInfo = rideDriverService.findByYcDriverId(rideOrder.getDriverId());
+                }
+                data.put("order", rideOrder);
+                data.put("driver", driverInfo);
+                return ResponseUtil.ok(data);
+            } else {
+                return ResponseUtil.badArgument();
+            }
+        } else {
+            return ResponseUtil.fail();
+        }
+    }
+
     public Object updateByCallback(HttpServletRequest httpServletRequest) {
         String yongcheOrderId = httpServletRequest.getParameter("yongche_order_id");
         String yongcheOrderStatus = httpServletRequest.getParameter("yongche_order_status");

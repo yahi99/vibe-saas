@@ -358,7 +358,7 @@ public class YopOrderService {
                 updateOrder.setDriverId(Integer.valueOf(orderInfo.getDriver_id()));
                 updateOrder.setDriverName(orderInfo.getDriver_name());
                 updateOrder.setDriverPhone(orderInfo.getDriver_phone());
-                updateOrder.setVehicleNumber(orderInfo.getVehicle_number());
+                updateOrder.setVehicleNumber(orderInfo.getVehicle_number().replace("车牌号", ""));
                 updateOrder.setCarTypeId(orderInfo.getCar_type_id());
                 updateOrder.setCarType(orderInfo.getCar_type());
                 updateOrder.setCarBrand(orderInfo.getCar_brand());

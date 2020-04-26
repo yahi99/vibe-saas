@@ -23,3 +23,6 @@
 
 2020-04-25
 1. add decision api
+
+2020-04-26
+2. add car color

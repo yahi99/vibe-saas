@@ -329,6 +329,7 @@ public class YopOrderService {
                 updateOrder.setCarTypeId(orderInfo.getCar_type_id());
                 updateOrder.setCarType(orderInfo.getCar_type());
                 updateOrder.setCarBrand(orderInfo.getCar_brand());
+                updateOrder.setCarColor(orderInfo.getColor());
                 updateOrder.setConfirmTime(orderInfo.getConfirm_time());
                 updateOrder.setPayable(YopsaasRideOrderService.PAYABLE_ALLOW);
             }

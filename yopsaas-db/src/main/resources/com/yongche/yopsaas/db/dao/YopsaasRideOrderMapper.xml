@@ -100,6 +100,7 @@
     <result column="alitongxin_status" jdbcType="TINYINT" property="alitongxinStatus" />
     <result column="passenger_session_id" jdbcType="VARCHAR" property="passengerSessionId" />
     <result column="last_operator" jdbcType="VARCHAR" property="lastOperator" />
+    <result column="car_color" jdbcType="VARCHAR" property="carColor" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -187,7 +188,7 @@
     min_amount, origin_amount, origin_sharing_amount, sharing_amount, wx_order_sn, pay_id, 
     refund_amount, refund_type, refund_content, refund_time, actual_time_length, dependable_distance, 
     mileage, system_distance, alitongxin_secret_no_x, alitongxin_subs_id, alitongxin_status, 
-    passenger_session_id, last_operator
+    passenger_session_id, last_operator, car_color
   </sql>
   <select id="selectByExample" parameterType="com.yongche.yopsaas.db.domain.YopsaasRideOrderExample" resultMap="BaseResultMap">
     <!--
@@ -320,7 +321,7 @@
       refund_time, actual_time_length, dependable_distance, 
       mileage, system_distance, alitongxin_secret_no_x, 
       alitongxin_subs_id, alitongxin_status, passenger_session_id, 
-      last_operator)
+      last_operator, car_color)
     values (#{ycOrderId,jdbcType=BIGINT}, #{productTypeId,jdbcType=INTEGER}, #{fixedProductId,jdbcType=INTEGER}, 
       #{isAsap,jdbcType=TINYINT}, #{source,jdbcType=INTEGER}, #{platform,jdbcType=TINYINT}, 
       #{status,jdbcType=TINYINT}, #{rcStatus,jdbcType=TINYINT}, #{endStatus,jdbcType=TINYINT}, 
@@ -352,7 +353,7 @@
       #{refundTime,jdbcType=INTEGER}, #{actualTimeLength,jdbcType=INTEGER}, #{dependableDistance,jdbcType=INTEGER}, 
       #{mileage,jdbcType=INTEGER}, #{systemDistance,jdbcType=INTEGER}, #{alitongxinSecretNoX,jdbcType=VARCHAR}, 
       #{alitongxinSubsId,jdbcType=BIGINT}, #{alitongxinStatus,jdbcType=TINYINT}, #{passengerSessionId,jdbcType=VARCHAR}, 
-      #{lastOperator,jdbcType=VARCHAR})
+      #{lastOperator,jdbcType=VARCHAR}, #{carColor,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yongche.yopsaas.db.domain.YopsaasRideOrder">
     <!--
@@ -643,6 +644,9 @@
       <if test="lastOperator != null">
         last_operator,
       </if>
+      <if test="carColor != null">
+        car_color,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="ycOrderId != null">
@@ -923,6 +927,9 @@
       </if>
       <if test="lastOperator != null">
         #{lastOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="carColor != null">
+        #{carColor,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -1225,6 +1232,9 @@
       <if test="record.lastOperator != null">
         last_operator = #{record.lastOperator,jdbcType=VARCHAR},
       </if>
+      <if test="record.carColor != null">
+        car_color = #{record.carColor,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -1329,7 +1339,8 @@
       alitongxin_subs_id = #{record.alitongxinSubsId,jdbcType=BIGINT},
       alitongxin_status = #{record.alitongxinStatus,jdbcType=TINYINT},
       passenger_session_id = #{record.passengerSessionId,jdbcType=VARCHAR},
-      last_operator = #{record.lastOperator,jdbcType=VARCHAR}
+      last_operator = #{record.lastOperator,jdbcType=VARCHAR},
+      car_color = #{record.carColor,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -1620,6 +1631,9 @@
       <if test="lastOperator != null">
         last_operator = #{lastOperator,jdbcType=VARCHAR},
       </if>
+      <if test="carColor != null">
+        car_color = #{carColor,jdbcType=VARCHAR},
+      </if>
     </set>
     where ride_order_id = #{rideOrderId,jdbcType=BIGINT}
   </update>
@@ -1721,7 +1735,8 @@
       alitongxin_subs_id = #{alitongxinSubsId,jdbcType=BIGINT},
       alitongxin_status = #{alitongxinStatus,jdbcType=TINYINT},
       passenger_session_id = #{passengerSessionId,jdbcType=VARCHAR},
-      last_operator = #{lastOperator,jdbcType=VARCHAR}
+      last_operator = #{lastOperator,jdbcType=VARCHAR},
+      car_color = #{carColor,jdbcType=VARCHAR}
     where ride_order_id = #{rideOrderId,jdbcType=BIGINT}
   </update>
   <select id="selectOneByExample" parameterType="com.yongche.yopsaas.db.domain.YopsaasRideOrderExample" resultMap="BaseResultMap">

@@ -265,5 +265,6 @@ create table if not exists yopsaas_ride_driver(
   `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`ride_driver_id`),
   unique KEY `idx_yc_driver_id` (`yc_driver_id`),
+  KEY `idx_cellphone` (`cellphone`),
   KEY `idx_create_time` (`create_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网约车司机表';

@@ -28,8 +28,6 @@ public class AdminRideOrderDispatchController {
 
     @Autowired
     private AdminRideOrderDispatchService adminRideOrderDispatchService;
-    @Autowired
-    private ExpressService expressService;
 
     /**
      * 查询网约车派单

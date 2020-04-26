@@ -182,6 +182,16 @@ export const asyncRouterMap = [
           title: '派单管理',
           noCache: true
         }
+      },
+      {
+        path: 'ridedriver',
+        component: () => import('@/views/ride/driver'),
+        name: 'ridedriver',
+        meta: {
+          perms: ['GET /admin/ridedriver/list', 'GET /admin/ridedriver/detail'],
+          title: '司机管理',
+          noCache: true
+        }
       }
     ]
   },

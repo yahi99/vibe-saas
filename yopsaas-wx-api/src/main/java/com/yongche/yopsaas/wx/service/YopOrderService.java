@@ -11,6 +11,7 @@ import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.yop.OrderService;
 import com.yongche.yopsaas.db.domain.*;
+import com.yongche.yopsaas.db.service.YopsaasRideDriverService;
 import com.yongche.yopsaas.db.service.YopsaasRideOrderExtService;
 import com.yongche.yopsaas.db.service.YopsaasRideOrderService;
 import com.yongche.yopsaas.db.service.YopsaasUserService;
@@ -41,6 +42,8 @@ public class YopOrderService {
     private YopsaasRideOrderService rideOrderService;
     @Autowired
     private YopsaasRideOrderExtService rideOrderExtService;
+    @Autowired
+    private YopsaasRideDriverService rideDriverService;
     @Autowired
     private TaskService taskService;
     @Autowired
@@ -264,14 +267,44 @@ public class YopOrderService {
         orderStatus.add(YopsaasRideOrderService.ORDER_STATUS_SERVICEREADY);
         orderStatus.add(YopsaasRideOrderService.ORDER_STATUS_ARRIVED);
         orderStatus.add(YopsaasRideOrderService.ORDER_STATUS_SERVICESTART);
-        List<YopsaasRideOrder> currentOrder = rideOrderService.queryByOrderStatus(uid, orderStatus);
+        List<YopsaasRideOrder> currentOrderList = rideOrderService.queryByOrderStatus(uid, orderStatus);
         List<Byte> payStatus = new ArrayList<>();
         payStatus.add(YopsaasRideOrderService.PAY_STATUS_NONE);
-        List<YopsaasRideOrder> unPayOrder = rideOrderService.queryByPayStatus(uid, payStatus);
+        List<YopsaasRideOrder> unPayOrderList = rideOrderService.queryByPayStatus(uid, payStatus);
 
+        List<Object> currentTrips = new ArrayList<>();
+        List<Object> unPayTrips = new ArrayList<>();
+        List<Integer> driverIds = new ArrayList<>();
+        Map<String, YopsaasRideDriver> drivers = new HashMap<>();
+        for(YopsaasRideOrder currentOrder : currentOrderList) {
+            driverIds.add(currentOrder.getDriverId());
+        }
+        for(YopsaasRideOrder unPayOrder : unPayOrderList) {
+            driverIds.add(unPayOrder.getDriverId());
+        }
+        if(driverIds.size() > 0) {
+            List<YopsaasRideDriver> driverList = rideDriverService.queryByYcDriverId(driverIds);
+            for(YopsaasRideDriver driver : driverList) {
+                drivers.put(String.valueOf(driver.getYcDriverId()), driver);
+            }
+        }
+        for(YopsaasRideOrder currentOrder : currentOrderList) {
+            String driverId = String.valueOf(currentOrder.getDriverId());
+            Map<String, Object> currentTrip = new HashMap<>();
+            currentTrip.put("order", currentOrder);
+            currentTrip.put("driver", drivers.get(driverId));
+            currentTrips.add(currentTrip);
+        }
+        for(YopsaasRideOrder unPayOrder : unPayOrderList) {
+            String driverId = String.valueOf(unPayOrder.getDriverId());
+            Map<String, Object> unPayTrip = new HashMap<>();
+            unPayTrip.put("order", unPayOrder);
+            unPayTrip.put("driver", drivers.get(driverId));
+            unPayTrips.add(unPayTrip);
+        }
         Map<String, Object> data = new HashMap<>();
-        data.put("current_trip", currentOrder);
-        data.put("unpay_trip", unPayOrder);
+        data.put("current_trip", currentTrips);
+        data.put("unpay_trip", unPayTrips);
         return ResponseUtil.ok(data);
     }
 

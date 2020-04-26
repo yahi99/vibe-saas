@@ -54,6 +54,13 @@ public class YopsaasRideDriverService {
         return yopsaasRideDriverMapper.selectOneByExample(example);
     }
 
+    public List<YopsaasRideDriver> queryByYcDriverId(List<Integer> driverIds) {
+        YopsaasRideDriverExample example = new YopsaasRideDriverExample();
+        YopsaasRideDriverExample.Criteria criteria = example.createCriteria();
+        criteria.andYcDriverIdIn(driverIds);
+        return yopsaasRideDriverMapper.selectByExample(example);
+    }
+
     public List<YopsaasRideDriver> querySelective(Integer ycDriverId, String cellphone, int start, int end, Integer page, Integer limit, String sort, String order) {
         YopsaasRideDriverExample example = new YopsaasRideDriverExample();
         YopsaasRideDriverExample.Criteria criteria = example.createCriteria();

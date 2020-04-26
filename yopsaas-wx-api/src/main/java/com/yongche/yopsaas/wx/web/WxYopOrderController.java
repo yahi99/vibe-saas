@@ -134,4 +134,15 @@ public class WxYopOrderController {
     public Object cancel(@LoginUser Integer userId, @RequestBody String body) {
         return yopOrderService.cancel(userId, body);
     }
+
+    /**
+     * 取消订单费用
+     * @param userId userId
+     * @param rideOrderId 订单ID
+     * @return 预估数据
+     */
+    @GetMapping("getCancelOrderFee")
+    public Object getCancelOrderFee(@LoginUser Integer userId, @RequestParam(defaultValue = "1", name = "ride_order_id") Long rideOrderId) {
+        return yopOrderService.getCancelOrderFee(userId, rideOrderId);
+    }
 }

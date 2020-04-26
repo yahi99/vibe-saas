@@ -4,10 +4,7 @@ import com.ridegroup.yop.api.OrderAPI;
 import com.ridegroup.yop.bean.BaseResult;
 import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.driver.DriverInfo;
-import com.ridegroup.yop.bean.order.AcceptedDriver;
-import com.ridegroup.yop.bean.order.CancelOrder;
-import com.ridegroup.yop.bean.order.CreateOrderResult;
-import com.ridegroup.yop.bean.order.OrderInfo;
+import com.ridegroup.yop.bean.order.*;
 import com.yongche.yopsaas.core.system.SystemConfig;
 import com.yongche.yopsaas.core.task.TaskService;
 import com.yongche.yopsaas.core.util.JacksonUtil;
@@ -515,6 +512,25 @@ public class YopOrderService {
                 } else {
                     return ResponseUtil.fail(cancelOrder.getCode(), cancelOrder.getMsg());
                 }
+            } else {
+                return ResponseUtil.badArgument();
+            }
+        } else {
+            return ResponseUtil.badArgument();
+        }
+    }
+
+    public Object getCancelOrderFee(Integer userId, Long rideOrderId) {
+        if(rideOrderId != null) {
+            YopsaasRideOrder rideOrder = rideOrderService.findById(rideOrderId);
+            if (rideOrder != null) {
+                Long dbUserId = rideOrder.getUserId();
+                if (dbUserId.intValue() != userId) {
+                    return ResponseUtil.fail(ResponseUtil.RET_INVALID_PARAM_400, "rideOrderId is not yours");
+                }
+                String ycOrderId = String.valueOf(rideOrder.getYcOrderId());
+                CancelOrderFee orderFee = orderService.getCancelOrderFee(ycOrderId);
+                return ResponseUtil.ok(orderFee);
             } else {
                 return ResponseUtil.badArgument();
             }

@@ -2,6 +2,7 @@ package com.yongche.yopsaas.wx.service;
 
 import com.ridegroup.yop.api.OrderAPI;
 import com.ridegroup.yop.bean.BaseResult;
+import com.ridegroup.yop.bean.driver.DriverInfo;
 import com.ridegroup.yop.bean.order.AcceptedDriver;
 import com.ridegroup.yop.bean.order.CreateOrderResult;
 import com.ridegroup.yop.bean.order.OrderInfo;
@@ -283,7 +284,7 @@ public class YopOrderService {
             driverIds.add(unPayOrder.getDriverId());
         }
         if(driverIds.size() > 0) {
-            List<YopsaasRideDriver> driverList = rideDriverService.queryByYcDriverId(driverIds);
+            List<YopsaasRideDriver> driverList = rideDriverService.queryByYcDriverIds(driverIds);
             for(YopsaasRideDriver driver : driverList) {
                 drivers.put(String.valueOf(driver.getYcDriverId()), driver);
             }
@@ -355,7 +356,8 @@ public class YopOrderService {
         if(currentTripStatus.contains(orderStatus)) {
             // update driver
             if(!orderInfo.getDriver_id().equals("")) {
-                updateOrder.setDriverId(Integer.valueOf(orderInfo.getDriver_id()));
+                Integer ycDriverId = Integer.valueOf(orderInfo.getDriver_id());
+                updateOrder.setDriverId(ycDriverId);
                 updateOrder.setDriverName(orderInfo.getDriver_name());
                 updateOrder.setDriverPhone(orderInfo.getDriver_phone());
                 updateOrder.setVehicleNumber(orderInfo.getVehicle_number().replace("车牌号", ""));
@@ -365,6 +367,72 @@ public class YopOrderService {
                 updateOrder.setCarColor(orderInfo.getColor());
                 updateOrder.setConfirmTime(orderInfo.getConfirm_time());
                 updateOrder.setPayable(YopsaasRideOrderService.PAYABLE_ALLOW);
+                // add driver info
+                YopsaasRideDriver driver = rideDriverService.findByYcDriverId(ycDriverId);
+                DriverInfo driverInfo = orderService.getOrderDriverInfo(yongcheOrderId);
+                if(driver == null) {
+                    //add
+                    driver = new YopsaasRideDriver();
+                    /*{"driver_id":0,
+                    "name":"易师傅",
+                    "score":0,
+                    "good_comment_rate":0,
+                    "unittime_complete_count":36,
+                    "is_served":0,
+                    "latitude":0,
+                    "longitude":0,
+                    "brand":"奥迪 A3",
+                    "car_type":null,
+                    "car_type_id":0,
+                    "is_default":0,
+                    "photo":null,
+                    "gender":"男",
+                    "driving_years":6,
+                    "star_level":2,
+                    "vehicle_number":"京U23456",
+                    "car_setup":"",
+                    "car_company_name":"",
+                    "driver_company_name":"北京易快行技术服务有限责任公司",
+                    "is_default_photo":0,
+                    "photo_url":"https://i3.yongche.name/media/g1/M00/01/06/rBAApVUmFBKIfcrKAAE4EwGNvvMAAAbpgGVXMYAATgr708.png",
+                    "cellphone":"16818862925"}*/
+                    driver.setYcDriverId(ycDriverId);
+                    driver.setName(driverInfo.getName());
+                    driver.setCellphone(driverInfo.getCellphone());
+                    driver.setVehicleNumber(driverInfo.getVehicle_number());
+                    driver.setGender(driverInfo.getGender());
+                    driver.setDrivingYears(driverInfo.getDriving_years());
+                    driver.setCarSetup(driverInfo.getCar_setup());
+                    driver.setCarCompanyName(driverInfo.getCar_company_name());
+                    driver.setDriverCompanyName(driverInfo.getDriver_company_name());
+                    driver.setUnittimeCompleteCount(driverInfo.getUnittime_complete_count());
+                    driver.setBrand(driverInfo.getBrand());
+                    driver.setCarType(orderInfo.getCar_type());
+                    driver.setCarTypeId(orderInfo.getCar_type_id());
+                    driver.setStarLevel(driverInfo.getStar_level());
+                    driver.setIsDefault(Short.valueOf(String.valueOf(driverInfo.getIs_default_photo())));
+                    driver.setPhoto(driverInfo.getPhoto_url());
+                    rideDriverService.add(driver);
+                } else {
+                    //update
+                    YopsaasRideDriver updateDriver = new YopsaasRideDriver();
+                    updateDriver.setName(driverInfo.getName());
+                    updateDriver.setCellphone(driverInfo.getCellphone());
+                    updateDriver.setVehicleNumber(driverInfo.getVehicle_number());
+                    updateDriver.setGender(driverInfo.getGender());
+                    updateDriver.setDrivingYears(driverInfo.getDriving_years());
+                    updateDriver.setCarSetup(driverInfo.getCar_setup());
+                    updateDriver.setCarCompanyName(driverInfo.getCar_company_name());
+                    updateDriver.setDriverCompanyName(driverInfo.getDriver_company_name());
+                    updateDriver.setUnittimeCompleteCount(driverInfo.getUnittime_complete_count());
+                    updateDriver.setBrand(driverInfo.getBrand());
+                    updateDriver.setCarType(orderInfo.getCar_type());
+                    updateDriver.setCarTypeId(orderInfo.getCar_type_id());
+                    updateDriver.setStarLevel(driverInfo.getStar_level());
+                    updateDriver.setIsDefault(Short.valueOf(String.valueOf(driverInfo.getIs_default_photo())));
+                    updateDriver.setPhoto(driverInfo.getPhoto_url());
+                    rideDriverService.updateByYcDriverId(driver, ycDriverId);
+                }
             }
             if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_SERVICESTART)) {
                 updateOrder.setStartLatitude(orderInfo.getStart_latitude());

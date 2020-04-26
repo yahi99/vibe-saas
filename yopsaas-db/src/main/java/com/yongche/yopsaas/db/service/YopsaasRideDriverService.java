@@ -44,6 +44,14 @@ public class YopsaasRideDriverService {
         return yopsaasRideDriverMapper.insertSelective(driver);
     }
 
+    public int updateByYcDriverId(YopsaasRideDriver driver, Integer ycDriverId) {
+        YopsaasRideDriverExample example = new YopsaasRideDriverExample();
+        example.or().andYcDriverIdEqualTo(ycDriverId);
+        int time = YopsaasRideDriverService.getSecondTimestamp(new Date());
+        driver.setUpdateTime(time);
+        return yopsaasRideDriverMapper.updateByExampleSelective(driver, example);
+    }
+
     public YopsaasRideDriver findById(Long driverId) {
         return yopsaasRideDriverMapper.selectByPrimaryKey(driverId);
     }
@@ -54,7 +62,7 @@ public class YopsaasRideDriverService {
         return yopsaasRideDriverMapper.selectOneByExample(example);
     }
 
-    public List<YopsaasRideDriver> queryByYcDriverId(List<Integer> driverIds) {
+    public List<YopsaasRideDriver> queryByYcDriverIds(List<Integer> driverIds) {
         YopsaasRideDriverExample example = new YopsaasRideDriverExample();
         YopsaasRideDriverExample.Criteria criteria = example.createCriteria();
         criteria.andYcDriverIdIn(driverIds);

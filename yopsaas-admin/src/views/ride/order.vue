@@ -32,8 +32,8 @@
           {{ scope.row.expectStartTime | timeFilter }}
         </template>
       </el-table-column>
-      <el-table-column width="200" align="center" label="上车地点" prop="startAddress" />
-      <el-table-column width="200" align="center" label="下车地点" prop="endAddress" />
+      <el-table-column width="200" align="center" label="上车地点" prop="startPosition" />
+      <el-table-column width="200" align="center" label="下车地点" prop="endPosition" />
 
       <el-table-column align="center" label="订单状态" prop="status">
         <template slot-scope="scope">

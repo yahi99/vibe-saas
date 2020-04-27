@@ -90,6 +90,10 @@
             <artifactId>amap-java-place</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.github.zhangchunsheng</groupId>
+            <artifactId>amap-java-direction</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.yongche</groupId>
             <artifactId>yopsaas-db</artifactId>
         </dependency>

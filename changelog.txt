@@ -35,3 +35,6 @@
 8. add cancel order api
 9. add get order cancel fee api
 10. add order track api
+
+2020-04-27
+1. add distance api

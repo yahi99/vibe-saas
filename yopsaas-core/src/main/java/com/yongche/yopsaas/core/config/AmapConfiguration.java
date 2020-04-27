@@ -1,5 +1,7 @@
 package com.yongche.yopsaas.core.config;
 
+import com.github.zhangchunsheng.amapdirection.service.DirectionService;
+import com.github.zhangchunsheng.amapdirection.service.impl.DirectionServiceImpl;
 import com.github.zhangchunsheng.amapplace.service.PlaceService;
 import com.github.zhangchunsheng.amapplace.service.impl.PlaceServiceImpl;
 import me.zhangchunsheng.amap.common.config.AmapConfig;
@@ -33,5 +35,12 @@ public class AmapConfiguration {
         PlaceService placeService = new PlaceServiceImpl();
         placeService.setConfig(amapConfig);
         return placeService;
+    }
+
+    @Bean
+    public DirectionService directionService(AmapConfig amapConfig) {
+        DirectionService directionService = new DirectionServiceImpl();
+        directionService.setConfig(amapConfig);
+        return directionService;
     }
 }

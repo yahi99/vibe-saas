@@ -266,7 +266,10 @@ public class YopsaasRideOrderService {
         YopsaasRideOrderExample example = new YopsaasRideOrderExample();
         YopsaasRideOrderExample.Criteria criteria = example.or();
         criteria.andUserIdEqualTo(userId);
-        criteria.andStatusEqualTo(YopsaasRideOrderService.ORDER_STATUS_SERVICEEND);
+        List<Byte> status = new ArrayList<>();
+        status.add(YopsaasRideOrderService.ORDER_STATUS_SERVICEEND);
+        status.add(YopsaasRideOrderService.ORDER_STATUS_CANCELLED);
+        criteria.andStatusIn(status);
         criteria.andPayStatusIn(payStatus);
 
         return yopsaasRideOrderMapper.selectByExample(example);

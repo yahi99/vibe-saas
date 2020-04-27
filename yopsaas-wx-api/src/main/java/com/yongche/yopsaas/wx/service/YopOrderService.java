@@ -272,8 +272,8 @@ public class YopOrderService {
         payStatus.add(YopsaasRideOrderService.PAY_STATUS_NONE);
         List<YopsaasRideOrder> unPayOrderList = rideOrderService.queryByPayStatus(uid, payStatus);
 
-        List<Object> currentTrips = new ArrayList<>();
-        List<Object> unPayTrips = new ArrayList<>();
+        List<Object> currentTrips = null;
+        List<Object> unPayTrips = null;
         List<Integer> driverIds = new ArrayList<>();
         Map<String, YopsaasRideDriver> drivers = new HashMap<>();
         for(YopsaasRideOrder currentOrder : currentOrderList) {
@@ -288,24 +288,24 @@ public class YopOrderService {
                 drivers.put(String.valueOf(driver.getYcDriverId()), driver);
             }
         }
-        for(YopsaasRideOrder currentOrder : currentOrderList) {
-            String driverId = String.valueOf(currentOrder.getDriverId());
-            Map<String, Object> currentTrip = new HashMap<>();
-            currentTrip.put("order", currentOrder);
-            currentTrip.put("driver", drivers.get(driverId));
-            currentTrips.add(currentTrip);
-        }
-        for(YopsaasRideOrder unPayOrder : unPayOrderList) {
-            String driverId = String.valueOf(unPayOrder.getDriverId());
-            Map<String, Object> unPayTrip = new HashMap<>();
-            unPayTrip.put("order", unPayOrder);
-            unPayTrip.put("driver", drivers.get(driverId));
-            unPayTrips.add(unPayTrip);
-        }
+        currentTrips = this.getTrips(currentOrderList, drivers);
+        unPayTrips = this.getTrips(unPayOrderList, drivers);
         Map<String, Object> data = new HashMap<>();
         data.put("current_trip", currentTrips);
         data.put("unpay_trip", unPayTrips);
         return ResponseUtil.ok(data);
+    }
+
+    private List<Object> getTrips(List<YopsaasRideOrder> orderList, Map<String, YopsaasRideDriver> drivers) {
+        List<Object> orderTrips = new ArrayList<>();
+        for(YopsaasRideOrder unPayOrder : orderList) {
+            String driverId = String.valueOf(unPayOrder.getDriverId());
+            Map<String, Object> unPayTrip = new HashMap<>();
+            unPayTrip.put("order", unPayOrder);
+            unPayTrip.put("driver", drivers.get(driverId));
+            orderTrips.add(unPayTrip);
+        }
+        return orderTrips;
     }
 
     public Object getStatus(Integer userId, Long rideOrderId) {

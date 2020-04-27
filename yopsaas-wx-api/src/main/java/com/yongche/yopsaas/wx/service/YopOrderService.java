@@ -319,6 +319,7 @@ public class YopOrderService {
                 Byte status = rideOrder.getStatus();
                 Map<String, Object> data = new HashMap<>();
                 data.put("status", status);
+                data.put("driverId", rideOrder.getDriverId());
                 return ResponseUtil.ok(data);
             } else {
                 return ResponseUtil.badArgument();

@@ -1,5 +1,8 @@
 package com.yongche.yopsaas.wx.service;
 
+import com.github.zhangchunsheng.amapdirection.bean.result.Distance;
+import com.github.zhangchunsheng.amapdirection.bean.result.DistanceResult;
+import com.github.zhangchunsheng.amapdirection.service.DirectionService;
 import com.github.zhangchunsheng.amapgeo.bean.result.RegeoResult;
 import com.github.zhangchunsheng.amapgeo.bean.result.Regeocode;
 import com.github.zhangchunsheng.amapgeo.exception.AmapGeoException;
@@ -28,6 +31,9 @@ public class MapService {
 
     @Autowired
     private PlaceService placeService;
+
+    @Autowired
+    private DirectionService directionService;
 
     /**
      * {
@@ -131,6 +137,19 @@ public class MapService {
             }
         } catch(AmapException e) {
             logger.error(String.format("amap placeText error, city:%s, keywords:%s", city, keywords), e);
+        }
+        return list;
+    }
+
+    public List<Distance> distance(String origins, String destination, int type) {
+        List<Distance> list = new ArrayList<>();
+        try {
+            DistanceResult data = directionService.distance(origins, destination, type);
+            if(data.getStatus().equals("1")) {
+                list = data.getDistances();
+            }
+        } catch(AmapException e) {
+            logger.error(String.format("amap distance error, origins:%s, destination:%s", origins, destination), e);
         }
         return list;
     }

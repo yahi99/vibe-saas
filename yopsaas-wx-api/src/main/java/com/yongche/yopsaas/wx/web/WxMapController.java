@@ -1,5 +1,6 @@
 package com.yongche.yopsaas.wx.web;
 
+import com.github.zhangchunsheng.amapdirection.bean.result.Distance;
 import com.github.zhangchunsheng.amapgeo.bean.result.RegeoResult;
 import com.github.zhangchunsheng.amapgeo.exception.AmapGeoException;
 import com.yongche.yopsaas.core.util.ResponseUtil;
@@ -48,6 +49,22 @@ public class WxMapController {
     public Object placeSearch(@RequestParam(defaultValue = "北京") String city,
                             @RequestParam(defaultValue = "技术交易大厦") String keywords) {
         List<PlaceSearch> data = mapService.placeSearch(city, keywords);
+        return ResponseUtil.ok(data);
+    }
+
+    /**
+     * 距离计算
+     *
+     * @param origins 出发点，支持100个坐标对，坐标对见用“| ”分隔；经度和纬度用","分隔
+     * @param destination 目的地
+     * @param type 路径计算的方式和方法
+     * @return DistanceResult
+     */
+    @GetMapping("distance")
+    public Object distance(@RequestParam(defaultValue = "116.481028,39.989643") String origins,
+                              @RequestParam(defaultValue = "114.465302,40.004717") String destination,
+                              @RequestParam(defaultValue = "1") Integer type) {
+        List<Distance> data = mapService.distance(origins, destination, type);
         return ResponseUtil.ok(data);
     }
 }

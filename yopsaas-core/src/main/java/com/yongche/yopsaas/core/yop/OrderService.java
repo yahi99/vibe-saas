@@ -119,4 +119,14 @@ public class OrderService extends BaseService {
             return null;
         }
     }
+
+    public Position getDriverLocation(String orderId) {
+        String accessToken = this.getProperties().getAccessToken();
+        BaseResultT<Position> orderTrack = OrderAPI.getDriverLocation(accessToken, orderId, OrderAPI.MAP_TYPE_MARS);
+        if(orderTrack.getCode().equals("200")) {
+            return orderTrack.getResult();
+        } else {
+            return null;
+        }
+    }
 }

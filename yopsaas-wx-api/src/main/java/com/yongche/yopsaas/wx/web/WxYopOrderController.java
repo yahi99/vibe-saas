@@ -147,7 +147,7 @@ public class WxYopOrderController {
     }
 
     /**
-     * 取消订单费用
+     * 订单行驶轨迹
      * @param userId userId
      * @param rideOrderId 订单ID
      * @return 预估数据
@@ -155,5 +155,16 @@ public class WxYopOrderController {
     @GetMapping("getOrderTrack")
     public Object getOrderTrack(@LoginUser Integer userId, @RequestParam(defaultValue = "1", name = "ride_order_id") Long rideOrderId) {
         return yopOrderService.getOrderTrack(userId, rideOrderId);
+    }
+
+    /**
+     * 司机位置
+     * @param userId userId
+     * @param rideOrderId 订单ID
+     * @return 预估数据
+     */
+    @GetMapping("getDriverLocation")
+    public Object getDriverLocation(@LoginUser Integer userId, @RequestParam(defaultValue = "1", name = "ride_order_id") Long rideOrderId) {
+        return yopOrderService.getDriverLocation(userId, rideOrderId);
     }
 }

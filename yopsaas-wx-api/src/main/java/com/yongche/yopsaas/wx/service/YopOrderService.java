@@ -570,6 +570,29 @@ public class YopOrderService {
         }
     }
 
+    public Object getDriverLocation(Integer userId, Long rideOrderId) {
+        if(rideOrderId != null) {
+            YopsaasRideOrder rideOrder = rideOrderService.findById(rideOrderId);
+            if (rideOrder != null) {
+                Long dbUserId = rideOrder.getUserId();
+                if (dbUserId.intValue() != userId) {
+                    return ResponseUtil.fail(ResponseUtil.RET_INVALID_PARAM_400, "rideOrderId is not yours");
+                }
+                String ycOrderId = String.valueOf(rideOrder.getYcOrderId());
+                Position position = orderService.getDriverLocation(ycOrderId);
+                if(position == null) {
+                    return ResponseUtil.fail(ResponseUtil.RET_NOT_FOUND_404, "没有位置数据");
+                } else {
+                    return ResponseUtil.ok(position);
+                }
+            } else {
+                return ResponseUtil.badArgument();
+            }
+        } else {
+            return ResponseUtil.badArgument();
+        }
+    }
+
     public AcceptedDriver getSelectDriver(String orderId, String driverIds) {
         return orderService.getSelectDriver(orderId, driverIds);
     }

@@ -374,6 +374,9 @@ public class YopOrderService {
         if(rideOrder.getStatus().equals(orderStatus)) {
             return ResponseUtil.failCode(400, "order already update");
         }
+        if(rideOrder.getStatus() > Byte.valueOf(yongcheOrderStatus)) {
+            return ResponseUtil.failCode(400, "yop status is lower");
+        }
         logger.debug("callback api, get yop order info:" + JacksonUtil.toJson(orderInfo));
         YopsaasRideOrder updateOrder = new YopsaasRideOrder();
         updateOrder.setStatus(orderStatus);

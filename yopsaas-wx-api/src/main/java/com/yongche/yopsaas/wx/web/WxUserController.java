@@ -1,5 +1,6 @@
 package com.yongche.yopsaas.wx.web;
 
+import com.yongche.yopsaas.db.service.YopsaasRideOrderService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import com.yongche.yopsaas.core.util.ResponseUtil;
@@ -26,6 +27,9 @@ public class WxUserController {
     @Autowired
     private YopsaasOrderService orderService;
 
+    @Autowired
+    private YopsaasRideOrderService rideOrderService;
+
     /**
      * 用户个人页面数据
      * <p>
@@ -42,6 +46,7 @@ public class WxUserController {
 
         Map<Object, Object> data = new HashMap<Object, Object>();
         data.put("order", orderService.orderInfo(userId));
+        data.put("rideorder", rideOrderService.orderInfo(userId.longValue()));
         return ResponseUtil.ok(data);
     }
 

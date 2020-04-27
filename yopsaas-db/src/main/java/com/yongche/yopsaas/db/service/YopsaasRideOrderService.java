@@ -347,20 +347,39 @@ public class YopsaasRideOrderService {
 
     public Map<Object, Object> orderInfo(Long userId) {
         YopsaasRideOrderExample example = new YopsaasRideOrderExample();
-        example.or().andUserIdEqualTo(userId);
-        List<YopsaasRideOrder> orders = yopsaasRideOrderMapper.selectByExampleSelective(example, YopsaasRideOrder.Column.status, YopsaasRideOrder.Column.payStatus);
+        YopsaasRideOrderExample.Criteria criteria = example.or();
+        criteria.andUserIdEqualTo(userId);
+        List<Byte> status = new ArrayList<>();
+        status.add(YopsaasRideOrderService.ORDER_STATUS_SERVICEEND);
+        status.add(YopsaasRideOrderService.ORDER_STATUS_CANCELLED);
+        criteria.andStatusIn(status);
+        List<Byte> payStatus = new ArrayList<>();
+        payStatus.add(YopsaasRideOrderService.PAY_STATUS_NONE);
+        payStatus.add(YopsaasRideOrderService.PAY_STATUS_PORTION);
+        criteria.andPayStatusIn(payStatus);
+
+        List<YopsaasRideOrder> unpayOrders = yopsaasRideOrderMapper.selectByExampleSelective(example, YopsaasRideOrder.Column.status, YopsaasRideOrder.Column.payStatus);
+
+        List<Byte> status1 = new ArrayList<>();
+        YopsaasRideOrderExample example1 = new YopsaasRideOrderExample();
+        YopsaasRideOrderExample.Criteria criteria1 = example.or();
+        criteria1.andUserIdEqualTo(userId);
+        status1.add(YopsaasRideOrderService.ORDER_STATUS_SERVICEREADY);
+        status1.add(YopsaasRideOrderService.ORDER_STATUS_ARRIVED);
+        status1.add(YopsaasRideOrderService.ORDER_STATUS_SERVICESTART);
+        criteria.andStatusIn(status1);
+        List<YopsaasRideOrder> currentOrders = yopsaasRideOrderMapper.selectByExampleSelective(example1, YopsaasRideOrder.Column.status, YopsaasRideOrder.Column.payStatus);
 
         int unpaid = 0;
-        for (YopsaasRideOrder order : orders) {
-            if (!RideOrderUtil.isPayed(order)) {
-                unpaid++;
-            } else {
-                // do nothing
-            }
-        }
+        int currentTrip = 0;
+        int historyTrip = 0;
+        unpaid = unpayOrders.size();
+        currentTrip = currentOrders.size();
 
         Map<Object, Object> orderInfo = new HashMap<Object, Object>();
         orderInfo.put("unpaid", unpaid);
+        orderInfo.put("currentTrip", currentTrip);
+        orderInfo.put("historyTrip", historyTrip);
         return orderInfo;
 
     }

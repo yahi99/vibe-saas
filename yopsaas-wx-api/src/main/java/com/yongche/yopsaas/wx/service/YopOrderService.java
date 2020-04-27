@@ -374,6 +374,7 @@ public class YopOrderService {
         if(rideOrder.getStatus().equals(orderStatus)) {
             return ResponseUtil.failCode(400, "order already update");
         }
+        logger.debug("callback api, get yop order info:" + JacksonUtil.toJson(orderInfo));
         YopsaasRideOrder updateOrder = new YopsaasRideOrder();
         updateOrder.setStatus(orderStatus);
         if(currentTripStatus.contains(orderStatus)) {

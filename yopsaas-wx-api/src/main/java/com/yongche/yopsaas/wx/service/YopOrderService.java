@@ -296,6 +296,31 @@ public class YopOrderService {
         return ResponseUtil.ok(data);
     }
 
+    public Object getOrderList(Integer userId, int showType, int page, int limit, String sort, String order) {
+        List<Byte> status = null;
+        List<Byte> payStatus = null;
+        if(showType == 1) {
+            status = new ArrayList<>();
+            status.add(YopsaasRideOrderService.ORDER_STATUS_SERVICEEND);
+            status.add(YopsaasRideOrderService.ORDER_STATUS_CANCELLED);
+            payStatus = new ArrayList<>();
+            payStatus.add(YopsaasRideOrderService.PAY_STATUS_NONE);
+            payStatus.add(YopsaasRideOrderService.PAY_STATUS_PORTION);
+        } else if(showType == 2) {
+            status = new ArrayList<>();
+            status.add(YopsaasRideOrderService.ORDER_STATUS_SERVICEREADY);
+            status.add(YopsaasRideOrderService.ORDER_STATUS_ARRIVED);
+            status.add(YopsaasRideOrderService.ORDER_STATUS_SERVICESTART);
+        } else {
+            status = new ArrayList<>();
+            status.add(YopsaasRideOrderService.ORDER_STATUS_SERVICEEND);
+            payStatus = new ArrayList<>();
+            payStatus.add(YopsaasRideOrderService.PAY_STATUS_OFF);
+        }
+        List<YopsaasRideOrder> orderList = rideOrderService.queryByPayStatus(userId.longValue(), status, payStatus, page, limit, sort, order);
+        return ResponseUtil.okList(orderList);
+    }
+
     private List<Object> getTrips(List<YopsaasRideOrder> orderList, Map<String, YopsaasRideDriver> drivers) {
         List<Object> orderTrips = new ArrayList<>();
         for(YopsaasRideOrder unPayOrder : orderList) {

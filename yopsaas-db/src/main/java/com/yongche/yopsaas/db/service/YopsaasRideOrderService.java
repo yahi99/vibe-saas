@@ -226,14 +226,31 @@ public class YopsaasRideOrderService {
     }
 
     public List<YopsaasRideOrder> queryByOrderStatus(Long userId, List<Byte> orderStatus, Integer page, Integer limit, String sort, String order) {
-        int time = YopsaasRideOrderService.getSecondTimestamp(new Date());
-
         YopsaasRideOrderExample example = new YopsaasRideOrderExample();
         example.setOrderByClause(YopsaasRideOrder.Column.createTime.desc());
         YopsaasRideOrderExample.Criteria criteria = example.or();
         criteria.andUserIdEqualTo(userId);
         if (orderStatus != null) {
             criteria.andStatusIn(orderStatus);
+        }
+        if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(order)) {
+            example.setOrderByClause(sort + " " + order);
+        }
+
+        PageHelper.startPage(page, limit);
+        return yopsaasRideOrderMapper.selectByExample(example);
+    }
+
+    public List<YopsaasRideOrder> queryByPayStatus(Long userId, List<Byte> orderStatus, List<Byte> payStatus, Integer page, Integer limit, String sort, String order) {
+        YopsaasRideOrderExample example = new YopsaasRideOrderExample();
+        example.setOrderByClause(YopsaasRideOrder.Column.createTime.desc());
+        YopsaasRideOrderExample.Criteria criteria = example.or();
+        criteria.andUserIdEqualTo(userId);
+        if (orderStatus != null) {
+            criteria.andStatusIn(orderStatus);
+        }
+        if (payStatus != null) {
+            criteria.andPayStatusIn(payStatus);
         }
         if (!StringUtils.isEmpty(sort) && !StringUtils.isEmpty(order)) {
             example.setOrderByClause(sort + " " + order);

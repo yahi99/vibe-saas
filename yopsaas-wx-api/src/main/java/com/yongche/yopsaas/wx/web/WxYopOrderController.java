@@ -2,17 +2,22 @@ package com.yongche.yopsaas.wx.web;
 
 import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
+import com.yongche.yopsaas.core.validator.Order;
+import com.yongche.yopsaas.core.validator.RideSort;
 import com.yongche.yopsaas.core.yop.OrderService;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
 import com.yongche.yopsaas.wx.service.YopOrderService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -48,6 +53,24 @@ public class WxYopOrderController {
     @GetMapping("getCurrentAndUnpayOrder")
     public Object getCurrentAndUnpayOrder(@LoginUser Integer userId) {
         return yopOrderService.getCurrentAndUnpayOrder(userId);
+    }
+
+    /**
+     * 获取订单列表
+     *
+     * @param userId 用户ID
+     * @param showType showType
+     * @param page page
+     * @param limit limit
+     * @return 提交订单操作结果
+     */
+    @GetMapping("getOrderList")
+    public Object getOrderList(@LoginUser Integer userId, Integer showType,
+                               @RequestParam(defaultValue = "1") Integer page,
+                               @RequestParam(defaultValue = "10") Integer limit,
+                               @RideSort @RequestParam(defaultValue = "create_time") String sort,
+                               @Order @RequestParam(defaultValue = "desc") String order) {
+        return yopOrderService.getOrderList(userId, showType, page, limit, sort, order);
     }
 
     /**

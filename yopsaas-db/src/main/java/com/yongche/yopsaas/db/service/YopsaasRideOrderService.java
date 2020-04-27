@@ -367,7 +367,7 @@ public class YopsaasRideOrderService {
         status1.add(YopsaasRideOrderService.ORDER_STATUS_SERVICEREADY);
         status1.add(YopsaasRideOrderService.ORDER_STATUS_ARRIVED);
         status1.add(YopsaasRideOrderService.ORDER_STATUS_SERVICESTART);
-        criteria.andStatusIn(status1);
+        criteria1.andStatusIn(status1);
         List<YopsaasRideOrder> currentOrders = yopsaasRideOrderMapper.selectByExampleSelective(example1, YopsaasRideOrder.Column.status, YopsaasRideOrder.Column.payStatus);
 
         int unpaid = 0;

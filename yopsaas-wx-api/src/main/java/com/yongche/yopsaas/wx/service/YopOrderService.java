@@ -557,7 +557,7 @@ public class YopOrderService {
                 }
                 String ycOrderId = String.valueOf(rideOrder.getYcOrderId());
                 List<Position> positions = orderService.getOrderTrack(ycOrderId);
-                if(positions.isEmpty()) {
+                if(positions == null) {
                     return ResponseUtil.fail(ResponseUtil.RET_NOT_FOUND_404, "没有轨迹数据");
                 } else {
                     return ResponseUtil.ok(positions);

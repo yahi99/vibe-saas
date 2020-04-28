@@ -501,8 +501,10 @@ public class YopOrderService {
         if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_SERVICEEND)) {
             // update amount
             updateOrder.setEndTime(orderInfo.getEnd_time());
-            updateOrder.setOriginAmount(BigDecimal.valueOf(Double.valueOf(orderInfo.getTotal_amount())));
-            updateOrder.setTotalAmount(BigDecimal.valueOf(Double.valueOf(orderInfo.getTotal_amount())));
+            BigDecimal amount = BigDecimal.valueOf(Double.valueOf(orderInfo.getTotal_amount()));
+            updateOrder.setOriginAmount(amount);
+            updateOrder.setTotalAmount(amount);
+            updateOrder.setPayAmount(amount);
             updateOrder.setActualTimeLength(orderInfo.getTime_length());
             updateOrder.setEndLatitude(orderInfo.getEnd_latitude());
             updateOrder.setEndLongitude(orderInfo.getStart_longitude());
@@ -515,7 +517,13 @@ public class YopOrderService {
         }
         if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_CANCELLED)) {
             updateOrder.setCancelTime(YopOrderService.getTimestamp());
-            updateOrder.setPayStatus(Byte.valueOf(String.valueOf(orderInfo.getPay_status())));
+            BigDecimal amount = BigDecimal.valueOf(Double.valueOf(orderInfo.getTotal_amount()));
+            if(amount.doubleValue() > 0) {
+                updateOrder.setOriginAmount(amount);
+                updateOrder.setTotalAmount(amount);
+                updateOrder.setPayAmount(amount);
+                updateOrder.setPayStatus(Byte.valueOf(String.valueOf(orderInfo.getPay_status())));
+            }
         }
 
         int result = rideOrderService.updateByExample(updateOrder, example);

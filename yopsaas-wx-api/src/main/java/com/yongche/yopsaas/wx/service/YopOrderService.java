@@ -502,12 +502,15 @@ public class YopOrderService {
             updateOrder.setEndLatitude(orderInfo.getEnd_latitude());
             updateOrder.setEndLongitude(orderInfo.getStart_longitude());
             updateOrder.setEndTime(orderInfo.getEnd_time());
+            // 允许支付
+            updateOrder.setPayStatus(Byte.valueOf(String.valueOf(orderInfo.getPay_status())));
             if(orderInfo.getTotal_amount().equals("0")) {
                 // add task?
             }
         }
         if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_CANCELLED)) {
             updateOrder.setCancelTime(YopOrderService.getTimestamp());
+            updateOrder.setPayStatus(Byte.valueOf(String.valueOf(orderInfo.getPay_status())));
         }
 
         int result = rideOrderService.updateByExample(updateOrder, example);

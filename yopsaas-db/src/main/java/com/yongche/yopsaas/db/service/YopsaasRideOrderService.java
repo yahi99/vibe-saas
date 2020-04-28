@@ -362,7 +362,7 @@ public class YopsaasRideOrderService {
 
         List<Byte> status1 = new ArrayList<>();
         YopsaasRideOrderExample example1 = new YopsaasRideOrderExample();
-        YopsaasRideOrderExample.Criteria criteria1 = example.or();
+        YopsaasRideOrderExample.Criteria criteria1 = example1.or();
         criteria1.andUserIdEqualTo(userId);
         status1.add(YopsaasRideOrderService.ORDER_STATUS_SERVICEREADY);
         status1.add(YopsaasRideOrderService.ORDER_STATUS_ARRIVED);

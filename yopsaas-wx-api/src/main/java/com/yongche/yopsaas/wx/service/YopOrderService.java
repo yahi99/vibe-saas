@@ -65,6 +65,11 @@ public class YopOrderService {
         if (body == null) {
             return ResponseUtil.badArgument();
         }
+        // check unpay order
+        List<YopsaasRideOrder> unpayOrders = rideOrderService.getUnpayOrder(userId.longValue());
+        if(unpayOrders.size() > 0) {
+            return ResponseUtil.fail(ResponseUtil.RET_NOT_ALLOW, "存在未付款订单");
+        }
         /*
          * is_support_system_decision: '1', //只有系统派单，后面需要调整，根据配置调整
             has_custom_decision: '0', //只有系统派单，后面需要调整，根据配置调整
@@ -535,6 +540,7 @@ public class YopOrderService {
                     if(cancelOrder.getResult().getFee() > 0) {
                         updateOrder.setPayable(YopsaasRideOrderService.PAYABLE_ALLOW);
                         updateOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_NONE);
+                        updateOrder.setOriginAmount(BigDecimal.valueOf(cancelOrder.getResult().getFee()));
                         updateOrder.setTotalAmount(BigDecimal.valueOf(cancelOrder.getResult().getFee()));
                     }
                     // TODO reason

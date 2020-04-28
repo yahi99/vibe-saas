@@ -344,8 +344,7 @@ public class YopsaasRideOrderService {
         return yopsaasRideOrderMapper.selectByExample(example);
     }
 
-
-    public Map<Object, Object> orderInfo(Long userId) {
+    public List<YopsaasRideOrder> getUnpayOrder(Long userId, YopsaasRideOrder.Column ... selective) {
         YopsaasRideOrderExample example = new YopsaasRideOrderExample();
         YopsaasRideOrderExample.Criteria criteria = example.or();
         criteria.andUserIdEqualTo(userId);
@@ -358,17 +357,24 @@ public class YopsaasRideOrderService {
         payStatus.add(YopsaasRideOrderService.PAY_STATUS_PORTION);
         criteria.andPayStatusIn(payStatus);
 
-        List<YopsaasRideOrder> unpayOrders = yopsaasRideOrderMapper.selectByExampleSelective(example, YopsaasRideOrder.Column.status, YopsaasRideOrder.Column.payStatus);
+        return yopsaasRideOrderMapper.selectByExampleSelective(example, selective);
+    }
 
-        List<Byte> status1 = new ArrayList<>();
-        YopsaasRideOrderExample example1 = new YopsaasRideOrderExample();
-        YopsaasRideOrderExample.Criteria criteria1 = example1.or();
-        criteria1.andUserIdEqualTo(userId);
-        status1.add(YopsaasRideOrderService.ORDER_STATUS_SERVICEREADY);
-        status1.add(YopsaasRideOrderService.ORDER_STATUS_ARRIVED);
-        status1.add(YopsaasRideOrderService.ORDER_STATUS_SERVICESTART);
-        criteria1.andStatusIn(status1);
-        List<YopsaasRideOrder> currentOrders = yopsaasRideOrderMapper.selectByExampleSelective(example1, YopsaasRideOrder.Column.status, YopsaasRideOrder.Column.payStatus);
+    public List<YopsaasRideOrder> getCurrentTrip(Long userId, YopsaasRideOrder.Column ... selective) {
+        List<Byte> status = new ArrayList<>();
+        YopsaasRideOrderExample example = new YopsaasRideOrderExample();
+        YopsaasRideOrderExample.Criteria criteria = example.or();
+        criteria.andUserIdEqualTo(userId);
+        status.add(YopsaasRideOrderService.ORDER_STATUS_SERVICEREADY);
+        status.add(YopsaasRideOrderService.ORDER_STATUS_ARRIVED);
+        status.add(YopsaasRideOrderService.ORDER_STATUS_SERVICESTART);
+        criteria.andStatusIn(status);
+        return yopsaasRideOrderMapper.selectByExampleSelective(example, selective);
+    }
+
+    public Map<Object, Object> orderInfo(Long userId) {
+        List<YopsaasRideOrder> unpayOrders = this.getUnpayOrder(userId, YopsaasRideOrder.Column.status, YopsaasRideOrder.Column.payStatus);
+        List<YopsaasRideOrder> currentOrders = this.getCurrentTrip(userId, YopsaasRideOrder.Column.status, YopsaasRideOrder.Column.payStatus);
 
         int unpaid = 0;
         int currentTrip = 0;

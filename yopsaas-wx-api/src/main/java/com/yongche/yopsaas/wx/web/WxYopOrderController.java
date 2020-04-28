@@ -48,7 +48,7 @@ public class WxYopOrderController {
      * 获取当前和未付订单
      *
      * @param userId 用户ID
-     * @return 提交订单操作结果
+     * @return 获取当前和未付订单
      */
     @GetMapping("getCurrentAndUnpayOrder")
     public Object getCurrentAndUnpayOrder(@LoginUser Integer userId) {
@@ -62,7 +62,7 @@ public class WxYopOrderController {
      * @param showType showType
      * @param page page
      * @param limit limit
-     * @return 提交订单操作结果
+     * @return 获取订单列表
      */
     @GetMapping("getOrderList")
     public Object getOrderList(@LoginUser Integer userId, Integer showType,
@@ -78,7 +78,7 @@ public class WxYopOrderController {
      *
      * @param userId 用户ID
      * @param rideOrderId 订单ID
-     * @return 提交订单操作结果
+     * @return 获取订单状态
      */
     @GetMapping("getStatus")
     public Object getStatus(@LoginUser Integer userId, @RequestParam(defaultValue = "1", name = "ride_order_id") Long rideOrderId) {
@@ -90,7 +90,7 @@ public class WxYopOrderController {
      *
      * @param userId 用户ID
      * @param rideOrderId 订单ID
-     * @return 提交订单操作结果
+     * @return 获取订单详情
      */
     @GetMapping("getOrderInfo")
     public Object getOrderInfo(@LoginUser Integer userId, @RequestParam(defaultValue = "1", name = "ride_order_id") Long rideOrderId) {
@@ -114,7 +114,7 @@ public class WxYopOrderController {
      * @param reasonId 取消原因id
      * @param adjustFlag 调整金额
      * @param withdrawFlag 扣款
-     * @return 预估数据
+     * @return 回调
      */
     @GetMapping("callback1")
     public Object callback1(@RequestParam(defaultValue = "1", name = "yongche_order_id") String yongcheOrderId,
@@ -139,7 +139,7 @@ public class WxYopOrderController {
      4)	扣款	withdraw_flag = 1
 
      * @param httpServletRequest httpServletRequest
-     * @return 预估数据
+     * @return 回调
      */
     @GetMapping("callback")
     public Object callback(HttpServletRequest httpServletRequest) {
@@ -151,7 +151,7 @@ public class WxYopOrderController {
      * 取消订单
      * @param userId userId
      * @param body 订单ID
-     * @return 预估数据
+     * @return 取消订单
      */
     @PostMapping("cancel")
     public Object cancel(@LoginUser Integer userId, @RequestBody String body) {
@@ -162,7 +162,7 @@ public class WxYopOrderController {
      * 取消订单费用
      * @param userId userId
      * @param rideOrderId 订单ID
-     * @return 预估数据
+     * @return 取消订单费用
      */
     @GetMapping("getCancelOrderFee")
     public Object getCancelOrderFee(@LoginUser Integer userId, @RequestParam(defaultValue = "1", name = "ride_order_id") Long rideOrderId) {
@@ -173,7 +173,7 @@ public class WxYopOrderController {
      * 订单行驶轨迹
      * @param userId userId
      * @param rideOrderId 订单ID
-     * @return 预估数据
+     * @return 订单行驶轨迹
      */
     @GetMapping("getOrderTrack")
     public Object getOrderTrack(@LoginUser Integer userId, @RequestParam(defaultValue = "1", name = "ride_order_id") Long rideOrderId) {
@@ -184,10 +184,21 @@ public class WxYopOrderController {
      * 司机位置
      * @param userId userId
      * @param rideOrderId 订单ID
-     * @return 预估数据
+     * @return 司机位置
      */
     @GetMapping("getDriverLocation")
     public Object getDriverLocation(@LoginUser Integer userId, @RequestParam(defaultValue = "1", name = "ride_order_id") Long rideOrderId) {
         return yopOrderService.getDriverLocation(userId, rideOrderId);
+    }
+
+    /**
+     * 获取订单计费信息
+     * @param userId userId
+     * @param rideOrderId 订单ID
+     * @return 订单计费信息
+     */
+    @GetMapping("getCostDetail")
+    public Object getCostDetail(@LoginUser Integer userId, @RequestParam(defaultValue = "1", name = "ride_order_id") Long rideOrderId) {
+        return yopOrderService.getCostDetail(userId, rideOrderId);
     }
 }

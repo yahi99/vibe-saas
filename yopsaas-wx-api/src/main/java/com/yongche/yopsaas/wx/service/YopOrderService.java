@@ -636,6 +636,29 @@ public class YopOrderService {
         }
     }
 
+    public Object getCostDetail(Integer userId, Long rideOrderId) {
+        if(rideOrderId != null) {
+            YopsaasRideOrder rideOrder = rideOrderService.findById(rideOrderId);
+            if (rideOrder != null) {
+                Long dbUserId = rideOrder.getUserId();
+                if (dbUserId.intValue() != userId) {
+                    return ResponseUtil.fail(ResponseUtil.RET_INVALID_PARAM_400, "rideOrderId is not yours");
+                }
+                String ycOrderId = String.valueOf(rideOrder.getYcOrderId());
+                EstimateData costDetail = orderService.getCostDetail(ycOrderId);
+                if(costDetail == null) {
+                    return ResponseUtil.fail(ResponseUtil.RET_NOT_FOUND_404, "没有明细数据");
+                } else {
+                    return ResponseUtil.ok(costDetail);
+                }
+            } else {
+                return ResponseUtil.badArgument();
+            }
+        } else {
+            return ResponseUtil.badArgument();
+        }
+    }
+
     public AcceptedDriver getSelectDriver(String orderId, String driverIds) {
         return orderService.getSelectDriver(orderId, driverIds);
     }

@@ -129,4 +129,14 @@ public class OrderService extends BaseService {
             return null;
         }
     }
+
+    public EstimateData getCostDetail(String orderId) {
+        String accessToken = this.getProperties().getAccessToken();
+        BaseResultT<EstimateData> orderCostDetail = OrderAPI.getEstimateData(accessToken, orderId);
+        if(orderCostDetail.getCode().equals("200")) {
+            return orderCostDetail.getResult();
+        } else {
+            return null;
+        }
+    }
 }

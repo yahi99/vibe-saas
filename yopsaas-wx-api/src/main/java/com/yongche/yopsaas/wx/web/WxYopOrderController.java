@@ -5,6 +5,7 @@ import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.validator.Order;
 import com.yongche.yopsaas.core.validator.RideSort;
 import com.yongche.yopsaas.core.yop.OrderService;
+import com.yongche.yopsaas.wx.annotation.LoginAppId;
 import com.yongche.yopsaas.wx.annotation.LoginUser;
 import com.yongche.yopsaas.wx.service.YopOrderService;
 import org.apache.commons.logging.Log;
@@ -89,11 +90,13 @@ public class WxYopOrderController {
      * 获取订单详情
      *
      * @param userId 用户ID
+     * @param appId 应用ID
      * @param rideOrderId 订单ID
      * @return 获取订单详情
      */
     @GetMapping("getOrderInfo")
-    public Object getOrderInfo(@LoginUser Integer userId, @RequestParam(defaultValue = "1", name = "ride_order_id") Long rideOrderId) {
+    public Object getOrderInfo(@LoginUser Integer userId, @LoginAppId String appId, @RequestParam(defaultValue = "1", name = "ride_order_id") Long rideOrderId) {
+        logger.debug("appId is " + appId);
         return yopOrderService.getOrderInfo(userId, rideOrderId);
     }
 

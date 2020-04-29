@@ -41,6 +41,12 @@
         </template>
       </el-table-column>
 
+      <el-table-column align="center" label="支付状态" prop="payStatus">
+        <template slot-scope="scope">
+          {{ scope.row.payStatus | payStatusFilter }}
+        </template>
+      </el-table-column>
+
       <el-table-column align="center" label="订单金额" prop="totalAmount" />
       <el-table-column align="center" label="支付金额" prop="deposit" />
       <el-table-column align="center" label="支付时间" prop="payTime" />
@@ -133,6 +139,12 @@ const statusMap = {
   7: '服务结束',
   8: '订单取消'
 }
+const payStatusMap = {
+  0: '无需支付',
+  1: '未支付',
+  2: '部分支付',
+  3: '已支付'
+}
 const productMap = {
   1: '预约',
   17: '马上用车'
@@ -144,6 +156,9 @@ export default {
   filters: {
     statusFilter(status) {
       return statusMap[status]
+    },
+    payStatusFilter(payStatus) {
+      return payStatusMap[payStatus]
     },
     productFilter(productTypeId) {
       return productMap[productTypeId]

@@ -194,6 +194,9 @@
         <table tableName="yopsaas_ride_driver">
             <generatedKey column="ride_driver_id" sqlStatement="MySql" identity="true"/>
         </table>
+        <table tableName="yopsaas_ride_order_kv">
+
+        </table>
         <table tableName="yopsaas_aftersale">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride column="pictures" javaType="java.lang.String[]"

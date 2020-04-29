@@ -2,9 +2,10 @@ use yopsaas;
 
 -- drop table yopsaas_ride_order;
 -- drop table yopsaas_ride_order_ext;
-drop table yopsaas_ride_order_transaction_history;
+-- drop table yopsaas_ride_order_transaction_history;
 -- drop table yopsaas_ride_order_dispatch;
 -- drop table yopsaas_ride_driver;
+-- drop table yopsaas_ride_order_kv;
 
 create table if not exists yopsaas_ride_order(
   `ride_order_id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -268,3 +269,13 @@ create table if not exists yopsaas_ride_driver(
   KEY `idx_cellphone` (`cellphone`),
   KEY `idx_create_time` (`create_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网约车司机表';
+
+create table if not exists `yopsaas_ride_order_kv` (
+  `ride_order_id` bigint(20) NOT NULL,
+  `k` varchar(20) NOT NULL DEFAULT '' comment 'k',
+  `v` varchar(512) NOT NULL DEFAULT '' comment 'v',
+  `type`        tinyint(1) not null default 0 comment '0:普通字符串 1:json',
+  `create_time` int(11) NOT NULL COMMENT '创建时间',
+  `update_time` int(11) NOT NULL COMMENT '更新时间',
+  unique KEY `idx_roi_k` (`ride_order_id`,`k`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网约车订单kv表';

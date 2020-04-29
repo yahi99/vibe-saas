@@ -386,9 +386,9 @@ public class YopOrderService {
     }
 
     public void setFeeSnap(Map<String, Object> data, YopsaasRideOrder rideOrder, Long rideOrderId) {
-        if(rideOrder.getStatus().equals(7) || rideOrder.getStatus().equals(8)) {
+        if(rideOrder.getStatus() == 7 || rideOrder.getStatus() == 8) {
             YopsaasRideOrderKv kv = rideOrderKvService.find(rideOrderId, YopsaasRideOrderKvService.KEY_ORDER_SNAP);
-            if(rideOrder.getStatus().equals(7)) {
+            if(rideOrder.getStatus() == 7) {
                 RideOrderKvPo.SNAP_SERVICEEND feeSnap = null;
                 if(kv == null) {
                     feeSnap = new RideOrderKvPo.SNAP_SERVICEEND();

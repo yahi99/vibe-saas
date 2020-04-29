@@ -11,10 +11,8 @@ import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.yop.OrderService;
 import com.yongche.yopsaas.db.domain.*;
-import com.yongche.yopsaas.db.service.YopsaasRideDriverService;
-import com.yongche.yopsaas.db.service.YopsaasRideOrderExtService;
-import com.yongche.yopsaas.db.service.YopsaasRideOrderService;
-import com.yongche.yopsaas.db.service.YopsaasUserService;
+import com.yongche.yopsaas.db.service.*;
+import com.yongche.yopsaas.wx.dto.RideOrderSnap;
 import com.yongche.yopsaas.wx.task.RideOrderDecisionDriver;
 import com.yongche.yopsaas.wx.task.RideOrderUnchooseCarTask;
 import org.apache.commons.logging.Log;
@@ -42,6 +40,8 @@ public class YopOrderService {
     private YopsaasRideOrderService rideOrderService;
     @Autowired
     private YopsaasRideOrderExtService rideOrderExtService;
+    @Autowired
+    private YopsaasRideOrderKvService rideOrderKvService;
     @Autowired
     private YopsaasRideDriverService rideDriverService;
     @Autowired
@@ -374,6 +374,8 @@ public class YopOrderService {
                 }
                 data.put("order", rideOrder);
                 data.put("driver", driverInfo);
+                this.setFeeSnap(data, rideOrder, rideOrderId);
+
                 return ResponseUtil.ok(data);
             } else {
                 return ResponseUtil.badArgument();
@@ -381,6 +383,46 @@ public class YopOrderService {
         } else {
             return ResponseUtil.fail();
         }
+    }
+
+    public void setFeeSnap(Map<String, Object> data, YopsaasRideOrder rideOrder, Long rideOrderId) {
+        if(rideOrder.getStatus().equals(7) || rideOrder.getStatus().equals(8)) {
+            YopsaasRideOrderKv kv = rideOrderKvService.find(rideOrderId, YopsaasRideOrderKvService.KEY_ORDER_SNAP);
+            if(rideOrder.getStatus().equals(7)) {
+                RideOrderKvPo.SNAP_SERVICEEND feeSnap = null;
+                if(kv == null) {
+                    feeSnap = new RideOrderKvPo.SNAP_SERVICEEND();
+                    feeSnap.setDefaultValue();
+                } else {
+                    feeSnap = JacksonUtil.parseObject(kv.getV(), RideOrderKvPo.SNAP_SERVICEEND.class);
+                }
+                data.put("feeSnap", feeSnap);
+            } else {
+                RideOrderKvPo.SNAP_CANCEL feeSnap = null;
+                if(kv == null) {
+                    feeSnap = new RideOrderKvPo.SNAP_CANCEL();
+                    feeSnap.setDefaultValue();
+                } else {
+                    feeSnap = JacksonUtil.parseObject(kv.getV(), RideOrderKvPo.SNAP_CANCEL.class);
+                }
+                data.put("feeSnap", feeSnap);
+            }
+        }
+    }
+
+    private <T> T getFeeSnap(YopsaasRideOrderKv kv, Class<T> clazz) {
+        T feeSnap = null;
+        if(kv == null) {
+            try {
+                feeSnap = clazz.newInstance();
+            } catch (Exception e) {
+                // Oops, no default constructor
+                throw new RuntimeException(e);
+            }
+        } else {
+            feeSnap = JacksonUtil.parseObject(kv.getV(), clazz);
+        }
+        return feeSnap;
     }
 
     public Object updateByCallback(HttpServletRequest httpServletRequest) {

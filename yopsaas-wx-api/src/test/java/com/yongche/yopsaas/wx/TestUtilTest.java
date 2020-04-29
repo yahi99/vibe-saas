@@ -2,7 +2,7 @@ package com.yongche.yopsaas.wx;
 
 import org.junit.Test;
 
-public class TestUtil {
+public class TestUtilTest {
     @Test
     public void test() {
         String mobile = "";

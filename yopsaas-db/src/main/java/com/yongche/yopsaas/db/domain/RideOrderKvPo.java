@@ -414,6 +414,10 @@ public class RideOrderKvPo {
         //private String cancelPayAmount;
         //private int cancelChangeAmount;
 
+        public void setDefaultValue() {
+            this.cancelOrderAmount = "0";
+        }
+
         public String getCancelOrderAmount() {
             return cancelOrderAmount;
         }

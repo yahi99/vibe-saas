@@ -169,6 +169,18 @@ public class JacksonUtil {
         return null;
     }
 
+    public static <T> T parseObject(String data, Class<T> clazz) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode node;
+        try {
+            node = mapper.readTree(data);
+            return mapper.treeToValue(node, clazz);
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
     public static <T> T parseObject(String body, String field, Class<T> clazz) {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node;

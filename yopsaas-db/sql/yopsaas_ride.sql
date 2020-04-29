@@ -273,7 +273,7 @@ create table if not exists yopsaas_ride_driver(
 create table if not exists `yopsaas_ride_order_kv` (
   `ride_order_id` bigint(20) NOT NULL,
   `k` varchar(20) NOT NULL DEFAULT '' comment 'k',
-  `v` varchar(512) NOT NULL DEFAULT '' comment 'v',
+  `v` varchar(4096) NOT NULL DEFAULT '' comment 'v',
   `type`        tinyint(1) not null default 0 comment '0:普通字符串 1:json',
   `create_time` int(11) NOT NULL COMMENT '创建时间',
   `update_time` int(11) NOT NULL COMMENT '更新时间',

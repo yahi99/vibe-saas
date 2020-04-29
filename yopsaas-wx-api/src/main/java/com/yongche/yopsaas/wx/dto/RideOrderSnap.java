@@ -1,6 +1,7 @@
 package com.yongche.yopsaas.wx.dto;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -76,7 +77,7 @@ public class RideOrderSnap {
         for (Map.Entry<String, String> entry : DETAIL_COLUMN.entrySet()) {
             Detail detail = new Detail();
             detail.setTitle(entry.getValue());
-            detail.setFee(this.getFieldValueByFieldName(entry.getKey(), this));
+            detail.setFee(this.getFieldValueByFieldMethod(entry.getKey(), this));
             this.details.add(detail);
         }
         this.combos = new ArrayList<Detail>();
@@ -87,7 +88,7 @@ public class RideOrderSnap {
         for (Map.Entry<String, String> entry : REALPAY_COLUMN.entrySet()) {
             Detail detail = new Detail();
             detail.setTitle(entry.getValue());
-            detail.setFee(this.getFieldValueByFieldName(entry.getKey(), this));
+            detail.setFee(this.getFieldValueByFieldMethod(entry.getKey(), this));
             this.realPay.add(detail);
         }
     }
@@ -103,8 +104,18 @@ public class RideOrderSnap {
         try {
             Field field = object.getClass().getField(fieldName);
             //设置对象的访问权限，保证对private的属性的访问
-
+            //field.setAccessible(true);
             return (String) field.get(object);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private String getFieldValueByFieldMethod(String fieldName, Object object) {
+        try {
+            String method = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+            Method invokeMethod = object.getClass().getDeclaredMethod(method);
+            return (String) invokeMethod.invoke(object);
         } catch (Exception e) {
             return null;
         }

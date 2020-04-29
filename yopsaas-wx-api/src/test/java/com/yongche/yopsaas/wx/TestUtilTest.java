@@ -1,5 +1,6 @@
 package com.yongche.yopsaas.wx;
 
+import com.yongche.yopsaas.wx.dto.RideOrderSnap;
 import org.junit.Test;
 
 public class TestUtilTest {
@@ -11,5 +12,12 @@ public class TestUtilTest {
         System.out.println(mobile.replaceAll("(\\d{3})\\d{4}(\\d{4})","$1****$2"));
         Byte status = 7;
         System.out.println(status == 7);
+    }
+
+    @Test
+    public void testObject() {
+        RideOrderSnap snap = new RideOrderSnap();
+        snap.setKiloFee("10");
+        System.out.println(snap.getKiloFee());
     }
 }

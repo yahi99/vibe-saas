@@ -60,6 +60,7 @@ public class AdminRideOrderService {
             map.put("endAddress", orderList.get(i).getEndAddress());
             map.put("endPosition", orderList.get(i).getEndPosition());
             map.put("status", orderList.get(i).getStatus());
+            map.put("payStatus", orderList.get(i).getPayStatus());
             map.put("totalAmount", orderList.get(i).getTotalAmount());
             map.put("deposit", orderList.get(i).getDeposit());
             map.put("payTime", orderList.get(i).getPayTime());

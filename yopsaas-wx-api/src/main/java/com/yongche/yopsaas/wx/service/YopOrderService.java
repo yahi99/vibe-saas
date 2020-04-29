@@ -396,6 +396,7 @@ public class YopOrderService {
                 } else {
                     feeSnap = JacksonUtil.parseObject(kv.getV(), RideOrderKvPo.SNAP_SERVICEEND.class);
                 }
+                logger.debug("feeSnap:" + JacksonUtil.toJson(feeSnap));
                 data.put("feeSnap", feeSnap);
             } else {
                 RideOrderKvPo.SNAP_CANCEL feeSnap = null;

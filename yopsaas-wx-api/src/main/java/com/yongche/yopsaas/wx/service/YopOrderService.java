@@ -533,29 +533,42 @@ public class YopOrderService {
         }
         if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_SERVICEEND)) {
             // update amount
-            updateOrder.setEndTime(orderInfo.getEnd_time());
-            BigDecimal amount = BigDecimal.valueOf(Double.valueOf(orderInfo.getTotal_amount()));
-            updateOrder.setOriginAmount(amount);
-            updateOrder.setTotalAmount(amount);
-            updateOrder.setPayAmount(amount);
-            updateOrder.setActualTimeLength(orderInfo.getTime_length());
-            updateOrder.setEndLatitude(orderInfo.getEnd_latitude());
-            updateOrder.setEndLongitude(orderInfo.getStart_longitude());
-            updateOrder.setEndTime(orderInfo.getEnd_time());
-            // 允许支付
-            updateOrder.setPayStatus(Byte.valueOf(String.valueOf(orderInfo.getPay_status())));
-            if(orderInfo.getTotal_amount().equals("0")) {
+            // get order fee
+            EstimateData feeSnap = orderService.getCostDetail(yongcheOrderId);
+            if(feeSnap == null) {
                 // add task?
+            } else {
+                // update order kv
+                updateOrder.setEndTime(orderInfo.getEnd_time());
+                BigDecimal amount = BigDecimal.valueOf(Double.valueOf(feeSnap.getOrder_amount()));
+                updateOrder.setOriginAmount(BigDecimal.valueOf(Double.valueOf(feeSnap.getOrigin_amount())));
+                updateOrder.setTotalAmount(amount);
+                updateOrder.setPayAmount(amount);
+                updateOrder.setActualTimeLength(orderInfo.getTime_length());
+                updateOrder.setEndLatitude(orderInfo.getEnd_latitude());
+                updateOrder.setEndLongitude(orderInfo.getStart_longitude());
+                updateOrder.setEndTime(orderInfo.getEnd_time());
+                // 允许支付
+                updateOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_NONE);
+                if(feeSnap.getOrder_amount().equals("0")) {
+                    // add task?
+                }
             }
         }
         if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_CANCELLED)) {
             updateOrder.setCancelTime(YopOrderService.getTimestamp());
-            BigDecimal amount = BigDecimal.valueOf(Double.valueOf(orderInfo.getTotal_amount()));
-            if(amount.doubleValue() > 0) {
-                updateOrder.setOriginAmount(amount);
-                updateOrder.setTotalAmount(amount);
-                updateOrder.setPayAmount(amount);
-                updateOrder.setPayStatus(Byte.valueOf(String.valueOf(orderInfo.getPay_status())));
+            EstimateData feeSnap = orderService.getCostDetail(yongcheOrderId);
+            if(feeSnap == null) {
+                // add task?
+            } else {
+                // update order kv
+                BigDecimal amount = BigDecimal.valueOf(Double.valueOf(feeSnap.getCancel_order_amount()));
+                if(amount.doubleValue() > 0) {
+                    updateOrder.setOriginAmount(amount);
+                    updateOrder.setTotalAmount(amount);
+                    updateOrder.setPayAmount(amount);
+                    updateOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_NONE);
+                }
             }
         }
 

@@ -388,26 +388,16 @@ public class YopOrderService {
     public void setFeeSnap(Map<String, Object> data, YopsaasRideOrder rideOrder, Long rideOrderId) {
         if(rideOrder.getStatus() == 7 || rideOrder.getStatus() == 8) {
             YopsaasRideOrderKv kv = rideOrderKvService.find(rideOrderId, YopsaasRideOrderKvService.KEY_ORDER_SNAP);
-            if(rideOrder.getStatus() == 7) {
-                RideOrderKvPo.SNAP_SERVICEEND feeSnap = null;
-                if(kv == null) {
-                    feeSnap = new RideOrderKvPo.SNAP_SERVICEEND();
-                    feeSnap.setDefaultValue();
-                } else {
-                    feeSnap = JacksonUtil.parseObject(kv.getV(), RideOrderKvPo.SNAP_SERVICEEND.class);
-                }
-                logger.debug("feeSnap:" + JacksonUtil.toJson(feeSnap));
-                data.put("feeSnap", feeSnap);
+            RideOrderSnap feeSnap = null;
+            if(kv == null) {
+                feeSnap = new RideOrderSnap();
             } else {
-                RideOrderKvPo.SNAP_CANCEL feeSnap = null;
-                if(kv == null) {
-                    feeSnap = new RideOrderKvPo.SNAP_CANCEL();
-                    feeSnap.setDefaultValue();
-                } else {
-                    feeSnap = JacksonUtil.parseObject(kv.getV(), RideOrderKvPo.SNAP_CANCEL.class);
-                }
-                data.put("feeSnap", feeSnap);
+                feeSnap = JacksonUtil.parseObject(kv.getV(), RideOrderSnap.class);
             }
+            if(feeSnap != null) {
+                feeSnap.make();
+            }
+            data.put("feeSnap", feeSnap);
         }
     }
 

@@ -68,7 +68,7 @@ public class RideOrderSnap {
 
     private final static Map<String, String> REALPAY_COLUMN = new HashMap<String, String>(){{
         put("orderAmount", "应付金额");
-        put("couponFacevalue", "优惠金额");
+        //put("couponFacevalue", "优惠金额");
         put("originAmount", "订单原始金额");
     }};
 

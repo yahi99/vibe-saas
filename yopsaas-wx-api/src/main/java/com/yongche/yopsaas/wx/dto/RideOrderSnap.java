@@ -157,4 +157,332 @@ public class RideOrderSnap {
             this.unit = unit;
         }
     }
+
+    public long getYcOrderId() {
+        return ycOrderId;
+    }
+
+    public void setYcOrderId(long ycOrderId) {
+        this.ycOrderId = ycOrderId;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getFixedFee() {
+        return fixedFee;
+    }
+
+    public void setFixedFee(String fixedFee) {
+        this.fixedFee = fixedFee;
+    }
+
+    public String getParkingAmount() {
+        return parkingAmount;
+    }
+
+    public void setParkingAmount(String parkingAmount) {
+        this.parkingAmount = parkingAmount;
+    }
+
+    public String getHighwayAmount() {
+        return highwayAmount;
+    }
+
+    public void setHighwayAmount(String highwayAmount) {
+        this.highwayAmount = highwayAmount;
+    }
+
+    public String getFtDistance() {
+        return ftDistance;
+    }
+
+    public void setFtDistance(String ftDistance) {
+        this.ftDistance = ftDistance;
+    }
+
+    public String getFtDistanceDanjia() {
+        return ftDistanceDanjia;
+    }
+
+    public void setFtDistanceDanjia(String ftDistanceDanjia) {
+        this.ftDistanceDanjia = ftDistanceDanjia;
+    }
+
+    public String getFtFee() {
+        return ftFee;
+    }
+
+    public void setFtFee(String ftFee) {
+        this.ftFee = ftFee;
+    }
+
+    public String getOriginAmount() {
+        return originAmount;
+    }
+
+    public void setOriginAmount(String originAmount) {
+        this.originAmount = originAmount;
+    }
+
+    public String getCouponFacevalue() {
+        return couponFacevalue;
+    }
+
+    public void setCouponFacevalue(String couponFacevalue) {
+        this.couponFacevalue = couponFacevalue;
+    }
+
+    public String getOrderAmount() {
+        return orderAmount;
+    }
+
+    public void setOrderAmount(String orderAmount) {
+        this.orderAmount = orderAmount;
+    }
+
+    public String getTimeLength() {
+        return timeLength;
+    }
+
+    public void setTimeLength(String timeLength) {
+        this.timeLength = timeLength;
+    }
+
+    public String getActualTimeLength() {
+        return actualTimeLength;
+    }
+
+    public void setActualTimeLength(String actualTimeLength) {
+        this.actualTimeLength = actualTimeLength;
+    }
+
+    public String getKiloLength() {
+        return kiloLength;
+    }
+
+    public void setKiloLength(String kiloLength) {
+        this.kiloLength = kiloLength;
+    }
+
+    public String getFeePerHour() {
+        return feePerHour;
+    }
+
+    public void setFeePerHour(String feePerHour) {
+        this.feePerHour = feePerHour;
+    }
+
+    public String getTimeFee() {
+        return timeFee;
+    }
+
+    public void setTimeFee(String timeFee) {
+        this.timeFee = timeFee;
+    }
+
+    public String getFeePerKilo() {
+        return feePerKilo;
+    }
+
+    public void setFeePerKilo(String feePerKilo) {
+        this.feePerKilo = feePerKilo;
+    }
+
+    public String getKiloFee() {
+        return kiloFee;
+    }
+
+    public void setKiloFee(String kiloFee) {
+        this.kiloFee = kiloFee;
+    }
+
+    public String getExtraDistance() {
+        return extraDistance;
+    }
+
+    public void setExtraDistance(String extraDistance) {
+        this.extraDistance = extraDistance;
+    }
+
+    public String getExtraDistanceDanjia() {
+        return extraDistanceDanjia;
+    }
+
+    public void setExtraDistanceDanjia(String extraDistanceDanjia) {
+        this.extraDistanceDanjia = extraDistanceDanjia;
+    }
+
+    public String getExtraDistanceFee() {
+        return extraDistanceFee;
+    }
+
+    public void setExtraDistanceFee(String extraDistanceFee) {
+        this.extraDistanceFee = extraDistanceFee;
+    }
+
+    public String getExtraTime() {
+        return extraTime;
+    }
+
+    public void setExtraTime(String extraTime) {
+        this.extraTime = extraTime;
+    }
+
+    public String getExtraTimeDanjia() {
+        return extraTimeDanjia;
+    }
+
+    public void setExtraTimeDanjia(String extraTimeDanjia) {
+        this.extraTimeDanjia = extraTimeDanjia;
+    }
+
+    public String getExtraTimeFee() {
+        return extraTimeFee;
+    }
+
+    public void setExtraTimeFee(String extraTimeFee) {
+        this.extraTimeFee = extraTimeFee;
+    }
+
+    public String getAirportServiceAmount() {
+        return airportServiceAmount;
+    }
+
+    public void setAirportServiceAmount(String airportServiceAmount) {
+        this.airportServiceAmount = airportServiceAmount;
+    }
+
+    public String getNightAmount() {
+        return nightAmount;
+    }
+
+    public void setNightAmount(String nightAmount) {
+        this.nightAmount = nightAmount;
+    }
+
+    public String getAdjustFee() {
+        return adjustFee;
+    }
+
+    public void setAdjustFee(String adjustFee) {
+        this.adjustFee = adjustFee;
+    }
+
+    public String getOtherFee() {
+        return otherFee;
+    }
+
+    public void setOtherFee(String otherFee) {
+        this.otherFee = otherFee;
+    }
+
+    public String getOtherFeeMsg() {
+        return otherFeeMsg;
+    }
+
+    public void setOtherFeeMsg(String otherFeeMsg) {
+        this.otherFeeMsg = otherFeeMsg;
+    }
+
+    public String getActualBoardTime() {
+        return actualBoardTime;
+    }
+
+    public void setActualBoardTime(String actualBoardTime) {
+        this.actualBoardTime = actualBoardTime;
+    }
+
+    public String getActualOffTime() {
+        return actualOffTime;
+    }
+
+    public void setActualOffTime(String actualOffTime) {
+        this.actualOffTime = actualOffTime;
+    }
+
+    public String getActualCarType() {
+        return actualCarType;
+    }
+
+    public void setActualCarType(String actualCarType) {
+        this.actualCarType = actualCarType;
+    }
+
+    public String getTimeLengthMinute() {
+        return timeLengthMinute;
+    }
+
+    public void setTimeLengthMinute(String timeLengthMinute) {
+        this.timeLengthMinute = timeLengthMinute;
+    }
+
+    public String getExtraTimeMinute() {
+        return extraTimeMinute;
+    }
+
+    public void setExtraTimeMinute(String extraTimeMinute) {
+        this.extraTimeMinute = extraTimeMinute;
+    }
+
+    public String getFeePerMinute() {
+        return feePerMinute;
+    }
+
+    public void setFeePerMinute(String feePerMinute) {
+        this.feePerMinute = feePerMinute;
+    }
+
+    public String getCancelOrderAmount() {
+        return cancelOrderAmount;
+    }
+
+    public void setCancelOrderAmount(String cancelOrderAmount) {
+        this.cancelOrderAmount = cancelOrderAmount;
+    }
+
+    public List<Detail> getDetails() {
+        return details;
+    }
+
+    public void setDetails(List<Detail> details) {
+        this.details = details;
+    }
+
+    public List<Detail> getCombos() {
+        return combos;
+    }
+
+    public void setCombos(List<Detail> combos) {
+        this.combos = combos;
+    }
+
+    public List<Detail> getAddPrice() {
+        return addPrice;
+    }
+
+    public void setAddPrice(List<Detail> addPrice) {
+        this.addPrice = addPrice;
+    }
+
+    public List<Detail> getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(List<Detail> discount) {
+        this.discount = discount;
+    }
+
+    public List<Detail> getRealPay() {
+        return realPay;
+    }
+
+    public void setRealPay(List<Detail> realPay) {
+        this.realPay = realPay;
+    }
 }

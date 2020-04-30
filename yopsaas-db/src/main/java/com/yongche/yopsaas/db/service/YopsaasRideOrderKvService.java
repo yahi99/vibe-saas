@@ -21,6 +21,9 @@ public class YopsaasRideOrderKvService {
 
     public final static String KEY_ORDER_SNAP = "snap";
 
+    public final static Byte TYPE_NORMAL = 0;
+    public final static Byte TYPE_JSON = 1;
+
     @Resource
     private YopsaasRideOrderKvMapper yopsaasRideOrderKvMapper;
 

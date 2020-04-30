@@ -38,7 +38,7 @@ public class YopsaasRideOrderKv {
      *
      * @mbg.generated
      */
-    private Boolean type;
+    private Byte type;
 
     /**
      *
@@ -138,7 +138,7 @@ public class YopsaasRideOrderKv {
      *
      * @mbg.generated
      */
-    public Boolean getType() {
+    public Byte getType() {
         return type;
     }
 
@@ -150,7 +150,7 @@ public class YopsaasRideOrderKv {
      *
      * @mbg.generated
      */
-    public void setType(Boolean type) {
+    public void setType(Byte type) {
         this.type = type;
     }
 
@@ -279,7 +279,7 @@ public class YopsaasRideOrderKv {
         rideOrderId("ride_order_id", "rideOrderId", "BIGINT", false),
         k("k", "k", "VARCHAR", true),
         v("v", "v", "VARCHAR", false),
-        type("type", "type", "BIT", true),
+        type("type", "type", "TINYINT", true),
         createTime("create_time", "createTime", "INTEGER", false),
         updateTime("update_time", "updateTime", "INTEGER", false);
 

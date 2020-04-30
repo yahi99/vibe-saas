@@ -47,7 +47,7 @@ public class RideOrderKvPo {
         private String parkingAmount;
         private String highwayAmount;
         private String ftDistance;
-        private String ftDistanceDanjia;
+        private String ftDistanceUnitFee;
         private String ftFee;
         private String originAmount;
         private String couponFacevalue;
@@ -63,10 +63,10 @@ public class RideOrderKvPo {
         private String feePerKilo;
         private String kiloFee;
         private String extraDistance;
-        private String extraDistanceDanjia;
+        private String extraDistanceUnitFee;
         private String extraDistanceFee;
         private String extraTime;
-        private String extraTimeDanjia;
+        private String extraTimeUnitFee;
         private String extraTimeFee;
         private String airportServiceAmount;
         private String nightAmount;
@@ -87,7 +87,7 @@ public class RideOrderKvPo {
             this.parkingAmount = "0";
             this.highwayAmount = "0";
             this.ftDistance = "0";
-            this.ftDistanceDanjia = "0";
+            this.ftDistanceUnitFee = "0";
             this.ftFee = "0";
             this.originAmount = "0";
             this.couponFacevalue = "0";
@@ -101,10 +101,10 @@ public class RideOrderKvPo {
             this.feePerKilo = "0";
             this.kiloFee = "0";
             this.extraDistance = "0";
-            this.extraDistanceDanjia = "0";
+            this.extraDistanceUnitFee = "0";
             this.extraDistanceFee = "0";
             this.extraTime = "0";
-            this.extraTimeDanjia = "0";
+            this.extraTimeUnitFee = "0";
             this.extraTimeFee = "0";
             this.airportServiceAmount = "0";
             this.nightAmount = "0";
@@ -167,12 +167,12 @@ public class RideOrderKvPo {
             this.ftDistance = ftDistance;
         }
 
-        public String getFtDistanceDanjia() {
-            return ftDistanceDanjia;
+        public String getFtDistanceUnitFee() {
+            return ftDistanceUnitFee;
         }
 
-        public void setFtDistanceDanjia(String ftDistanceDanjia) {
-            this.ftDistanceDanjia = ftDistanceDanjia;
+        public void setFtDistanceUnitFee(String ftDistanceUnitFee) {
+            this.ftDistanceUnitFee = ftDistanceUnitFee;
         }
 
         public String getFtFee() {
@@ -271,12 +271,12 @@ public class RideOrderKvPo {
             this.extraDistance = extraDistance;
         }
 
-        public String getExtraDistanceDanjia() {
-            return extraDistanceDanjia;
+        public String getExtraDistanceUnitFee() {
+            return extraDistanceUnitFee;
         }
 
-        public void setExtraDistanceDanjia(String extraDistanceDanjia) {
-            this.extraDistanceDanjia = extraDistanceDanjia;
+        public void setExtraDistanceUnitFee(String extraDistanceUnitFee) {
+            this.extraDistanceUnitFee = extraDistanceUnitFee;
         }
 
         public String getExtraDistanceFee() {
@@ -295,12 +295,12 @@ public class RideOrderKvPo {
             this.extraTime = extraTime;
         }
 
-        public String getExtraTimeDanjia() {
-            return extraTimeDanjia;
+        public String getExtraTimeUnitFee() {
+            return extraTimeUnitFee;
         }
 
-        public void setExtraTimeDanjia(String extraTimeDanjia) {
-            this.extraTimeDanjia = extraTimeDanjia;
+        public void setExtraTimeUnitFee(String extraTimeUnitFee) {
+            this.extraTimeUnitFee = extraTimeUnitFee;
         }
 
         public String getExtraTimeFee() {

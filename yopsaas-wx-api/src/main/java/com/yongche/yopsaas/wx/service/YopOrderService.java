@@ -539,6 +539,8 @@ public class YopOrderService {
                 // add task?
             } else {
                 // update order kv
+                this.updateRideOrderkv(rideOrder, feeSnap, orderStatus);
+
                 updateOrder.setEndTime(orderInfo.getEnd_time());
                 BigDecimal amount = BigDecimal.valueOf(Double.valueOf(feeSnap.getOrder_amount()));
                 updateOrder.setOriginAmount(BigDecimal.valueOf(Double.valueOf(feeSnap.getOrigin_amount())));
@@ -562,6 +564,7 @@ public class YopOrderService {
                 // add task?
             } else {
                 // update order kv
+                this.updateRideOrderkv(rideOrder, feeSnap, orderStatus);
                 BigDecimal amount = BigDecimal.valueOf(Double.valueOf(feeSnap.getCancel_order_amount()));
                 if(amount.doubleValue() > 0) {
                     updateOrder.setOriginAmount(amount);
@@ -574,6 +577,73 @@ public class YopOrderService {
 
         int result = rideOrderService.updateByExample(updateOrder, example);
         return ResponseUtil.okCode(result);
+    }
+
+    public int updateRideOrderkv(YopsaasRideOrder rideOrder, EstimateData feeSnap, Byte orderStatus) {
+        YopsaasRideOrderKv rideOrderKv = rideOrderKvService.find(rideOrder.getRideOrderId(), YopsaasRideOrderKvService.KEY_ORDER_SNAP);
+        if(rideOrderKv == null) {
+            // insert
+            rideOrderKv = new YopsaasRideOrderKv();
+            rideOrderKv.setRideOrderId(rideOrder.getRideOrderId());
+            rideOrderKv.setK(YopsaasRideOrderKvService.KEY_ORDER_SNAP);
+            rideOrderKv.setType(YopsaasRideOrderKvService.TYPE_JSON);
+            String v = this.getFeeSnapString(rideOrder.getYcOrderId(), feeSnap, orderStatus);
+            rideOrderKv.setV(v);
+            return rideOrderKvService.add(rideOrderKv);
+        } else {
+            // update
+            YopsaasRideOrderKv updateRideOrderKv = new YopsaasRideOrderKv();
+            String v = this.getFeeSnapString(rideOrder.getYcOrderId(), feeSnap, orderStatus);
+            updateRideOrderKv.setV(v);
+            return rideOrderKvService.update(updateRideOrderKv, rideOrder.getRideOrderId(), YopsaasRideOrderKvService.KEY_ORDER_SNAP);
+        }
+    }
+
+    public String getFeeSnapString(Long ycRideId, EstimateData feeSnap, Byte status) {
+        if(status.equals(YopsaasRideOrderService.ORDER_STATUS_SERVICEEND)) {
+            RideOrderKvPo.SNAP_SERVICEEND snap = new RideOrderKvPo.SNAP_SERVICEEND();
+            snap.setYcOrderId(ycRideId);
+            snap.setActualBoardTime(feeSnap.getActual_board_time());
+            snap.setActualCarType(feeSnap.getActual_car_type());
+            snap.setActualOffTime(feeSnap.getActual_off_time());
+            snap.setActualTimeLength(feeSnap.getActual_time_length());
+            snap.setAdjustFee(feeSnap.getAdjust_fee());
+            snap.setAirportServiceAmount(feeSnap.getAirport_service_amount());
+            snap.setCity(feeSnap.getCity());
+            snap.setCouponFacevalue(feeSnap.getCoupon_facevalue());
+            snap.setExtraDistance(feeSnap.getExtra_distance());
+            snap.setExtraDistanceUnitFee(feeSnap.getExtra_distance_danjia());
+            snap.setExtraDistanceFee(feeSnap.getExtra_distance_fee());
+            snap.setExtraTime(feeSnap.getExtra_time());
+            snap.setExtraTimeFee(feeSnap.getExtra_time_fee());
+            snap.setExtraTimeMinute(feeSnap.getExtra_time_minute());
+            snap.setExtraTimeUnitFee(feeSnap.getExtra_time_danjia());
+            snap.setFeePerHour(feeSnap.getFee_per_hour());
+            snap.setFeePerKilo(feeSnap.getFee_per_kilo());
+            snap.setFeePerMinute(feeSnap.getFee_per_minute());
+            snap.setFixedFee(feeSnap.getFixed_fee());
+            snap.setFtDistance(feeSnap.getKongshi_distance());
+            snap.setFtDistanceUnitFee(feeSnap.getKongshi_distance_danjia());
+            snap.setFtFee(feeSnap.getKongshi_fee());
+            snap.setHighwayAmount(feeSnap.getHighway_amount());
+            snap.setKiloFee(feeSnap.getKilo_fee());
+            snap.setKiloLength(feeSnap.getKilo_length());
+            snap.setNightAmount(feeSnap.getNight_amount());
+            snap.setOrderAmount(feeSnap.getOrder_amount());
+            snap.setOriginAmount(feeSnap.getOrigin_amount());
+            snap.setOtherFee(feeSnap.getOther_fee());
+            snap.setOtherFeeMsg(feeSnap.getOther_fee_msg());
+            snap.setParkingAmount(feeSnap.getParking_amount());
+            snap.setTimeFee(feeSnap.getTime_fee());
+            snap.setTimeLength(feeSnap.getTime_length());
+            snap.setTimeLengthMinute(feeSnap.getTime_length_minute());
+            return JacksonUtil.toJson(snap);
+        } else if(status.equals(YopsaasRideOrderService.ORDER_STATUS_CANCELLED)) {
+            RideOrderKvPo.SNAP_CANCEL snap = new RideOrderKvPo.SNAP_CANCEL();
+            snap.setCancelOrderAmount(feeSnap.getCancel_order_amount());
+            return JacksonUtil.toJson(snap);
+        }
+        return "";
     }
 
     public Object cancel(Integer userId, String body) {

@@ -9,7 +9,7 @@
     <result column="ride_order_id" jdbcType="BIGINT" property="rideOrderId" />
     <result column="k" jdbcType="VARCHAR" property="k" />
     <result column="v" jdbcType="VARCHAR" property="v" />
-    <result column="type" jdbcType="BIT" property="type" />
+    <result column="type" jdbcType="TINYINT" property="type" />
     <result column="create_time" jdbcType="INTEGER" property="createTime" />
     <result column="update_time" jdbcType="INTEGER" property="updateTime" />
   </resultMap>
@@ -150,7 +150,7 @@
       `type`, create_time, update_time
       )
     values (#{rideOrderId,jdbcType=BIGINT}, #{k,jdbcType=VARCHAR}, #{v,jdbcType=VARCHAR}, 
-      #{type,jdbcType=BIT}, #{createTime,jdbcType=INTEGER}, #{updateTime,jdbcType=INTEGER}
+      #{type,jdbcType=TINYINT}, #{createTime,jdbcType=INTEGER}, #{updateTime,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.yongche.yopsaas.db.domain.YopsaasRideOrderKv">
@@ -190,7 +190,7 @@
         #{v,jdbcType=VARCHAR},
       </if>
       <if test="type != null">
-        #{type,jdbcType=BIT},
+        #{type,jdbcType=TINYINT},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=INTEGER},
@@ -227,7 +227,7 @@
         v = #{record.v,jdbcType=VARCHAR},
       </if>
       <if test="record.type != null">
-        `type` = #{record.type,jdbcType=BIT},
+        `type` = #{record.type,jdbcType=TINYINT},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=INTEGER},
@@ -249,7 +249,7 @@
     set ride_order_id = #{record.rideOrderId,jdbcType=BIGINT},
       `k` = #{record.k,jdbcType=VARCHAR},
       v = #{record.v,jdbcType=VARCHAR},
-      `type` = #{record.type,jdbcType=BIT},
+      `type` = #{record.type,jdbcType=TINYINT},
       create_time = #{record.createTime,jdbcType=INTEGER},
       update_time = #{record.updateTime,jdbcType=INTEGER}
     <if test="_parameter != null">

@@ -837,7 +837,8 @@ public class YopOrderService {
         }
 
         // 检测是否能够取消
-        if (rideOrder.getStatus() != 7 && rideOrder.getStatus() != 8) {
+        if (rideOrder.getStatus() != YopsaasRideOrderService.ORDER_STATUS_SERVICEEND
+                && rideOrder.getStatus() != YopsaasRideOrderService.ORDER_STATUS_CANCELLED) {
             return ResponseUtil.fail(ORDER_INVALID_OPERATION, "订单不能支付");
         }
         if (rideOrder.getPayStatus() == YopsaasRideOrderService.PAY_STATUS_NO_NEED

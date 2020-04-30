@@ -267,6 +267,9 @@ public class YopOrderService {
     }
 
     public Object getCurrentAndUnpayOrder(Integer userId) {
+        if (userId == null) {
+            return ResponseUtil.unlogin();
+        }
         Long uid = Long.valueOf(userId);
         List<Byte> orderStatus = new ArrayList<Byte>();
         orderStatus.add(YopsaasRideOrderService.ORDER_STATUS_SERVICEREADY);
@@ -302,6 +305,9 @@ public class YopOrderService {
     }
 
     public Object getOrderList(Integer userId, int showType, int page, int limit, String sort, String order) {
+        if (userId == null) {
+            return ResponseUtil.unlogin();
+        }
         List<Byte> status = null;
         List<Byte> payStatus = null;
         if(showType == 1) {
@@ -339,6 +345,9 @@ public class YopOrderService {
     }
 
     public Object getStatus(Integer userId, Long rideOrderId) {
+        if (userId == null) {
+            return ResponseUtil.unlogin();
+        }
         if(rideOrderId != null) {
             YopsaasRideOrder rideOrder = rideOrderService.findById(rideOrderId);
             if(rideOrder != null) {
@@ -360,6 +369,9 @@ public class YopOrderService {
     }
 
     public Object getOrderInfo(Integer userId, Long rideOrderId) {
+        if (userId == null) {
+            return ResponseUtil.unlogin();
+        }
         if(rideOrderId != null) {
             YopsaasRideOrder rideOrder = rideOrderService.findById(rideOrderId);
             if(rideOrder != null) {
@@ -647,6 +659,9 @@ public class YopOrderService {
     }
 
     public Object cancel(Integer userId, String body) {
+        if (userId == null) {
+            return ResponseUtil.unlogin();
+        }
         Long rideOrderId = JacksonUtil.parseLong(body, "ride_order_id");
         if(rideOrderId != null) {
             YopsaasRideOrder rideOrder = rideOrderService.findById(rideOrderId);
@@ -684,6 +699,9 @@ public class YopOrderService {
     }
 
     public Object getCancelOrderFee(Integer userId, Long rideOrderId) {
+        if (userId == null) {
+            return ResponseUtil.unlogin();
+        }
         if(rideOrderId != null) {
             YopsaasRideOrder rideOrder = rideOrderService.findById(rideOrderId);
             if (rideOrder != null) {
@@ -707,6 +725,9 @@ public class YopOrderService {
     }
 
     public Object getOrderTrack(Integer userId, Long rideOrderId) {
+        if (userId == null) {
+            return ResponseUtil.unlogin();
+        }
         if(rideOrderId != null) {
             YopsaasRideOrder rideOrder = rideOrderService.findById(rideOrderId);
             if (rideOrder != null) {
@@ -730,6 +751,9 @@ public class YopOrderService {
     }
 
     public Object getDriverLocation(Integer userId, Long rideOrderId) {
+        if (userId == null) {
+            return ResponseUtil.unlogin();
+        }
         if(rideOrderId != null) {
             YopsaasRideOrder rideOrder = rideOrderService.findById(rideOrderId);
             if (rideOrder != null) {
@@ -753,6 +777,9 @@ public class YopOrderService {
     }
 
     public Object getCostDetail(Integer userId, Long rideOrderId) {
+        if (userId == null) {
+            return ResponseUtil.unlogin();
+        }
         if(rideOrderId != null) {
             YopsaasRideOrder rideOrder = rideOrderService.findById(rideOrderId);
             if (rideOrder != null) {

@@ -1,17 +1,20 @@
 package com.yongche.yopsaas.wx.service;
 
-import com.ridegroup.yop.api.OrderAPI;
+import com.github.binarywang.wxpay.bean.order.WxPayMpOrderResult;
+import com.github.binarywang.wxpay.bean.request.WxPayUnifiedOrderRequest;
+import com.github.binarywang.wxpay.service.WxPayService;
 import com.ridegroup.yop.bean.BaseResult;
 import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.driver.DriverInfo;
 import com.ridegroup.yop.bean.order.*;
-import com.yongche.yopsaas.core.system.SystemConfig;
 import com.yongche.yopsaas.core.task.TaskService;
+import com.yongche.yopsaas.core.util.IpUtil;
 import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.yop.OrderService;
 import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
+import com.yongche.yopsaas.db.util.IdGeneratorUtil;
 import com.yongche.yopsaas.wx.dto.RideOrderSnap;
 import com.yongche.yopsaas.wx.task.RideOrderDecisionDriver;
 import com.yongche.yopsaas.wx.task.RideOrderUnchooseCarTask;
@@ -24,11 +27,9 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.*;
 
 import static com.yongche.yopsaas.wx.util.WxResponseCode.*;
-import static com.yongche.yopsaas.wx.util.WxResponseCode.GROUPON_JOIN;
 
 @Service
 public class YopOrderService {
@@ -45,9 +46,13 @@ public class YopOrderService {
     @Autowired
     private YopsaasRideDriverService rideDriverService;
     @Autowired
+    private YopsaasRideOrderTransactionHistoryService rideOrderTransactionHistoryService;
+    @Autowired
     private TaskService taskService;
     @Autowired
     private YopsaasUserService userService;
+    @Autowired
+    private WxPayService wxPayService;
 
     /**
      * 提交订单
@@ -800,6 +805,96 @@ public class YopOrderService {
         } else {
             return ResponseUtil.badArgument();
         }
+    }
+
+    /**
+     * 付款订单的预支付会话标识
+     * <p>
+     * 1. 检测当前订单是否能够付款
+     * 2. 微信商户平台返回支付订单ID
+     * 3. 设置订单付款状态
+     *
+     * @param userId 用户ID
+     * @param body   订单信息，{ rideOrderId：xxx }
+     * @return 支付订单ID
+     */
+    @Transactional
+    public Object prepay(Integer userId, String body, HttpServletRequest request) {
+        if (userId == null) {
+            return ResponseUtil.unlogin();
+        }
+        Long rideOrderId = JacksonUtil.parseLong(body, "rideOrderId");
+        if (rideOrderId == null) {
+            return ResponseUtil.badArgument();
+        }
+
+        YopsaasRideOrder rideOrder = rideOrderService.findById(userId.longValue(), rideOrderId);
+        if (rideOrder == null) {
+            return ResponseUtil.badArgumentValue();
+        }
+        if (!rideOrder.getUserId().equals(userId.longValue())) {
+            return ResponseUtil.badArgumentValue();
+        }
+
+        // 检测是否能够取消
+        if (rideOrder.getStatus() != 7 && rideOrder.getStatus() != 8) {
+            return ResponseUtil.fail(ORDER_INVALID_OPERATION, "订单不能支付");
+        }
+        if (rideOrder.getPayStatus() == YopsaasRideOrderService.PAY_STATUS_NO_NEED
+                || rideOrder.getPayStatus() == YopsaasRideOrderService.PAY_STATUS_OFF) {
+            return ResponseUtil.fail(ORDER_INVALID_OPERATION, "订单无需支付");
+        }
+
+        YopsaasUser user = userService.findById(userId);
+        String openid = user.getWeixinOpenid();
+        if (openid == null) {
+            return ResponseUtil.fail(AUTH_OPENID_UNACCESS, "请使用微信登录支付");
+        }
+        WxPayMpOrderResult result = null;
+        try {
+            Long rechargeTransactionId = IdGeneratorUtil.getLongGuid();
+            String outTradeNo = "RIDE_" + rechargeTransactionId;
+            // 元转成分
+            int fee = 0;
+            BigDecimal actualPrice = rideOrder.getPayAmount();
+            fee = actualPrice.multiply(new BigDecimal(100)).intValue();
+            if(fee == 0) {
+                return ResponseUtil.fail(ORDER_INVALID_OPERATION, "订单无需支付");
+            }
+            // yopsaas_ride_order_transaction_history
+            YopsaasRideOrderTransactionHistory orderTransactionHistory = new YopsaasRideOrderTransactionHistory();
+            orderTransactionHistory.setAccountId(userId.longValue());
+            orderTransactionHistory.setRideOrderId(rideOrderId);
+            orderTransactionHistory.setAmount(fee);
+            orderTransactionHistory.setComment("网约车订单");
+            orderTransactionHistory.setOperation(YopsaasRideOrderTransactionHistoryService.OPERATION_PAY);
+            orderTransactionHistory.setPaySource(YopsaasRideOrderTransactionHistoryService.PAY_SOURCE_WECHAT);
+            orderTransactionHistory.setPayType(YopsaasRideOrderTransactionHistoryService.PAY_TYPE_WECHAT);
+            orderTransactionHistory.setRechargeTransactionId(rechargeTransactionId);
+            orderTransactionHistory.setStatus(YopsaasRideOrderTransactionHistoryService.PAY_STATUS_PASS);
+            orderTransactionHistory.setTransactionType(YopsaasRideOrderTransactionHistoryService.TRANSACTION_TYPE_ORDER);
+            rideOrderTransactionHistoryService.add(orderTransactionHistory);
+
+            rideOrder.setWxOrderSn(outTradeNo);
+
+            WxPayUnifiedOrderRequest orderRequest = new WxPayUnifiedOrderRequest();
+            orderRequest.setOutTradeNo(outTradeNo);
+            orderRequest.setOpenid(openid);
+            orderRequest.setBody("网约车订单：" + outTradeNo);
+
+            orderRequest.setTotalFee(fee);
+            orderRequest.setSpbillCreateIp(IpUtil.getIpAddr(request));
+
+            result = wxPayService.createOrder(orderRequest);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseUtil.fail(ORDER_PAY_FAIL, "订单不能支付");
+        }
+
+        if (rideOrderService.updateWithOptimisticLocker(rideOrder) == 0) {
+            return ResponseUtil.updatedDateExpired();
+        }
+        return ResponseUtil.ok(result);
     }
 
     public AcceptedDriver getSelectDriver(String orderId, String driverIds) {

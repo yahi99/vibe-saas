@@ -696,6 +696,8 @@ public class WxOrderService {
         String orderSn = result.getOutTradeNo();
         String payId = result.getTransactionId();
 
+        // TODO process ride order
+
         // 分转化成元
         String totalFee = BaseWxPayResult.fenToYuan(result.getTotalFee());
         YopsaasOrder order = orderService.findBySn(orderSn);

@@ -204,4 +204,16 @@ public class WxYopOrderController {
     public Object getCostDetail(@LoginUser Integer userId, @RequestParam(defaultValue = "1", name = "ride_order_id") Long rideOrderId) {
         return yopOrderService.getCostDetail(userId, rideOrderId);
     }
+
+    /**
+     * 付款订单的预支付会话标识
+     *
+     * @param userId 用户ID
+     * @param body   订单信息，{ rideOrderId：xxx }
+     * @return 支付订单ID
+     */
+    @PostMapping("prepay")
+    public Object prepay(@LoginUser Integer userId, @RequestBody String body, HttpServletRequest request) {
+        return yopOrderService.prepay(userId, body, request);
+    }
 }

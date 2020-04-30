@@ -213,7 +213,7 @@ create table if not exists yopsaas_ride_order_transaction_history(
   `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`ride_order_transaction_history_id`),
-  KEY `idx_recharge_transaction_id` (`recharge_transaction_id`),
+  UNIQUE KEY `idx_recharge_transaction_id` (`recharge_transaction_id`),
   KEY `idx_consumer_id` (`consumer_id`),
   KEY `idx_account_id` (`account_id`),
   KEY `idx_ride_order_id` (`ride_order_id`),

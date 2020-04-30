@@ -95,7 +95,7 @@ public class YopsaasRideDriverService {
         return yopsaasRideDriverMapper.selectByExample(example);
     }
 
-    public void deleteById(Long rideOrderDispatchId) {
+    public void deleteById(Long rideDriverId) {
         //not support
     }
 }

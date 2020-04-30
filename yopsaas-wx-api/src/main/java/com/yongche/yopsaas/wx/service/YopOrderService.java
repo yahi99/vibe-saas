@@ -890,7 +890,7 @@ public class YopOrderService {
             result = wxPayService.createOrder(orderRequest);
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseUtil.fail(ORDER_PAY_FAIL, "订单不能支付");
+            return ResponseUtil.fail(ORDER_PAY_FAIL, "订单不能支付[wx]");
         }
 
         if (rideOrderService.updateWithOptimisticLocker(rideOrder) == 0) {

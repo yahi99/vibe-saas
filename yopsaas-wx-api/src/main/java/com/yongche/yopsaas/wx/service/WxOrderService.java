@@ -756,7 +756,7 @@ public class WxOrderService {
         notifyService.notifySmsTemplateSync(order.getMobile(), NotifyType.PAY_SUCCEED, new String[]{orderSn.substring(8, 14)});
 
         // 请依据自己的模版消息配置更改参数
-        String[] parms = new String[]{
+        String[] params = new String[]{
                 order.getOrderSn(),
                 order.getOrderPrice().toString(),
                 DateTimeUtil.getDateTimeDisplayString(order.getAddTime()),

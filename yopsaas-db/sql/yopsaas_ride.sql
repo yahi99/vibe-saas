@@ -103,8 +103,8 @@ create table if not exists yopsaas_ride_order(
   `origin_sharing_amount` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '司机统计金额',
   `sharing_amount` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '服务结束后，给司机的费用',
 
-  `wx_order_sn` varchar(63) NOT NULL default '' COMMENT '微信订单编号',
-  `pay_id` varchar(63) NOT NULL DEFAULT '' COMMENT '微信付款编号',
+  `wx_order_sn` varchar(32) NOT NULL default '' COMMENT '微信订单编号',
+  `pay_id` varchar(32) NOT NULL DEFAULT '' COMMENT '微信付款编号',
   `refund_amount` decimal(10,2) NOT NULL DEFAULT 0 COMMENT '实际退款金额，（有可能退款金额小于实际支付金额）',
   `refund_type` varchar(63) NOT NULL DEFAULT 0 COMMENT '退款方式',
   `refund_content` varchar(127) NOT NULL DEFAULT '' COMMENT '退款备注',

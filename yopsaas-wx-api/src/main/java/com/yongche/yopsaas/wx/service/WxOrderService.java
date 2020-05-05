@@ -107,6 +107,8 @@ public class WxOrderService {
     private TaskService taskService;
     @Autowired
     private YopsaasAftersaleService aftersaleService;
+    @Autowired
+    private YopOrderService rideOrderService;
 
     /**
      * 订单列表
@@ -697,6 +699,9 @@ public class WxOrderService {
         String payId = result.getTransactionId();
 
         // TODO process ride order
+        if(orderSn.contains("RIDE_")) {
+            return rideOrderService.payNotify(result);
+        }
 
         // 分转化成元
         String totalFee = BaseWxPayResult.fenToYuan(result.getTotalFee());

@@ -1,21 +1,30 @@
 package com.yongche.yopsaas.wx.service;
 
+import com.github.binarywang.wxpay.bean.notify.WxPayNotifyResponse;
+import com.github.binarywang.wxpay.bean.notify.WxPayOrderNotifyResult;
 import com.github.binarywang.wxpay.bean.order.WxPayMpOrderResult;
 import com.github.binarywang.wxpay.bean.request.WxPayUnifiedOrderRequest;
+import com.github.binarywang.wxpay.bean.result.BaseWxPayResult;
 import com.github.binarywang.wxpay.service.WxPayService;
 import com.ridegroup.yop.bean.BaseResult;
 import com.ridegroup.yop.bean.BaseResultT;
 import com.ridegroup.yop.bean.driver.DriverInfo;
 import com.ridegroup.yop.bean.order.*;
+import com.yongche.yopsaas.core.notify.NotifyService;
+import com.yongche.yopsaas.core.notify.NotifyType;
 import com.yongche.yopsaas.core.task.TaskService;
+import com.yongche.yopsaas.core.util.DateTimeUtil;
 import com.yongche.yopsaas.core.util.IpUtil;
 import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.yop.OrderService;
 import com.yongche.yopsaas.db.domain.*;
 import com.yongche.yopsaas.db.service.*;
+import com.yongche.yopsaas.db.util.GrouponConstant;
 import com.yongche.yopsaas.db.util.IdGeneratorUtil;
+import com.yongche.yopsaas.db.util.OrderUtil;
 import com.yongche.yopsaas.wx.dto.RideOrderSnap;
+import com.yongche.yopsaas.wx.task.OrderUnpaidTask;
 import com.yongche.yopsaas.wx.task.RideOrderDecisionDriver;
 import com.yongche.yopsaas.wx.task.RideOrderUnchooseCarTask;
 import org.apache.commons.logging.Log;
@@ -25,8 +34,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.*;
 
 import static com.yongche.yopsaas.wx.util.WxResponseCode.*;
@@ -53,6 +66,8 @@ public class YopOrderService {
     private YopsaasUserService userService;
     @Autowired
     private WxPayService wxPayService;
+    @Autowired
+    private NotifyService notifyService;
 
     /**
      * 提交订单
@@ -897,6 +912,76 @@ public class YopOrderService {
             return ResponseUtil.updatedDateExpired();
         }
         return ResponseUtil.ok(result);
+    }
+
+    @Transactional
+    public Object payNotify(HttpServletRequest request, HttpServletResponse response) {
+        return ResponseUtil.ok();
+    }
+
+    @Transactional
+    public Object payNotify(WxPayOrderNotifyResult result) {
+        logger.info("网约车-处理腾讯支付平台的订单支付");
+        logger.info(result);
+
+        String orderSn = result.getOutTradeNo();
+        String payId = result.getTransactionId();
+
+        Long rechargeTransactionId = Long.valueOf(orderSn.replace("RIDE_", ""));
+
+        YopsaasRideOrderTransactionHistory orderTransactionHistory = rideOrderTransactionHistoryService.findByTransactionId(rechargeTransactionId);
+        if(orderTransactionHistory == null) {
+            return WxPayNotifyResponse.fail("交易记录不存在 sn=" + orderSn);
+        }
+        Long rideOrderId = orderTransactionHistory.getRideOrderId();
+        YopsaasRideOrder rideOrder = rideOrderService.findById(rideOrderId);
+        // 分转化成元
+        String totalFee = BaseWxPayResult.fenToYuan(result.getTotalFee());
+        if (rideOrder == null) {
+            return WxPayNotifyResponse.fail("订单不存在 sn=" + orderSn);
+        }
+
+        // 检查这个订单是否已经处理过
+        if (rideOrder.getPayStatus() == YopsaasRideOrderService.PAY_STATUS_OFF) {
+            return WxPayNotifyResponse.success("订单已经处理成功!");
+        }
+
+        // 检查支付订单金额
+        if (!totalFee.equals(rideOrder.getPayAmount().toString())) {
+            return WxPayNotifyResponse.fail(rideOrder.getWxOrderSn() + " : 支付金额不符合 totalFee=" + totalFee);
+        }
+
+        rideOrder.setPayId(payId);
+        int time = YopsaasRideOrderService.getSecondTimestamp(new Date());
+        rideOrder.setPayTime(time);
+        rideOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_OFF);
+        if (rideOrderService.updateWithOptimisticLocker(rideOrder) == 0) {
+            return WxPayNotifyResponse.fail("更新数据已失效");
+        }
+
+        //TODO 发送邮件和短信通知，这里采用异步发送
+        // 订单支付成功以后，会发送短信给用户，以及发送邮件给管理员
+        notifyService.notifyMail("新订单通知", rideOrder.toString());
+        // 这里微信的短信平台对参数长度有限制，所以将订单号只截取后6位
+        notifyService.notifySmsTemplateSync(rideOrder.getPassengerPhone(), NotifyType.PAY_SUCCEED, new String[]{orderSn.substring(8, 14)});
+
+        Date date = new Date(Long.valueOf(rideOrder.getCreateTime()) * 1000);
+        LocalDateTime ldt = date.toInstant()
+                .atZone( ZoneId.systemDefault() )
+                .toLocalDateTime();
+        // 请依据自己的模版消息配置更改参数
+        String[] params = new String[]{
+                rideOrder.getWxOrderSn(),
+                rideOrder.getTotalAmount().toString(),
+                DateTimeUtil.getDateTimeDisplayString(ldt),
+                rideOrder.getPassengerPhone(),
+                rideOrder.getPassengerName()
+        };
+
+        // 取消订单超时未支付任务
+        //taskService.removeTask(new OrderUnpaidTask(order.getId()));
+
+        return WxPayNotifyResponse.success("处理成功!");
     }
 
     public AcceptedDriver getSelectDriver(String orderId, String driverIds) {

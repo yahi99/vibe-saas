@@ -15,6 +15,15 @@ public class TestUtilTest {
     }
 
     @Test
+    public void testString() {
+        String orderSn = "RIDE_1";
+        System.out.println(orderSn.indexOf("RIDE_"));
+        System.out.println(orderSn.indexOf("TEST_"));
+        System.out.println(orderSn.contains("RIDE_"));
+        System.out.println(orderSn.contains("TEST_"));
+    }
+
+    @Test
     public void testObject() {
         RideOrderSnap snap = new RideOrderSnap();
         snap.setKiloFee("10");

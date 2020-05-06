@@ -1,7 +1,9 @@
 package com.yongche.yopsaas.core.util;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  * 日期格式化工具类
@@ -19,5 +21,13 @@ public class DateTimeUtil {
         String strDate2 = dtf2.format(dateTime);
 
         return strDate2;
+    }
+
+    public static String getDateTimeDisplayString(Integer time) {
+        Date date = new Date(Long.valueOf(time) * 1000);
+        LocalDateTime ldt = date.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime();
+        return DateTimeUtil.getDateTimeDisplayString(ldt);
     }
 }

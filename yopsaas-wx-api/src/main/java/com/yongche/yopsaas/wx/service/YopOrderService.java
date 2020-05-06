@@ -971,15 +971,11 @@ public class YopOrderService {
         // 这里微信的短信平台对参数长度有限制，所以将订单号只截取后6位
         notifyService.notifySmsTemplateSync(rideOrder.getPassengerPhone(), NotifyType.PAY_SUCCEED, new String[]{orderSn.substring(8, 14)});
 
-        Date date = new Date(Long.valueOf(rideOrder.getCreateTime()) * 1000);
-        LocalDateTime ldt = date.toInstant()
-                .atZone( ZoneId.systemDefault() )
-                .toLocalDateTime();
         // 请依据自己的模版消息配置更改参数
         String[] params = new String[]{
                 rideOrder.getWxOrderSn(),
                 rideOrder.getTotalAmount().toString(),
-                DateTimeUtil.getDateTimeDisplayString(ldt),
+                DateTimeUtil.getDateTimeDisplayString(rideOrder.getCreateTime()),
                 rideOrder.getPassengerPhone(),
                 rideOrder.getPassengerName()
         };

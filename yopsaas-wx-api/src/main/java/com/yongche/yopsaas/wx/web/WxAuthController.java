@@ -141,7 +141,7 @@ public class WxAuthController {
         YopsaasUser user = userService.queryByOid(openId);
         if (user == null) {
             user = new YopsaasUser();
-            user.setUsername(openId);
+            user.setUsername(userInfo.getNickName());
             user.setPassword(openId);
             user.setWeixinOpenid(openId);
             user.setAvatar(userInfo.getAvatarUrl());

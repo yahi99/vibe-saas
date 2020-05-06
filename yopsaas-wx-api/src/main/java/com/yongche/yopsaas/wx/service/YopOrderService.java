@@ -701,12 +701,21 @@ public class YopOrderService {
                     YopsaasRideOrder updateOrder = new YopsaasRideOrder();
                     updateOrder.setRideOrderId(rideOrderId);
                     updateOrder.setStatus(YopsaasRideOrderService.ORDER_STATUS_CANCELLED);
-                    if(cancelOrder.getResult().getFee() > 0) {
-                        updateOrder.setPayable(YopsaasRideOrderService.PAYABLE_ALLOW);
-                        updateOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_NONE);
-                        updateOrder.setOriginAmount(BigDecimal.valueOf(cancelOrder.getResult().getFee()));
-                        updateOrder.setTotalAmount(BigDecimal.valueOf(cancelOrder.getResult().getFee()));
-                        updateOrder.setPayAmount(BigDecimal.valueOf(cancelOrder.getResult().getFee()));
+
+                    EstimateData feeSnap = orderService.getCostDetail(ycOrderId);
+                    if(feeSnap == null) {
+                        // add task?
+                    } else {
+                        // update order kv
+                        this.updateRideOrderkv(rideOrder, feeSnap, YopsaasRideOrderService.ORDER_STATUS_CANCELLED);
+                        BigDecimal amount = BigDecimal.valueOf(Double.valueOf(feeSnap.getCancel_order_amount()));
+                        if(amount.doubleValue() > 0) {
+                            updateOrder.setPayable(YopsaasRideOrderService.PAYABLE_ALLOW);
+                            updateOrder.setOriginAmount(amount);
+                            updateOrder.setTotalAmount(amount);
+                            updateOrder.setPayAmount(amount);
+                            updateOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_NONE);
+                        }
                     }
                     // TODO reason
                     updateOrder.setReasonId(YopsaasRideOrderService.REASON_CHANGE_INFO_REORDER);

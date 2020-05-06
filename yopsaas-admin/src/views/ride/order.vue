@@ -49,7 +49,11 @@
 
       <el-table-column align="center" label="订单金额" prop="totalAmount" />
       <el-table-column align="center" label="支付金额" prop="deposit" />
-      <el-table-column align="center" label="支付时间" prop="payTime" />
+      <el-table-column align="center" label="支付时间" prop="payTime">
+        <template slot-scope="scope">
+          {{ scope.row.payTime | timeFilter }}
+        </template>
+      </el-table-column>
 
       <el-table-column align="center" label="操作" width="160" class-name="small-padding fixed-width">
         <template slot-scope="scope">

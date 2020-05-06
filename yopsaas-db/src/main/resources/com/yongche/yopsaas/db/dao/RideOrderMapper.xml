@@ -5,9 +5,9 @@
         update yopsaas_ride_order
         <set>
             <if test="order.rideOrderId != null">
-                ride_order_id = #{order.rideOrderId,jdbcType=LONG},
+                ride_order_id = #{order.rideOrderId,jdbcType=BIGINT},
             </if>
         </set>
-        where ride_order_id = #{order.rideOrderId,jdbcType=LONG} and update_time = #{lastUpdateTime,jdbcType=INTEGER}
+        where ride_order_id = #{order.rideOrderId,jdbcType=BIGINT} and update_time = #{lastUpdateTime,jdbcType=INTEGER}
     </update>
 </mapper>

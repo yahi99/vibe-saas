@@ -62,65 +62,68 @@ public class RideOrderDecisionDriver extends Task {
                 }
                 selectDriver = yopOrderService.getSelectDriver(this.ycOrderId, driverIds);
 
-                logger.debug(JacksonUtil.toJson(selectDriver));
-                if(selectDriver.getWait_driver_time_length() <= 0
-                        && selectDriver.getWait_user_time_length() <= 0) {
-                    hasDriver = false;
-                    break;
-                }
-                if(selectDriver.getCarlist().size() > 0) {
-                    hasDriver = true;
-                    for(int i = 0 ; i < selectDriver.getCarlist().size() ; i++) {
-                        AcceptedDriver.Driver driver = selectDriver.getCarlist().get(i);
-                        YopsaasRideOrderDispatch orderDispatch = new YopsaasRideOrderDispatch();
-                        orderDispatch.setRideOrderId(rideOrderId);
-                        orderDispatch.setDriverId(driver.getDriver_id());
-                        orderDispatch.setName(driver.getName());
-                        orderDispatch.setScore(driver.getScore());
-                        orderDispatch.setPhoto(driver.getPhoto());
-                        orderDispatch.setBrand(driver.getBrand());
-                        orderDispatch.setCarType(driver.getCar_type());
-                        orderDispatch.setCarTypeId(driver.getCar_type_id());
-                        orderDispatch.setGoodCommentRate(driver.getGood_comment_rate());
-                        orderDispatch.setIsDefault(Short.valueOf(String.valueOf(driver.getIs_default())));
-                        orderDispatch.setIsServed(Short.valueOf(String.valueOf(driver.getIs_served())));
-                        orderDispatch.setLatitude(driver.getLatitude());
-                        orderDispatch.setLongitude(driver.getLongitude());
-                        orderDispatch.setUnittimeCompleteCount(driver.getUnittime_complete_count());
-                        orderDispatch.setCreateTime(YopOrderService.getTimestamp());
-                        logger.debug("RideOrderDecisionDriver hasDecision:" + hasDecision);
-                        driverIds += driver.getDriver_id() + ",";
-                        if(!hasDecision) {
-                            decisionDriverId = "";
-                            if(userId.intValue() == 1) {
-                                logger.debug("RideOrderDecisionDriver userId:" + userId);
-                                if(driver.getDriver_id() == 52968) {
-                                    logger.debug("RideOrderDecisionDriver driverId:" + driver.getDriver_id());
-                                    decisionDriverId = String.valueOf(driver.getDriver_id());
-                                }
-                            } else {
-                                logger.debug("RideOrderDecisionDriver userId is " + userId);
-                                decisionDriverId = String.valueOf(driver.getDriver_id());
-                            }
-                            logger.debug("RideOrderDecisionDriver decisionDriverId:" + decisionDriverId);
-                            if(!decisionDriverId.equals("")) {
-                                logger.debug("RideOrderDecisionDriver decisionDriver");
-                                // check order status
-                                BaseResult decisionResult = yopOrderService.decisionDriver(ycOrderId, decisionDriverId);
-                                logger.debug(JacksonUtil.toJson(decisionResult));
-                                if(decisionResult.getCode().equals("200")) {
-                                    hasDecision = true;
-                                    orderDispatch.setStatus(RideOrderDispatchUtil.STATUS_SELECTED);
-                                }
-                            }
-                        }
-                        rideOrderDispatchService.add(orderDispatch);
-                    }
-
-                    if(hasDecision) {
+                if(selectDriver != null) {
+                    logger.debug(JacksonUtil.toJson(selectDriver));
+                    if(selectDriver.getWait_driver_time_length() <= 0
+                            && selectDriver.getWait_user_time_length() <= 0) {
+                        hasDriver = false;
                         break;
                     }
+                    if(selectDriver.getCarlist().size() > 0) {
+                        hasDriver = true;
+                        for(int i = 0 ; i < selectDriver.getCarlist().size() ; i++) {
+                            AcceptedDriver.Driver driver = selectDriver.getCarlist().get(i);
+                            YopsaasRideOrderDispatch orderDispatch = new YopsaasRideOrderDispatch();
+                            orderDispatch.setRideOrderId(rideOrderId);
+                            orderDispatch.setDriverId(driver.getDriver_id());
+                            orderDispatch.setName(driver.getName());
+                            orderDispatch.setScore(driver.getScore());
+                            orderDispatch.setPhoto(driver.getPhoto());
+                            orderDispatch.setBrand(driver.getBrand());
+                            orderDispatch.setCarType(driver.getCar_type());
+                            orderDispatch.setCarTypeId(driver.getCar_type_id());
+                            orderDispatch.setGoodCommentRate(driver.getGood_comment_rate());
+                            orderDispatch.setIsDefault(Short.valueOf(String.valueOf(driver.getIs_default())));
+                            orderDispatch.setIsServed(Short.valueOf(String.valueOf(driver.getIs_served())));
+                            orderDispatch.setLatitude(driver.getLatitude());
+                            orderDispatch.setLongitude(driver.getLongitude());
+                            orderDispatch.setUnittimeCompleteCount(driver.getUnittime_complete_count());
+                            orderDispatch.setCreateTime(YopOrderService.getTimestamp());
+                            logger.debug("RideOrderDecisionDriver hasDecision:" + hasDecision);
+                            driverIds += driver.getDriver_id() + ",";
+                            if(!hasDecision) {
+                                decisionDriverId = "";
+                                if(userId.intValue() == 1) {
+                                    logger.debug("RideOrderDecisionDriver userId:" + userId);
+                                    if(driver.getDriver_id() == 52968) {
+                                        logger.debug("RideOrderDecisionDriver driverId:" + driver.getDriver_id());
+                                        decisionDriverId = String.valueOf(driver.getDriver_id());
+                                    }
+                                } else {
+                                    logger.debug("RideOrderDecisionDriver userId is " + userId);
+                                    decisionDriverId = String.valueOf(driver.getDriver_id());
+                                }
+                                logger.debug("RideOrderDecisionDriver decisionDriverId:" + decisionDriverId);
+                                if(!decisionDriverId.equals("")) {
+                                    logger.debug("RideOrderDecisionDriver decisionDriver");
+                                    // check order status
+                                    BaseResult decisionResult = yopOrderService.decisionDriver(ycOrderId, decisionDriverId);
+                                    logger.debug(JacksonUtil.toJson(decisionResult));
+                                    if(decisionResult.getCode().equals("200")) {
+                                        hasDecision = true;
+                                        orderDispatch.setStatus(RideOrderDispatchUtil.STATUS_SELECTED);
+                                    }
+                                }
+                            }
+                            rideOrderDispatchService.add(orderDispatch);
+                        }
+
+                        if(hasDecision) {
+                            break;
+                        }
+                    }
                 }
+
                 num += 2;
                 Thread.sleep(2000);
             }

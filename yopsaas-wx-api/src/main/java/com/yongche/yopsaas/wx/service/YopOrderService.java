@@ -701,6 +701,7 @@ public class YopOrderService {
                         updateOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_NONE);
                         updateOrder.setOriginAmount(BigDecimal.valueOf(cancelOrder.getResult().getFee()));
                         updateOrder.setTotalAmount(BigDecimal.valueOf(cancelOrder.getResult().getFee()));
+                        updateOrder.setPayAmount(BigDecimal.valueOf(cancelOrder.getResult().getFee()));
                     }
                     // TODO reason
                     updateOrder.setReasonId(YopsaasRideOrderService.REASON_CHANGE_INFO_REORDER);

@@ -2,6 +2,7 @@ package com.yongche.yopsaas.wx.web;
 
 import com.ridegroup.yop.api.BaseAPI;
 import com.ridegroup.yop.bean.BaseResultT;
+import com.ridegroup.yop.bean.price.PriceNew;
 import com.ridegroup.yop.bean.toft.AvailableService;
 import com.ridegroup.yop.bean.toft.Estimated;
 import com.yongche.yopsaas.core.util.JacksonUtil;
@@ -111,5 +112,21 @@ public class WxYopToftController {
     @GetMapping("getAvailableService")
     public Object getAvailableService() {
         return yopToftService.getAvailableService();
+    }
+
+    /**
+     * 价格数据
+     *
+     * @param city 城市
+     * @param productType 产品类型
+     * @param productType 产品类型
+     * @return 价格数据
+     */
+    @GetMapping("getPrice")
+    public Object getPrice(@RequestParam(defaultValue = "bj") String city,
+                        @RequestParam(defaultValue = "17", name = "product_type") String productType,
+                        @RequestParam(defaultValue = "PEK", name = "airport_code") String airPortCode ) {
+
+        return yopToftService.getPrice(city, productType, airPortCode);
     }
 }

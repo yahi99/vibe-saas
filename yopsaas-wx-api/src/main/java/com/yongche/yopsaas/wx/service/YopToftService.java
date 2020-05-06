@@ -2,6 +2,7 @@ package com.yongche.yopsaas.wx.service;
 
 import com.ridegroup.yop.api.BaseAPI;
 import com.ridegroup.yop.bean.BaseResultT;
+import com.ridegroup.yop.bean.price.PriceNew;
 import com.ridegroup.yop.bean.toft.AvailableService;
 import com.ridegroup.yop.bean.toft.Estimated;
 import com.yongche.yopsaas.core.util.JacksonUtil;
@@ -90,6 +91,15 @@ public class YopToftService {
 
     public Object getAvailableService() {
         BaseResultT<Map<String, AvailableService>> data = this.toftService.getAvailableService();
+        if(data.getCode().equals("200")) {
+            return ResponseUtil.ok(data.getResult());
+        } else {
+            return ResponseUtil.fail(Integer.valueOf(data.getCode()), data.getMsg());
+        }
+    }
+
+    public Object getPrice(String city, String productType, String airCode) {
+        PriceNew data = this.toftService.getPrice(city, productType, airCode);
         if(data.getCode().equals("200")) {
             return ResponseUtil.ok(data.getResult());
         } else {

@@ -2,6 +2,7 @@ package com.yongche.yopsaas.core.yop;
 
 import com.ridegroup.yop.api.ToftAPI;
 import com.ridegroup.yop.bean.BaseResultT;
+import com.ridegroup.yop.bean.price.PriceNew;
 import com.ridegroup.yop.bean.toft.AvailableService;
 import com.ridegroup.yop.bean.toft.Estimated;
 
@@ -32,5 +33,10 @@ public class ToftService extends BaseService {
     public BaseResultT<Map<String, AvailableService>> getAvailableService() {
         String accessToken = this.getProperties().getAccessToken();
         return ToftAPI.getAvailableService(accessToken);
+    }
+
+    public PriceNew getPrice(String city, String productType, String airCode) {
+        String accessToken = this.getProperties().getAccessToken();
+        return ToftAPI.getPrice(accessToken, city, productType, airCode);
     }
 }

@@ -2,10 +2,12 @@ package com.yongche.yopsaas.wx.web;
 
 import com.ridegroup.yop.api.BaseAPI;
 import com.ridegroup.yop.bean.BaseResultT;
+import com.ridegroup.yop.bean.toft.AvailableService;
 import com.ridegroup.yop.bean.toft.Estimated;
 import com.yongche.yopsaas.core.util.JacksonUtil;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.core.yop.ToftService;
+import com.yongche.yopsaas.wx.service.YopToftService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,8 @@ public class WxYopToftController {
 
     @Autowired
     private ToftService toftService;
+    @Autowired
+    private YopToftService yopToftService;
 
     /**
      * 预估
@@ -97,5 +101,15 @@ public class WxYopToftController {
         } else {
             return ResponseUtil.fail(Integer.valueOf(data.getCode()), data.getMsg());
         }
+    }
+
+    /**
+     * 获取可用服务
+     *
+     * @return 可用服务数据
+     */
+    @GetMapping("getAvailableService")
+    public Object getAvailableService() {
+        return yopToftService.getAvailableService();
     }
 }

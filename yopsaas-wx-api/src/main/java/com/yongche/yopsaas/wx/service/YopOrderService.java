@@ -965,6 +965,12 @@ public class YopOrderService {
             return WxPayNotifyResponse.fail("更新数据已失效");
         }
 
+        YopsaasRideOrderTransactionHistory updateOrderTransactionHistory = new YopsaasRideOrderTransactionHistory();
+        updateOrderTransactionHistory.setStatus(YopsaasRideOrderTransactionHistoryService.PAY_STATUS_SUCCESS);
+        updateOrderTransactionHistory.setPaidAmount(result.getTotalFee());
+        updateOrderTransactionHistory.setTransactionId(payId);
+        rideOrderTransactionHistoryService.updateByTransactionId(updateOrderTransactionHistory, rechargeTransactionId);
+
         //TODO 发送邮件和短信通知，这里采用异步发送
         // 订单支付成功以后，会发送短信给用户，以及发送邮件给管理员
         notifyService.notifyMail("新订单通知", rideOrder.toString());

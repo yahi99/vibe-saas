@@ -272,7 +272,7 @@ public class YopOrderService {
         } else {
             List<String> codes = new ArrayList<String>();
             codes.add("400");
-            codes.add("499");
+            codes.add("499");//用户或帐户异常
             codes.add("500");
             if(codes.contains(result.getCode())) {
                 status = YopsaasRideOrderService.ORDER_STATUS_CANCELLED;

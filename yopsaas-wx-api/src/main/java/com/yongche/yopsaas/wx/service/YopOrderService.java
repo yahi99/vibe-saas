@@ -603,6 +603,11 @@ public class YopOrderService {
                     updateOrder.setTotalAmount(amount);
                     updateOrder.setPayAmount(amount);
                     updateOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_NONE);
+                } else {
+                    updateOrder.setOriginAmount(BigDecimal.valueOf(0L));
+                    updateOrder.setTotalAmount(BigDecimal.valueOf(0L));
+                    updateOrder.setPayAmount(BigDecimal.valueOf(0L));
+                    updateOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_NO_NEED);
                 }
             }
         }

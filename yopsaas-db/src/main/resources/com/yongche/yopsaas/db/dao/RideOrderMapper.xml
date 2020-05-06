@@ -25,6 +25,21 @@
             <if test="order.payAmount != null">
                 pay_amount = #{order.payAmount,jdbcType=DECIMAL},
             </if>
+            <if test="order.refundStatus != null">
+                refund_status = #{order.refundStatus,jdbcType=TINYINT},
+            </if>
+            <if test="order.refundAmount != null">
+                refund_amount = #{order.refundAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="order.refundType != null">
+                refund_type = #{order.refundType,jdbcType=VARCHAR},
+            </if>
+            <if test="order.refundContent != null">
+                refund_content = #{order.refundContent,jdbcType=VARCHAR},
+            </if>
+            <if test="order.refundTime != null">
+                refund_time = #{order.refundTime,jdbcType=INTEGER},
+            </if>
         </set>
         where ride_order_id = #{order.rideOrderId,jdbcType=BIGINT} and update_time = #{lastUpdateTime,jdbcType=INTEGER}
     </update>

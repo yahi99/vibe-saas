@@ -97,7 +97,7 @@ public class AdminRideOrderService {
      */
     @Transactional
     public Object refund(String body) {
-        Long orderId = JacksonUtil.parseLong(body, "orderId");
+        Long orderId = JacksonUtil.parseLong(body, "rideOrderId");
         String refundMoney = JacksonUtil.parseString(body, "refundMoney");
         if (orderId == null) {
             return ResponseUtil.badArgument();
@@ -106,26 +106,26 @@ public class AdminRideOrderService {
             return ResponseUtil.badArgument();
         }
 
-        YopsaasRideOrder order = orderService.findById(orderId);
-        if (order == null) {
+        YopsaasRideOrder rideOrder = orderService.findById(orderId);
+        if (rideOrder == null) {
             return ResponseUtil.badArgument();
         }
 
-        if (order.getDeposit().compareTo(new BigDecimal(refundMoney)) != 0) {
+        if (rideOrder.getDeposit().compareTo(new BigDecimal(refundMoney)) != 0) {
             return ResponseUtil.badArgumentValue();
         }
 
         // 如果订单不是退款状态，则不能退款
-        if (!order.getStatus().equals(RideOrderUtil.STATUS_SERVICE_DONE)) {
-            return ResponseUtil.fail(ORDER_CONFIRM_NOT_ALLOWED, "订单不能确认收货");
+        if (!rideOrder.getStatus().equals(RideOrderUtil.STATUS_SERVICE_DONE)) {
+            return ResponseUtil.fail(ORDER_CONFIRM_NOT_ALLOWED, "订单不能确认完成");
         }
 
         // 微信退款
         WxPayRefundRequest wxPayRefundRequest = new WxPayRefundRequest();
-        wxPayRefundRequest.setOutTradeNo(order.getWxOrderSn());
-        wxPayRefundRequest.setOutRefundNo("refund_" + order.getWxOrderSn());
+        wxPayRefundRequest.setOutTradeNo(rideOrder.getWxOrderSn());
+        wxPayRefundRequest.setOutRefundNo("refund_" + rideOrder.getWxOrderSn());
         // 元转成分
-        Integer totalFee = order.getDeposit().multiply(new BigDecimal(100)).intValue();
+        Integer totalFee = rideOrder.getDeposit().multiply(new BigDecimal(100)).intValue();
         wxPayRefundRequest.setTotalFee(totalFee);
         wxPayRefundRequest.setRefundFee(totalFee);
 
@@ -146,25 +146,26 @@ public class AdminRideOrderService {
         }
 
         int now = YopsaasRideOrderService.getSecondTimestamp(new Date());
-        // 设置订单取消状态
-        order.setStatus(RideOrderUtil.STATUS_SERVICE_DONE);
-        order.setEndTime(now);
+        // 设置订单退款状态
+        rideOrder.setRefundStatus(YopsaasRideOrderService.REFUND_STATUS_DONE);
         // 记录订单退款相关信息
-        order.setRefundAmount(order.getDeposit());
-        order.setRefundType("微信退款接口");
-        order.setRefundContent(wxPayRefundResult.getRefundId());
-        order.setRefundTime(now);
-        if (orderService.updateWithOptimisticLocker(order) == 0) {
+        rideOrder.setRefundAmount(rideOrder.getDeposit());
+        rideOrder.setRefundType("微信退款接口");
+        rideOrder.setRefundContent(wxPayRefundResult.getRefundId());
+        rideOrder.setRefundTime(now);
+        if (orderService.updateWithOptimisticLocker(rideOrder) == 0) {
             throw new RuntimeException("更新数据已失效");
         }
 
         //TODO 发送邮件和短信通知，这里采用异步发送
         // 退款成功通知用户, 例如“您申请的订单退款 [ 单号:{1} ] 已成功，请耐心等待到账。”
         // 注意订单号只发后6位
-        notifyService.notifySmsTemplate(order.getPassengerPhone(), NotifyType.REFUND,
-                new String[]{order.getWxOrderSn().substring(8, 14)});
+        notifyService.notifySmsTemplate(
+                rideOrder.getPassengerPhone(), NotifyType.REFUND,
+                new String[]{rideOrder.getWxOrderSn().substring(8, 14)}
+                );
 
-        logHelper.logOrderSucceed("退款", "订单编号 " + order.getWxOrderSn());
+        logHelper.logOrderSucceed("退款", "订单编号 " + rideOrder.getWxOrderSn());
         return ResponseUtil.ok();
     }
 

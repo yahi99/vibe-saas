@@ -55,7 +55,7 @@
         <template slot-scope="scope">
           <el-button v-permission="['GET /admin/rideorder/detail']" type="primary" size="mini" @click="handleDetail(scope.row)">详情</el-button>
           <el-button v-permission="['POST /admin/rideorder/delete']" type="danger" size="mini" @click="handleDelete(scope.row)">删除</el-button>
-          <el-button v-if="scope.row.payStatus==3" v-permission="['POST /admin/rideorder/refund']" type="primary" size="mini" @click="handleRefund(scope.row)">退款</el-button>
+          <el-button v-if="scope.row.payStatus==3&&scope.row.refundStatus==0" v-permission="['POST /admin/rideorder/refund']" type="primary" size="mini" @click="handleRefund(scope.row)">退款</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -277,7 +277,7 @@ export default {
       })
     },
     handleRefund(row) {
-      this.refundForm.orderId = row.rideOrderId
+      this.refundForm.rideOrderId = row.rideOrderId
       this.refundForm.refundMoney = row.deposit
 
       this.refundDialogVisible = true

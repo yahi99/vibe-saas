@@ -275,7 +275,7 @@ create table if not exists `yopsaas_ride_order_kv` (
   `k` varchar(20) NOT NULL DEFAULT '' comment 'k',
   `v` varchar(4096) NOT NULL DEFAULT '' comment 'v',
   `type` tinyint(4) not null default '0' comment '0:普通字符串 1:json',
-  `create_time` int(11) NOT NULL COMMENT '创建时间',
-  `update_time` int(11) NOT NULL COMMENT '更新时间',
+  `create_time` int(11) NOT NULL default '0' COMMENT '创建时间',
+  `update_time` int(11) NOT NULL default '0' COMMENT '更新时间',
   unique KEY `idx_roi_k` (`ride_order_id`,`k`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网约车订单kv表';

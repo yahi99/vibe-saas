@@ -978,8 +978,8 @@ public class YopOrderService {
                 rideOrder.getPassengerName()
         };
 
-        // 取消订单超时未支付任务
-        //taskService.removeTask(new OrderUnpaidTask(order.getId()));
+        // 取消订单超时未选车任务
+        taskService.removeTask(new RideOrderUnchooseCarTask(rideOrderId));
 
         return WxPayNotifyResponse.success("处理成功!");
     }

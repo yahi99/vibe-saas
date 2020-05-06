@@ -468,7 +468,7 @@ public class YopOrderService {
             return ResponseUtil.failCode(404, "yop order not exist");
         }
         if(rideOrder.getStatus().equals(orderStatus)) {
-            return ResponseUtil.failCode(400, "order already update");
+            //return ResponseUtil.failCode(400, "order already update");
         }
         if(rideOrder.getStatus() > Byte.valueOf(yongcheOrderStatus)) {
             return ResponseUtil.failCode(400, "yop status is lower");

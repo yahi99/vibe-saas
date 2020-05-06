@@ -10,6 +10,7 @@ import com.github.zhangchunsheng.amapgeo.service.GeoService;
 import com.github.zhangchunsheng.amapplace.bean.result.Poi;
 import com.github.zhangchunsheng.amapplace.bean.result.PoiSearchResult;
 import com.github.zhangchunsheng.amapplace.service.PlaceService;
+import com.ridegroup.yop.bean.city.CityInfo;
 import com.yongche.yopsaas.core.util.ResponseUtil;
 import com.yongche.yopsaas.wx.dto.LocationInfo;
 import com.yongche.yopsaas.wx.dto.PlaceSearch;
@@ -96,8 +97,9 @@ public class MapService {
                     city = regeo.getAddressComponent().getCity().toString();
                 }
                 locationDto.setCity(city);
-                // city short
-                locationDto.setCityShort("bj");
+                // TODO city short
+                locationDto.setCityShort(CityInfo.getCityShort(city));
+
                 String[] locationArray = location.split(",");
                 locationDto.setLng(Double.valueOf(locationArray[0]));
                 locationDto.setLat(Double.valueOf(locationArray[1]));

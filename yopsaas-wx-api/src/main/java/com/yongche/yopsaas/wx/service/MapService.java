@@ -99,6 +99,7 @@ public class MapService {
                 locationDto.setCity(city);
                 // TODO city short
                 locationDto.setCityShort(CityInfo.getCityShort(city));
+                locationDto.setName(CityInfo.getCityName(city));
 
                 String[] locationArray = location.split(",");
                 locationDto.setLng(Double.valueOf(locationArray[0]));

@@ -703,7 +703,7 @@ public class YopOrderService {
                         updateOrder.setTotalAmount(BigDecimal.valueOf(cancelOrder.getResult().getFee()));
                     }
                     // TODO reason
-                    updateOrder.setReasonId(0);
+                    updateOrder.setReasonId(YopsaasRideOrderService.REASON_CHANGE_INFO_REORDER);
 
                     int result = rideOrderService.update(updateOrder);
                     return ResponseUtil.ok(cancelOrder.getResult());

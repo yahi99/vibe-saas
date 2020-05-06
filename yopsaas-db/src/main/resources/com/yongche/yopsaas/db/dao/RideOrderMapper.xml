@@ -7,6 +7,24 @@
             <if test="order.rideOrderId != null">
                 ride_order_id = #{order.rideOrderId,jdbcType=BIGINT},
             </if>
+            <if test="order.wxOrderSn != null">
+                wx_order_sn = #{order.wxOrderSn,jdbcType=VARCHAR},
+            </if>
+            <if test="order.payId != null">
+                pay_id = #{order.payId,jdbcType=VARCHAR},
+            </if>
+            <if test="order.payTime != null">
+                pay_time = #{order.payTime,jdbcType=INTEGER},
+            </if>
+            <if test="order.payStatus != null">
+                pay_status = #{order.payStatus,jdbcType=TINYINT},
+            </if>
+            <if test="order.deposit != null">
+                deposit = #{order.deposit,jdbcType=DECIMAL},
+            </if>
+            <if test="order.payAmount != null">
+                pay_amount = #{order.payAmount,jdbcType=DECIMAL},
+            </if>
         </set>
         where ride_order_id = #{order.rideOrderId,jdbcType=BIGINT} and update_time = #{lastUpdateTime,jdbcType=INTEGER}
     </update>

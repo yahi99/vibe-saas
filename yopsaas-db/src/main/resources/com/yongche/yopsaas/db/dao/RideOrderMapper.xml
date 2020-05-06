@@ -4,10 +4,10 @@
     <update id="updateWithOptimisticLocker" parameterType="map">
         update yopsaas_ride_order
         <set>
-            <if test="order.ride_order_id != null">
-                ride_order_id = #{order.ride_order_id,jdbcType=LONG},
+            <if test="order.rideOrderId != null">
+                ride_order_id = #{order.rideOrderId,jdbcType=LONG},
             </if>
         </set>
-        where ride_order_id = #{order.ride_order_id,jdbcType=LONG} and update_time = #{lastUpdateTime,jdbcType=INTEGER}
+        where ride_order_id = #{order.rideOrderId,jdbcType=LONG} and update_time = #{lastUpdateTime,jdbcType=INTEGER}
     </update>
 </mapper>

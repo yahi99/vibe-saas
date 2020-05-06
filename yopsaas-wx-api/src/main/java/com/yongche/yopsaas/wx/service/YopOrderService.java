@@ -955,6 +955,12 @@ public class YopOrderService {
         int time = YopsaasRideOrderService.getSecondTimestamp(new Date());
         rideOrder.setPayTime(time);
         rideOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_OFF);
+        BigDecimal deposit = rideOrder.getDeposit();
+        deposit = BigDecimal.valueOf(deposit.doubleValue() + Double.valueOf(totalFee));
+        rideOrder.setDeposit(deposit);
+        BigDecimal totalAmount = rideOrder.getTotalAmount();
+        double payAmount = totalAmount.doubleValue() - deposit.doubleValue();
+        rideOrder.setPayAmount(BigDecimal.valueOf(payAmount));
         if (rideOrderService.updateWithOptimisticLocker(rideOrder) == 0) {
             return WxPayNotifyResponse.fail("更新数据已失效");
         }

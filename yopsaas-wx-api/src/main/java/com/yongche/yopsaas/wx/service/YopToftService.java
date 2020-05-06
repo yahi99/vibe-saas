@@ -92,7 +92,14 @@ public class YopToftService {
     public Object getAvailableService() {
         BaseResultT<Map<String, AvailableService>> data = this.toftService.getAvailableService();
         if(data.getCode().equals("200")) {
-            return ResponseUtil.ok(data.getResult());
+            Map<String, Object> result = new HashMap<String, Object>();
+            result.put("cityList", data.getResult());
+            long now = System.currentTimeMillis();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+            //获取时间戳
+            String time = dateFormat.format(now);
+            result.put("version", time);
+            return ResponseUtil.ok(result);
         } else {
             return ResponseUtil.fail(Integer.valueOf(data.getCode()), data.getMsg());
         }

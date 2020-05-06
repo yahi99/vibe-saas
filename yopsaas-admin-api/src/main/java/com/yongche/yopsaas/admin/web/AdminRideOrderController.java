@@ -89,7 +89,7 @@ public class AdminRideOrderController {
     /**
      * 订单退款
      *
-     * @param body 订单信息，{ orderId：xxx }
+     * @param body 订单信息，{ rideOrderId：xxx }
      * @return 订单退款操作结果
      */
     @RequiresPermissions("admin:rideorder:refund")

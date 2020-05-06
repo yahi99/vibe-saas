@@ -64,6 +64,7 @@ public class AdminRideOrderService {
             map.put("totalAmount", orderList.get(i).getTotalAmount());
             map.put("deposit", orderList.get(i).getDeposit());
             map.put("payTime", orderList.get(i).getPayTime());
+            map.put("refundStatus", orderList.get(i).getRefundStatus());
             rets.add(map);
         }
         return ResponseUtil.okList(rets);

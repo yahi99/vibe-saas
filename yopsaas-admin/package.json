@@ -37,10 +37,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yongche2010/yopsaas.git"
+    "url": "git+https://example.com/yopsaas.git"
   },
   "bugs": {
-    "url": "https://github.com/yongche2010/yopsaas/issues"
+    "url": "https://example.com/yopsaas/issues"
   },
   "dependencies": {
     "@tinymce/tinymce-vue": "3.0.1",

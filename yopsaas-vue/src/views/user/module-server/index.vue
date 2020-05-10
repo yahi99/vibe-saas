@@ -8,10 +8,6 @@
     <van-popup v-model="showKefu">
       <van-cell-group>
         <van-cell title="项目名称" value="yopsaas" />
-        <van-cell title="项目地址" value="Github"  url="https://github.com/yongche2010/yopsaas"/>
-        <van-cell title="项目地址" value="Gitee"  url="https://gitee.com/yongche2010/yopsaas"/>
-        <van-cell title="联系电话" value="021-xxxx-xxxx" />
-        <van-cell title="联系QQ" value="738696120" />
         <van-cell title="当前版本" value="V1.0" />
         <van-cell title="开源协议" value="MIT" />
       </van-cell-group>

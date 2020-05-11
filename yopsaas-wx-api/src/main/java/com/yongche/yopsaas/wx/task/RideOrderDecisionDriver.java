@@ -99,6 +99,14 @@ public class RideOrderDecisionDriver extends Task {
                                         logger.debug("RideOrderDecisionDriver driverId:" + driver.getDriver_id());
                                         decisionDriverId = String.valueOf(driver.getDriver_id());
                                     }
+                                } else if(userId.intValue() == 14 || userId.intValue() == 15) {
+                                    logger.debug("RideOrderDecisionDriver userId:" + userId);
+                                    if(driver.getDriver_id() == 5857
+                                        || driver.getDriver_id() == 2516291
+                                        || driver.getDriver_id() == 2516069) {
+                                        logger.debug("RideOrderDecisionDriver driverId:" + driver.getDriver_id());
+                                        decisionDriverId = String.valueOf(driver.getDriver_id());
+                                    }
                                 } else {
                                     logger.debug("RideOrderDecisionDriver userId is " + userId);
                                     decisionDriverId = String.valueOf(driver.getDriver_id());

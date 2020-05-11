@@ -575,6 +575,7 @@ public class YopOrderService {
                 this.updateRideOrderkv(rideOrder, feeSnap, orderStatus);
 
                 logger.debug("callback api, get yop order fee:" + JacksonUtil.toJson(feeSnap));
+                // TODO 高速费
                 updateOrder.setEndTime(orderInfo.getEnd_time());
                 BigDecimal amount = BigDecimal.valueOf(Double.valueOf(feeSnap.getOrder_amount()));
                 updateOrder.setOriginAmount(BigDecimal.valueOf(Double.valueOf(feeSnap.getOrigin_amount())));

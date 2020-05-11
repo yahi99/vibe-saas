@@ -117,7 +117,8 @@ public class AdminRideOrderService {
         }
 
         // 如果订单不是退款状态，则不能退款
-        if (!rideOrder.getStatus().equals(RideOrderUtil.STATUS_SERVICE_DONE)) {
+        if (!rideOrder.getStatus().equals(RideOrderUtil.STATUS_SERVICE_DONE)
+            && !rideOrder.getStatus().equals(RideOrderUtil.STATUS_SERVICE_CANCEL)) {
             return ResponseUtil.fail(ORDER_CONFIRM_NOT_ALLOWED, "订单不能确认完成");
         }
 

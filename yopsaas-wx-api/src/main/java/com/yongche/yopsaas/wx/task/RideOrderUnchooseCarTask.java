@@ -11,7 +11,7 @@ import org.apache.commons.logging.LogFactory;
 
 public class RideOrderUnchooseCarTask extends Task {
 
-    private final Log logger = LogFactory.getLog(OrderUnpaidTask.class);
+    private final Log logger = LogFactory.getLog(RideOrderUnchooseCarTask.class);
     private long rideOrderId = -1;
 
     public RideOrderUnchooseCarTask(long rideOrderId, long delayInMilliseconds) {

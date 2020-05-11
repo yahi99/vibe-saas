@@ -574,6 +574,7 @@ public class YopOrderService {
                 // update order kv
                 this.updateRideOrderkv(rideOrder, feeSnap, orderStatus);
 
+                logger.debug("callback api, get yop order fee:" + JacksonUtil.toJson(feeSnap));
                 updateOrder.setEndTime(orderInfo.getEnd_time());
                 BigDecimal amount = BigDecimal.valueOf(Double.valueOf(feeSnap.getOrder_amount()));
                 updateOrder.setOriginAmount(BigDecimal.valueOf(Double.valueOf(feeSnap.getOrigin_amount())));
@@ -599,6 +600,7 @@ public class YopOrderService {
                 // update order kv
                 this.updateRideOrderkv(rideOrder, feeSnap, orderStatus);
                 BigDecimal amount = BigDecimal.valueOf(Double.valueOf(feeSnap.getCancel_order_amount()));
+                logger.debug("callback api, get yop order fee:" + JacksonUtil.toJson(feeSnap));
                 if(amount.doubleValue() > 0) {
                     updateOrder.setOriginAmount(amount);
                     updateOrder.setTotalAmount(amount);

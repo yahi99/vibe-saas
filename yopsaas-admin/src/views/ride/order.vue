@@ -58,7 +58,7 @@
       <el-table-column align="center" label="操作" width="160" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button v-permission="['GET /admin/rideorder/detail']" type="primary" size="mini" @click="handleDetail(scope.row)">详情</el-button>
-          <el-button v-permission="['POST /admin/rideorder/delete']" type="danger" size="mini" @click="handleDelete(scope.row)">删除</el-button>
+          <!--<el-button v-permission="['POST /admin/rideorder/delete']" type="danger" size="mini" @click="handleDelete(scope.row)">删除</el-button>-->
           <el-button v-if="scope.row.payStatus==3&&scope.row.refundStatus==0" v-permission="['POST /admin/rideorder/refund']" type="primary" size="mini" @click="handleRefund(scope.row)">退款</el-button>
         </template>
       </el-table-column>

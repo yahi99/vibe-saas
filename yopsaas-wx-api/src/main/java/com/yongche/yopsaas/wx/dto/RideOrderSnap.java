@@ -56,6 +56,7 @@ public class RideOrderSnap {
     private final static Map<String, String> DETAIL_COLUMN = new HashMap<String, String>(){{
         put("timeFee", "时租总费用");
         put("kiloFee", "公里总费用");
+        put("fixedFee", "固定价格产品服务费");
         put("extraDistanceFee", "超公里费");
         put("extraTimeFee", "超小时总费用");
         put("parkingAmount", "停车费");
@@ -77,7 +78,12 @@ public class RideOrderSnap {
         for (Map.Entry<String, String> entry : DETAIL_COLUMN.entrySet()) {
             Detail detail = new Detail();
             detail.setTitle(entry.getValue());
-            detail.setFee(this.getFieldValueByFieldMethod(entry.getKey(), this));
+            String fee = this.getFieldValueByFieldMethod(entry.getKey(), this);
+            if(fee == null) {
+                detail.setFee("0");
+            } else {
+                detail.setFee(fee);
+            }
             this.details.add(detail);
         }
         this.combos = new ArrayList<Detail>();
@@ -88,7 +94,12 @@ public class RideOrderSnap {
         for (Map.Entry<String, String> entry : REALPAY_COLUMN.entrySet()) {
             Detail detail = new Detail();
             detail.setTitle(entry.getValue());
-            detail.setFee(this.getFieldValueByFieldMethod(entry.getKey(), this));
+            String fee = this.getFieldValueByFieldMethod(entry.getKey(), this);
+            if(fee == null) {
+                detail.setFee("0");
+            } else {
+                detail.setFee(fee);
+            }
             this.realPay.add(detail);
         }
     }

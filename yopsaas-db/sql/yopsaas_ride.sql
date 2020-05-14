@@ -226,6 +226,7 @@ create table if not exists yopsaas_ride_order_dispatch(
   `driver_id` int(11) NOT NULL DEFAULT '0' COMMENT '司机ID',
   `name` varchar(32) NOT NULL DEFAULT '' COMMENT '司机姓名',
   `score` int(4) NOT NULL DEFAULT '0' comment '星级',
+  `company_id` int(11) NOT NULL default '0' COMMENT 'company_id',
   `good_comment_rate` int(11) NOT NULL DEFAULT '0' COMMENT '司机好评率百度比',
   `unittime_complete_count` int(11) NOT NULL DEFAULT '0' COMMENT '月完成订单数',
   `is_served` smallint(1) NOT NULL DEFAULT '0' COMMENT '是否熟司机',

@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 import Qs from 'qs'
 
-export function listOrder(query) {
+export function listDispatch(query) {
   return request({
     url: '/rideorderdispatch/list',
     method: 'get',
@@ -12,7 +12,7 @@ export function listOrder(query) {
   })
 }
 
-export function detailOrder(rideOrderDispatchId) {
+export function detailDispatch(rideOrderDispatchId) {
   return request({
     url: '/rideorderdispatch/detail',
     method: 'get',
@@ -20,7 +20,7 @@ export function detailOrder(rideOrderDispatchId) {
   })
 }
 
-export function deleteOrder(data) {
+export function deleteDispatch(data) {
   return request({
     url: '/rideorderdispatch/delete',
     method: 'post',

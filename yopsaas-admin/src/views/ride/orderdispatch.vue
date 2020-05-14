@@ -52,22 +52,22 @@
     <!-- 派单详情对话框 -->
     <el-dialog :visible.sync="orderDialogVisible" title="派单详情" width="800">
       <section ref="print">
-        <el-form :data="orderDetail" label-position="left">
+        <el-form :data="dispatchDetail" label-position="left">
           <el-form-item label="派单编号">
-            <span>{{ orderDetail.order.rideOrderDispatchId }}</span>
+            <span>{{ dispatchDetail.orderDispatch.rideOrderDispatchId }}</span>
           </el-form-item>
           <el-form-item label="决策状态">
-            <el-tag>{{ orderDetail.order.status | statusFilter }}</el-tag>
+            <el-tag>{{ dispatchDetail.orderDispatch.status | statusFilter }}</el-tag>
           </el-form-item>
           <el-form-item label="司机姓名">
-            <span>{{ orderDetail.order.name }}</span>
+            <span>{{ dispatchDetail.orderDispatch.name }}</span>
           </el-form-item>
           <el-form-item label="星级">
-            <span>{{ orderDetail.order.score }}</span>
+            <span>{{ dispatchDetail.orderDispatch.score }}</span>
           </el-form-item>
           <el-form-item label="派单信息">
-            <span>（车辆品牌）{{ orderDetail.order.brand }}</span>
-            <span>（车型）{{ orderDetail.order.carType }}</span>
+            <span>（车辆品牌）{{ dispatchDetail.orderDispatch.brand }}</span>
+            <span>（车型）{{ dispatchDetail.orderDispatch.carType }}</span>
           </el-form-item>
         </el-form>
       </section>
@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import { detailOrder, listOrder, deleteOrder } from '@/api/rideorderdispatch'
+import { detailDispatch, listDispatch, deleteDispatch } from '@/api/rideorderdispatch'
 import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
 import checkPermission from '@/utils/permission' // 权限判断函数
 
@@ -148,9 +148,8 @@ export default {
       },
       statusMap,
       orderDialogVisible: false,
-      orderDetail: {
-        order: {},
-        user: {}
+      dispatchDetail: {
+        orderDispatch: {}
       },
       downloadLoading: false
     }
@@ -170,7 +169,7 @@ export default {
         this.listQuery.end = null
       }
 
-      listOrder(this.listQuery).then(response => {
+      listDispatch(this.listQuery).then(response => {
         this.list = response.data.data.list
         this.total = response.data.data.total
         this.listLoading = false
@@ -185,13 +184,13 @@ export default {
       this.getList()
     },
     handleDetail(row) {
-      detailOrder(row.rideOrderDispatchId).then(response => {
-        this.orderDetail = response.data.data
+      detailDispatch(row.rideOrderDispatchId).then(response => {
+        this.dispatchDetail = response.data.data
       })
       this.orderDialogVisible = true
     },
     handleDelete(row) {
-      deleteOrder({ rideOrderDispatchId: row.rideOrderDispatchId }).then(response => {
+      deleteDispatch({ rideOrderDispatchId: row.rideOrderDispatchId }).then(response => {
         this.$notify.success({
           title: '成功',
           message: '订单删除成功'

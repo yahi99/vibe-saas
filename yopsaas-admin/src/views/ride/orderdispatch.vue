@@ -97,6 +97,9 @@ export default {
       return statusMap[status]
     },
     timeFilter(time) {
+      if (time === 0) {
+        return ''
+      }
       var date1 = new Date(time * 1000)
       var y = date1.getFullYear()
       var m = date1.getMonth() + 1

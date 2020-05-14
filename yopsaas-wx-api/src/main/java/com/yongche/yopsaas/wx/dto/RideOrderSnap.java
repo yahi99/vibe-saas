@@ -14,7 +14,7 @@ public class RideOrderSnap {
     private String parkingAmount = "0";
     private String highwayAmount = "0";
     private String ftDistance = "0";
-    private String ftDistanceDanjia = "0";
+    private String ftDistanceUnitFee = "0";
     private String ftFee = "0";
     private String originAmount = "0";
     private String couponFacevalue = "0";
@@ -28,10 +28,10 @@ public class RideOrderSnap {
     private String feePerKilo = "0";
     private String kiloFee = "0";
     private String extraDistance = "0";
-    private String extraDistanceDanjia = "0";
+    private String extraDistanceUnitFee = "0";
     private String extraDistanceFee = "0";
     private String extraTime = "0";
-    private String extraTimeDanjia = "0";
+    private String extraTimeUnitFee = "0";
     private String extraTimeFee = "0";
     private String airportServiceAmount = "0";
     private String nightAmount = "0";
@@ -217,12 +217,12 @@ public class RideOrderSnap {
         this.ftDistance = ftDistance;
     }
 
-    public String getFtDistanceDanjia() {
-        return ftDistanceDanjia;
+    public String getFtDistanceUnitFee() {
+        return ftDistanceUnitFee;
     }
 
-    public void setFtDistanceDanjia(String ftDistanceDanjia) {
-        this.ftDistanceDanjia = ftDistanceDanjia;
+    public void setFtDistanceUnitFee(String ftDistanceUnitFee) {
+        this.ftDistanceUnitFee = ftDistanceUnitFee;
     }
 
     public String getFtFee() {
@@ -321,12 +321,12 @@ public class RideOrderSnap {
         this.extraDistance = extraDistance;
     }
 
-    public String getExtraDistanceDanjia() {
-        return extraDistanceDanjia;
+    public String getExtraDistanceUnitFee() {
+        return extraDistanceUnitFee;
     }
 
-    public void setExtraDistanceDanjia(String extraDistanceDanjia) {
-        this.extraDistanceDanjia = extraDistanceDanjia;
+    public void setExtraDistanceUnitFee(String extraDistanceUnitFee) {
+        this.extraDistanceUnitFee = extraDistanceUnitFee;
     }
 
     public String getExtraDistanceFee() {
@@ -345,12 +345,12 @@ public class RideOrderSnap {
         this.extraTime = extraTime;
     }
 
-    public String getExtraTimeDanjia() {
-        return extraTimeDanjia;
+    public String getExtraTimeUnitFee() {
+        return extraTimeUnitFee;
     }
 
-    public void setExtraTimeDanjia(String extraTimeDanjia) {
-        this.extraTimeDanjia = extraTimeDanjia;
+    public void setExtraTimeUnitFee(String extraTimeUnitFee) {
+        this.extraTimeUnitFee = extraTimeUnitFee;
     }
 
     public String getExtraTimeFee() {

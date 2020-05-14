@@ -78,7 +78,7 @@ public class RideOrderDecisionDriver extends Task {
                             orderDispatch.setDriverId(driver.getDriver_id());
                             orderDispatch.setName(driver.getName());
                             orderDispatch.setScore(driver.getScore());
-                            orderDispatch.setScore(driver.getCompany_id());
+                            orderDispatch.setCompanyId(driver.getCompany_id());
                             orderDispatch.setPhoto(driver.getPhoto());
                             orderDispatch.setBrand(driver.getBrand());
                             orderDispatch.setCarType(driver.getCar_type());

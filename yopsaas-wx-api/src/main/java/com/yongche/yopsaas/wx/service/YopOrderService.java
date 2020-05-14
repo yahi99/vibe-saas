@@ -561,7 +561,7 @@ public class YopOrderService {
             if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_SERVICESTART)) {
                 updateOrder.setStartLatitude(orderInfo.getStart_latitude());
                 updateOrder.setStartLongitude(orderInfo.getStart_longitude());
-                updateOrder.setStartTime(orderInfo.getStart_time());
+                updateOrder.setStartTime(YopOrderService.getTimestamp());
             }
         }
         if(orderStatus.equals(YopsaasRideOrderService.ORDER_STATUS_SERVICEEND)) {
@@ -576,7 +576,6 @@ public class YopOrderService {
 
                 logger.debug("callback api, get yop order fee:" + JacksonUtil.toJson(feeSnap));
                 // TODO 高速费
-                updateOrder.setEndTime(orderInfo.getEnd_time());
                 BigDecimal amount = BigDecimal.valueOf(Double.valueOf(feeSnap.getOrder_amount()));
                 updateOrder.setOriginAmount(BigDecimal.valueOf(Double.valueOf(feeSnap.getOrigin_amount())));
                 updateOrder.setTotalAmount(amount);
@@ -584,7 +583,8 @@ public class YopOrderService {
                 updateOrder.setActualTimeLength(orderInfo.getTime_length());
                 updateOrder.setEndLatitude(orderInfo.getEnd_latitude());
                 updateOrder.setEndLongitude(orderInfo.getStart_longitude());
-                updateOrder.setEndTime(orderInfo.getEnd_time());
+
+                updateOrder.setEndTime(YopOrderService.getTimestamp());
                 // 允许支付
                 updateOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_NONE);
                 if(feeSnap.getOrder_amount().equals("0")) {

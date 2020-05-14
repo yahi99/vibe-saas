@@ -23,6 +23,7 @@
     <result column="photo" jdbcType="VARCHAR" property="photo" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="create_time" jdbcType="INTEGER" property="createTime" />
+    <result column="company_id" jdbcType="INTEGER" property="companyId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -97,7 +98,7 @@
     -->
     ride_order_dispatch_id, ride_order_id, driver_id, `name`, score, good_comment_rate, 
     unittime_complete_count, is_served, latitude, longitude, brand, car_type, car_type_id, 
-    is_default, photo, `status`, create_time
+    is_default, photo, `status`, create_time, company_id
   </sql>
   <select id="selectByExample" parameterType="com.yongche.yopsaas.db.domain.YopsaasRideOrderDispatchExample" resultMap="BaseResultMap">
     <!--
@@ -204,13 +205,13 @@
       is_served, latitude, longitude, 
       brand, car_type, car_type_id, 
       is_default, photo, `status`, 
-      create_time)
+      create_time, company_id)
     values (#{rideOrderId,jdbcType=BIGINT}, #{driverId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
       #{score,jdbcType=INTEGER}, #{goodCommentRate,jdbcType=INTEGER}, #{unittimeCompleteCount,jdbcType=INTEGER}, 
       #{isServed,jdbcType=SMALLINT}, #{latitude,jdbcType=DOUBLE}, #{longitude,jdbcType=DOUBLE}, 
       #{brand,jdbcType=VARCHAR}, #{carType,jdbcType=VARCHAR}, #{carTypeId,jdbcType=INTEGER}, 
       #{isDefault,jdbcType=SMALLINT}, #{photo,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
-      #{createTime,jdbcType=INTEGER})
+      #{createTime,jdbcType=INTEGER}, #{companyId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.yongche.yopsaas.db.domain.YopsaasRideOrderDispatch">
     <!--
@@ -270,6 +271,9 @@
       <if test="createTime != null">
         create_time,
       </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="rideOrderId != null">
@@ -319,6 +323,9 @@
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -390,6 +397,9 @@
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=INTEGER},
       </if>
+      <if test="record.companyId != null">
+        company_id = #{record.companyId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -417,7 +427,8 @@
       is_default = #{record.isDefault,jdbcType=SMALLINT},
       photo = #{record.photo,jdbcType=VARCHAR},
       `status` = #{record.status,jdbcType=TINYINT},
-      create_time = #{record.createTime,jdbcType=INTEGER}
+      create_time = #{record.createTime,jdbcType=INTEGER},
+      company_id = #{record.companyId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -477,6 +488,9 @@
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=INTEGER},
       </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
     </set>
     where ride_order_dispatch_id = #{rideOrderDispatchId,jdbcType=BIGINT}
   </update>
@@ -501,7 +515,8 @@
       is_default = #{isDefault,jdbcType=SMALLINT},
       photo = #{photo,jdbcType=VARCHAR},
       `status` = #{status,jdbcType=TINYINT},
-      create_time = #{createTime,jdbcType=INTEGER}
+      create_time = #{createTime,jdbcType=INTEGER},
+      company_id = #{companyId,jdbcType=INTEGER}
     where ride_order_dispatch_id = #{rideOrderDispatchId,jdbcType=BIGINT}
   </update>
   <select id="selectOneByExample" parameterType="com.yongche.yopsaas.db.domain.YopsaasRideOrderDispatchExample" resultMap="BaseResultMap">

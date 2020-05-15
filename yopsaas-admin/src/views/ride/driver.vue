@@ -171,8 +171,8 @@ export default {
     handleDownload() {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['司机ID', '司机姓名', '司机电话']
-        const filterVal = ['rideDriverId', 'name', 'cellphone']
+        const tHeader = ['司机ID', '司机姓名', '司机电话', '星级', '月完成订单数', '车辆品牌', '车型']
+        const filterVal = ['rideDriverId', 'name', 'cellphone', 'starLevel', 'unittimeCompleteCount', 'brand', 'carType']
         excel.export_json_to_excel2(tHeader, this.list, filterVal, '网约车司机信息')
         this.downloadLoading = false
       })

@@ -720,6 +720,7 @@ public class YopOrderService {
                             updateOrder.setPayAmount(amount);
                             updateOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_NONE);
                         }
+                        cancelOrder.getResult().setFee(Integer.valueOf(feeSnap.getCancel_order_amount()));
                     }
                     // TODO reason
                     updateOrder.setReasonId(YopsaasRideOrderService.REASON_CHANGE_INFO_REORDER);

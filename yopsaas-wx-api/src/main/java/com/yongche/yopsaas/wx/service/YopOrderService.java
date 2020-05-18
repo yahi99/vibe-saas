@@ -469,7 +469,8 @@ public class YopOrderService {
             return ResponseUtil.failCode(404, "yop order not exist");
         }
         if(rideOrder.getStatus().equals(orderStatus)) {
-            return ResponseUtil.failCode(400, "order already update");
+            //return ResponseUtil.failCode(400, "order already update");
+            logger.debug("callback api, order status repeat call:" + orderStatus);
         }
         if(rideOrder.getStatus() > Byte.valueOf(yongcheOrderStatus)) {
             return ResponseUtil.failCode(400, "yop status is lower");
@@ -575,7 +576,6 @@ public class YopOrderService {
                 this.updateRideOrderkv(rideOrder, feeSnap, orderStatus);
 
                 logger.debug("callback api, get yop order fee:" + JacksonUtil.toJson(feeSnap));
-                // TODO 高速费
                 BigDecimal amount = BigDecimal.valueOf(Double.valueOf(feeSnap.getOrder_amount()));
                 updateOrder.setOriginAmount(BigDecimal.valueOf(Double.valueOf(feeSnap.getOrigin_amount())));
                 updateOrder.setTotalAmount(amount);
@@ -585,9 +585,17 @@ public class YopOrderService {
                 updateOrder.setEndLatitude(orderInfo.getEnd_latitude());
                 updateOrder.setEndLongitude(orderInfo.getStart_longitude());
 
-                updateOrder.setEndTime(YopOrderService.getTimestamp());
-                // 允许支付
-                updateOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_NONE);
+                // fee_computed 高速费
+                if(httpServletRequest.getParameterMap().containsKey("fee_computed")) {
+                    // 允许支付
+                    updateOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_NONE);
+                    Long flag = rideOrder.getFlag();
+                    flag = flag | YopsaasRideOrderService.FLAG_FEE_COMPUTED;
+                    updateOrder.setFlag(flag);
+                } else {
+                    updateOrder.setEndTime(YopOrderService.getTimestamp());
+                }
+
                 if(feeSnap.getOrder_amount().equals("0")) {
                     // add task?
                 }

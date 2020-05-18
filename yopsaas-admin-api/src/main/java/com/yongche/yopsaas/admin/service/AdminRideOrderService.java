@@ -67,7 +67,7 @@ public class AdminRideOrderService {
             map.put("refundStatus", orderList.get(i).getRefundStatus());
             rets.add(map);
         }
-        return ResponseUtil.okList(rets);
+        return ResponseUtil.okList(rets, orderList);
     }
 
     public Object detail(Long rideOrderId) {

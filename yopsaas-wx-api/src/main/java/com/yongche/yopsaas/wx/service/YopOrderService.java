@@ -580,6 +580,7 @@ public class YopOrderService {
                 updateOrder.setOriginAmount(BigDecimal.valueOf(Double.valueOf(feeSnap.getOrigin_amount())));
                 updateOrder.setTotalAmount(amount);
                 updateOrder.setPayAmount(amount);
+                updateOrder.setSystemDistance(orderInfo.getSystem_distance());
                 updateOrder.setActualTimeLength(orderInfo.getTime_length());
                 updateOrder.setEndLatitude(orderInfo.getEnd_latitude());
                 updateOrder.setEndLongitude(orderInfo.getStart_longitude());

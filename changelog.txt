@@ -60,3 +60,6 @@
 
 2020-05-14
 1. dispatch add company_id
+
+2020-05-18
+1. add fee_computed flag

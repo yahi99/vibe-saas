@@ -41,6 +41,7 @@ public class YopsaasRideOrderService {
     public final static Byte PAY_STATUS_NONE = 1;                     //1:未付款
     public final static Byte PAY_STATUS_PORTION = 2;                  //2:部分付款
     public final static Byte PAY_STATUS_OFF = 3;                      //3:已付款
+    public final static Byte PAY_STATUS_FEE_COMPUTING = 4;             //4:账单确认中
 
     // refund status
     //退款状态 0:无需退款 1:待退款 2:退款中 3:已退款 -1:退款失败
@@ -363,6 +364,7 @@ public class YopsaasRideOrderService {
         List<Byte> payStatus = new ArrayList<>();
         payStatus.add(YopsaasRideOrderService.PAY_STATUS_NONE);
         payStatus.add(YopsaasRideOrderService.PAY_STATUS_PORTION);
+        payStatus.add(YopsaasRideOrderService.PAY_STATUS_FEE_COMPUTING);
         criteria.andPayStatusIn(payStatus);
 
         return yopsaasRideOrderMapper.selectByExampleSelective(example, selective);

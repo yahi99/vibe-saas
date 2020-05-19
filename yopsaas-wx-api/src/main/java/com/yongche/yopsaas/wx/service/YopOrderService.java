@@ -299,6 +299,8 @@ public class YopOrderService {
         List<YopsaasRideOrder> currentOrderList = rideOrderService.queryByOrderStatus(uid, orderStatus);
         List<Byte> payStatus = new ArrayList<>();
         payStatus.add(YopsaasRideOrderService.PAY_STATUS_NONE);
+        payStatus.add(YopsaasRideOrderService.PAY_STATUS_PORTION);
+        payStatus.add(YopsaasRideOrderService.PAY_STATUS_FEE_COMPUTING);
         List<YopsaasRideOrder> unPayOrderList = rideOrderService.queryByPayStatus(uid, payStatus);
 
         List<Object> currentTrips = null;
@@ -338,6 +340,7 @@ public class YopOrderService {
             payStatus = new ArrayList<>();
             payStatus.add(YopsaasRideOrderService.PAY_STATUS_NONE);
             payStatus.add(YopsaasRideOrderService.PAY_STATUS_PORTION);
+            payStatus.add(YopsaasRideOrderService.PAY_STATUS_FEE_COMPUTING);
         } else if(showType == 2) {
             status = new ArrayList<>();
             status.add(YopsaasRideOrderService.ORDER_STATUS_SERVICEREADY);
@@ -593,6 +596,7 @@ public class YopOrderService {
                     flag = flag | YopsaasRideOrderService.FLAG_FEE_COMPUTED;
                     updateOrder.setFlag(flag);
                 } else {
+                    updateOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_FEE_COMPUTING);
                     updateOrder.setEndTime(YopOrderService.getTimestamp());
                 }
 

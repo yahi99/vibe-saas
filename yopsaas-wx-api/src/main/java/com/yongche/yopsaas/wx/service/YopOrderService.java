@@ -629,6 +629,7 @@ public class YopOrderService {
             }
         }
 
+        logger.debug("updateByCallback, update info:" + JacksonUtil.toJson(updateOrder));
         int result = rideOrderService.updateByExample(updateOrder, example);
         return ResponseUtil.okCode(result);
     }

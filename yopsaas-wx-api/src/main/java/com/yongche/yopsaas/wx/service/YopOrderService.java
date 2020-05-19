@@ -588,6 +588,7 @@ public class YopOrderService {
                 updateOrder.setEndLatitude(orderInfo.getEnd_latitude());
                 updateOrder.setEndLongitude(orderInfo.getStart_longitude());
 
+                // withdraw_flag pay_cash adjust_flag abnormal yop_redispatch
                 // fee_computed 高速费
                 if(httpServletRequest.getParameterMap().containsKey("fee_computed")) {
                     // 允许支付
@@ -595,6 +596,10 @@ public class YopOrderService {
                     Long flag = rideOrder.getFlag();
                     flag = flag | YopsaasRideOrderService.FLAG_FEE_COMPUTED;
                     updateOrder.setFlag(flag);
+                } else if(httpServletRequest.getParameterMap().containsKey("withdraw_flag")
+                    || httpServletRequest.getParameterMap().containsKey("pay_cash")
+                    || httpServletRequest.getParameterMap().containsKey("adjust_flag")) {
+                    // TODO
                 } else {
                     updateOrder.setPayStatus(YopsaasRideOrderService.PAY_STATUS_FEE_COMPUTING);
                     updateOrder.setEndTime(YopOrderService.getTimestamp());

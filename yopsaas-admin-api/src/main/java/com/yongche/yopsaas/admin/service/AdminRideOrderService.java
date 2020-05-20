@@ -66,8 +66,8 @@ public class AdminRideOrderService {
             map.put("totalAmount", orderList.get(i).getTotalAmount());
             map.put("deposit", orderList.get(i).getDeposit());
             map.put("payTime", orderList.get(i).getPayTime());
-            map.put("expectStartTimeF", df.format(new Date(orderList.get(i).getExpectStartTime() * 1000)));
-            map.put("payTimeF", df.format(new Date(orderList.get(i).getExpectStartTime() * 1000)));
+            map.put("expectStartTimeF", df.format(new Date(orderList.get(i).getExpectStartTime().longValue() * 1000)));
+            map.put("payTimeF", df.format(new Date(orderList.get(i).getPayTime().longValue() * 1000)));
             map.put("refundStatus", orderList.get(i).getRefundStatus());
             rets.add(map);
         }
@@ -80,8 +80,8 @@ public class AdminRideOrderService {
         Map<String, Object> data = new HashMap<>();
         Map<String, Object> orderTime = new HashMap<>();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        orderTime.put("payTime", df.format(new Date(order.getPayTime() * 1000)));
-        orderTime.put("refundTime", df.format(new Date(order.getRefundTime() * 1000)));
+        orderTime.put("payTime", df.format(new Date(order.getPayTime().longValue() * 1000)));
+        orderTime.put("refundTime", df.format(new Date(order.getRefundTime().longValue() * 1000)));
         data.put("order", order);
         data.put("orderTime", orderTime);
         data.put("user", user);

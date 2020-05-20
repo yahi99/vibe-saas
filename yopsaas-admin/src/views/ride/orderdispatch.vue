@@ -174,6 +174,9 @@ export default {
 
       listDispatch(this.listQuery).then(response => {
         this.list = response.data.data.list
+        for (const i in this.list) {
+          this.list[i]['statusTxt'] = statusMap[this.list[i]['status']]
+        }
         this.total = response.data.data.total
         this.listLoading = false
       }).catch(() => {
@@ -210,7 +213,7 @@ export default {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
         const tHeader = ['派单编号', '订单ID', '司机ID', '司机姓名', '星级', '好评率', '车辆品牌', '车型', '决策状态']
-        const filterVal = ['rideOrderDispatchId', 'rideOrderId', 'driverId', 'name', 'score', 'goodCommentRate', 'brand', 'carType', 'status']
+        const filterVal = ['rideOrderDispatchId', 'rideOrderId', 'driverId', 'name', 'score', 'goodCommentRate', 'brand', 'carType', 'statusTxt']
         excel.export_json_to_excel2(tHeader, this.list, filterVal, '网约车派单信息')
         this.downloadLoading = false
       })

@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -48,6 +49,7 @@ public class AdminRideOrderService {
         List<YopsaasRideOrder> orderList = orderService.querySelective(userId, rideOrderId, start, end, orderStatusArray, page, limit,
                 sort, order);
         List<Map<String, Object>> rets = new ArrayList<>();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         for(int i = 0 ; i < orderList.size() ; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("rideOrderId", orderList.get(i).getRideOrderId());
@@ -64,6 +66,8 @@ public class AdminRideOrderService {
             map.put("totalAmount", orderList.get(i).getTotalAmount());
             map.put("deposit", orderList.get(i).getDeposit());
             map.put("payTime", orderList.get(i).getPayTime());
+            map.put("expectStartTimeF", df.format(new Date(orderList.get(i).getExpectStartTime() * 1000)));
+            map.put("payTimeF", df.format(new Date(orderList.get(i).getExpectStartTime() * 1000)));
             map.put("refundStatus", orderList.get(i).getRefundStatus());
             rets.add(map);
         }
@@ -74,7 +78,12 @@ public class AdminRideOrderService {
         YopsaasRideOrder order = orderService.findById(rideOrderId);
         UserVo user = userService.findUserVoById(order.getUserId().intValue());
         Map<String, Object> data = new HashMap<>();
+        Map<String, Object> orderTime = new HashMap<>();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        orderTime.put("payTime", df.format(new Date(order.getPayTime() * 1000)));
+        orderTime.put("refundTime", df.format(new Date(order.getRefundTime() * 1000)));
         data.put("order", order);
+        data.put("orderTime", orderTime);
         data.put("user", user);
 
         return ResponseUtil.ok(data);

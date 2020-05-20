@@ -95,13 +95,13 @@
           </el-form-item>
           <el-form-item label="支付信息">
             <span>（支付渠道）微信支付</span>
-            <span>（支付时间）{{ orderDetail.order.payTime }}</span>
+            <span>（支付时间）{{ orderDetail.order.payTime | timeFilter }}</span>
           </el-form-item>
           <el-form-item label="退款信息">
             <span>（退款金额）{{ orderDetail.order.refundAmount }}元</span>
             <span>（退款类型）{{ orderDetail.order.refundType }}</span>
             <span>（退款备注）{{ orderDetail.order.refundContent }}</span>
-            <span>（退款时间）{{ orderDetail.order.refundTime }}</span>
+            <span>（退款时间）{{ orderDetail.order.refundTime | timeFilter }}</span>
           </el-form-item>
         </el-form>
       </section>
@@ -252,6 +252,10 @@ export default {
 
       listOrder(this.listQuery).then(response => {
         this.list = response.data.data.list
+        for (const i in this.list) {
+          this.list[i]['statusTxt'] = statusMap[this.list[i]['status']]
+          this.list[i]['payStatusTxt'] = payStatusMap[this.list[i]['payStatus']]
+        }
         this.total = response.data.data.total
         this.listLoading = false
       }).catch(() => {
@@ -316,7 +320,7 @@ export default {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
         const tHeader = ['订单编号', '第三方订单ID', '用户ID', '用车时间', '上车地点', '下车地点', '订单状态', '支付状态', '订单金额', '支付金额', '支付时间']
-        const filterVal = ['rideOrderId', 'ycOrderId', 'userId', 'expectStartTime', 'startPosition', 'endPosition', 'status', 'payStatus', 'totalAmount', 'deposit', 'payTime']
+        const filterVal = ['rideOrderId', 'ycOrderId', 'userId', 'expectStartTimeF', 'startPosition', 'endPosition', 'statusTxt', 'payStatus', 'totalAmount', 'deposit', 'payTimeF']
         excel.export_json_to_excel2(tHeader, this.list, filterVal, '网约车订单信息')
         this.downloadLoading = false
       })

@@ -109,6 +109,7 @@ create table if not exists yopsaas_ride_order(
   `refund_type` varchar(63) NOT NULL DEFAULT 0 COMMENT '退款方式',
   `refund_content` varchar(127) NOT NULL DEFAULT '' COMMENT '退款备注',
   `refund_time` int(11) NOT NULL DEFAULT 0 COMMENT '退款时间',
+  `car_color` varchar(10) NOT NULL DEFAULT '' COMMENT '车辆颜色',
 
   `actual_time_length` int(11) NOT NULL DEFAULT '0' COMMENT  '实际使用时长',
   `dependable_distance` int(11) NOT NULL DEFAULT '0',

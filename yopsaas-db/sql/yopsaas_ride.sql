@@ -201,6 +201,7 @@ create table if not exists yopsaas_ride_order_transaction_history(
   `account_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '账户ID',
   `ride_order_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '订单ID',
   `recharge_transaction_id` bigint(20) NOT NULL DEFAULT 0 COMMENT '支付事务ID 余额和信用相关交易时置NULL',
+  `transaction_id` varchar(32) NOT NULL DEFAULT '' COMMENT '微信付款编号',
   `consumer_id` bigint(20) NOT NULL DEFAULT '0',
   `operation` tinyint(4) NOT NULL DEFAULT '0' COMMENT '操作 1:预收 2:预收退款 3:预授权 4:预授权完成 5:人工退款 6:未消费退款 7:取消订单退款 8:结账收款',
   `pay_type` tinyint(4) NOT NULL DEFAULT 0 COMMENT '支付方式 退款和预授权完成时置NULL 值定义参考',
